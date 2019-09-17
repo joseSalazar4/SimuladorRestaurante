@@ -54,8 +54,14 @@ Solicitud * Comensal::pedirPostre(int porcentajeACumplir){
     }
 }
 
-Solicitud * pedirCuenta();
+void Comensal::pedirCuenta(){
 
-void dejarMesa();
+}
 
-void llamarMesero();
+void Comensal::dejarMesa(){
+    mesa->comensal1 = mesa->comensal2 = mesa->comensal3 = mesa->comensal4 = mesa->comensal5 = mesa->comensal6 = nullptr;
+}
+
+void Comensal::llamarMesero(){
+
+}

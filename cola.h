@@ -2,6 +2,9 @@
 #define COLA_H
 
 #include "Solicitud.h"
+#include "iostream"
+
+using namespace std;
 
 struct Cola {
        // solo con pN es suficiente
@@ -13,11 +16,11 @@ struct Cola {
        }
 
        // encabezados de funcion
-       void encolar (int dato);
-       Solicitud * desencolar (void);
-       Solicitud * verFrente(void);
-       bool vacia(void);
-       void imprimir(void);
+       void encolar (Solicitud * dato);
+       Solicitud * desencolar ();
+       Solicitud * verFrente();
+       bool vacia();
+       void imprimir();
 };
 
 #endif // COLA_H

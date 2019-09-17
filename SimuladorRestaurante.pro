@@ -19,9 +19,9 @@ SOURCES += \
     Cocinero.cpp \
     CocineroThread.cpp \
     Comensal.cpp \
+    MainWindow.cpp \
     cola.cpp \
     main.cpp \
-    mainwindow.cpp \
     mesa.cpp \
     mesero.cpp \
     meserothread.cpp \
@@ -34,7 +34,7 @@ HEADERS += \
     Cocinero.h \
     CocineroThread.h \
     Comensal.h \
-    Mainwindow.h \
+    MainWindow.h \
     Mesero.h \
     Solicitud.h \
     cola.h \

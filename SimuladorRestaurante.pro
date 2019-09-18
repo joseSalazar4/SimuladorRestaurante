@@ -20,7 +20,10 @@ SOURCES += \
     CocineroThread.cpp \
     Comensal.cpp \
     MainWindow.cpp \
+    caja.cpp \
+    cocina.cpp \
     cola.cpp \
+    lavaplatos.cpp \
     main.cpp \
     mesa.cpp \
     mesero.cpp \
@@ -37,7 +40,10 @@ HEADERS += \
     MainWindow.h \
     Mesero.h \
     Solicitud.h \
+    caja.h \
+    cocina.h \
     cola.h \
+    lavaplatos.h \
     mesa.h\ \
     meserothread.h \
     pila.h \

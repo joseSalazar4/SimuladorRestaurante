@@ -12,10 +12,13 @@ Plato * Cocinero::cocinar(Plato * plato){
 }
 
 void Cocinero::recogerPedido(){
-    if(pilaOrdenes->peek()!=nullptr){
-        Plato * plato = pilaOrdenes->pop()->plato;
+    if(!cocina->vacia()){
+        Plato * plato = cocina->desencolar()->plato;
         cocinar(plato);
     }
+    else:
+        return nullptr;
+
 
 }
 

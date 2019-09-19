@@ -1,23 +1,23 @@
 #ifndef COCINERO_H
 #define COCINERO_H
 
-#include "pila.h"
+#include <QtCore>
+#include"cocina.h"
 #include "plato.h"
 
 struct Cocinero{
     QString tipoCocinero;
+    Cocina * cocina;
     bool activo;
-    Pila * pilaOrdenes;
-    Pila * pilaOrdenesListas;
 
-    Cocinero() {
+    Cocinero(QString _tipoCocinero) {
+        tipoCocinero = _tipoCocinero ;
         activo = true;
-        pilaOrdenes = new Pila();
-        pilaOrdenesListas = new Pila();
+
     }
 
-    Plato * cocinar(Plato * plato);
     void recogerPedido();
+    Plato * cocinar(Plato * plato);
     void colocarOrdenLista(Plato * plato);
 };
 

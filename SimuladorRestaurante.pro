@@ -24,12 +24,15 @@ SOURCES += \
     cocina.cpp \
     cola.cpp \
     lavaplatos.cpp \
+    listamesas.cpp \
+    listameseros.cpp \
     main.cpp \
     mesa.cpp \
     mesero.cpp \
     meserothread.cpp \
     pila.cpp \
     plato.cpp \
+    restaurante.cpp \
     solicitud.cpp\
 
 
@@ -44,10 +47,13 @@ HEADERS += \
     cocina.h \
     cola.h \
     lavaplatos.h \
+    listamesas.h \
+    listameseros.h \
     mesa.h\ \
     meserothread.h \
     pila.h \
-    plato.h
+    plato.h \
+    restaurante.h
 
 FORMS += \
     mainwindow.ui

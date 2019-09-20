@@ -27,6 +27,7 @@ Solicitud * Comensal::pedirEntrada(int porcentajeACumplir){
         platillo = elegirPlato();
         Solicitud * nueva = new Solicitud(1, 1); //1 Es para ir a las entradas
         nueva->plato= platillo;
+        cuentaAPagar+=nueva->plato->precio;
         meseroActivo->recibirOrden(nueva);
     }
 }
@@ -38,6 +39,7 @@ Solicitud * Comensal::pedirPlatoFuerte( int porcentajeACumplir){
         //Elige el plato, pide comida en el menú y crea la solicitud
         Solicitud * nueva = new Solicitud(1,2); //2 Es para ir a cocina de platos fuertes
         nueva->plato= platillo;
+        cuentaAPagar+=nueva->plato->precio;
         meseroActivo->recibirOrden(nueva);
 
     }
@@ -49,7 +51,9 @@ Solicitud * Comensal::pedirPostre(int porcentajeACumplir){
     if(porcentajeACumplir>probabilidad){
         //Elige el plato, pide comida en el menú y crea la solicitud
         Solicitud * nueva = new Solicitud(1,3);  //3 Es para ir a los postres
+        Plato * plato = escogerPlato();
         nueva->plato= platillo;
+        cuentaAPagar+=nueva->plato->precio;
         meseroActivo->recibirOrden(nueva);
     }
 }

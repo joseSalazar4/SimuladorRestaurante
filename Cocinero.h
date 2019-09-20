@@ -16,8 +16,7 @@ struct Cocinero{
 
     }
 
-    void recogerPedido();
-    Plato * cocinar(Plato * plato);
+    Plato * recogerPedido();
     void colocarOrdenLista(Plato * plato);
 };
 

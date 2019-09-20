@@ -12,7 +12,8 @@ void MeseroThread::__init__(QLabel* _etiqueta, Mesero* _mesero){
 }
 
 void MeseroThread::run(){
-    while(true){
+    while(activo){
+        if(mesasAtendidas<mesero->cantMesas)
         sleep(1);
     }
 }

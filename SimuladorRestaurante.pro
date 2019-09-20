@@ -20,12 +20,18 @@ SOURCES += \
     CocineroThread.cpp \
     Comensal.cpp \
     MainWindow.cpp \
+    Receta.cpp \
+    baseDatosReceta.cpp \
     caja.cpp \
+    cajathread.cpp \
     cocina.cpp \
     cola.cpp \
     lavaplatos.cpp \
+    lavaplatosthread.cpp \
+    listaingredientes.cpp \
     listamesas.cpp \
     listameseros.cpp \
+    listaplatos.cpp \
     main.cpp \
     mesa.cpp \
     mesero.cpp \
@@ -40,15 +46,20 @@ HEADERS += \
     Cocinero.h \
     CocineroThread.h \
     Comensal.h \
+    Ingrediente.h \
     MainWindow.h \
     Mesero.h \
     Solicitud.h \
     caja.h \
+    cajathread.h \
     cocina.h \
     cola.h \
     lavaplatos.h \
+    lavaplatosthread.h \
+    listaingredientes.h \
     listamesas.h \
     listameseros.h \
+    listaplatos.h \
     mesa.h\ \
     meserothread.h \
     pila.h \

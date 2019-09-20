@@ -2,6 +2,7 @@
 #define PLATO_H
 
 #include "qstring.h"
+#include "Ingrediente.h"
 struct Plato
 {
     Plato * siguiente;
@@ -9,7 +10,7 @@ struct Plato
     bool limpio, vacio;
     int ID, precio, tiempoCocina,tiempoLavado;
     QString nombre, tipo;
-    Ingredientes Ingredientes[10]; //TODO Hacer listaSimple
+    Ingrediente Ingredientes[10]; //TODO Hacer listaSimple
 
     Plato(QString _tipo, QString _nombre,int _ID, int _precio, int _tiempoCocina, int _tiempoLavado,Ingredientes _Ingredientes){
         ID = _ID;
@@ -20,6 +21,7 @@ struct Plato
         tipo= _tipo;
         Ingredientes = _Ingredientes;
     }
+    Plato * escogerPlato();
 
 };
 

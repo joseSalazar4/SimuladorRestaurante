@@ -8,14 +8,14 @@
 class MeseroThread: public QThread
 {
 public:
-    QLabel * etiqueta;
     Mesero * mesero;
+    QLabel * etiqueta;
     bool pausa, activo;
     MeseroThread();
 
     void __init__(QLabel*, Mesero*);
-    void run();
 
+    void run();
     void pausar();
     void continuar();
 };

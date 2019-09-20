@@ -9,13 +9,22 @@
 
 class Restaurante
 {
-    ListaMesas mesas;
-    ListaMeseros meseros;
-    Caja caja;
-    Cocina principal, pasteleria, ensaladas;
-    Lavaplatos lavaplatos;
+    Caja * caja;
+    ListaMesas * mesas;
+    ListaMeseros * meseros;
+    Lavaplatos * lavaplatos;
+    Cocina * principal, * pasteleria, * ensaladas;
 
-    Restaurante();
+    Restaurante(){
+        caja = new Caja();
+        mesas = new ListaMesas();
+        meseros = new ListaMeseros();
+        lavaplatos = new Lavaplatos();
+        principal = new Cocina("fuerte");
+        principal = new Cocina("ensaladas");
+        principal = new Cocina("pasteleria");
+    }
+
     void Iniciar();
 };
 

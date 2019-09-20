@@ -29,3 +29,11 @@ void Mesero::llevarComida(){
 void Mesero::llevarPlatosALavar(){
 
 }
+
+bool Mesero::revisar(){
+    for(int i =0; i<cantMesas;i++){
+        if (mesas[i]->estaOcupada() && mesas[i]->pedirAsistencia){
+
+        }
+    }
+}

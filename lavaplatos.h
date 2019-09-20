@@ -6,8 +6,11 @@
 struct Lavaplatos
 {
     Solicitud * frente;
+    int platosLavados;
+
     Lavaplatos(){
         frente = nullptr;
+        platosLavados = 0;
     }
     void encolar (Solicitud * dato);
     Solicitud * desencolar ();

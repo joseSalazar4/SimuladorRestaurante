@@ -9,9 +9,10 @@
 #include "mesero.h"
 struct Comensal
 {
-    QString nombre, comidaActual;
-    Mesero * meseroActivo;
     Mesa * mesa;
+    int cuentaAPagar;
+    Mesero * meseroActivo;
+    QString nombre, comidaActual;
     Comensal(QString _nombre, Mesa * _mesa){
         //TODO no se que variables debe llevar un comensal.
         QString nombre = _nombre;

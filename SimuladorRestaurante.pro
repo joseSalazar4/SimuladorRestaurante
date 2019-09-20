@@ -28,6 +28,7 @@ SOURCES += \
     cola.cpp \
     lavaplatos.cpp \
     lavaplatosthread.cpp \
+    listacomensales.cpp \
     listaingredientes.cpp \
     listamesas.cpp \
     listameseros.cpp \
@@ -56,6 +57,7 @@ HEADERS += \
     cola.h \
     lavaplatos.h \
     lavaplatosthread.h \
+    listacomensales.h \
     listaingredientes.h \
     listamesas.h \
     listameseros.h \

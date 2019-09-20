@@ -1,17 +1,37 @@
 #include "mesero.h"
 
 
-void Mesero::pedirOrdenes(int numMesa){
-    int probabilidadPedir = 0;
-    for(int i =0;mesas[numMesa] ;i++){
-        if(mesas[numMesa]->comensal1){
-           mesas[numMesa]->comensal1->pedirEntrada(probabilidadPedir);
-        }
-        else{
+void Mesero::pedirOrdenes(Mesa * mesa){
+    Comensal * tmp = mesas->primerNodo->listaComensales->primerNodo;
 
-        }
+    for(int i =0; (mesa->listaComensales->largo) > i; i++){
+        if(tmp!=nullptr){
+            if(mesa->tipoPedido == 1)
+                tmp->pedirEntrada(tmp->probabilidadPedir);
 
+            else if(mesa->tipoPedido == 2)
+                tmp->pedirPlatoFuerte(tmp->probabilidadPedir);
+
+            else if(mesa->tipoPedido == 3){
+                tmp->pedirPostre(tmp->probabilidadPedir);
+            }
+            else{
+                tmp->pedirCuenta();
+            }
+            tmp = tmp->siguiente;
+        }
     }
+}
+
+Mesa * Mesero::revisarMesas(){
+    Mesa * tmp = mesas->primerNodo;
+    for(int i =0; i<mesas->largo;i++){
+        if (tmp->estaOcupada() && tmp->pedirAsistencia){
+            return tmp;
+        }
+        tmp = tmp->siguiente;
+    }
+    return  nullptr;
 }
 
 void Mesero::recibirOrden(Solicitud * sol){
@@ -28,12 +48,4 @@ void Mesero::llevarComida(){
 }
 void Mesero::llevarPlatosALavar(){
 
-}
-
-bool Mesero::revisar(){
-    for(int i =0; i<cantMesas;i++){
-        if (mesas[i]->estaOcupada() && mesas[i]->pedirAsistencia){
-
-        }
-    }
 }

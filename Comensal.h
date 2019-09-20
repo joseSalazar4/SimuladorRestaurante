@@ -1,33 +1,32 @@
 #ifndef Comensal_h
 #define Comensal_h
 
-#include <iostream>
-#include <cstdlib>
 #include <ctime>
+#include <cstdlib>
+#include <iostream>
+#include "mesero.h"
 #include "qstring.h"
 #include "Solicitud.h"
-#include "mesero.h"
+#include "listaplatos.h"
+
 struct Comensal
 {
-    Mesa * mesa;
-    int cuentaAPagar;
     Mesero * meseroActivo;
+    ListaPlatos * listaPlatos;
     QString nombre, comidaActual;
-    Comensal(QString _nombre, Mesa * _mesa){
-        //TODO no se que variables debe llevar un comensal.
-        QString nombre = _nombre;
-        mesa = _mesa;
-        meseroActivo = mesa->meseroActivo;
-    }
+    Comensal * siguiente, * anterior;
+    int cuentaAPagar,probabilidadPedir;
+
+    Comensal(QString _nombre) nombre : _nombre;
 
     bool comer();
     void dejarMesa();
     void pedirCuenta();
     void llamarMesero();
+    Plato * escogerPlato();
     Solicitud * pedirPostre(int porcentajeACumplir);
     Solicitud * pedirEntrada(int porcentajeACumplir);
     Solicitud * pedirPlatoFuerte(int porcentajeACumplir);
-
 };
 
 #endif // SOLICITUD_H

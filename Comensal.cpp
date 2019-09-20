@@ -4,7 +4,7 @@
 bool comer();
 
 int generadorNumRandom(int rango1, int rango2){
-    srand((int)time(0));
+    srand((int)time(nullptr));
     int r = (rand() % rango1) + (rango2-rango1);
 
     return r;
@@ -18,14 +18,12 @@ int generadorNumRandom(int rango1){
 }
 
 Solicitud * Comensal::pedirEntrada(int porcentajeACumplir){
-    int pos;
 
     int probabilidad = generadorNumRandom(porcentajeACumplir);
     if(porcentajeACumplir>probabilidad){
         //Elige el plato, pide comida en el menú y crea la solicitud
-        Plato * platillo   = new Plato();
-        platillo = elegirPlato();
         Solicitud * nueva = new Solicitud(1, 1); //1 Es para ir a las entradas
+        Plato * platillo = escogerPlato(1);
         nueva->plato= platillo;
         cuentaAPagar+=nueva->plato->precio;
         meseroActivo->recibirOrden(nueva);
@@ -38,6 +36,7 @@ Solicitud * Comensal::pedirPlatoFuerte( int porcentajeACumplir){
     if(porcentajeACumplir>probabilidad){
         //Elige el plato, pide comida en el menú y crea la solicitud
         Solicitud * nueva = new Solicitud(1,2); //2 Es para ir a cocina de platos fuertes
+        Plato * platillo = escogerPlato(2);
         nueva->plato= platillo;
         cuentaAPagar+=nueva->plato->precio;
         meseroActivo->recibirOrden(nueva);
@@ -51,19 +50,24 @@ Solicitud * Comensal::pedirPostre(int porcentajeACumplir){
     if(porcentajeACumplir>probabilidad){
         //Elige el plato, pide comida en el menú y crea la solicitud
         Solicitud * nueva = new Solicitud(1,3);  //3 Es para ir a los postres
-        Plato * plato = escogerPlato();
+        Plato * platillo = escogerPlato(3);
         nueva->plato= platillo;
         cuentaAPagar+=nueva->plato->precio;
         meseroActivo->recibirOrden(nueva);
     }
 }
 
+Plato * Comensal::escogerPlato(int tipo){
+    return listaPlatos->buscarPlatoRandomTipo(tipo);
+
+}
 void Comensal::pedirCuenta(){
 
 }
 
+
 void Comensal::dejarMesa(){
-    mesa->comensal1 = mesa->comensal2 = mesa->comensal3 = mesa->comensal4 = mesa->comensal5 = mesa->comensal6 = nullptr;
+
 }
 
 void Comensal::llamarMesero(){

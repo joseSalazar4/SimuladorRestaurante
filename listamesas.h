@@ -2,13 +2,17 @@
 #define LISTAMESAS_H
 
 #include"mesa.h"
-class ListaMesas
+
+struct ListaMesas
 {
-public:
-    Mesa * primerNodo;
+    int largo;
+    Mesa * siguiente, * primerNodo, * ultimoNodo,* anterior;
     ListaMesas(){
-        primerNodo = nullptr;
+        primerNodo = ultimoNodo = nullptr;
     }
+
+    void insertarFinal(QString id, Mesero * mesero);
+    bool estaVacia();
 };
 
 #endif // LISTAMESAS_H

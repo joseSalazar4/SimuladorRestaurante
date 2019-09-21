@@ -7,7 +7,7 @@
 using namespace std;
 
 struct Cola {
-       // solo con pN es suficiente
+
        Solicitud * frente;
 
        Cola()

@@ -6,21 +6,22 @@
 
 #include <string>
 #include <iostream>
+
 using namespace std;
 
 struct Ingrediente {
 
     int cantidad;
-    string nombre, unidadMedida;
+    string nombre;
 
-    Ingrediente(string s, int c, string u){
+    Ingrediente(string s, int c){
         nombre = s;
         cantidad = c;
-        unidadMedida = u;
     }
+
     Ingrediente(){
-        nombre = unidadMedida = "";
         cantidad = 0;
+        nombre = "";
     }
 };
 

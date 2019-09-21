@@ -2,15 +2,13 @@
 #define SOLICITUD_H
 
 #include "plato.h"
-#include "mesero.h"
+
 
 struct Solicitud {
-    Mesa * mesa;
     Plato * plato;
-    Mesero * mesero;
     Solicitud * siguiente;
     QString cliente, responsable;
-    int destino, tipo, cuenta, accion; //Saber que hacer con esa petición
+    int destino, tipo, cuenta, accion, numeroMesa; //Saber que hacer con esa petición
 
     Solicitud(int _destino, int _accion){  //La accion debe ser leída por cada "persona" tons mesero lee 1 tons lleva a la cocina yantes de dejarla pone accion = #
                                            //Por lo que el cocinero sabe que debe cocinar, aunque no puede hacer mucho mas que eso o nada mas, pero el mesero
@@ -22,7 +20,7 @@ struct Solicitud {
     }
     Solicitud();
     Solicitud(int dest, int accion, Plato * plat);
-    Solicitud(int dest, int accion, Plato * plat, Mesero * mesro);
+    Solicitud(int dest, int accion, QString cliente);
 
     //Puede que necesite crear mas constructores para simplificar escenarios específicos
 };

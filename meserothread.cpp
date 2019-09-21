@@ -10,11 +10,12 @@ void MeseroThread::__init__(QLabel* _etiqueta, Mesero* _mesero){
     this->etiqueta = _etiqueta;
     this->activo = true;
     this->pausa = false;
+    this->semaforo.release();
 }
 
 void MeseroThread::run(){
     while(activo){
-        if(mesero->revisarMesas()!= -1)
+        if(mesero->revisarMesas()!= nullptr)
             mesero->pedirOrdenes(mesero->revisarMesas());
         sleep(1);
     }

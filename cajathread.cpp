@@ -15,8 +15,8 @@ void CajaThread::__init__(QLabel* _etiqueta, Caja * _caja){
 void CajaThread::run(){
     while(activo){
         if(!caja->vacia()){
-            QString mesaActual = caja->frente->mesa->ID;  //Tons si hay solicitudes que saque todas hasta que haya otra mesa
-            while(caja->frente->mesa->ID == mesaActual){
+            int mesaActual = caja->frente->numeroMesa;  //Tons si hay solicitudes que saque todas hasta que haya otra mesa
+            while(caja->desencolar()->numeroMesa == mesaActual){
                 caja->desencolar()->cuenta = caja->calcularCuenta();
                 Solicitud * nueva  = new Solicitud();
 

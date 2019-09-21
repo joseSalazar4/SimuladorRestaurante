@@ -4,9 +4,11 @@
 #include <QLabel>
 #include <QPixmap>
 
-#include "listamesas.h"
-#include "pila.h"
+#include "cola.h"
 #include "cocina.h"
+#include "componente.h"
+#include "listamesas.h"
+#include "lavaplatos.h"
 
 struct Mesero
 {
@@ -14,15 +16,20 @@ public:
     bool activo;
     int cantMesas;
     QString nombre;
-    ListaMesas * mesas;   //Tendrá la posibilidad de que un mesero atienda a las 20 mesas
-    Pila pilaPeticiones;
+    Cola * colaPeticiones;
+    Lavaplatos * lavaplatos;
     Cocina * pasteleria, * ensaladas, * cocina;
+    ListaMesas * mesas;   //Tendrá la posibilidad de que un mesero atienda a las 20 mesas
 
     Mesero(int _cantMesas){
         activo = true;
         cantMesas = _cantMesas;
 
     }
+
+
+    void notificar(Componente, QString);
+
 
     void pedirOrdenes(Mesa * mesa);
     void llevarComida();

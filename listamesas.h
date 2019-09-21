@@ -1,7 +1,7 @@
 #ifndef LISTAMESAS_H
 #define LISTAMESAS_H
 
-#include"mesa.h"
+#include "mesa.h"
 
 struct ListaMesas
 {
@@ -11,8 +11,9 @@ struct ListaMesas
         primerNodo = ultimoNodo = nullptr;
     }
 
-    void insertarFinal(QString id, Mesero * mesero);
+    void insertarFinal(QString id);
     bool estaVacia();
+
 };
 
 #endif // LISTAMESAS_H

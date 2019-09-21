@@ -9,10 +9,11 @@ struct Caja
     Caja(){
         frente = nullptr;
     }
-    void encolar (Solicitud * dato);
-    Solicitud * desencolar ();
-    Solicitud * verFrente();
     bool vacia();
+    int calcularCuenta();
+    Solicitud * verFrente();
+    Solicitud * desencolar ();
+    void encolar (Solicitud * dato);
 };
 
 #endif // CAJA_H

@@ -24,18 +24,30 @@ Plato * ListaPlatos::buscarPlatoRandomTipo(int tipo){
     Plato * tmp = primerNodo;
     if(tipo==1){
         //Los primeros 10 sean entradas
+
+        for(int i = 0 ; primerEntrada; i++){
+
+            tmp = tmp->siguiente;
+        }
+
     }
     else if(tipo==2){
         //Luego los otros 10 sean fuertes
+
+        for(int i = 0 ; primerFuerte; i++){
+
+            tmp = tmp->siguiente;
+        }
     }
     else if(tipo==3){
         //Los ultimos 10 sean postres
+
+        for(int i = 0 ; primerPostre; i++){
+
+            tmp = tmp->siguiente;
+        }
     }
 
-    for(int i = 0 ; un puntero al nodo(plato) inicial de cada tipo; i++){
-
-        tmp = tmp->siguiente;
-    }
     return tmp;
 
 }

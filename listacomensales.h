@@ -2,7 +2,8 @@
 #define LISTACOMENSALES_H
 
 
-#include"Comensal.h"
+#include "Comensal.h"
+
 struct ListaComensales
 {
     int largo;

@@ -18,6 +18,7 @@ public:
     void run();
     void pausar();
     void continuar();
+    QSemaphore semaforo; //
 };
 
 #endif // MESEROTHREAD_H

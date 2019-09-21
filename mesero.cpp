@@ -21,6 +21,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
             tmp = tmp->siguiente;
         }
     }
+    mesa->tipoPedido++;
 }
 
 Mesa * Mesero::revisarMesas(){

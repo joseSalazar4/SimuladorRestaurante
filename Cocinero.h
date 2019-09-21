@@ -2,22 +2,22 @@
 #define COCINERO_H
 
 #include <QtCore>
-#include"cocina.h"
+#include "Solicitud.h"
 #include "plato.h"
 
-struct Cocinero{
+struct Cocinero {
     QString tipoCocinero;
-    Cocina * cocina;
-    bool activo;
+    bool activo, cocinando;
 
     Cocinero(QString _tipoCocinero) {
         tipoCocinero = _tipoCocinero ;
         activo = true;
-
+        cocinando = false;
     }
 
     Plato * recogerPedido();
-    void colocarOrdenLista(Plato * plato);
+    Solicitud * colocarOrdenLista(Plato * plato);
+
 };
 
 

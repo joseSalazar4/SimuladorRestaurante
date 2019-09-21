@@ -7,11 +7,10 @@ if (vacia())
       else
       {
             Solicitud * actual = frente;
-            while (actual->siguiente != NULL)
+            while (actual->siguiente != nullptr)
                           actual = actual->siguiente;
 
-            Solicitud * nuevo = new Solicitud (dato);
-            actual->siguiente = nuevo;
+            actual->siguiente = dato;
         }
 }
 
@@ -20,7 +19,7 @@ Solicitud* Cola::desencolar(void)
 {
       if (vacia())
       {
-         return NULL;
+         return nullptr;
       }
       else
       {
@@ -31,9 +30,9 @@ Solicitud* Cola::desencolar(void)
       }
 }
 
-bool Cola::vacia (void)
+bool Cola::vacia ()
 {
-     if (frente == NULL)
+     if (frente == nullptr)
         return true;
      else
          return false;

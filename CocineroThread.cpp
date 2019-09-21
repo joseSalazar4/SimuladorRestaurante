@@ -8,7 +8,7 @@ void CocineroThread::run()
 {
     while (activo)
     {
-        if(cocinero->cocina->vacia()) sleep(1);
+        if(cocinero->cocinando) sleep(1);
         else{
             cocinar(cocinero->recogerPedido());
             sleep(1);

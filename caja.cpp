@@ -14,7 +14,9 @@ if (vacia())
         }
 }
 
+int Caja::calcularCuenta(){
 
+}
 Solicitud * Caja::desencolar()
 {
       if (vacia())

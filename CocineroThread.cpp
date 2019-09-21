@@ -10,7 +10,7 @@ void CocineroThread::run()
     {
         if(cocinero->cocinando) sleep(1);
         else{
-            cocinar(cocinero->recogerPedido());
+            //cocinar(true);
             sleep(1);
         }
 

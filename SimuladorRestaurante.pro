@@ -24,7 +24,7 @@ SOURCES += \
     cajathread.cpp \
     cocina.cpp \
     cola.cpp \
-    componente.cpp \
+    #componente.cpp \
     generadorpersonasthread.cpp \
     lavaplatos.cpp \
     lavaplatosthread.cpp \
@@ -34,7 +34,7 @@ SOURCES += \
     listameseros.cpp \
     listaplatos.cpp \
     main.cpp \
-    mediador.cpp \
+   # mediador.cpp \
     mesa.cpp \
     mesero.cpp \
     meserothread.cpp \
@@ -47,10 +47,10 @@ HEADERS += \
     Cocinero.h \
     CocineroThread.h \
     Comensal.h \
-    Componente.h \
+    #Componente.h \
     Ingrediente.h \
     MainWindow.h \
-    Mediador.h \
+    #Mediador.h \
     Mesero.h \
     Solicitud.h \
     caja.h \

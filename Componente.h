@@ -15,7 +15,7 @@ public:
     QString getNombre();
     void setMediador(Mediador mediador);
     void click(){
-        mediador->notificar(*this,"cocinar");
+        mediador->notificar("cocinar");
     }
 
 };

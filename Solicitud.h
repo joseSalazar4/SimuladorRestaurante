@@ -19,7 +19,7 @@ struct Solicitud {
         siguiente = nullptr;
     }
     Solicitud();
-    Solicitud(int dest, int accion, Plato * plat);
+    Solicitud(int dest, int accion, Plato * plato);
     Solicitud(int dest, int accion, QString cliente);
 
     //Puede que necesite crear mas constructores para simplificar escenarios específicos

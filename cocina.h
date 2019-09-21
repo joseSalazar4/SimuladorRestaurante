@@ -16,7 +16,11 @@ struct Cocina
         frente = nullptr;
         cocinero2 = cocinero3 = nullptr;
 
-   }
+    }
+    Cocina(QString _tipo){
+        tipo = _tipo;
+        frente = nullptr;
+    }
 
     Cocina(QString _tipo, Cocinero * c1, Cocinero * c2, Cocinero * c3){
         tipo = _tipo;

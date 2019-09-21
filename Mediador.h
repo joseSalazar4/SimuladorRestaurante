@@ -4,13 +4,13 @@
 #include "qstring.h"
 #include "componente.h"
 
-class Componente;
+
 
 class Mediador
 {
 public:
     Mediador();
-    void notificar(Componente comp, QString evento );
+    void notificar( QString evento );
 };
 
 #endif // MEDIADOR_H

@@ -36,7 +36,7 @@ Mesa * Mesero::revisarMesas(){
 }
 
 void Mesero::recibirOrden(Solicitud * sol){
-    pilaPeticiones.push(sol);
+    colaPeticiones->encolar(sol);
 }
 void Mesero::llevarOrdenCocina(){
 

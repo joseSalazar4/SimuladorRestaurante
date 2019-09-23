@@ -21,7 +21,6 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-private slots:
     void on_progressBar_valueChanged(int value);
 
 private:

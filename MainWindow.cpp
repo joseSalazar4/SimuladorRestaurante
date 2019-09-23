@@ -14,3 +14,9 @@ MainWindow::~MainWindow()
 }
 
 
+
+void MainWindow::on_progressBar_valueChanged(int value)
+{
+
+}
+

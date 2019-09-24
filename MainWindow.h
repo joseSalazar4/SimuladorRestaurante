@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "meserothread.h"
+#include "restaurante.h"
 #include <QMainWindow>
 
 
@@ -15,13 +16,17 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    Mesero * mesero;
-    MeseroThread hiloMesero;
+    Restaurante * restaurante;
+    int cantMeseros, cantMesas, cantCocineros, genPersonas1, genPersonas2;
+
 
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
     void on_progressBar_valueChanged(int value);
+
+public slots:
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;

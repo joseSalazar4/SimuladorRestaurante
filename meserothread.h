@@ -8,6 +8,7 @@
 class MeseroThread: public QThread
 {
 public:
+    MeseroThread * siguiente, * anterior;
     Mesero * mesero;
     QLabel * etiqueta;
     bool pausa, activo;

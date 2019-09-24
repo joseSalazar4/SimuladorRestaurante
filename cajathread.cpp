@@ -23,6 +23,7 @@ void CajaThread::run(){
                 sleep(tiempoSleep);
             }
         }
+
         while(pausa)
             sleep(1);
     }

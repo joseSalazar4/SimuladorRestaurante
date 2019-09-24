@@ -14,6 +14,20 @@ void ListaComensales::insertarFinal(QString nombre) {
         }
 }
 
+void ListaComensales::insertarFinal(Comensal * nuevo) {
+    if (estaVacia()) {
+        primerNodo = ultimoNodo = nuevo;
+        largo++;
+    }
+    else {
+            ultimoNodo->siguiente = nuevo;
+            ultimoNodo->siguiente->anterior = ultimoNodo;
+            ultimoNodo = ultimoNodo->siguiente;
+            largo++;
+        }
+}
+
+
 bool ListaComensales::estaVacia(){
     return  primerNodo == nullptr;
 }

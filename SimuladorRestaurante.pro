@@ -25,6 +25,7 @@ SOURCES += \
     cocina.cpp \
     cola.cpp \
     #componente.cpp \
+    colacomensales.cpp \
     generadorpersonasthread.cpp \
     lavaplatos.cpp \
     lavaplatosthread.cpp \
@@ -35,6 +36,7 @@ SOURCES += \
     listaplatos.cpp \
     main.cpp \
    # mediador.cpp \
+    manejadorcomensales.cpp \
     mesa.cpp \
     mesero.cpp \
     meserothread.cpp \
@@ -57,6 +59,7 @@ HEADERS += \
     cajathread.h \
     cocina.h \
     cola.h \
+    colacomensales.h \
     generadorpersonasthread.h \
     lavaplatos.h \
     lavaplatosthread.h \
@@ -65,6 +68,7 @@ HEADERS += \
     listamesas.h \
     listameseros.h \
     listaplatos.h \
+    manejadorcomensales.h \
     mesa.h\ \
     meserothread.h \
     pila.h \

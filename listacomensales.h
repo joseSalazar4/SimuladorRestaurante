@@ -8,11 +8,13 @@ struct ListaComensales
 {
     int largo;
     Comensal * siguiente, * primerNodo, * ultimoNodo,* anterior;
+    ListaComensales * siguienteLista, * primerLista, *listaAnterior;
     ListaComensales(){
         primerNodo = ultimoNodo = nullptr;
     }
-    void insertarFinal(QString nombre);
     bool estaVacia();
+    void insertarFinal(Comensal * cm);
+    void insertarFinal(QString nombre);
 };
 
 #endif // LISTACOMENSALES_H

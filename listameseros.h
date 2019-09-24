@@ -1,16 +1,21 @@
 #ifndef LISTAMESEROS_H
 #define LISTAMESEROS_H
 
-#include"mesero.h"
+#include"meserothread.h"
 
 class ListaMeseros
 {
 public:
-    Mesero * primerNodo; //o meseroThread?
+    MeseroThread * primerNodo, *ultimoNodo,* siguiente,* anterior;
+    int largo = 0;
     ListaMeseros(){
         primerNodo = nullptr;
     }
-    //metodos de todas las listas de insertar
+
+    bool estaVacia();
+    void insertarFinal();
+    void activarMeseros(Mesero * mesero[20]);
+    void insertarFinal(MeseroThread * meserito);
 };
 
 #endif // LISTAMESEROS_H

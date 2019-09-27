@@ -1,17 +1,15 @@
 #include "colacomensales.h"
 
-void ColaComensal::encolar (ListaComensales * dato)
-{
-if (vacia())
+void ColaComensal::encolar (ListaComensales * dato){
+    if (vacia())
          frente = dato;
-      else
-      {
-            ListaComensales * actual = frente;
-            while (actual->siguiente != nullptr)
-                          actual = actual->siguienteLista;
+    else{
+        ListaComensales * actual = frente;
+        while (actual->siguienteLista != nullptr)
+            actual = actual->siguienteLista;
+        actual->siguienteLista = dato;
 
-            actual->siguienteLista = dato;
-        }
+    }
 }
 
 

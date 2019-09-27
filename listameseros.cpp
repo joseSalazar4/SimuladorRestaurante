@@ -4,7 +4,7 @@ void ListaMeseros::activarMeseros(Mesero * mesero[20]){
     MeseroThread * tmp = new MeseroThread();
     int i = 0;
     while(tmp){
-        tmp->__init__(nullptr, mesero[i]);
+        tmp->__init__(mesero[i]);
         tmp = tmp->siguiente;
         i++;
     }

@@ -13,7 +13,7 @@ struct Comensal
 {
     ListaPlatos * listaPlatos;
     QString nombre, comidaActual;
-    Comensal * siguiente, * anterior;
+    Comensal *  siguiente, * anterior;
     int cuentaAPagar,probabilidadPedir, numeroMesa;
 
     Comensal(QString _nombre):  nombre(_nombre){}
@@ -26,6 +26,7 @@ struct Comensal
     Solicitud * pedirPostre(int porcentajeACumplir);
     Solicitud * pedirEntrada(int porcentajeACumplir);
     Solicitud * pedirPlatoFuerte(int porcentajeACumplir);
+
 };
 
 #endif // SOLICITUD_H

@@ -3,7 +3,7 @@
 
 #include "meserothread.h"
 #include "restaurante.h"
-#include <QMainWindow>
+#include "ui_entradadatosiniciales.h"
 
 
 namespace Ui {
@@ -17,6 +17,7 @@ class MainWindow : public QMainWindow
 
 public:
     Restaurante * restaurante;
+    entradaDatosIniciales * ventanaDatosIniciales;
     int cantMeseros, cantMesas, cantCocineros, genPersonas1, genPersonas2;
 
 

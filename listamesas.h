@@ -11,9 +11,9 @@ struct ListaMesas
         primerNodo = ultimoNodo = nullptr;
     }
 
-    void insertarFinal(QString id);
     bool estaVacia();
-
+    void insertarFinal(QString id);
+    void insertarFinal(Mesa * mesita);
 };
 
 #endif // LISTAMESAS_H

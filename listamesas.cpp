@@ -14,6 +14,21 @@ void ListaMesas::insertarFinal(QString id) {
         }
 }
 
+
+void ListaMesas::insertarFinal(Mesa * m) {
+    if (estaVacia()) {
+        primerNodo = ultimoNodo = m;
+        largo++;
+    }
+    else {
+            ultimoNodo->siguiente  = m;
+            ultimoNodo->siguiente->anterior = ultimoNodo;
+            ultimoNodo = ultimoNodo->siguiente;
+            largo++;
+        }
+}
+
+
 bool ListaMesas::estaVacia(){
     return  primerNodo == nullptr;
 }

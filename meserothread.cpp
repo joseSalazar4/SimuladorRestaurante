@@ -5,9 +5,8 @@ MeseroThread::MeseroThread()
 
 }
 
-void MeseroThread::__init__(QLabel* _etiqueta, Mesero* _mesero){
+void MeseroThread::__init__(Mesero* _mesero){
     this->mesero = _mesero;
-    this->etiqueta = _etiqueta;
     this->activo = true;
     this->pausa = false;
     this->semaforo.release();

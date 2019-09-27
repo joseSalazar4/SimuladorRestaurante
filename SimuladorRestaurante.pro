@@ -26,6 +26,8 @@ SOURCES += \
     cola.cpp \
     #componente.cpp \
     colacomensales.cpp \
+    dialog.cpp \
+    entradadatosiniciales.cpp \
     generadorpersonasthread.cpp \
     lavaplatos.cpp \
     lavaplatosthread.cpp \
@@ -60,6 +62,7 @@ HEADERS += \
     cocina.h \
     cola.h \
     colacomensales.h \
+    dialog.h \
     generadorpersonasthread.h \
     lavaplatos.h \
     lavaplatosthread.h \
@@ -76,9 +79,13 @@ HEADERS += \
     restaurante.h
 
 FORMS += \
+    dialog.ui \
     mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    MyResources.qrc

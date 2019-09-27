@@ -25,7 +25,7 @@ void MainWindow::on_pushButton_clicked()
 {
     bool prueba = true;
 
-    restaurante = new Restaurante(2,2,2);
+    restaurante = new Restaurante(2,2,2,1);
     while(prueba){
         prueba  = (restaurante->generadorPersonas.manejadorComensales->colaClientesEnEspera->frente == nullptr);
         ui->Texto->setText("es nula la cola de clientes");

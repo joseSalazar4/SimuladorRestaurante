@@ -15,7 +15,7 @@ public:
     ManejadorComensales * manejadorComensales;
     GeneradorPersonasThread();
 
-    void __init__();
+    void __init__(ManejadorComensales * manejador);
     void run();
     void pausar();
     void continuar();

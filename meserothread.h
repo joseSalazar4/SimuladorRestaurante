@@ -14,12 +14,12 @@ public:
     bool pausa, activo;
     MeseroThread();
 
-    void __init__(QLabel*, Mesero*);
+    void __init__(Mesero*);
 
     void run();
     void pausar();
     void continuar();
-    QSemaphore semaforo; //
+    QSemaphore semaforo;
 };
 
 #endif // MESEROTHREAD_H

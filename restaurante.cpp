@@ -12,9 +12,8 @@ void Restaurante::Iniciar(){
 
 bool Restaurante::asignarMesa(ListaComensales * lista){
     Mesa * aux = mesas->primerNodo;
-
     while(aux!= nullptr){
-        if(aux->estaOcupada() == false){ //Para el primer caso, luego me muevo en todas
+        if(aux->estaOcupada() == false){   //Para el primer caso, luego me muevo en todas
             aux->listaComensales = lista;
             return true;
         }

@@ -57,9 +57,7 @@ public:
 
         cantMesas = cantidadMesas;
         cantMeseros = cantidadMeseros;
-
         generadorPersonas.__init__(manejadorComensales);
-
         generadorPersonas.start();
 
         for(int i = 0;i<cantidadMeseros;i++){
@@ -67,14 +65,15 @@ public:
             MeseroThread * meseroT = new MeseroThread();
             meseroT->__init__(mesero);
             meseros->insertarFinal(meseroT);
+            meseroT->start();
             //crear los hilos de los meseros y darles start fuera del while a todos
         }
         for(int i = 0;i<cantidadMesas;i++){
-            Mesa * mesaAux = new Mesa(QString::number(i));
+            Mesa * mesaAux = new Mesa(QString::number(i+1));
             mesas->insertarFinal(mesaAux);
+        }
 
     }
-}
     void Iniciar();
     bool asignarMesa(ListaComensales * lista);
 

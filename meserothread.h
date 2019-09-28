@@ -8,18 +8,16 @@
 class MeseroThread: public QThread
 {
 public:
-    MeseroThread * siguiente, * anterior;
     Mesero * mesero;
     QLabel * etiqueta;
     bool pausa, activo;
+    QMutex * mutexPasteleria, * mutexCocina, * mutexEnsaladas, * mutexCaja, * mutexLavaplatos;
     MeseroThread();
-
-    void __init__(Mesero*);
 
     void run();
     void pausar();
     void continuar();
-    QSemaphore semaforo;
+    void __init__(Mesero*, QMutex * pasteleria, QMutex * ensaladas, QMutex * cocina, QMutex * lavaplatos, QMutex * caja);
 };
 
 #endif // MESEROTHREAD_H

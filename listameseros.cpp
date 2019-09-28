@@ -1,16 +1,6 @@
 #include "listameseros.h"
 
-void ListaMeseros::activarMeseros(Mesero * mesero[20]){
-    MeseroThread * tmp = new MeseroThread();
-    int i = 0;
-    while(tmp){
-        tmp->__init__(mesero[i]);
-        tmp = tmp->siguiente;
-        i++;
-    }
-}
-
-void ListaMeseros::insertarFinal(MeseroThread * meserito){
+void ListaMeseros::insertarFinal(Mesero * meserito){
     if (estaVacia()) {
         primerNodo = ultimoNodo = meserito;
         largo++;
@@ -23,13 +13,13 @@ void ListaMeseros::insertarFinal(MeseroThread * meserito){
         }
 }
 
-void ListaMeseros::insertarFinal() {
+void ListaMeseros::insertarFinal(int cantMesasAsignadas) {
     if (estaVacia()) {
-        primerNodo = ultimoNodo = new MeseroThread();
+        primerNodo = ultimoNodo = new Mesero(cantMesasAsignadas);
         largo++;
     }
     else {
-            ultimoNodo->siguiente = new MeseroThread();
+            ultimoNodo->siguiente = new Mesero(cantMesasAsignadas);
             ultimoNodo->siguiente->anterior = ultimoNodo;
             ultimoNodo = ultimoNodo->siguiente;
             largo++;

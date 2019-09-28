@@ -9,10 +9,15 @@ void LavaplatosThread::run()
 {
     while (activo)
     {
-        if(lavaplatos->vacia()) sleep(1);
+        mutex->lock();
+        if(lavaplatos->vacia()){
+            sleep(1);
+            mutex->unlock();
+        }
         else{
             lavar(lavaplatos->desencolar()->plato);
             sleep(tiempoSleep);
+            mutex->unlock();
         }
 
         //Cuando se presione el botón de Inactivo

@@ -7,7 +7,7 @@
 #include"caja.h"
 
 struct CajaThread : public QThread{
-
+    QMutex * mutexCaja;
     Caja * caja;
     unsigned int tiempoSleep;
     bool pausa, activo;
@@ -20,7 +20,7 @@ struct CajaThread : public QThread{
     void continuar();
     Solicitud * entregarCuenta();
     void establecerSleep(unsigned int nuevoTemp);
-    void __init__(QLabel * _etiqueta, Caja * _mesero);
+    void __init__(QLabel * _etiqueta, Caja * _mesero, QMutex *);
 };
 
 

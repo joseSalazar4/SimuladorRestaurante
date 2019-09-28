@@ -4,15 +4,24 @@
 CocineroThread::CocineroThread(){
     //El constructor no permite los enlaces que deseamos
 }
+
 void CocineroThread::run()
 {
     while (activo)
     {
-        if(cocinero->cocinando) sleep(1);
-        else{
-            //cocinar(true);
+        mutex->lock();
+        if(cocina->verFrente()){
+            Plato * plato  = cocina->desencolar()->plato;
+            tiempoSleep = static_cast <unsigned int> (plato->tiempoCocina);
+            while(0<tiempoSleep){
+                tiempoSleep--;
+                sleep(1);
+            }
+            cocinar(plato);
             sleep(1);
         }
+        mutex->unlock();
+        sleep(1);
 
         //Cuando se presione el botón de Inactivo
         while (pausa)
@@ -22,12 +31,12 @@ void CocineroThread::run()
 
 void CocineroThread::cocinar(Plato * plato){
     if(plato){
-        sleep(static_cast<unsigned int>(plato->tiempoCocina));
         plato->vacio=false;
-        cocinero->colocarOrdenLista(plato);
+        plato->limpio = false;
+        cocina->encolar(cocinero->colocarOrdenLista(plato));
         sleep(tiempoSleep);
     }
-
+    qDebug()<<"ËL PLATO ESTABA VACÍOOOOOOOOOOOOOOOOOOOOOO";
 }
 
 void CocineroThread::pausar()

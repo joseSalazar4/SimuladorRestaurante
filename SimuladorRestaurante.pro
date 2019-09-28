@@ -23,6 +23,7 @@ SOURCES += \
     caja.cpp \
     cajathread.cpp \
     cocina.cpp \
+    cocinathread.cpp \
     cola.cpp \
     #componente.cpp \
     colacomensales.cpp \
@@ -60,6 +61,7 @@ HEADERS += \
     caja.h \
     cajathread.h \
     cocina.h \
+    cocinathread.h \
     cola.h \
     colacomensales.h \
     dialog.h \

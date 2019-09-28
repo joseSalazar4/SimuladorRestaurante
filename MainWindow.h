@@ -3,7 +3,8 @@
 
 #include "meserothread.h"
 #include "restaurante.h"
-#include "ui_entradadatosiniciales.h"
+#include <QMainWindow>
+#include "dialog.h"
 
 
 namespace Ui {
@@ -16,8 +17,13 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    CajaThread cajaThread;
     Restaurante * restaurante;
-    entradaDatosIniciales * ventanaDatosIniciales;
+    Dialog * ventanaDatosIniciales;
+    LavaplatosThread lavaplatosthread;
+    CocineroThread cocineroPasteleria, cocineroEnsaladas, cocineroFuerte;
+
+    QMutex mutexPasteleria, mutexCocina, mutexEnsaladas, mutexCaj, mutexLavaplatos;
     int cantMeseros, cantMesas, cantCocineros, genPersonas1, genPersonas2;
 
 

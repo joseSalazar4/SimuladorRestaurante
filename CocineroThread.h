@@ -3,13 +3,14 @@
 
 #include <QtCore>
 #include <QLabel>
-#include"Cocinero.h"
+#include"cocina.h"
 
 struct CocineroThread : public QThread{
-
+    QMutex * mutex;
     bool pausa, activo;
     QLabel * imagenChef;
     Cocinero * cocinero;
+    Cocina * cocina;
     unsigned int tiempoSleep;
 
     CocineroThread();
@@ -18,6 +19,7 @@ struct CocineroThread : public QThread{
     void pausar();
     void continuar();
     void cocinar(Plato * plato);
+    void __init__(QMutex *, QLabel *, Cocinero *, Cocina *);
     void establecerSleep(unsigned int nuevoTemp);
 };
 

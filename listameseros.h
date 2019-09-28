@@ -6,16 +6,17 @@
 class ListaMeseros
 {
 public:
-    MeseroThread * primerNodo, *ultimoNodo,* siguiente,* anterior;
+    Mesero * primerNodo, *ultimoNodo;
     int largo = 0;
+
     ListaMeseros(){
         primerNodo = nullptr;
     }
 
     bool estaVacia();
-    void insertarFinal();
+    void insertarFinal(int cantMesas);
+    void insertarFinal(Mesero * meserito);
     void activarMeseros(Mesero * mesero[20]);
-    void insertarFinal(MeseroThread * meserito);
 };
 
 #endif // LISTAMESEROS_H

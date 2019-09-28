@@ -8,6 +8,7 @@
 
 struct LavaplatosThread : public QThread
 {
+    QMutex * mutex;
     Lavaplatos * lavaplatos;
     QLabel * imagenLavanderia;
     bool pausa, activo;
@@ -15,13 +16,13 @@ struct LavaplatosThread : public QThread
 
     LavaplatosThread();
 
-    void __init__(QLabel*, Lavaplatos*);
 
     void run();
     void pausar();
     void continuar();
     void lavar(Plato * plato);
     void establecerSleep(unsigned int nuevoTemp);
+    void __init__(Lavaplatos*, QMutex *);
 };
 
 #endif // LAVAPLATOSTHREAD_H

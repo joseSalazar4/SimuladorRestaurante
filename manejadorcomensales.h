@@ -2,13 +2,11 @@
 #define MANEJADORCOMENSALES_H
 
 #include "colacomensales.h"
-#include "qsemaphore.h"
 #include "listamesas.h"
 
 class ManejadorComensales
 {
 public:
-    QSemaphore semaforo;
     int  ultimaMesaUsada;
     ColaComensal * colaClientesEnEspera;
 

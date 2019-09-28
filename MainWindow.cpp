@@ -13,27 +13,24 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-
-void MainWindow::on_progressBar_valueChanged(int value)
-{
-
-}
-
-
 void MainWindow::on_pushButton_clicked()
 {
-    bool prueba = true;
+    //bool prueba = true;
 
-    restaurante = new Restaurante(2,2,2,1);
-    while(prueba){
-        prueba  = (restaurante->generadorPersonas.manejadorComensales->colaClientesEnEspera->frente == nullptr);
-        ui->Texto->setText("es nula la cola de clientes");
-    }
+    restaurante = new Restaurante(2, 2, 2, 1, mutexCaj , mutexLavaplatos, mutexCocina, mutexEnsaladas, mutexPasteleria);
 
 
-    ui->Texto->setText(restaurante->generadorPersonas.manejadorComensales->colaClientesEnEspera->frente->primerNodo->nombre);
-    //ui->Texto->setText(restaurante->generadorPersonas.manejadorComensales->colaClientesEnEspera->desencolar()->primerNodo->nombre);
+
+    //restaurante->asignarCoc
+
+//    while(prueba){
+//        prueba  = (restaurante->generadorPersonas.manejadorComensales->colaClientesEnEspera->frente == nullptr);
+//        ui->Texto->setText("es nula la cola de clientes");
+//    }
+
+
+//    ui->Texto->setText(restaurante->generadorPersonas.manejadorComensales->colaClientesEnEspera->frente->primerNodo->nombre);
+//    //ui->Texto->setText(restaurante->generadorPersonas.manejadorComensales->colaClientesEnEspera->desencolar()->primerNodo->nombre);
 
 
     ui->pushButton->hide();

@@ -13,6 +13,7 @@
 struct Mesero
 {
 public:
+    Mesero * siguiente, * anterior;
     bool activo;
     int cantMesas;
     QString nombre;

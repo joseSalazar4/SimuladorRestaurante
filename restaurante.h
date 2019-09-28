@@ -1,11 +1,11 @@
 #ifndef RESTAURANTE_H
 #define RESTAURANTE_H
 
-#include "caja.h"
-#include "cocina.h"
-#include "lavaplatos.h"
 #include "listamesas.h"
+#include "cajathread.h"
 #include "listameseros.h"
+#include "CocineroThread.h"
+#include "lavaplatosthread.h"
 #include "manejadorcomensales.h"
 #include "generadorpersonasthread.h"
 
@@ -14,14 +14,24 @@ struct Restaurante
 public:
     Caja * caja;
     ListaMesas * mesas;
+    CajaThread cajaThread;
     ListaMeseros * meseros;
     Lavaplatos * lavaplatos;
     int cantMeseros, cantMesas;
+    LavaplatosThread lavaplatosThread;
     ManejadorComensales * manejadorComensales;
     GeneradorPersonasThread generadorPersonas;
     Cocina * principal, * pasteleria, * ensaladas;
+    QMutex * mutexPasteleria , *mutexCocinaFuerte , * mutexEnsaladas, * mutexLavaplatos, * mutexCaja, * mutexManejador;
 
-    Restaurante(int cantidadCocineros,int cantidadMeseros, int cantidadMesas, int cantMesasMesero){
+    Restaurante(int cantidadCocineros,int cantidadMeseros, int cantidadMesas, int cantMesasMesero, QMutex _mutexCaja, QMutex _mutexLavaplatos,QMutex _mutexCocina, QMutex _mutexEnsaladas,QMutex _mutexPasteleria){
+
+        this->mutexCaja = &_mutexCaja;
+        this->mutexCocinaFuerte = &_mutexCocina;
+        this->mutexEnsaladas = &_mutexEnsaladas;
+        this->mutexPasteleria = &_mutexPasteleria;
+        this->mutexLavaplatos = &_mutexLavaplatos;
+
         caja = new Caja();
         mesas = new ListaMesas();
         meseros = new ListaMeseros();
@@ -32,8 +42,8 @@ public:
         Cocinero * cocineroEnsaladas = new Cocinero("postres");
 
         principal = new Cocina("fuerte");
-        principal = new Cocina("pasteleria", cocineroPostres);
-        principal = new Cocina("ensaladas", cocineroEnsaladas);
+        pasteleria = new Cocina("pasteleria", cocineroPostres);
+        ensaladas = new Cocina("ensaladas", cocineroEnsaladas);
 
 
         if(cantidadCocineros == 3){
@@ -43,39 +53,49 @@ public:
             principal->cocinero1 = cocineroFuerte1;
             principal->cocinero1 = cocineroFuerte2;
             principal->cocinero1 = cocineroFuerte3;
+
         }
+
         else if (cantidadCocineros == 2){
             Cocinero * cocineroFuerte1 = new Cocinero("fuerte");
             Cocinero * cocineroFuerte2 = new Cocinero("fuerte");
             principal->cocinero1 = cocineroFuerte1;
             principal->cocinero1 = cocineroFuerte2;
         }
+
         else{
             Cocinero * cocineroFuerte1 = new Cocinero("fuerte");
             principal->cocinero1 = cocineroFuerte1;
         }
 
+
         cantMesas = cantidadMesas;
         cantMeseros = cantidadMeseros;
-        generadorPersonas.__init__(manejadorComensales);
+        generadorPersonas.__init__(manejadorComensales, );
         generadorPersonas.start();
 
-        for(int i = 0;i<cantidadMeseros;i++){
-            Mesero * mesero = new Mesero(cantMesasMesero);
-            MeseroThread * meseroT = new MeseroThread();
-            meseroT->__init__(mesero);
-            meseros->insertarFinal(meseroT);
-            meseroT->start();
-            //crear los hilos de los meseros y darles start fuera del while a todos
-        }
         for(int i = 0;i<cantidadMesas;i++){
             Mesa * mesaAux = new Mesa(QString::number(i+1));
             mesas->insertarFinal(mesaAux);
         }
 
+
+        for(int i = 0;i<cantidadMeseros;i++){
+            Mesero * mesero = new Mesero(cantMesasMesero);
+            MeseroThread meseroT;
+            meseroT.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
+            meseros->insertarFinal(mesero);
+            meseroT.start();
+        }
+
+        lavaplatosThread.__init__(lavaplatos,mutexLavaplatos);
+
+
+
+
     }
     void Iniciar();
-    bool asignarMesa(ListaComensales * lista);
+    bool asignarMesa(ListaComensales * lista);   ///ASIGNE MESAS PIENSE QUIEN LLAMA EL METODO A DONDE VEA WINDOW.CPPHKUNA MATAT
 
 
 };

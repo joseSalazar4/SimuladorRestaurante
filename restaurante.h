@@ -80,17 +80,28 @@ public:
             mesas->insertarFinal(mesaAux);
         }
 
+        qDebug()<<"Ya creo mesas";
 
         for(int i = 0;i<cantidadMeseros;i++){
+            qDebug()<<cantidadMeseros;
             Mesero * mesero = new Mesero(cantMesasMesero);
             MeseroThread meseroT;
+            qDebug()<<"antes del Init ";
+
             meseroT.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
+
             meseros->insertarFinal(mesero);
+            qDebug()<<"inserto el mesero al final ";
             meseroT.start();
+            qDebug()<<"le dio strt ";
+
+            qDebug()<<"inicio el thread de mesero"+QString::number(i);
         }
 
-        lavaplatosThread.__init__(lavaplatos, _mutexLavaplatos);
+        qDebug()<<"voy a lavarplats";
 
+        lavaplatosThread.__init__(lavaplatos, _mutexLavaplatos);
+        qDebug()<<"sali de  lavarplats";
 
     }
     void Iniciar();

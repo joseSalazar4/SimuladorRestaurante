@@ -1,11 +1,25 @@
 #include "MainWindow.h"
+#include "qdebug.h"
 #include "ui_mainwindow.h"
+#include <unistd.h>
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
+
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    Dialog * dialog = new Dialog();
+    dialog->show();
+
+    hide();
+    while(dialog->activo){
+        qDebug()<<"Está en la introduccion de los datos";
+        if(!dialog->activo) break;
+        usleep(1000000);
+    }
+    show();
+
 }
 
 MainWindow::~MainWindow()
@@ -17,7 +31,7 @@ void MainWindow::on_pushButton_clicked()
 {
     //bool prueba = true;
 
-    restaurante = new Restaurante(2, 2, 2, 1, mutexCaj , mutexLavaplatos, mutexCocina, mutexEnsaladas, mutexPasteleria);
+    restaurante = new Restaurante(2, 2, 2, 1, &mutexCaj , &mutexLavaplatos, &mutexCocina, &mutexEnsaladas, &mutexPasteleria, &mutexManejador);
 
 
 

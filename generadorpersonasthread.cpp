@@ -14,10 +14,11 @@ int GeneradorPersonasThread::generadorNumRandom(int rango1){
     return r;
 }
 
-void GeneradorPersonasThread::__init__(ManejadorComensales * maneja){
-    this->manejadorComensales = maneja;
+void GeneradorPersonasThread::__init__(ManejadorComensales * maneja, QMutex * mutex){
     pausa = false;
     activo = true;
+    this->mutexManejador = mutex;
+    this->manejadorComensales = maneja;
 }
 
 GeneradorPersonasThread::GeneradorPersonasThread()
@@ -25,9 +26,8 @@ GeneradorPersonasThread::GeneradorPersonasThread()
     tiempoGeneracion = tiempoGeneracion1 = cantidadGenerada = 0;
 }
 
-ListaComensales * GeneradorPersonasThread::generarPersonas(){
+ListaComensales * GeneradorPersonasThread::generarPersonas(int personasCreadas ){
     ListaComensales * lista = new ListaComensales();
-    int personasCreadas = generadorNumRandom(1,6);
     qDebug()<< personasCreadas;
     for(int i = 0; i < personasCreadas; i++){
         Comensal * nuevo = new Comensal("Marco"+QString::number(i));
@@ -40,19 +40,18 @@ ListaComensales * GeneradorPersonasThread::generarPersonas(){
 }
 
 void GeneradorPersonasThread::run(){
-    manejadorComensales->semaforo.release();
-    qDebug()<< "Le acabi de dar release vamos";
 
     while(activo){
-        qDebug()<< "entre al RUUUN";
-        manejadorComensales->semaforo.acquire();
-        qDebug()<< "Pasé el acquire";
-        manejadorComensales->colaClientesEnEspera->encolar(generarPersonas());
-        manejadorComensales->semaforo.release() ;   //Revise los numeros para ver si es o no
 
+        int sleepTime = QRandomGenerator::global()->bounded(tiempoGeneracion, tiempoGeneracion1);
+
+        int personasCreadas = QRandomGenerator::global()->bounded(tiempoGeneracion, tiempoGeneracion1);
+        mutexManejador->lock();
+        manejadorComensales->colaClientesEnEspera->encolar(generarPersonas(personasCreadas));
+        mutexManejador->unlock();
         sleep(5);
         while(pausa){
-            sleep(1);
+            sleep(static_cast<unsigned int>(sleepTime));
         }
     }
 }

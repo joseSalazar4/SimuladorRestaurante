@@ -1,8 +1,12 @@
 #include "cocinathread.h"
 
-CocinaThread::CocinaThread()
-{
 
+
+void CocinaThread::__init__(QMutex * pmutexCocina,Cocina * pCocina){
+    this->cocina = pCocina;
+    this->pausa = false;
+    this->activo = true;
+    this->mutexCocina = pmutexCocina;
 }
 
 Cocinero * CocinaThread::buscarCocineroDisponible(){
@@ -12,12 +16,12 @@ Cocinero * CocinaThread::buscarCocineroDisponible(){
     else return nullptr;
 }
 
-void CocineroThread::pausar()
+void CocinaThread::pausar()
 {
     this->pausa = true;
 }
 
-void CocineroThread::continuar()
+void CocinaThread::continuar()
 {
     this->pausa = false;
 }

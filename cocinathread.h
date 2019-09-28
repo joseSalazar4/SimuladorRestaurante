@@ -20,7 +20,7 @@ struct CocinaThread : public QThread{
     void continuar();
     void cocinar(Plato * plato);
     Cocinero * buscarCocineroDisponible();
-    void __init__(QMutex *,Cocina *, QLabel * );
+    void __init__(QMutex *,Cocina *);
     void establecerSleep(unsigned int nuevoTemp);
 };
 

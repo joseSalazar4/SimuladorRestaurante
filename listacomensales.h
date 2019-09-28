@@ -12,6 +12,7 @@ struct ListaComensales
     ListaComensales(){
         primerNodo = ultimoNodo = nullptr;
     }
+
     bool estaVacia();
     void insertarFinal(Comensal * cm);
     void insertarFinal(QString nombre);

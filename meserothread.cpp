@@ -5,11 +5,16 @@ MeseroThread::MeseroThread()
 
 }
 
-void MeseroThread::__init__(Mesero* _mesero){
+void MeseroThread::__init__(Mesero* _mesero, QMutex * pmutexCaja,QMutex * pmutexLava,QMutex * pmutexcocina,QMutex * pmutexensalada,QMutex * pmutexpasteleria){
     this->mesero = _mesero;
     this->activo = true;
     this->pausa = false;
-    this->semaforo.release();
+    this->mutexCaja = pmutexCaja ;
+    this->mutexCocina = pmutexcocina;
+    this->mutexEnsaladas = pmutexensalada;
+    this->mutexLavaplatos = pmutexLava;
+    this->mutexPasteleria = pmutexpasteleria;
+
 }
 
 void MeseroThread::run(){

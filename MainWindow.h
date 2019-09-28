@@ -23,7 +23,7 @@ public:
     LavaplatosThread lavaplatosthread;
     CocineroThread cocineroPasteleria, cocineroEnsaladas, cocineroFuerte;
 
-    QMutex mutexPasteleria, mutexCocina, mutexEnsaladas, mutexCaj, mutexLavaplatos;
+    QMutex mutexPasteleria, mutexCocina, mutexEnsaladas, mutexCaj, mutexLavaplatos, mutexManejador;
     int cantMeseros, cantMesas, cantCocineros, genPersonas1, genPersonas2;
 
 

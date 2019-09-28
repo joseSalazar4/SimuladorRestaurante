@@ -5,6 +5,11 @@ LavaplatosThread::LavaplatosThread()
 
 }
 
+void LavaplatosThread::__init__(Lavaplatos * lava , QMutex * mut){
+    this->lavaplatos = lava;
+    this->mutex = mut;
+}
+
 void LavaplatosThread::run()
 {
     while (activo)
@@ -19,7 +24,6 @@ void LavaplatosThread::run()
             sleep(tiempoSleep);
             mutex->unlock();
         }
-
         //Cuando se presione el botón de Inactivo
         while (pausa)
             sleep(1);

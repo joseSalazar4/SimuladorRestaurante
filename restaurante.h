@@ -24,13 +24,15 @@ public:
     Cocina * principal, * pasteleria, * ensaladas;
     QMutex * mutexPasteleria , *mutexCocinaFuerte , * mutexEnsaladas, * mutexLavaplatos, * mutexCaja, * mutexManejador;
 
-    Restaurante(int cantidadCocineros,int cantidadMeseros, int cantidadMesas, int cantMesasMesero, QMutex _mutexCaja, QMutex _mutexLavaplatos,QMutex _mutexCocina, QMutex _mutexEnsaladas,QMutex _mutexPasteleria){
+    Restaurante(int cantidadCocineros,int cantidadMeseros, int cantidadMesas, int cantMesasMesero, QMutex * _mutexCaja, QMutex *  _mutexLavaplatos,QMutex * _mutexCocina, QMutex * _mutexEnsaladas,QMutex*  _mutexPasteleria, QMutex * _mutexManejador){
 
-        this->mutexCaja = &_mutexCaja;
-        this->mutexCocinaFuerte = &_mutexCocina;
-        this->mutexEnsaladas = &_mutexEnsaladas;
-        this->mutexPasteleria = &_mutexPasteleria;
-        this->mutexLavaplatos = &_mutexLavaplatos;
+        this->mutexCaja = _mutexCaja;
+        this->mutexCocinaFuerte = _mutexCocina;
+        this->mutexEnsaladas = _mutexEnsaladas;
+        this->mutexManejador = _mutexManejador;
+        this->mutexPasteleria = _mutexPasteleria;
+        this->mutexLavaplatos = _mutexLavaplatos;
+
 
         caja = new Caja();
         mesas = new ListaMesas();
@@ -68,10 +70,9 @@ public:
             principal->cocinero1 = cocineroFuerte1;
         }
 
-
         cantMesas = cantidadMesas;
         cantMeseros = cantidadMeseros;
-        generadorPersonas.__init__(manejadorComensales, );
+        generadorPersonas.__init__(manejadorComensales,mutexManejador);
         generadorPersonas.start();
 
         for(int i = 0;i<cantidadMesas;i++){
@@ -88,14 +89,12 @@ public:
             meseroT.start();
         }
 
-        lavaplatosThread.__init__(lavaplatos,mutexLavaplatos);
-
-
+        lavaplatosThread.__init__(lavaplatos, _mutexLavaplatos);
 
 
     }
     void Iniciar();
-    bool asignarMesa(ListaComensales * lista);   ///ASIGNE MESAS PIENSE QUIEN LLAMA EL METODO A DONDE VEA WINDOW.CPPHKUNA MATAT
+    bool asignarMesa(ListaComensales * lista);   ///ASIGNE MESAS PIENSE QUIEN LLAMA EL METODO A DONDE VEA WINDOW.CPP HKUNA MATATA
 
 
 };

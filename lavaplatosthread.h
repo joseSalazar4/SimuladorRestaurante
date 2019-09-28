@@ -22,7 +22,7 @@ struct LavaplatosThread : public QThread
     void continuar();
     void lavar(Plato * plato);
     void establecerSleep(unsigned int nuevoTemp);
-    void __init__(Lavaplatos*, QMutex *);
+    void __init__(Lavaplatos * lava , QMutex * mmu);
 };
 
 #endif // LAVAPLATOSTHREAD_H

@@ -12,3 +12,10 @@ Dialog::~Dialog()
 {
     delete ui;
 }
+
+void Dialog::on_pushButton_clicked()
+{
+    qDebug()<<"Tengo sueno";
+    destroy();
+    activo = false;
+}

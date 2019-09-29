@@ -2,12 +2,13 @@
 #define SOLICITUD_H
 
 #include "plato.h"
-
+#include "Comensal.h"
 
 struct Solicitud {
     Plato * plato;
     Solicitud * siguiente;
     QString cliente, responsable;
+    QString arrayNombres[10] = {"Palpatine" , "Padme" , "Kit Fisto","Anakin", "Obi-Wan", "San Holo", "Sofia", "Luis", "Fiorella", "Jose"};
     int destino, tipo, cuenta, accion, numeroMesa; //Saber que hacer con esa petición
 
     Solicitud(int _destino, int _accion){  //La accion debe ser leída por cada "persona" tons mesero lee 1 tons lleva a la cocina yantes de dejarla pone accion = #

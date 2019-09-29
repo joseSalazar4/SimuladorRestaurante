@@ -5,6 +5,7 @@
 #include "qthread.h"
 #include "QRandomGenerator"
 #include "manejadorcomensales.h"
+#include "qlabel.h"
 class GeneradorPersonasThread : public QThread
 {
 
@@ -13,7 +14,8 @@ public:
 
     QMutex * mutexManejador;
     bool pausa = false, activo = true;
-    //QLabel * etiqueta;
+    QLabel * etiqueta;
+    ListaMesas * listaMesas;
     ManejadorComensales * manejadorComensales;
     GeneradorPersonasThread();
 
@@ -23,7 +25,7 @@ public:
     int generadorNumRandom(int rango1);
     int generadorNumRandom(int rango1, int rango2);
     ListaComensales * generarPersonas(int personasCreadas);
-    void __init__(ManejadorComensales * manejador, QMutex *);
+    void __init__(ManejadorComensales * manejador, QMutex *,int t1, int t2);
 };
 
 #endif // GENERADORPERSONASTHREAD_H

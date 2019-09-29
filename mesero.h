@@ -10,15 +10,15 @@
 #include "listamesas.h"
 #include "lavaplatos.h"
 
-struct Mesero
-{
+struct Mesero {
+
 public:
-    Mesero * siguiente, * anterior;
     bool activo;
     int cantMesas;
     QString nombre;
     Cola * colaPeticiones;
     Lavaplatos * lavaplatos;
+    Mesero * siguiente, * anterior;
     Cocina * pasteleria, * ensaladas, * cocina;
     ListaMesas * mesas;   //Tendrá la posibilidad de que un mesero atienda a las 20 mesas
 
@@ -32,13 +32,13 @@ public:
     void notificar(Componente, QString);
 
 
-    void pedirOrdenes(Mesa * mesa);
     void llevarComida();
     void llevarCuenta();
+    Mesa * revisarMesas();
     void llevarOrdenCocina();
     void llevarPlatosALavar();
+    void pedirOrdenes(Mesa * mesa);
     void recibirOrden(Solicitud * sol);
-    Mesa * revisarMesas();
 };
 
 #endif // MESERO_H

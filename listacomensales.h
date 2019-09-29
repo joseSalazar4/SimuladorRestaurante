@@ -11,6 +11,7 @@ struct ListaComensales
     ListaComensales * siguienteLista, * primerLista, *listaAnterior;
     ListaComensales(){
         primerNodo = ultimoNodo = nullptr;
+        largo = 0;
     }
 
     bool estaVacia();

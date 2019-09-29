@@ -13,6 +13,7 @@ struct ListaMesas
 
     bool estaVacia();
     void insertarFinal(QString id);
+    Mesa *   buscarDisponibilidad();
     void insertarFinal(Mesa * mesita);
 };
 

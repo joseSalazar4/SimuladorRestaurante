@@ -1,29 +1,27 @@
 #include "meserothread.h"
 
-MeseroThread::MeseroThread()
-{
-
-}
-
-void MeseroThread::__init__(Mesero* _mesero, QMutex * pmutexCaja,QMutex * pmutexLava,QMutex * pmutexcocina,QMutex * pmutexensalada,QMutex * pmutexpasteleria){
-    this->mesero = _mesero;
+void MeseroThread::__init__(Mesero* _mesero, QMutex * pmutexCaja,QMutex * pmutexLava,QMutex * pmutexcocina,QMutex * pmutexensalada,QMutex * pmutexpasteleria, QMutex * pmutexMesa){
     this->activo = true;
     this->pausa = false;
-    this->mutexCaja = pmutexCaja ;
+    this->mesero = _mesero;
+    this->mutexCaja = pmutexCaja;
+    this->mutexMesa = pmutexMesa;
     this->mutexCocina = pmutexcocina;
-    this->mutexEnsaladas = pmutexensalada;
     this->mutexLavaplatos = pmutexLava;
+    this->mutexEnsaladas = pmutexensalada;
     this->mutexPasteleria = pmutexpasteleria;
-
 }
 
 void MeseroThread::run(){
     while(activo){
+        mutexMesa->lock();
         if(mesero->revisarMesas()!= nullptr)
             mesero->pedirOrdenes(mesero->revisarMesas());
+        mutexMesa->unlock();
         sleep(1);
     }
 }
+
 
 void MeseroThread::pausar(){
     this->pausa = true;

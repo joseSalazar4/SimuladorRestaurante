@@ -14,6 +14,16 @@ void ListaMesas::insertarFinal(QString id) {
         }
 }
 
+Mesa * ListaMesas::buscarDisponibilidad(){
+    Mesa * tmp = primerNodo;
+    while(tmp){
+        if(!tmp->estaOcupada()){
+            return tmp;
+        }
+        tmp = tmp->siguiente;
+    }
+    return nullptr;
+}
 
 void ListaMesas::insertarFinal(Mesa * m) {
     if (estaVacia()) {

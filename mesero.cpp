@@ -6,17 +6,44 @@ void Mesero::pedirOrdenes(Mesa * mesa){
 
     for(int i =0; (mesa->listaComensales->largo) > i; i++){
         if(tmp!=nullptr){
-            if(mesa->tipoPedido == 1)
-                tmp->pedirEntrada(tmp->probabilidadPedir);
+            if(mesa->tipoPedido == 1){
 
-            else if(mesa->tipoPedido == 2)
-                tmp->pedirPlatoFuerte(tmp->probabilidadPedir);
+                Solicitud * nueva = tmp->pedirEntrada(tmp->probabilidadPedir);
+                if(nueva){
+                    nueva->cliente = tmp->nombre;
+                    nueva->numeroMesa = tmp->numeroMesa;
+                    tmp->cuentaAPagar+= nueva->plato->precio;
+                    colaPeticiones->encolar(nueva);
+                }
+            }
+            else if(mesa->tipoPedido == 2){
 
+                Solicitud * nueva = tmp->pedirPlatoFuerte(tmp->probabilidadPedir);
+                if(nueva){
+                    nueva->cliente = tmp->nombre;
+                    nueva->numeroMesa = tmp->numeroMesa;
+                    tmp->cuentaAPagar+= nueva->plato->precio;
+                    colaPeticiones->encolar(nueva);
+                }
+            }
             else if(mesa->tipoPedido == 3){
-                tmp->pedirPostre(tmp->probabilidadPedir);
+
+                Solicitud * nueva = tmp->pedirPostre(tmp->probabilidadPedir);
+                if(nueva){
+                    nueva->cliente = tmp->nombre;
+                    nueva->numeroMesa = tmp->numeroMesa;
+                    tmp->cuentaAPagar+= nueva->plato->precio;
+                    colaPeticiones->encolar(nueva);
+                }
             }
             else{
-                tmp->pedirCuenta();
+                Solicitud * nueva =tmp->pedirCuenta();
+                if(nueva){
+                    nueva->cliente = tmp->nombre;
+                    nueva->numeroMesa = tmp->numeroMesa;
+                    tmp->cuentaAPagar+= nueva->plato->precio;
+                    colaPeticiones->encolar(nueva);
+                }
             }
             tmp = tmp->siguiente;
         }
@@ -26,6 +53,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
 
 Mesa * Mesero::revisarMesas(){
     Mesa * tmp = mesas->primerNodo;
+    if(tmp == nullptr) return nullptr;
     for(int i =0; i<mesas->largo;i++){
         if (tmp->estaOcupada() && tmp->pedirAsistencia){
             return tmp;

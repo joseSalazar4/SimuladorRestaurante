@@ -16,7 +16,12 @@ struct Comensal
     Comensal *  siguiente, * anterior;
     int cuentaAPagar,probabilidadPedir, numeroMesa;
 
-    Comensal(QString _nombre):  nombre(_nombre){}
+    Comensal(QString _nombre){
+        nombre = _nombre;
+        comidaActual = "";
+        siguiente = anterior = nullptr;
+        cuentaAPagar = numeroMesa = probabilidadPedir = 0;
+    }
 
     bool comer();
     void dejarMesa();

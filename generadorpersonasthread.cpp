@@ -14,9 +14,11 @@ int GeneradorPersonasThread::generadorNumRandom(int rango1){
     return r;
 }
 
-void GeneradorPersonasThread::__init__(ManejadorComensales * maneja, QMutex * mutex){
+void GeneradorPersonasThread::__init__(ManejadorComensales * maneja, QMutex * mutex, int t1, int t2){
     pausa = false;
     activo = true;
+    tiempoGeneracion = t1;
+    tiempoGeneracion1 = t2;
     this->mutexManejador = mutex;
     this->manejadorComensales = maneja;
 }
@@ -27,6 +29,7 @@ GeneradorPersonasThread::GeneradorPersonasThread()
 }
 
 ListaComensales * GeneradorPersonasThread::generarPersonas(int personasCreadas ){
+
     ListaComensales * lista = new ListaComensales();
     qDebug()<< personasCreadas;
     for(int i = 0; i < personasCreadas; i++){
@@ -34,6 +37,7 @@ ListaComensales * GeneradorPersonasThread::generarPersonas(int personasCreadas )
 
         lista->insertarFinal(nuevo);
     }
+    qDebug()<<lista->largo;
     qDebug()<<lista->primerNodo->nombre;
     qDebug()<<lista->primerNodo->siguiente->nombre;
     return lista;
@@ -42,14 +46,21 @@ ListaComensales * GeneradorPersonasThread::generarPersonas(int personasCreadas )
 void GeneradorPersonasThread::run(){
 
     while(activo){
-
         int sleepTime = QRandomGenerator::global()->bounded(tiempoGeneracion, tiempoGeneracion1);
-
-        int personasCreadas = QRandomGenerator::global()->bounded(tiempoGeneracion, tiempoGeneracion1);
-        mutexManejador->lock();
+        qDebug()<<"tiempo de gen";
+        qDebug()<<sleepTime;
+        int personasCreadas = QRandomGenerator::global()->bounded(1, 6);
+        qDebug()<<"estas son las personas creadas";
+        qDebug()<<personasCreadas;
+        personasCreadas = QRandomGenerator::global()->bounded(tiempoGeneracion, tiempoGeneracion1);
+        qDebug()<<"estas son las personas creadas 2.0";
+        qDebug()<<personasCreadas;
         manejadorComensales->colaClientesEnEspera->encolar(generarPersonas(personasCreadas));
+        mutexManejador->lock();
+        if(listaMesas->buscarDisponibilidad())
+            listaMesas->buscarDisponibilidad()->listaComensales = manejadorComensales->colaClientesEnEspera->desencolar();
         mutexManejador->unlock();
-        sleep(5);
+        sleep(30);
         while(pausa){
             sleep(static_cast<unsigned int>(sleepTime));
         }

@@ -31,7 +31,7 @@ void MainWindow::on_pushButton_clicked()
 {
     //bool prueba = true;
 
-    restaurante = new Restaurante(2, 2, 2, 1, &mutexCaj , &mutexLavaplatos, &mutexCocina, &mutexEnsaladas, &mutexPasteleria, &mutexManejador);
+    restaurante = new Restaurante(2, 2, 2, 1,2,6, &mutexCaj , &mutexLavaplatos, &mutexCocina, &mutexEnsaladas, &mutexPasteleria, &mutexManejador);
 
     qDebug()<<"Ya pasó el constructor";
 

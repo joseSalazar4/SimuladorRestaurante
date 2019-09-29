@@ -1,7 +1,7 @@
 #ifndef LISTAMESEROS_H
 #define LISTAMESEROS_H
 
-#include"meserothread.h"
+#include"mesero.h"
 
 class ListaMeseros
 {

@@ -19,6 +19,7 @@ struct Mesa
         listaComensales = new ListaComensales();
     }
 
+    void vaciarMesa();
     bool estaOcupada();
     bool comensalesTerminaron();
     void insertarComensales(QString);

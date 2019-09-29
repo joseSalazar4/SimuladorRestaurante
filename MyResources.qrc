@@ -1,5 +1,20 @@
 <RCC>
     <qresource prefix="/imagenes">
         <file>camarero.png</file>
+        <file>34343.png</file>
+        <file>Ca3434pture.PNG</file>
+        <file>Cap21ture.PNG</file>
+        <file>Capaaaature.PNG</file>
+        <file>Captu3e.PNG</file>
+        <file>Captu1212111re.PNG</file>
+        <file>Captur33e.PNG</file>
+        <file>Captur221e.PNG</file>
+        <file>Capture.PNG</file>
+        <file>Capture1.PNG</file>
+        <file>Capture12.PNG</file>
+        <file>Capture1212.PNG</file>
+        <file>cashier.png</file>
+        <file>configuration.png</file>
+        <file>student-on-chair-from-side-view.png</file>
     </qresource>
 </RCC>

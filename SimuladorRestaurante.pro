@@ -38,6 +38,7 @@ SOURCES += \
     listameseros.cpp \
     listameserothreads.cpp \
     listaplatos.cpp \
+    listasolicitudes.cpp \
     main.cpp \
    # mediador.cpp \
     manejadorcomensales.cpp \
@@ -75,6 +76,7 @@ HEADERS += \
     listameseros.h \
     listameserothreads.h \
     listaplatos.h \
+    listasolicitudes.h \
     manejadorcomensales.h \
     mesa.h\ \
     meserothread.h \

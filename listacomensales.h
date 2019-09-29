@@ -14,7 +14,9 @@ struct ListaComensales
         largo = 0;
     }
 
+    void vaciar();
     bool estaVacia();
+    void borrarFinal();
     void insertarFinal(Comensal * cm);
     void insertarFinal(QString nombre);
 };

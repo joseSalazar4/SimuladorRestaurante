@@ -32,3 +32,19 @@ bool ListaComensales::estaVacia(){
     return  primerNodo == nullptr;
 }
 
+void ListaComensales::borrarFinal(){
+    Comensal * tmp = ultimoNodo;
+    if(estaVacia() || primerNodo == ultimoNodo) primerNodo = ultimoNodo = nullptr;
+    else{
+        ultimoNodo = ultimoNodo->anterior;
+        tmp->anterior = nullptr;
+        ultimoNodo->siguiente = nullptr;
+    }
+}
+
+void ListaComensales::vaciar(){
+    Comensal * tmp = primerNodo;
+    while(tmp){
+        borrarFinal();
+    }
+}

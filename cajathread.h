@@ -14,7 +14,6 @@ struct CajaThread : public QThread{
     QLabel * imagenCaja;
 
     CajaThread();
-
     void run();
     void pausar();
     void continuar();

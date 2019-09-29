@@ -8,7 +8,7 @@ bool ListaMeseroThreads::estaVacia(){
 
 
 void ListaMeseroThreads::insertarFinal(MeseroThread * m) {
-    if (primerNodo==nullptr) {
+    if (primerNodo==nullptr){
         primerNodo = ultimoNodo = m;
         largo++;
     }

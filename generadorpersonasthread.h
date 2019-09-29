@@ -10,18 +10,19 @@ class GeneradorPersonasThread : public QThread
 {
 
 public:
-    int tiempoGeneracion1,tiempoGeneracion, cantidadGenerada;
-
-    QMutex * mutexManejador;
-    bool pausa = false, activo = true;
     QLabel * etiqueta;
+    QMutex * mutexManejador;
     ListaMesas * listaMesas;
+    bool pausa = false, activo = true;
     ManejadorComensales * manejadorComensales;
+    int tiempoGeneracion1,tiempoGeneracion, cantidadGenerada;
+    QString arrayNombres[10] = {"Palpatine" , "Padme" , "Kit Fisto","Anakin", "Obi-Wan", "San Holo", "Sofia", "Luis", "Fiorella", "Jose"};;
     GeneradorPersonasThread();
 
     void run();
     void pausar();
     void continuar();
+    QString generarNombre();
     int generadorNumRandom(int rango1);
     int generadorNumRandom(int rango1, int rango2);
     ListaComensales * generarPersonas(int personasCreadas);

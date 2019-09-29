@@ -7,3 +7,8 @@ bool Mesa::estaOcupada(){
 void Mesa::insertarComensales(QString nombre){
     listaComensales->insertarFinal(nombre);
 }
+
+void Mesa::vaciarMesa(){
+    listaComensales->vaciar();
+    ocupada = 0;
+}

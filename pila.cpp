@@ -6,11 +6,11 @@ void Pila::push (Solicitud * dato)
 {
      if (empty ())
      {
-         tope = new Solicitud();
+         tope = dato;
      }
      else
      {
-         Solicitud * nuevo = new Solicitud();
+         Solicitud * nuevo = dato;
          nuevo->siguiente = tope;
          tope = nuevo;
      }

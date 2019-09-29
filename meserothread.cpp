@@ -14,10 +14,13 @@ void MeseroThread::__init__(Mesero* _mesero, QMutex * pmutexCaja,QMutex * pmutex
 
 void MeseroThread::run(){
     while(activo){
-        mutexMesa->lock();
-        if(mesero->revisarMesas()!= nullptr)
-            mesero->pedirOrdenes(mesero->revisarMesas());
-        mutexMesa->unlock();
+        qDebug()<<"El metodo esta bien1";
+       // mutexMesa->lock();
+       // if(mesero->revisarMesas()!= nullptr)
+           // mesero->pedirOrdenes(mesero->revisarMesas());
+        //mutexMesa->unlock();
+        //if(mesero-> cola de peticiones )
+        qDebug()<<"El metodo esta bien2";
         sleep(1);
     }
 }

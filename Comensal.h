@@ -31,6 +31,7 @@ struct Comensal
     Solicitud * pedirPostre(int porcentajeACumplir);
     Solicitud * pedirEntrada(int porcentajeACumplir);
     Solicitud * pedirPlatoFuerte(int porcentajeACumplir);
+    QString generarNombre();
 
 };
 

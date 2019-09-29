@@ -1,26 +1,26 @@
 #ifndef COLA_H
 #define COLA_H
 
-#include "Solicitud.h"
 #include "iostream"
+#include "listasolicitudes.h"
 
 using namespace std;
 
 struct Cola {
-
-       Solicitud * frente;
+        int largo;
+        ListaSolicitudes * frente;
 
        Cola()
        {
             frente = nullptr;
+            largo = 0;
        }
 
-       // encabezados de funcion
-       void encolar (Solicitud * dato);
-       Solicitud * desencolar ();
-       Solicitud * verFrente();
        bool vacia();
        void imprimir();
+       ListaSolicitudes * verFrente();
+       ListaSolicitudes * desencolar ();
+       void encolar (ListaSolicitudes * dato);
 };
 
 #endif // COLA_H

@@ -14,6 +14,12 @@ int GeneradorPersonasThread::generadorNumRandom(int rango1){
     return r;
 }
 
+
+QString GeneradorPersonasThread::generarNombre(){
+    QString random;
+    srand(static_cast<unsigned int>(time(nullptr)));
+    return random = arrayNombres[rand()%10];
+}
 void GeneradorPersonasThread::__init__(ManejadorComensales * maneja, QMutex * mutex, int t1, int t2){
     pausa = false;
     activo = true;
@@ -32,9 +38,9 @@ ListaComensales * GeneradorPersonasThread::generarPersonas(int personasCreadas )
 
     ListaComensales * lista = new ListaComensales();
     qDebug()<< personasCreadas;
-    for(int i = 0; i < personasCreadas; i++){
-        Comensal * nuevo = new Comensal("Marco"+QString::number(i));
 
+    for(int i = 0; i < personasCreadas; i++){
+        Comensal * nuevo = new Comensal(generarNombre()+QString::number(i));
         lista->insertarFinal(nuevo);
     }
     qDebug()<<lista->largo;

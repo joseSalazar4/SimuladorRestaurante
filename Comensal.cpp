@@ -25,6 +25,7 @@ Solicitud * Comensal::pedirEntrada(int porcentajeACumplir){
         nueva->numeroMesa = numeroMesa;
         return nueva;
     }
+    return nullptr;
 }
 
 Solicitud * Comensal::pedirPlatoFuerte( int porcentajeACumplir){
@@ -40,6 +41,7 @@ Solicitud * Comensal::pedirPlatoFuerte( int porcentajeACumplir){
         return nueva;
 
     }
+    return nullptr;
 }
 
 Solicitud * Comensal::pedirPostre(int porcentajeACumplir){

@@ -31,14 +31,14 @@ public:
 
     void notificar(Componente, QString);
 
-
     void llevarComida();
     void llevarCuenta();
     Mesa * revisarMesas();
     void llevarOrdenCocina();
     void llevarPlatosALavar();
+    void liberarMesa(Mesa * mesa);
     void pedirOrdenes(Mesa * mesa);
-    void recibirOrden(Solicitud * sol);
+    void recibirOrden(ListaSolicitudes * sol);
 };
 
 #endif // MESERO_H

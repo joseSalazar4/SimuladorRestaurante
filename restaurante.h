@@ -13,6 +13,7 @@
 struct Restaurante
 {
 public:
+
     Caja * caja;
     ListaMesas * mesas;
     CajaThread cajaThread;
@@ -20,13 +21,13 @@ public:
     Lavaplatos * lavaplatos;
     int cantMeseros, cantMesas;
     LavaplatosThread lavaplatosThread;
-    MeseroThread meserosThread[20];
+    MeseroThread * arrayMeserosThread[20];
     ListaMeseroThreads * listaMeserosThread;
     ManejadorComensales * manejadorComensales;
     GeneradorPersonasThread generadorPersonas;
     Cocina * principal, * pasteleria, * ensaladas;
+    QMutex * mutexPasteleria , *mutexCocinaFuerte , * mutexEnsaladas, * mutexLavaplatos, * mutexCaja, * mutexManejador, *mutexMesa;
     MeseroThread mesero1,mesero2,mesero3,mesero4,mesero5,mesero6,mesero7,mesero8,mesero9,mesero10,mesero11,mesero12,mesero13,mesero14,mesero15,mesero16,mesero17,mesero18,mesero19,mesero20;
-    QMutex * mutexPasteleria , *mutexCocinaFuerte , * mutexEnsaladas, * mutexLavaplatos, * mutexCaja, * mutexManejador;
 
     Restaurante(int cantidadCocineros,int cantidadMeseros, int cantidadMesas, int cantMesasMesero,int tiempoGen1,int tiempoGen2, QMutex * _mutexCaja, QMutex *  _mutexLavaplatos,QMutex * _mutexCocina, QMutex * _mutexEnsaladas,QMutex*  _mutexPasteleria, QMutex * _mutexManejador){
 
@@ -80,7 +81,7 @@ public:
         for(int i = 0;i<cantidadMeseros;i++){
 
         }
-        generadorPersonas.__init__(manejadorComensales,mute, tiempoGen1, tiempoGen2);
+        generadorPersonas.__init__(manejadorComensales,mutexManejador, tiempoGen1, tiempoGen2);
         generadorPersonas.listaMesas = this->mesas;
         generadorPersonas.start();
 
@@ -92,10 +93,16 @@ public:
         qDebug()<<"Ya creo mesas";
 
         for(int i = 0;i<cantidadMeseros;i++){
-            qDebug()<<cantidadMeseros;
             Mesero * mesero = new Mesero(cantMesasMesero);
-            qDebug()<<"inserto el mesero al final THREAD ACA CREO QUE SE CAYO ";
+            MeseroThread * meseroThread = new MeseroThread();
+            meseroThread->__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja,mutexMesa);
+            qDebug()<<"inserto el mesero al final THREAD ACA CREO QUE SE CAYO "+QString::number(i);
+            arrayMeserosThread[i] = meseroThread;
             meseros->insertarFinal(mesero);
+        }
+
+        for(int i = 0;i<cantidadMeseros;i++){
+            arrayMeserosThread[i]->start();
         }
 
 //        mesero1.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);

@@ -1,21 +1,22 @@
 
 #include "cola.h"
-void Cola::encolar (Solicitud * dato)
-{
-if (vacia())
-         frente = new Solicitud();
-      else
-      {
-            Solicitud * actual = frente;
-            while (actual->siguiente != nullptr)
-                          actual = actual->siguiente;
-
-            actual->siguiente = dato;
-        }
+void Cola::encolar (ListaSolicitudes * dato){
+    if (vacia()){
+        frente = dato;
+        largo++;
+    }
+    else
+    {
+        ListaSolicitudes * actual = frente;
+        while (actual->siguienteLista != nullptr)
+                      actual = actual->siguienteLista;
+        actual->siguienteLista = dato;
+        largo++;
+    }
 }
 
 
-Solicitud* Cola::desencolar(void)
+ListaSolicitudes * Cola::desencolar()
 {
       if (vacia())
       {
@@ -23,9 +24,9 @@ Solicitud* Cola::desencolar(void)
       }
       else
       {
-          Solicitud* borrado = frente;
-          frente = frente->siguiente;
-          borrado->siguiente = nullptr;
+          ListaSolicitudes * borrado = frente;
+          frente = frente->siguienteLista;
+          borrado->siguienteLista = nullptr;
           return borrado;
       }
 }
@@ -39,7 +40,7 @@ bool Cola::vacia ()
 }
 
 
-Solicitud * Cola::verFrente()
+ListaSolicitudes * Cola::verFrente()
 {
       return frente;
 }

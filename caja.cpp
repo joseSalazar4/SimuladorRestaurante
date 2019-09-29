@@ -15,6 +15,17 @@ if (vacia())
 }
 
 int Caja::calcularCuenta(){
+    Solicitud * sol = this->frente;
+    if(sol){
+        int numero = sol->numeroMesa;
+        while(sol->numeroMesa == numero){
+
+        }
+            return sol->plato->precio;
+    }
+    else{
+        return 0;
+    }
 
 }
 Solicitud * Caja::desencolar()

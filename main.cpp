@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
-    MainWindow ventana;
-    ventana.show();
+    Dialog ventanaConfiguarcion;
+    ventanaConfiguarcion.show();
     return a.exec();
 }

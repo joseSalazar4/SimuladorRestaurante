@@ -6,7 +6,7 @@
 #include "listameseros.h"
 #include "CocineroThread.h"
 #include "lavaplatosthread.h"
-#include "listameserothreads.h"
+#include "meserothread.h"
 #include "manejadorcomensales.h"
 #include "generadorpersonasthread.h"
 
@@ -19,15 +19,13 @@ public:
     CajaThread cajaThread;
     ListaMeseros * meseros;
     Lavaplatos * lavaplatos;
-    int cantMeseros, cantMesas;
     LavaplatosThread lavaplatosThread;
     MeseroThread * arrayMeserosThread[20];
-    ListaMeseroThreads * listaMeserosThread;
     ManejadorComensales * manejadorComensales;
     GeneradorPersonasThread generadorPersonas;
     Cocina * principal, * pasteleria, * ensaladas;
+    int cantMeseros, cantCocineros, cantMesas, cantMesasPorMesero, tiempoGen1,tiempoGen2;
     QMutex * mutexPasteleria , *mutexCocinaFuerte , * mutexEnsaladas, * mutexLavaplatos, * mutexCaja, * mutexManejador, *mutexMesa;
-    MeseroThread mesero1,mesero2,mesero3,mesero4,mesero5,mesero6,mesero7,mesero8,mesero9,mesero10,mesero11,mesero12,mesero13,mesero14,mesero15,mesero16,mesero17,mesero18,mesero19,mesero20;
 
     Restaurante(int cantidadCocineros,int cantidadMeseros, int cantidadMesas, int cantMesasMesero,int tiempoGen1,int tiempoGen2, QMutex * _mutexCaja, QMutex *  _mutexLavaplatos,QMutex * _mutexCocina, QMutex * _mutexEnsaladas,QMutex*  _mutexPasteleria, QMutex * _mutexManejador){
 
@@ -104,48 +102,6 @@ public:
         for(int i = 0;i<cantidadMeseros;i++){
             arrayMeserosThread[i]->start();
         }
-
-//        mesero1.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
-//        mesero1.start();
-//        mesero2.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
-//        mesero2.start();
-//        mesero3.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
-//        mesero3.start();
-//        mesero4.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
-//        mesero4.start();
-//        mesero5.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
-//        mesero5.start();
-//        mesero6.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
-//        mesero6.start();
-//        mesero7.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
-//        mesero7.start();
-//        mesero8.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
-//        mesero8.start();
-//        mesero9.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
-//        mesero9.start();
-//        mesero10.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
-//        mesero10.start();
-//        mesero11.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
-//        mesero11.start();
-//        mesero12.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
-//        mesero12.start();
-//        mesero13.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
-//        mesero13.start();
-//        mesero14.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
-//        mesero14.start();
-//        mesero15.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
-//        mesero15.start();
-//        mesero16.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
-//        mesero16.start();
-//        mesero17.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
-//        mesero17.start();
-//        mesero18.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
-//        mesero18.start();
-//        mesero19.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
-//        mesero19.start();
-//        mesero20.__init__(mesero,mutexPasteleria,mutexEnsaladas,mutexCocinaFuerte,mutexLavaplatos,mutexCaja);
-//        mesero20.start();
-
         qDebug()<<"voy a LAVAAAAAAAAR";
 
         lavaplatosThread.__init__(lavaplatos, _mutexLavaplatos);

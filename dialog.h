@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "qdebug.h"
+#include "MainWindow.h"
 
 namespace Ui {
 class Dialog;
@@ -14,6 +15,7 @@ class Dialog : public QDialog
 
 public:
     bool activo = true;
+    MainWindow ventanaPrincipal;
     explicit Dialog(QWidget *parent = nullptr);
     ~Dialog();
 

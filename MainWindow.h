@@ -4,7 +4,7 @@
 #include "meserothread.h"
 #include "restaurante.h"
 #include <QMainWindow>
-#include "dialog.h"
+
 
 
 namespace Ui {
@@ -19,16 +19,14 @@ class MainWindow : public QMainWindow
 public:
     CajaThread cajaThread;
     Restaurante * restaurante;
-    Dialog * ventanaDatosIniciales;
     LavaplatosThread lavaplatosthread;
     CocineroThread cocineroPasteleria, cocineroEnsaladas, cocineroFuerte;
-
     QMutex mutexPasteleria, mutexCocina, mutexEnsaladas, mutexCaj, mutexLavaplatos, mutexManejador;
-    int cantMeseros, cantMesas, cantCocineros, genPersonas1, genPersonas2;
+    int cantMeseros, cantMesas, cantCocineros, genPersonas1, genPersonas2, cantMesasPorMesero;
 
 
     explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    //~MainWindow();
 
     void on_progressBar_valueChanged(int value);
 

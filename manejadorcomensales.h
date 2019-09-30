@@ -8,6 +8,7 @@ class ManejadorComensales
 {
 public:
     int  ultimaMesaUsada;
+
     ColaComensal * colaClientesEnEspera;
 
     ManejadorComensales(){

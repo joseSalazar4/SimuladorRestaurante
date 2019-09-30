@@ -6,12 +6,12 @@
 class ColaComensal
 {
 public:
-    ListaComensales * frente;
+    ListaComensales * frente, * final;
     int maximo = 20, cantMesasActivas = 0;
 
     ColaComensal()
     {
-         frente = nullptr;
+        frente = final = nullptr;
     }
 
     // encabezados de funcion

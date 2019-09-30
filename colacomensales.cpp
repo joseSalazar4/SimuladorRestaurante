@@ -2,29 +2,21 @@
 
 void ColaComensal::encolar (ListaComensales * dato){
     if (vacia())
-         frente = dato;
+         frente = final = dato;
     else{
-        ListaComensales * actual = frente;
-        while (actual->siguienteLista != nullptr)
-            actual = actual->siguienteLista;
-        actual->siguienteLista = dato;
+        final->siguienteLista = dato;
+        final = final->siguienteLista;
     }
 }
 
 
-ListaComensales* ColaComensal::desencolar(void)
-{
-      if (vacia())
-      {
-         return nullptr;
-      }
-      else
-      {
-          ListaComensales * borrado = frente;
+ListaComensales* ColaComensal::desencolar(){
+    ListaComensales * lista = frente;
+      if (!vacia()){
           frente = frente->siguienteLista;
-          borrado->siguiente = nullptr;
-          return borrado;
+          lista->siguienteLista = nullptr;
       }
+      return lista;
 }
 
 bool ColaComensal::vacia ()

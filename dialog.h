@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "qdebug.h"
 #include "MainWindow.h"
+#include "qmessagebox.h"
 
 namespace Ui {
 class Dialog;

@@ -79,7 +79,7 @@ public:
         for(int i = 0;i<cantidadMeseros;i++){
 
         }
-        generadorPersonas.__init__(manejadorComensales,mutexManejador, tiempoGen1, tiempoGen2);
+        generadorPersonas.__init__(manejadorComensales,mutexManejador,mutexMesa,  tiempoGen1, tiempoGen2);
         generadorPersonas.listaMesas = this->mesas;
         generadorPersonas.start();
 

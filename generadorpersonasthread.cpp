@@ -21,11 +21,12 @@ QString GeneradorPersonasThread::generarNombre(){
     random = arrayNombres[rand()%10];
     return random;
 }
-void GeneradorPersonasThread::__init__(ManejadorComensales * maneja, QMutex * mutex, int t1, int t2){
+void GeneradorPersonasThread::__init__(ManejadorComensales * maneja, QMutex * mutex, QMutex * mutxmesa, int t1, int t2){
     pausa = false;
     activo = true;
     tiempoGeneracion = t1;
     tiempoGeneracion1 = t2;
+    this->mutexMesas = mutxmesa;
     this->mutexManejador = mutex;
     this->manejadorComensales = maneja;
 }
@@ -59,15 +60,16 @@ void GeneradorPersonasThread::run(){
         int personasCreadas = QRandomGenerator::global()->bounded(1, 6);
         qDebug()<<"estas son las personas creadas 2.0";
         qDebug()<<personasCreadas;
-        manejadorComensales->colaClientesEnEspera->encolar(generarPersonas(personasCreadas));
         mutexManejador->lock();
-        if(listaMesas->buscarDisponibilidad())
+        manejadorComensales->colaClientesEnEspera->encolar(generarPersonas(personasCreadas));
+        if(listaMesas->buscarDisponibilidad() && manejadorComensales->colaClientesEnEspera->frente)
             listaMesas->buscarDisponibilidad()->listaComensales = manejadorComensales->colaClientesEnEspera->desencolar();
         mutexManejador->unlock();
-        sleep(30);
+        sleep(10);
         while(pausa){
             sleep(static_cast<unsigned int>(sleepTime));
         }
+        //NO FUNCIONA EL HILO DE METER GENTE SE CAE EN LA
     }
 }
 

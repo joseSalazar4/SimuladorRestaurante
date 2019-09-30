@@ -19,9 +19,9 @@ void MeseroThread::run(){
     while(activo){
         mutexMesa->lock();
         if(mesero->revisarMesas()!= nullptr)
-           // mesero->pedirOrdenes(mesero->revisarMesas());
-        //mutexMesa->unlock();
-        //if(mesero-> cola de peticiones )
+           mesero->pedirOrdenes(mesero->revisarMesas());
+        mutexMesa->unlock();
+
         qDebug()<<mesero->nombre+" reportandose al trabajo";
         sleep(10);
     }

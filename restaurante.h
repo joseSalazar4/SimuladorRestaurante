@@ -99,7 +99,6 @@ public:
                 }
 
                 meseroThread->__init__(mesero, listaMesasAsignada, mutexPasteleria, mutexEnsaladas, mutexCocinaFuerte, mutexLavaplatos,mutexCaja, mutexManejador);
-
                 qDebug()<<"init al mesero #"+QString::number(i);
                 arrayMeserosThread[i] = meseroThread;
                 meseros->insertarFinal(mesero);

@@ -8,7 +8,6 @@ void ColaComensal::encolar (ListaComensales * dato){
         while (actual->siguienteLista != nullptr)
             actual = actual->siguienteLista;
         actual->siguienteLista = dato;
-
     }
 }
 

@@ -18,7 +18,8 @@ int GeneradorPersonasThread::generadorNumRandom(int rango1){
 QString GeneradorPersonasThread::generarNombre(){
     QString random;
     srand(static_cast<unsigned int>(time(nullptr)));
-    return random = arrayNombres[rand()%10];
+    random = arrayNombres[rand()%10];
+    return random;
 }
 void GeneradorPersonasThread::__init__(ManejadorComensales * maneja, QMutex * mutex, int t1, int t2){
     pausa = false;
@@ -37,15 +38,15 @@ GeneradorPersonasThread::GeneradorPersonasThread()
 ListaComensales * GeneradorPersonasThread::generarPersonas(int personasCreadas ){
 
     ListaComensales * lista = new ListaComensales();
-    qDebug()<< personasCreadas;
 
     for(int i = 0; i < personasCreadas; i++){
-        Comensal * nuevo = new Comensal(generarNombre()+QString::number(i));
+        QString nombre = generarNombre()+QString::number(i);
+        qDebug()<<nombre;
+        Comensal * nuevo = new Comensal(nombre);
         lista->insertarFinal(nuevo);
     }
     qDebug()<<lista->largo;
-    qDebug()<<lista->primerNodo->nombre;
-    qDebug()<<lista->primerNodo->siguiente->nombre;
+    qDebug()<<personasCreadas;
     return lista;
 }
 
@@ -56,9 +57,6 @@ void GeneradorPersonasThread::run(){
         qDebug()<<"tiempo de gen";
         qDebug()<<sleepTime;
         int personasCreadas = QRandomGenerator::global()->bounded(1, 6);
-        qDebug()<<"estas son las personas creadas";
-        qDebug()<<personasCreadas;
-        personasCreadas = QRandomGenerator::global()->bounded(tiempoGeneracion, tiempoGeneracion1);
         qDebug()<<"estas son las personas creadas 2.0";
         qDebug()<<personasCreadas;
         manejadorComensales->colaClientesEnEspera->encolar(generarPersonas(personasCreadas));

@@ -100,6 +100,7 @@ public:
         }
 
         for(int i = 0;i<cantidadMeseros;i++){
+            arrayMeserosThread[i]->mesero->nombre = "Mesero #"+QString::number(i);
             arrayMeserosThread[i]->start();
         }
         qDebug()<<"voy a LAVAAAAAAAAR";

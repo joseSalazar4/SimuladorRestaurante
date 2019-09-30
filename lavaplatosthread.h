@@ -9,10 +9,11 @@
 struct LavaplatosThread : public QThread
 {
     QMutex * mutex;
-    Lavaplatos * lavaplatos;
-    QLabel * imagenLavanderia;
     bool pausa, activo;
+    Lavaplatos * lavaplatos;
+    Lavaplatos * inventarioOrdenes;
     unsigned int tiempoSleep;
+    QLabel * imagenLavanderia;
 
     LavaplatosThread();
 

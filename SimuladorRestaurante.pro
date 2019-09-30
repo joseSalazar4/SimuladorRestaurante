@@ -28,7 +28,6 @@ SOURCES += \
     #componente.cpp \
     colacomensales.cpp \
     dialog.cpp \
-    entradadatosiniciales.cpp \
     generadorpersonasthread.cpp \
     lavaplatos.cpp \
     lavaplatosthread.cpp \

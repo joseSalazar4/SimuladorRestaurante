@@ -1,20 +1,19 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "meserothread.h"
+//#include "meserothread.h"
 #include "restaurante.h"
 #include <QMainWindow>
-
 
 
 namespace Ui {
 class MainWindow;
 }
 
+class MainWindow : public QMainWindow{
 
-class MainWindow : public QMainWindow
-{
     Q_OBJECT
+
 
 public:
     CajaThread cajaThread;
@@ -26,7 +25,7 @@ public:
 
 
     explicit MainWindow(QWidget *parent = nullptr);
-    //~MainWindow();
+    ~MainWindow();
 
     void on_progressBar_valueChanged(int value);
 

@@ -26,7 +26,7 @@ public:
     int generadorNumRandom(int rango1);
     int generadorNumRandom(int rango1, int rango2);
     ListaComensales * generarPersonas(int personasCreadas);
-    void __init__(ManejadorComensales * manejador, QMutex *,QMutex * ,int t1, int t2);
+    void __init__(ManejadorComensales * manejador, QMutex *,int t1, int t2);
 };
 
 #endif // GENERADORPERSONASTHREAD_H

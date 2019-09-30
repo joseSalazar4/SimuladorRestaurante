@@ -21,7 +21,7 @@ public:
     void run();
     void pausar();
     void continuar();
-    void __init__(Mesero*, QMutex * pasteleria, QMutex * ensaladas, QMutex * cocina, QMutex * lavaplatos, QMutex * caja, QMutex * mesa);
+    void __init__(Mesero*,ListaMesas *, QMutex * pasteleria, QMutex * ensaladas, QMutex * cocina, QMutex * lavaplatos, QMutex * caja, QMutex * mesa);
 };
 
 #endif // MESEROTHREAD_H

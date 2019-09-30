@@ -21,12 +21,11 @@ QString GeneradorPersonasThread::generarNombre(){
     random = arrayNombres[rand()%10];
     return random;
 }
-void GeneradorPersonasThread::__init__(ManejadorComensales * maneja, QMutex * mutex, QMutex * mutxmesa, int t1, int t2){
+void GeneradorPersonasThread::__init__(ManejadorComensales * maneja, QMutex * mutex, int t1, int t2){
     pausa = false;
     activo = true;
     tiempoGeneracion = t1;
     tiempoGeneracion1 = t2;
-    this->mutexMesas = mutxmesa;
     this->mutexManejador = mutex;
     this->manejadorComensales = maneja;
 }
@@ -55,31 +54,25 @@ void GeneradorPersonasThread::run(){
 
     while(activo){
         int sleepTime = QRandomGenerator::global()->bounded(tiempoGeneracion, tiempoGeneracion1);
-        qDebug()<<"tiempo de gen";
-        qDebug()<<sleepTime;
         int personasCreadas = QRandomGenerator::global()->bounded(1, 6);
-        qDebug()<<"estas son las personas creadas 2.0";
-        qDebug()<<personasCreadas;
         mutexManejador->lock();
         manejadorComensales->colaClientesEnEspera->encolar(generarPersonas(personasCreadas));
-        if(listaMesas->buscarDisponibilidad() && manejadorComensales->colaClientesEnEspera->frente)
+        if(listaMesas->buscarDisponibilidad() && manejadorComensales->colaClientesEnEspera->frente != nullptr)
             listaMesas->buscarDisponibilidad()->listaComensales = manejadorComensales->colaClientesEnEspera->desencolar();
         mutexManejador->unlock();
-        sleep(10);
+        sleep(static_cast<unsigned int>(sleepTime));
         while(pausa){
-            sleep(static_cast<unsigned int>(sleepTime));
+            sleep(1);
         }
         //NO FUNCIONA EL HILO DE METER GENTE SE CAE EN LA
     }
 }
 
 
-void GeneradorPersonasThread::pausar()
-{
+void GeneradorPersonasThread::pausar(){
     this->pausa = true;
 }
 
-void GeneradorPersonasThread::continuar()
-{
+void GeneradorPersonasThread::continuar(){
     this->pausa = false;
 }

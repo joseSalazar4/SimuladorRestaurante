@@ -1,17 +1,27 @@
 #include "colacomensales.h"
+#include "qdebug.h"
 
 void ColaComensal::encolar (ListaComensales * dato){
+    qDebug()<<"Voy a encolar";
+    largo++;
+    qDebug()<<largo;
     if (vacia())
          frente = final = dato;
     else{
         final->siguienteLista = dato;
         final = final->siguienteLista;
     }
+    qDebug()<<frente;
 }
 
 
 ListaComensales* ColaComensal::desencolar(){
     ListaComensales * lista = frente;
+
+    qDebug()<<"Voy a desencolar";
+    largo--;
+
+    qDebug()<<largo;
       if (!vacia()){
           frente = frente->siguienteLista;
           lista->siguienteLista = nullptr;

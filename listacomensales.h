@@ -6,7 +6,7 @@
 
 struct ListaComensales
 {
-    int largo;
+    int largo, id;
     Comensal * siguiente, * primerNodo, * ultimoNodo,* anterior;
     ListaComensales * siguienteLista, * primerLista, *listaAnterior;
     ListaComensales(){

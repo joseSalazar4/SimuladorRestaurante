@@ -11,11 +11,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 }
 
-/*MainWindow::~MainWindow()
+MainWindow::~MainWindow()
 {
     delete ui;
 }
-*/
+
 
 void MainWindow::on_pushButton_clicked()
 {

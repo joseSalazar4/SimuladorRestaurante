@@ -1,9 +1,9 @@
 #ifndef DIALOG_H
 #define DIALOG_H
 
+#include "MainWindow.h"
 #include <QDialog>
 #include "qdebug.h"
-#include "MainWindow.h"
 #include "qmessagebox.h"
 
 namespace Ui {
@@ -23,7 +23,7 @@ public:
 public slots:
     void on_pushButton_clicked();
 
-private:
+public:
     Ui::Dialog *ui;
 };
 

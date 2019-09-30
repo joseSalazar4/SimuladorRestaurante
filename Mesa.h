@@ -18,7 +18,6 @@ struct Mesa
         //meseroActivo = mesero;
         listaComensales = new ListaComensales();
     }
-
     void vaciarMesa();
     bool estaOcupada();
     bool comensalesTerminaron();

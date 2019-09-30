@@ -7,7 +7,8 @@ class ColaComensal
 {
 public:
     ListaComensales * frente, * final;
-    int maximo = 20, cantMesasActivas = 0;
+    int maximo = 20, cantMesasActivas = 0, largo = 0;
+
 
     ColaComensal()
     {

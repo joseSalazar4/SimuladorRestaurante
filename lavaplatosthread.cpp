@@ -21,9 +21,10 @@ void LavaplatosThread::run()
         }
         else{
             lavar(lavaplatos->desencolar()->plato);
-            sleep(tiempoSleep);
             mutex->unlock();
+            sleep(tiempoSleep);
         }
+
         //Cuando se presione el botón de Inactivo
         while (pausa)
             sleep(1);
@@ -31,13 +32,15 @@ void LavaplatosThread::run()
 }
 
 void LavaplatosThread::lavar(Plato * plato){
-    int tiempoLimpieza = 0;
-    while(tiempoLimpieza<plato->tiempoLavado){
-        tiempoLimpieza++;
+    while(plato->tiempoLavado>0){
         sleep(1);
     }
     plato->limpio = true;
     lavaplatos->platosLavados++;
+
+    Solicitud * nueva = new Solicitud();
+    nueva->plato = plato;
+    inventarioOrdenes->encolar(nueva);
 }
 
 void LavaplatosThread::pausar()

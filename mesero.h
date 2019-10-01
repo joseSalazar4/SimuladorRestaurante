@@ -3,6 +3,7 @@
 #include <QtCore>
 #include <QPixmap>
 
+#include "caja.h"
 #include "cola.h"
 #include "cocina.h"
 #include "componente.h"
@@ -15,6 +16,7 @@ public:
     bool activo;
     int cantMesas;
     QString nombre;
+    Caja * caja;
     Cola * colaPeticiones;
     Lavaplatos * lavaplatos;
     Mesero * siguiente, * anterior;

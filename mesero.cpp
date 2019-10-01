@@ -11,51 +11,57 @@ void Mesero::pedirOrdenes(Mesa * mesa){
         if(tmp!=nullptr){
             int tipo_pedido=mesa->tipoPedido;
             Solicitud * nueva;
-            switch(tipo_pedido){
-            case 1:
-                nueva = tmp->pedirEntrada(tmp->probabilidadPedir);
-                if(nueva){
-                    nueva->cliente = tmp->nombre;
-                    nueva->numeroMesa = tmp->numeroMesa;
-                    tmp->cuentaAPagar+= nueva->plato->precio;
 
-                    listaSolicitudes->insertarFinal(nueva);
+            switch(tipo_pedido){
+                case 1:
+                    nueva = tmp->pedirEntrada(tmp->probabilidadPedir);
+                    if(nueva){
+                        nueva->tipo = 1;
+                        nueva->cliente = tmp->nombre;
+                        nueva->numeroMesa = tmp->numeroMesa;
+                        tmp->cuentaAPagar+= nueva->plato->precio;
+                        listaSolicitudes->insertarFinal(nueva);
+                    }
+                    break;
+                case 2:
+                    nueva = tmp->pedirPlatoFuerte(tmp->probabilidadPedir);
+                    if(nueva){
+                        nueva->tipo = 2;
+                        nueva->cliente = tmp->nombre;
+                        nueva->numeroMesa = tmp->numeroMesa;
+                        tmp->cuentaAPagar+= nueva->plato->precio;
+                        listaSolicitudes->insertarFinal(nueva);
+                    }
+                    break;
+                case 3:
+                    nueva = tmp->pedirPostre(tmp->probabilidadPedir);
+                    if(nueva){
+                        nueva->tipo = 3;
+                        nueva->cliente = tmp->nombre;
+                        nueva->numeroMesa = tmp->numeroMesa;
+                        tmp->cuentaAPagar+= nueva->plato->precio;
+                    }
+                    break;
+                default:
+                    nueva = tmp->pedirCuenta();
+                    if(nueva){
+                        nueva->tipo = 4;
+                        nueva->cliente = tmp->nombre;
+                        nueva->numeroMesa = tmp->numeroMesa;
+                        tmp->cuentaAPagar+= nueva->plato->precio;
+                        listaSolicitudes->insertarFinal(nueva);
+                    }
+                    mesa->tipoPedido = 1;
+                    break;
                 }
-                break;
-            case 2:
-                nueva = tmp->pedirPlatoFuerte(tmp->probabilidadPedir);
-                if(nueva){
-                    nueva->cliente = tmp->nombre;
-                    nueva->numeroMesa = tmp->numeroMesa;
-                    tmp->cuentaAPagar+= nueva->plato->precio;
-                    listaSolicitudes->insertarFinal(nueva);
-                }
-                break;
-            case 3:
-                nueva = tmp->pedirPostre(tmp->probabilidadPedir);
-                if(nueva){
-                    nueva->cliente = tmp->nombre;
-                    nueva->numeroMesa = tmp->numeroMesa;
-                    tmp->cuentaAPagar+= nueva->plato->precio;
-                }
-                break;
-            default:
-                nueva = tmp->pedirCuenta();
-                if(nueva){
-                    nueva->cliente = tmp->nombre;
-                    nueva->numeroMesa = tmp->numeroMesa;
-                    tmp->cuentaAPagar+= nueva->plato->precio;
-                    listaSolicitudes->insertarFinal(nueva);
-                }
-                mesa->tipoPedido = 1;
-                break;
-            }
 
             tmp = tmp->siguiente;
         }
     }
-    mesa->pedirAsistencia=false;
+    if(!listaSolicitudes->estaVacia()){
     colaPeticiones->encolar(listaSolicitudes);
+    mesa->pedirAsistencia=false;
+    }
     mesa->tipoPedido++;
 }
 

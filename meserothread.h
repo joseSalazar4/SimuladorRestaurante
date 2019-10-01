@@ -11,10 +11,11 @@ class MeseroThread: public QThread
 {
 
 public:
-    MeseroThread * siguiente, *anterior;
     Mesero * mesero;
     QLabel * etiqueta;
     bool pausa, activo;
+    unsigned int tiempoSleep;
+    MeseroThread * siguiente, *anterior;
     QMutex * mutexPasteleria, * mutexCocina, * mutexEnsaladas, * mutexCaja, * mutexLavaplatos, * mutexMesa;
     MeseroThread(){
         siguiente = anterior = nullptr;

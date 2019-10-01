@@ -62,10 +62,7 @@ void GeneradorPersonasThread::run(){
             listaMesas->buscarDisponibilidad()->listaComensales = manejadorComensales->colaClientesEnEspera->desencolar();
         mutexManejador->unlock();
         sleep(static_cast<unsigned int>(sleepTime));
-        while(pausa){
-            sleep(1);
-        }
-        //NO FUNCIONA EL HILO DE METER GENTE SE CAE EN LA
+        while(pausa) sleep(1);
     }
 }
 

@@ -5,7 +5,7 @@
 
 struct ListaMesas
 {
-    int largo;
+    int largo = 0;
     Mesa  * primerNodo, * ultimoNodo;
     ListaMesas(){
         primerNodo = ultimoNodo = nullptr;

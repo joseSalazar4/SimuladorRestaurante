@@ -17,7 +17,6 @@ int GeneradorPersonasThread::generadorNumRandom(int rango1){
 
 QString GeneradorPersonasThread::generarNombre(){
     QString random;
-    srand(static_cast<unsigned int>(time(nullptr)));
     random = arrayNombres[rand()%10];
     return random;
 }
@@ -28,6 +27,8 @@ void GeneradorPersonasThread::__init__(ManejadorComensales * maneja, QMutex * mu
     tiempoGeneracion1 = t2;
     this->mutexManejador = mutex;
     this->manejadorComensales = maneja;
+    srand(static_cast<unsigned int>(time(nullptr)));
+
 }
 
 GeneradorPersonasThread::GeneradorPersonasThread()

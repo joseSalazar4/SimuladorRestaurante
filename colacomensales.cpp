@@ -6,7 +6,7 @@ void ColaComensal::encolar (ListaComensales * dato){
     largo++;
     qDebug()<<largo;
     if (vacia())
-         frente = final = dato;
+        frente = final = dato;
     else{
         final->siguienteLista = dato;
         final = final->siguienteLista;
@@ -17,29 +17,25 @@ void ColaComensal::encolar (ListaComensales * dato){
 
 ListaComensales* ColaComensal::desencolar(){
     ListaComensales * lista = frente;
-
-    qDebug()<<"Voy a desencolar";
     largo--;
-
-    qDebug()<<largo;
-      if (!vacia()){
-          frente = frente->siguienteLista;
-          lista->siguienteLista = nullptr;
-      }
-      return lista;
+    if (!vacia()){
+        frente = frente->siguienteLista;
+        lista->siguienteLista = nullptr;
+    }
+    return lista;
 }
 
 bool ColaComensal::vacia ()
 {
-     if (frente == nullptr)
+    if (frente == nullptr)
         return true;
-     else
-         return false;
+    else
+        return false;
 }
 
 
 ListaComensales * ColaComensal::verFrente()
 {
-      return frente;
+    return frente;
 }
 

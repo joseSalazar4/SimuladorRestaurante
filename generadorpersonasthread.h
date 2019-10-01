@@ -17,7 +17,7 @@ public:
     bool pausa = false, activo = true;
     ManejadorComensales * manejadorComensales;
     int tiempoGeneracion1,tiempoGeneracion, cantidadGenerada;
-    QString arrayNombres[10] = {"Palpatine" , "Padme" , "Kit Fisto","Anakin", "Obi-Wan", "San Holo", "Sofia", "Luis", "Fiorella", "Jose"};;
+    QString arrayNombres[10] = {"Palpatine" , "Padme" , "Kit Fisto","Anakin", "Obi-Wan", "San Holo", "Sofia", "Luis", "Fiorella", "Jose"};
     GeneradorPersonasThread();
 
     void run();

@@ -16,12 +16,45 @@ void MeseroThread::__init__(Mesero* _mesero,ListaMesas * mesas, QMutex * pmutexC
 }
 
 void MeseroThread::run(){
+    int tipo_orden;
+    Mesa*mesa_revisada;
     while(activo){
+
+        // We check if any table needs assistance
         mutexMesa->lock();
-        if(mesero->revisarMesas()!= nullptr)
-           mesero->pedirOrdenes(mesero->revisarMesas());
+        mesa_revisada=mesero->revisarMesas();
+        if(mesa_revisada!= nullptr)
+           mesero->pedirOrdenes(mesa_revisada);
         mutexMesa->unlock();
 
+        // Then we ...
+        // todo: entregar orden en la cocina respectiva
+        tipo_orden=mesero->colaPeticiones->frente->primerNodo->tipo;
+        switch (tipo_orden) {
+        case 1:
+            mutexEnsaladas->lock();
+            // ...
+            mutexEnsaladas->unlock();
+            break;
+        case 2:
+            mutexCocina->lock();
+            // ...
+            mutexCocina->unlock();
+            break;
+        case 3:
+            mutexPasteleria->lock();
+            // ...
+            mutexPasteleria->unlock();
+            break;
+        case 4:
+            mutexCaja->lock();
+            // ...
+            mutexCaja->unlock();
+            break;
+        default:
+            // ...
+            break;
+        }
         qDebug()<<mesero->nombre+" reportandose al trabajo";
         sleep(10);
     }

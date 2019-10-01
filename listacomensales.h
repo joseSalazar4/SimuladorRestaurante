@@ -8,7 +8,7 @@ struct ListaComensales
 {
     int largo, id;
     Comensal * siguiente, * primerNodo, * ultimoNodo,* anterior;
-    ListaComensales * siguienteLista, * primerLista, *listaAnterior;
+    ListaComensales * siguienteLista=nullptr, * primerLista=nullptr, *listanterior=nullptr;
     ListaComensales(){
         primerNodo = ultimoNodo = nullptr;
         largo = 0;

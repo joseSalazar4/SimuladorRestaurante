@@ -10,7 +10,7 @@ struct Mesa
     int tipoPedido;       //1 Entrada 2 Plato fuerte 3 postre 4 cuenta
     //Mesero * meseroActivo;
     bool pedirAsistencia = true;
-    Mesa * siguiente, * anterior;
+    Mesa * siguiente=nullptr, * anterior=nullptr;
     ListaComensales * listaComensales;
 
     Mesa(QString _id){

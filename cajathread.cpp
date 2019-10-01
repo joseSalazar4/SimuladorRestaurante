@@ -11,20 +11,22 @@ void CajaThread::__init__(QLabel* _etiqueta, Caja * _caja, QMutex * mutx){
     this->pausa = false;
     this->mutexCaja = mutx;
     imagenCaja = _etiqueta;
+    imagenCaja->setToolTip("No hay cuentas por calcular");
 }
 
 void CajaThread::run(){
     while(activo){
+        mutexCaja->lock();
         if(!caja->vacia()){
             int mesaActual = caja->frente->numeroMesa;  //Tons si hay solicitudes que saque todas hasta que haya otra mesa
+            this->imagenCaja->setToolTip("Calculando cuenta de la mesa #"+QString::number(mesaActual));
             while(caja->desencolar()->numeroMesa == mesaActual){
                 caja->frente->cuenta = caja->calcularCuenta();
-                //llamarMesero DARLE cuenta
-
+                //llamarMesero ^ DARLE cuenta
                 sleep(tiempoSleep);
             }
         }
-
+        mutexCaja->unlock();
         while(pausa) sleep(1);
     }
 }

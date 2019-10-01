@@ -13,3 +13,13 @@ void Mesa::vaciarMesa(){
     ocupada = 0;
     imagen->setToolTip("La mesa está vacía"); //repetir esto en todos los labels en los metodos correspondientes.
 }
+
+bool Mesa::comensalesTerminaron(){
+    Comensal * clienteAux = listaComensales->primerNodo;
+    while(clienteAux){
+        if(!clienteAux->comensalTerminoComer) return false;
+        clienteAux = clienteAux->siguiente;
+    }
+    return true;
+
+}

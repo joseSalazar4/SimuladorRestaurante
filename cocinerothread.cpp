@@ -25,6 +25,10 @@ void CocineroThread::run()
     }
 }
 
+void CocineroThread:: __init__(QMutex *, QLabel *, Cocinero *, Cocina *){
+
+}
+
 void CocineroThread::cocinar(Plato * plato){
     if(plato){
         plato->vacio=false;

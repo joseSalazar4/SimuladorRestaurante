@@ -1,4 +1,5 @@
 #include "comensal.h"
+#include "QRandomGenerator"
 
 
 int generadorNumRandom(int rango1, int rango2){
@@ -73,6 +74,17 @@ void Comensal::dejarMesa(){
 
 }
 
+void Comensal::comer(){
+    int duracionComida = QRandomGenerator::global()->bounded(tiempoComer1, tiempoComer2);
+    comensalTerminoComer = false;
+    while (duracionComida>0) {
+        //todo debe durar segundos pero no es un thread
+        this->imagenPersona->setToolTip("Faltan "+QString::number(duracionComida)+" segundos para que termine de comer");
+        duracionComida--;
+
+    }
+    comensalTerminoComer = true;
+}
 void Comensal::llamarMesero(){
 
 }

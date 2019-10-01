@@ -19,7 +19,7 @@ bool ListaPlatos::estaVacia(){
     return  primerNodo == nullptr;
 }
 
-
+//TODO Que los primeros 10 sean entradas y así. El profe quiere que se cargen antes de tons maybe en el csontructor un for miedo
 Plato * ListaPlatos::buscarPlatoRandomTipo(int tipo){
     Plato * tmp = primerNodo;
     if(tipo==1){

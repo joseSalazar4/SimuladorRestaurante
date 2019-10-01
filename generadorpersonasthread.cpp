@@ -56,11 +56,15 @@ void GeneradorPersonasThread::run(){
     while(activo){
         int sleepTime = QRandomGenerator::global()->bounded(tiempoGeneracion, tiempoGeneracion1);
         int personasCreadas = QRandomGenerator::global()->bounded(1, 6);
+        cantPersonasGeneradas->setText(QString::number(personasCreadas));
+        cantPersonasGeneradas->repaint();
+
         mutexManejador->lock();
         manejadorComensales->colaClientesEnEspera->encolar(generarPersonas(personasCreadas));
         if(listaMesas->buscarDisponibilidad() && manejadorComensales->colaClientesEnEspera->frente != nullptr)
             listaMesas->buscarDisponibilidad()->listaComensales = manejadorComensales->colaClientesEnEspera->desencolar();
         mutexManejador->unlock();
+
         sleep(static_cast<unsigned int>(sleepTime));
         while(pausa) sleep(1);
     }

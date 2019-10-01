@@ -1,17 +1,16 @@
 #ifndef COCINEROTHREAD_H
 #define COCINEROTHREAD_H
 
-#include <QtCore>
 #include <QtWidgets/QLabel>
 #include"cocina.h"
 
 struct CocineroThread : public QThread{
     QMutex * mutex;
-    bool pausa, activo;
-    QLabel * imagenChef;
-    Cocinero * cocinero;
     Cocina * cocina;
+    bool pausa, activo;
+    Cocinero * cocinero;
     unsigned int tiempoSleep;
+    QLabel * imagenChef, * tiempoRestante;
 
     CocineroThread();
 

@@ -9,7 +9,7 @@
 #include "meserothread.h"
 #include "manejadorcomensales.h"
 #include "generadorpersonasthread.h"
-
+#include"qurl.h"
 struct Restaurante {
 public:
 
@@ -19,10 +19,11 @@ public:
     ListaMeseros * meseros;
     Lavaplatos * lavaplatos;
     LavaplatosThread lavaplatosThread;
-    MeseroThread * arrayMeserosThread[20];
     ManejadorComensales * manejadorComensales;
     GeneradorPersonasThread generadorPersonas;
     Cocina * principal, * pasteleria, * ensaladas;
+    QLabel * arrayImagenesMesas[20]=  {};
+    MeseroThread * arrayMeserosThread[20];
     int cantMeseros, cantCocineros, cantMesas, cantMesasPorMesero,tiempoGen1,tiempoGen2,mesasSobrantes = 0;
     QMutex * mutexPasteleria , *mutexCocinaFuerte , * mutexEnsaladas, * mutexLavaplatos, * mutexCaja, * mutexManejador;
 
@@ -78,6 +79,7 @@ public:
         for(int i = 0;i<cantidadMeseros;i++){
 
         }
+
         generadorPersonas.__init__(manejadorComensales,mutexManejador, tiempoGen1, tiempoGen2);
         generadorPersonas.listaMesas = this->mesas;
         generadorPersonas.start();
@@ -92,6 +94,7 @@ public:
 
                 for(int j = 0;j<cantMesasMesero;j++){
                     Mesa * mesaAux = new Mesa("Mesa #"+QString::number(j+1));
+                    mesaAux->imagen = arrayImagenesMesas[i]; //ACA VA UN ARRAY DE QLABELS PA ASIGNAR CON UNF FORVEA LO DE EL ORDEN
                     //insertamos en la lista total de mesas
                     mesas->insertarFinal(mesaAux);
                     //insertamos en la lista que se asignará a cada mesero y que tiene las mesas que le corresponden

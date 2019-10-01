@@ -1,4 +1,4 @@
-#ifndef PLATO_H
+ #ifndef PLATO_H
 #define PLATO_H
 
 #include "qstring.h"

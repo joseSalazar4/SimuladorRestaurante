@@ -11,4 +11,5 @@ void Mesa::insertarComensales(QString nombre){
 void Mesa::vaciarMesa(){
     listaComensales->vaciar();
     ocupada = 0;
+    imagen->setToolTip("La mesa está vacía"); //repetir esto en todos los labels en los metodos correspondientes.
 }

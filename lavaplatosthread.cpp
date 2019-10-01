@@ -32,12 +32,16 @@ void LavaplatosThread::run()
 }
 
 void LavaplatosThread::lavar(Plato * plato){
-    while(plato->tiempoLavado>0){
+    int tiempo = plato->tiempoLavado;
+    while(tiempo>0){
+        tiempoRestante->setText(QString::number(tiempo));
+        tiempo--;
         sleep(1);
     }
     plato->limpio = true;
     lavaplatos->platosLavados++;
 
+    //llevar control de que se ha cocinado.
     Solicitud * nueva = new Solicitud();
     nueva->plato = plato;
     inventarioOrdenes->encolar(nueva);

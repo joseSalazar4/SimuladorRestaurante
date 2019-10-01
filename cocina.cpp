@@ -15,7 +15,6 @@ if (vacia())
         }
 }
 
-
 Solicitud * Cocina::desencolar()
 {
       if (vacia())

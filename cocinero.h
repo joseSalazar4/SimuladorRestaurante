@@ -7,6 +7,7 @@
 
 struct Cocinero {
     QString tipoCocinero;
+
     bool activo, cocinando;
 
     Cocinero(QString _tipoCocinero) {

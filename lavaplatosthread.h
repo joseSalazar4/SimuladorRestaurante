@@ -13,7 +13,7 @@ struct LavaplatosThread : public QThread
     Lavaplatos * lavaplatos;
     Lavaplatos * inventarioOrdenes;
     unsigned int tiempoSleep;
-    QLabel * imagenLavanderia;
+    QLabel * imagenLavanderia, * tiempoRestante ;
 
     LavaplatosThread();
 

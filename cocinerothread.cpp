@@ -1,9 +1,4 @@
-#include"cocinerothread.h"
-
-
-CocineroThread::CocineroThread(){
-    //El constructor no permite los enlaces que deseamos
-}
+#include "cocinerothread.h"
 
 void CocineroThread::run()
 {
@@ -15,7 +10,8 @@ void CocineroThread::run()
             tiempoSleep = static_cast <unsigned int> (plato->tiempoCocina);
             while(0<tiempoSleep){
                 tiempoSleep--;
-                // todo: agregar el label para cambiarle el contendio y repintarlo
+                tiempoRestante->setText(QString::number(tiempoSleep));
+                tiempoRestante->repaint();
                 sleep(1);
             }
             cocinar(plato);
@@ -25,8 +21,7 @@ void CocineroThread::run()
         sleep(1);
 
         //Cuando se presione el botón de Inactivo
-        while (pausa)
-            sleep(1);
+        while (pausa) sleep(1);
     }
 }
 
@@ -48,9 +43,4 @@ void CocineroThread::pausar()
 void CocineroThread::continuar()
 {
     this->pausa = false;
-}
-
-
-void CocineroThread::establecerSleep(unsigned int nuevoTemp){
-    tiempoSleep = nuevoTemp;
 }

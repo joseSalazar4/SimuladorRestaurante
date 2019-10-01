@@ -16,7 +16,7 @@ Dialog::~Dialog()
 void Dialog::on_pushButton_clicked()
 {
     //Extraemos los datos de la ventana.
-
+    ui->label->setToolTip("Hola");  //ASI HACEMOSLOS TOOLTIPS
     QString cantMesas =  ui->lineaCantMesas->text();
     QString tiempoGen1 = ui->lineaTiempoGen1->text();
     QString cantiCocineros = ui->lineaCocineros->text();

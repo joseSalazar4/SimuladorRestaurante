@@ -2,6 +2,7 @@
 #define LISTASOLICITUDES_H
 
 #include "solicitud.h"
+
 struct ListaSolicitudes {
     int largo;
     Solicitud * primerNodo, *ultimoNodo;

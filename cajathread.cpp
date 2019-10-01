@@ -25,8 +25,7 @@ void CajaThread::run(){
             }
         }
 
-        while(pausa)
-            sleep(1);
+        while(pausa) sleep(1);
     }
 }
 

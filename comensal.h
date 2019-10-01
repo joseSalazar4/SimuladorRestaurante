@@ -4,6 +4,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <iostream>
+#include "qlabel.h"
 
 #include "qstring.h"
 #include "solicitud.h"
@@ -11,6 +12,7 @@
 
 struct Comensal
 {
+    QLabel * imagenPersona;
     ListaPlatos * listaPlatos;
     QString nombre, comidaActual;
     Comensal *  siguiente, * anterior;
@@ -26,12 +28,12 @@ struct Comensal
     bool comer();
     void dejarMesa();
     void llamarMesero();
+    QString generarNombre();
     Solicitud * pedirCuenta();
     Plato * escogerPlato(int t);
     Solicitud * pedirPostre(int porcentajeACumplir);
     Solicitud * pedirEntrada(int porcentajeACumplir);
     Solicitud * pedirPlatoFuerte(int porcentajeACumplir);
-    QString generarNombre();
 
 };
 

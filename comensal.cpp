@@ -1,4 +1,4 @@
-#include "Comensal.h"
+#include "comensal.h"
 
 
 int generadorNumRandom(int rango1, int rango2){

@@ -1,20 +1,21 @@
 <RCC>
     <qresource prefix="/imagenes">
-        <file>camarero.png</file>
-        <file>34343.png</file>
-        <file>Ca3434pture.PNG</file>
-        <file>Cap21ture.PNG</file>
-        <file>Capaaaature.PNG</file>
-        <file>Captu3e.PNG</file>
-        <file>Captu1212111re.PNG</file>
-        <file>Captur33e.PNG</file>
-        <file>Captur221e.PNG</file>
-        <file>Capture.PNG</file>
-        <file>Capture1.PNG</file>
-        <file>Capture12.PNG</file>
-        <file>Capture1212.PNG</file>
-        <file>cashier.png</file>
-        <file>configuration.png</file>
-        <file>student-on-chair-from-side-view.png</file>
+        <file>img/34343.png</file>
+        <file>img/Ca3434pture.PNG</file>
+        <file>img/camarero.png</file>
+        <file>img/Cap21ture.PNG</file>
+        <file>img/Capaaaature.PNG</file>
+        <file>img/Captu3e.PNG</file>
+        <file>img/Captu1212111re.PNG</file>
+        <file>img/Captur33e.PNG</file>
+        <file>img/Captur221e.PNG</file>
+        <file>img/Capture.PNG</file>
+        <file>img/Capture1.PNG</file>
+        <file>img/Capture12.PNG</file>
+        <file>img/Capture1212.PNG</file>
+        <file>img/cashier.png</file>
+        <file>img/configuration.png</file>
+        <file>img/restaurante.png</file>
+        <file>img/student-on-chair-from-side-view.png</file>
     </qresource>
 </RCC>

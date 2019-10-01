@@ -1,7 +1,7 @@
 #ifndef LISTAINGREDIENTES_H
 #define LISTAINGREDIENTES_H
 
-#include"Ingrediente.h"
+#include"ingrediente.h"
 
 class ListaIngredientes
 {

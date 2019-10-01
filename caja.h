@@ -1,7 +1,7 @@
 #ifndef CAJA_H
 #define CAJA_H
 
-#include"Solicitud.h"
+#include"solicitud.h"
 
 struct Caja
 {

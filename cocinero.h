@@ -2,7 +2,7 @@
 #define COCINERO_H
 
 #include <QtCore>
-#include "Solicitud.h"
+#include "solicitud.h"
 #include "plato.h"
 
 struct Cocinero {

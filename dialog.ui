@@ -61,6 +61,9 @@
      <height>24</height>
     </rect>
    </property>
+   <property name="text">
+    <string>12</string>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineaCantMeseros">
    <property name="geometry">
@@ -76,6 +79,9 @@
      <kerning>false</kerning>
     </font>
    </property>
+   <property name="text">
+    <string>12</string>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineaCocineros">
    <property name="geometry">
@@ -85,6 +91,9 @@
      <width>108</width>
      <height>24</height>
     </rect>
+   </property>
+   <property name="text">
+    <string>2</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -113,7 +122,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="MyResources.qrc">:/imagenes/configuration.png</pixmap>
+    <pixmap>:/imagenes/configuration.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>false</bool>
@@ -169,18 +178,31 @@
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
    </property>
-   <widget class="QLineEdit" name="lineaTiempoGen1"/>
+   <widget class="QLineEdit" name="lineaTiempoGen1">
+    <property name="text">
+     <string>10</string>
+    </property>
+   </widget>
    <widget class="QLineEdit" name="lineaTiempoGen2">
     <property name="font">
      <font>
       <stylestrategy>PreferAntialias</stylestrategy>
      </font>
     </property>
+    <property name="text">
+     <string>20</string>
+    </property>
    </widget>
   </widget>
  </widget>
- <resources>
-  <include location="MyResources.qrc"/>
- </resources>
+ <tabstops>
+  <tabstop>lineaCantMeseros</tabstop>
+  <tabstop>lineaCantMesas</tabstop>
+  <tabstop>lineaCocineros</tabstop>
+  <tabstop>lineaTiempoGen1</tabstop>
+  <tabstop>lineaTiempoGen2</tabstop>
+  <tabstop>pushButton</tabstop>
+ </tabstops>
+ <resources/>
  <connections/>
 </ui>

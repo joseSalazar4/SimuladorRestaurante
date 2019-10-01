@@ -2,7 +2,7 @@
 #define LISTACOMENSALES_H
 
 
-#include "Comensal.h"
+#include "comensal.h"
 
 struct ListaComensales
 {

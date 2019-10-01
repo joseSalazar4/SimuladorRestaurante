@@ -16,9 +16,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Cocinero.cpp \
-    CocineroThread.cpp \
-    Comensal.cpp \
+    cocinero.cpp \
+    cocineroThread.cpp \
+    comensal.cpp \
     MainWindow.cpp \
     caja.cpp \
     cajathread.cpp \
@@ -49,15 +49,15 @@ SOURCES += \
 
 
 HEADERS += \
-    Cocinero.h \
-    CocineroThread.h \
-    Comensal.h \
+    cocinero.h \
+    cocineroThread.h \
+    comensal.h \
     #Componente.h \
-    Ingrediente.h \
+    ingrediente.h \
     MainWindow.h \
     #Mediador.h \
-    Mesero.h \
-    Solicitud.h \
+    mesero.h \
+    solicitud.h \
     caja.h \
     cajathread.h \
     cocina.h \
@@ -75,7 +75,7 @@ HEADERS += \
     listaplatos.h \
     listasolicitudes.h \
     manejadorcomensales.h \
-    mesa.h\ \
+    mesa.h\
     meserothread.h \
     pila.h \
     plato.h \

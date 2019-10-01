@@ -2,7 +2,7 @@
 #define COCINA_H
 
 #include"qstring.h"
-#include "Cocinero.h"
+#include "cocinero.h"
 struct Cocina
 {
     QString tipo;

@@ -1,4 +1,4 @@
-#include"CocineroThread.h"
+#include"cocinerothread.h"
 
 
 CocineroThread::CocineroThread(){

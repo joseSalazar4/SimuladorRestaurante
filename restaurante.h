@@ -4,7 +4,7 @@
 #include "listamesas.h"
 #include "cajathread.h"
 #include "listameseros.h"
-#include "CocineroThread.h"
+#include "cocinerothread.h"
 #include "lavaplatosthread.h"
 #include "meserothread.h"
 #include "manejadorcomensales.h"

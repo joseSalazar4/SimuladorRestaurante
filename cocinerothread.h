@@ -2,7 +2,7 @@
 #define COCINEROTHREAD_H
 
 #include <QtCore>
-#include <QLabel>
+#include <QtWidgets/QLabel>
 #include"cocina.h"
 
 struct CocineroThread : public QThread{

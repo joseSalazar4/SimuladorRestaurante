@@ -6,7 +6,7 @@
 #include <iostream>
 
 #include "qstring.h"
-#include "Solicitud.h"
+#include "solicitud.h"
 #include "listaplatos.h"
 
 struct Comensal

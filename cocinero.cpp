@@ -1,4 +1,4 @@
-#include "Cocinero.h"
+#include "cocinero.h"
 
 
 Solicitud * Cocinero::colocarOrdenLista(Plato * plato){

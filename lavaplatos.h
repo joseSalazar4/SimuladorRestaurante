@@ -1,7 +1,7 @@
 #ifndef LAVAPLATOS_H
 #define LAVAPLATOS_H
 
-#include "Solicitud.h"
+#include "solicitud.h"
 
 struct Lavaplatos
 {

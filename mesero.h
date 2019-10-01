@@ -1,7 +1,6 @@
 #ifndef MESERO_H
 #define MESERO_H
 #include <QtCore>
-#include <QLabel>
 #include <QPixmap>
 
 #include "cola.h"

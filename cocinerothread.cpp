@@ -15,6 +15,7 @@ void CocineroThread::run()
             tiempoSleep = static_cast <unsigned int> (plato->tiempoCocina);
             while(0<tiempoSleep){
                 tiempoSleep--;
+                // todo: agregar el label para cambiarle el contendio y repintarlo
                 sleep(1);
             }
             cocinar(plato);

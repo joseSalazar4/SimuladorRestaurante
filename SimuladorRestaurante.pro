@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     cocinero.cpp \
     cocineroThread.cpp \
+    cocinerothread.cpp \
     comensal.cpp \
     MainWindow.cpp \
     caja.cpp \
@@ -51,6 +52,7 @@ SOURCES += \
 HEADERS += \
     cocinero.h \
     cocineroThread.h \
+    cocinerothread.h \
     comensal.h \
     #Componente.h \
     ingrediente.h \

@@ -12,7 +12,7 @@ struct CocineroThread : public QThread{
     unsigned int tiempoSleep;
     QLabel * imagenChef, * tiempoRestante;
 
-    CocineroThread();
+    CocineroThread(){}
 
     void run();
     void pausar();

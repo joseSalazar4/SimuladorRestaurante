@@ -1,4 +1,4 @@
-#include "Solicitud.h"
+#include "solicitud.h"
 
 Solicitud::Solicitud(int _destino , int _accion, Plato * _plato)
 {

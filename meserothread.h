@@ -19,6 +19,7 @@ public:
     QMutex * mutexPasteleria, * mutexCocina, * mutexEnsaladas, * mutexCaja, * mutexLavaplatos, * mutexMesa;
     MeseroThread(){
         siguiente = anterior = nullptr;
+        tiempoSleep=5;
     }
 
     void run();

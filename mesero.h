@@ -17,7 +17,7 @@ public:
     int cantMesas;
     QString nombre;
     Caja * caja;
-    Cola * colaPeticiones;
+    Cola * colaPeticiones = nullptr;
     Lavaplatos * lavaplatos;
     Mesero * siguiente, * anterior;
     Cocina * pasteleria, * ensaladas, * cocina;

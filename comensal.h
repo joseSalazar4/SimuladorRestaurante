@@ -20,7 +20,7 @@ struct Comensal
         nombre = _nombre;
         comidaActual = "";
         siguiente = anterior = nullptr;
-        cuentaAPagar = numeroMesa = probabilidadPedir = 0;
+        cuentaAPagar = numeroMesa = probabilidadPedir = 90;
     }
 
     bool comer();

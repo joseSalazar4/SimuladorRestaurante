@@ -6,7 +6,7 @@
 struct Mesa
 {
     QString ID;
-    int ocupada;          //1 es Ocupada 0 es disponible -1 no está disponible del todo
+    short ocupada;          //1 es Ocupada 0 es disponible -1 no está disponible del todo
     int tipoPedido;       //1 Entrada 2 Plato fuerte 3 postre 4 cuenta
     //Mesero * meseroActivo;
     bool pedirAsistencia = true;

@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "Solicitud.h"
+#include "solicitud.h"
 using namespace std;
 
 

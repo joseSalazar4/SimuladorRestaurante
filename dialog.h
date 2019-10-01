@@ -2,9 +2,9 @@
 #define DIALOG_H
 
 #include "MainWindow.h"
-#include <QDialog>
 #include "qdebug.h"
-#include "qmessagebox.h"
+
+#include <QtWidgets/QDialog>
 
 namespace Ui {
 class Dialog;

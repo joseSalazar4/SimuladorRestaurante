@@ -3,7 +3,7 @@
 
 
 #include<QtCore>
-#include <QLabel>
+#include <QtWidgets/QLabel>
 #include"lavaplatos.h"
 
 struct LavaplatosThread : public QThread

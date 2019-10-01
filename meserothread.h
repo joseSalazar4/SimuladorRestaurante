@@ -2,7 +2,9 @@
 #define MESEROTHREAD_H
 
 #include <QtCore>
-#include <QLabel>
+
+#include <QtWidgets/QLabel>
+
 #include "mesero.h"
 
 class MeseroThread: public QThread

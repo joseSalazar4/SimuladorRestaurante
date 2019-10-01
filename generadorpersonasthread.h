@@ -5,7 +5,8 @@
 #include "qthread.h"
 #include "QRandomGenerator"
 #include "manejadorcomensales.h"
-#include "qlabel.h"
+
+#include <QtWidgets/QLabel>
 class GeneradorPersonasThread : public QThread
 {
 

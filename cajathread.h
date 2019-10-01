@@ -3,7 +3,7 @@
 
 
 #include <QtCore>
-#include <QLabel>
+#include <QtWidgets/QLabel>
 #include"caja.h"
 
 struct CajaThread : public QThread{

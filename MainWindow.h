@@ -3,7 +3,7 @@
 
 //#include "meserothread.h"
 #include "restaurante.h"
-#include <QMainWindow>
+#include <QtWidgets/QMainWindow>
 
 
 namespace Ui {

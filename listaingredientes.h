@@ -3,13 +3,17 @@
 
 #include"ingrediente.h"
 
-class ListaIngredientes
+struct ListaIngredientes
 {
-    Ingrediente * primerNodo;
+    int largo = 0;
+    Ingrediente * primerNodo, * ultimoNodo;
 
     ListaIngredientes(){
-        primerNodo = nullptr;
+        primerNodo = ultimoNodo = nullptr;
     }
+
+    bool estaVacia();
+    void insertarFinal(Ingrediente * ingredienteNuevo);
 };
 
 #endif // LISTAINGREDIENTES_H

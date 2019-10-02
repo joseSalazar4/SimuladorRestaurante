@@ -12,6 +12,7 @@ using namespace std;
 struct Ingrediente {
 
     int cantidad;
+    Ingrediente * siguiente, * anterior;
     string nombre;
 
     Ingrediente(string s, int c){

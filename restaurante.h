@@ -208,12 +208,12 @@ public:
         Ingrediente * ingrediente = new Ingrediente();
         ListaIngredientes * listaIngredientesGenerica = new ListaIngredientes();
 
-        listaIngredientesGenerica->insertarFinal(ingrediente);
+        listaIngredientesGenerica->insertarFinal(ingrediente); //esta es la que iría abajo donde esta en mayusc todo y gracias.
 
         //Creation of the recipes
 
 
-        menuRestaurante->insertarFinal("1","Ensalada kartoffelsalat",2500,20,20);
+        menuRestaurante->insertarFinal("1","Ensalada kartoffelsalat",2500,20,20, AQUI VA LA LISTA DE INGREDIENTES );
         menuRestaurante->insertarFinal("1","Ensalada mixta",2500,20,20);
         menuRestaurante->insertarFinal("1","Ensalada Caprese",2500,20,20);
         menuRestaurante->insertarFinal("1","Ensalada Waldorf",2500,20,20);

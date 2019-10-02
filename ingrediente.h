@@ -12,8 +12,8 @@ using namespace std;
 struct Ingrediente {
 
     int cantidad;
-    Ingrediente * siguiente, * anterior;
     string nombre;
+    Ingrediente * siguiente, * anterior;
 
     Ingrediente(string s, int c){
         nombre = s;

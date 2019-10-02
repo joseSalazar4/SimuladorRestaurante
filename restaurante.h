@@ -27,7 +27,7 @@ public:
     int cantMeseros, cantCocineros, cantMesas, cantMesasPorMesero,tiempoGen1,tiempoGen2,mesasSobrantes = 0;
     QMutex * mutexPasteleria , *mutexCocinaFuerte , * mutexEnsaladas, * mutexLavaplatos, * mutexCaja, * mutexManejador;
 
-    Restaurante(int cantidadCocineros,int cantidadMeseros, int cantidadMesas, int cantMesasMesero,int tiempoGen1,int tiempoGen2, QMutex * _mutexCaja, QMutex *  _mutexLavaplatos,QMutex * _mutexCocina, QMutex * _mutexEnsaladas,QMutex*  _mutexPasteleria, QMutex * _mutexManejador){
+    Restaurante(int cantidadCocineros,int cantidadMeseros, int cantidadMesas, int cantMesasMesero,int tiempoGen1,int tiempoGen2, QMutex * _mutexCaja, QMutex *  _mutexLavaplatos,QMutex * _mutexCocina, QMutex * _mutexEnsaladas,QMutex*  _mutexPasteleria, QMutex * _mutexManejador,QLabel ** arrayMesas){
 
         this->mutexCaja = _mutexCaja;
         this->mutexCocinaFuerte = _mutexCocina;
@@ -35,7 +35,6 @@ public:
         this->mutexManejador = _mutexManejador;
         this->mutexPasteleria = _mutexPasteleria;
         this->mutexLavaplatos = _mutexLavaplatos;
-
 
         caja = new Caja();
         mesas = new ListaMesas();
@@ -49,7 +48,6 @@ public:
         principal = new Cocina("fuerte");
         pasteleria = new Cocina("pasteleria", cocineroPostres);
         ensaladas = new Cocina("ensaladas", cocineroEnsaladas);
-
 
         if(cantidadCocineros == 3){
             Cocinero * cocineroFuerte3= new Cocinero("fuerte");
@@ -80,10 +78,6 @@ public:
 
         }
 
-        generadorPersonas.__init__(manejadorComensales,mutexManejador, tiempoGen1, tiempoGen2);
-        generadorPersonas.listaMesas = this->mesas;
-        generadorPersonas.start();
-
         if(cantMesas%cantMeseros != 0) mesasSobrantes = cantMesas-(cantMesasMesero*(cantMeseros-1));
 
         if(mesasSobrantes == 0){
@@ -98,10 +92,12 @@ public:
                 meseroAux->ensaladas = ensaladas;
                 meseroAux->pasteleria = pasteleria;
                 meseroAux->lavaplatos = lavaplatos;
+
                 for(int j = 0;j<cantMesasMesero;j++){
                     Mesa * mesaAux = new Mesa("Mesa #"+QString::number(j+1));
                     mesaAux->tipoPedido=1;
-                    mesaAux->imagen = arrayImagenesMesas[i]; //ACA VA UN ARRAY DE QLABELS PA ASIGNAR CON UNF FORVEA LO DE EL ORDEN
+                    *mesaAux->arrayComensales = arrayMesas[i];
+                    mesaAux->imagen = &arrayMesas[i][7]; //ACA VA UN ARRAY DE QLABELS PA ASIGNAR CON UNF FORVEA LO DE EL ORDEN
                     //insertamos en la lista total de mesas
                     mesas->insertarFinal(mesaAux);
                     //insertamos en la lista que se asignará a cada mesero y que tiene las mesas que le corresponden
@@ -127,6 +123,10 @@ public:
 
         cajaThread.__init__(caja,mutexCaja);
         cajaThread.start();
+
+        generadorPersonas.__init__(manejadorComensales,mutexManejador, tiempoGen1, tiempoGen2);
+        generadorPersonas.listaMesas = this->mesas;
+        generadorPersonas.start();
     }
 
     void Iniciar();

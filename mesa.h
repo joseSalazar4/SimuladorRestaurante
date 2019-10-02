@@ -11,7 +11,7 @@ struct Mesa
     int tipoPedido;       //1 Entrada 2 Plato fuerte 3 postre 4 cuenta
     //Mesero * meseroActivo;
     Pila * pilaPlatosSucios;
-    QLabel * imagen, * numOrden;
+    QLabel * imagen, * numOrden, *arrayComensales[7];
     bool pedirAsistencia = true;
     Mesa * siguiente=nullptr, * anterior=nullptr;
     ListaComensales * listaComensales;

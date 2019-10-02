@@ -61,8 +61,15 @@ void GeneradorPersonasThread::run(){
 
         mutexManejador->lock();
         manejadorComensales->colaClientesEnEspera->encolar(generarPersonas(personasCreadas));
-        if(listaMesas->buscarDisponibilidad() && manejadorComensales->colaClientesEnEspera->frente != nullptr)
-            listaMesas->buscarDisponibilidad()->listaComensales = manejadorComensales->colaClientesEnEspera->desencolar();
+        Mesa * mesaAux = listaMesas->buscarDisponibilidad();
+        if(mesaAux && manejadorComensales->colaClientesEnEspera->frente != nullptr){
+            mesaAux->listaComensales = manejadorComensales->colaClientesEnEspera->desencolar();
+            Comensal * comensalAux = mesaAux->listaComensales->primerNodo;
+            for(int i = 0;i<mesaAux->listaComensales->largo;i++){
+                comensalAux->imagenPersona =  mesaAux->arrayComensales[i];
+                comensalAux = comensalAux->siguiente;
+            }
+        }
         mutexManejador->unlock();
 
         sleep(static_cast<unsigned int>(sleepTime));

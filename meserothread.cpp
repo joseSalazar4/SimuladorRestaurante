@@ -135,7 +135,6 @@ void MeseroThread::llevarOrdenes(){
             }
             cliente = cliente->siguiente;
         }
-
     }
     else mutexCocina->unlock();
 

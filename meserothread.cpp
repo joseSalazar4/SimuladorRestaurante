@@ -28,6 +28,7 @@ void MeseroThread::run(){
 
         // Then we give that order to the corresponding place (kitchen or cashier)
         colocarOrden();
+        llevarOrdenes();
 
         qDebug()<<mesero->nombre+" reportandose al trabajo";
         sleep(tiempoSleep);
@@ -80,16 +81,92 @@ void MeseroThread::llevarOrdenes(){
     //We check all the kitchens one by one
 
     mutexEnsaladas->lock();
-    if (!mesero->ensaladas->colaOrdenesListas->vacia());
-    mutexEnsaladas->unlock();
+    if (!mesero->ensaladas->colaOrdenesListas->vacia()){
+        QString nombreCliente = mesero->ensaladas->colaOrdenesListas->frente->primerNodo->cliente;
+        int numMesa = mesero->ensaladas->colaOrdenesListas->frente->primerNodo->numeroMesa;
+        Mesa * mesaAux =  mesero->mesas->primerNodo;
+        Plato * plato = mesero->ensaladas->colaOrdenesListas->frente->primerNodo->plato;
+        Solicitud * solicitud = new Solicitud();
+        //Ya no debo usar el mutex porque ya no haré nada en la cola tons lo suelto.
+        mutexEnsaladas->unlock();
+
+        while(mesaAux){
+            if(mesaAux->ID == numMesa) break;
+            mesaAux = mesaAux->siguiente;
+        }
+
+        Comensal * cliente = mesaAux->listaComensales->primerNodo ;
+        while(cliente){
+            if(cliente->nombre == nombreCliente){
+                this->sleep(tiempoSleep);
+                cliente->comer(plato);
+                solicitud->plato = plato;
+                mesaAux->pilaPlatosSucios->push(solicitud);
+                break;
+            }
+            cliente = cliente->siguiente;
+        }
+    }
+    else mutexEnsaladas->unlock();
 
     mutexCocina->lock();
-    if(!mesero->cocina->colaOrdenesListas->vacia());
-    mutexCocina->unlock();
+    if(!mesero->cocina->colaOrdenesListas->vacia()){
+        QString nombreCliente = mesero->cocina->colaOrdenesListas->frente->primerNodo->cliente;
+        int numMesa = mesero->cocina->colaOrdenesListas->frente->primerNodo->numeroMesa;
+        Mesa * mesaAux =  mesero->mesas->primerNodo;
+        Plato * plato = mesero->cocina->colaOrdenesListas->frente->primerNodo->plato;
+        Solicitud * solicitud = new Solicitud();
+        //Ya no debo usar el mutex porque ya no haré nada en la cola tons lo suelto.
+        mutexCocina->unlock();
+
+        while(mesaAux){
+            if(mesaAux->ID == numMesa) break;
+            mesaAux = mesaAux->siguiente;
+        }
+
+        Comensal * cliente = mesaAux->listaComensales->primerNodo ;
+        while(cliente){
+            if(cliente->nombre == nombreCliente){
+                this->sleep(tiempoSleep);
+                cliente->comer(plato);
+                solicitud->plato = plato;
+                mesaAux->pilaPlatosSucios->push(solicitud);
+                break;
+            }
+            cliente = cliente->siguiente;
+        }
+
+    }
+    else mutexCocina->unlock();
 
     mutexPasteleria->lock();
-    if(!mesero->pasteleria->colaOrdenesListas->vacia());
-    mutexPasteleria->unlock();
+    if(!mesero->pasteleria->colaOrdenesListas->vacia()){
+        QString nombreCliente = mesero->pasteleria->colaOrdenesListas->frente->primerNodo->cliente;
+        int numMesa = mesero->pasteleria->colaOrdenesListas->frente->primerNodo->numeroMesa;
+        Mesa * mesaAux =  mesero->mesas->primerNodo;
+        Plato * plato = mesero->pasteleria->colaOrdenesListas->frente->primerNodo->plato;
+        Solicitud * solicitud = new Solicitud();
+        //Ya no debo usar el mutex porque ya no haré nada en la cola tons lo suelto.
+        mutexPasteleria->unlock();
+
+        while(mesaAux){
+            if(mesaAux->ID == numMesa) break;
+            mesaAux = mesaAux->siguiente;
+        }
+
+        Comensal * cliente = mesaAux->listaComensales->primerNodo ;
+        while(cliente){
+            if(cliente->nombre == nombreCliente){
+                this->sleep(tiempoSleep);
+                cliente->comer(plato);
+                solicitud->plato = plato;
+                mesaAux->pilaPlatosSucios->push(solicitud);
+                break;
+            }
+            cliente = cliente->siguiente;
+        }
+    }
+    else mutexPasteleria->unlock();
 }
 
 void MeseroThread::pausar(){

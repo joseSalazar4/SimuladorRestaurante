@@ -29,11 +29,11 @@ struct Comensal
         cuentaAPagar = numeroMesa = probabilidadPedir = 90;
     }
 
-    void comer();
     void dejarMesa();
     void llamarMesero();
     QString generarNombre();
     Solicitud * pedirCuenta();
+    Plato * comer(Plato * pla);
     Plato * escogerPlato(int t);
     Solicitud * pedirPostre(int porcentajeACumplir);
     Solicitud * pedirEntrada(int porcentajeACumplir);

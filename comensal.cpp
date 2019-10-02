@@ -74,16 +74,18 @@ void Comensal::dejarMesa(){
 
 }
 
-void Comensal::comer(){
+Plato *  Comensal::comer(Plato * plato){
     int duracionComida = QRandomGenerator::global()->bounded(tiempoComer1, tiempoComer2);
     comensalTerminoComer = false;
     while (duracionComida>0) {
         //todo debe durar segundos pero no es un thread
         this->imagenPersona->setToolTip("Faltan "+QString::number(duracionComida)+" segundos para que termine de comer");
         duracionComida--;
-
     }
     comensalTerminoComer = true;
+    plato->vacio = true;
+    plato->limpio = false;
+    return plato;
 }
 void Comensal::llamarMesero(){
 

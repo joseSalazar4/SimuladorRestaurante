@@ -2,6 +2,7 @@
 #define MESA_H
 
 #include <qstring.h>
+#include"pila.h"
 #include "listacomensales.h"
 struct Mesa
 {
@@ -9,6 +10,7 @@ struct Mesa
     short ocupada;          //1 es Ocupada 0 es disponible -1 no está disponible del todo
     int tipoPedido;       //1 Entrada 2 Plato fuerte 3 postre 4 cuenta
     //Mesero * meseroActivo;
+    Pila * pilaPlatosSucios;
     QLabel * imagen, * numOrden;
     bool pedirAsistencia = true;
     Mesa * siguiente=nullptr, * anterior=nullptr;
@@ -16,9 +18,10 @@ struct Mesa
 
     Mesa(QString _id){
         ID = _id;
-        //meseroActivo = mesero;
+        pilaPlatosSucios = new Pila();
         listaComensales = new ListaComensales();
     }
+
     void vaciarMesa();
     bool estaOcupada();
     bool comensalesTerminaron();

@@ -62,11 +62,11 @@ public:
         pasteleria = new Cocina("pasteleria", cocineroPostres);
         ensaladas = new Cocina("ensaladas", cocineroEnsaladas);
 
-        CocineroThread pasteleroThread;
-        pasteleroThread.__init__(mutexPasteleria,imagenPostres,cocineroPostres,pasteleria);
+        CocineroThread *pasteleroThread = new CocineroThread();
+        pasteleroThread->__init__(mutexPasteleria,imagenPostres,cocineroPostres,pasteleria);
 
-        CocineroThread ensaladasThread;
-        ensaladasThread.__init__(mutexEnsaladas, imagenEnsaladas, cocineroEnsaladas, ensaladas);
+        CocineroThread * ensaladasThread = new CocineroThread();
+        ensaladasThread->__init__(mutexEnsaladas, imagenEnsaladas, cocineroEnsaladas, ensaladas);
 
         if(cantidadCocineros == 3){
             Cocinero * cocineroFuerte3= new Cocinero("fuerte");
@@ -104,14 +104,14 @@ public:
             principal->cocinero2 = cocineroFuerte2;
             principal->cocinero2->tipoCocinero = "fuerte";
 
-            CocineroThread cocineroFuerteThread1;
-            cocineroFuerteThread1.__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte1, principal);
+            CocineroThread *cocineroFuerteThread1=new CocineroThread () ;
+            cocineroFuerteThread1->__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte1, principal);
 
-            CocineroThread cocineroFuerteThread2;
-            cocineroFuerteThread2.__init__(mutexCocinaFuerte, imagenCocina, cocineroFuerte2,principal);
+            CocineroThread *cocineroFuerteThread2=new CocineroThread () ;
+            cocineroFuerteThread2->__init__(mutexCocinaFuerte, imagenCocina, cocineroFuerte2,principal);
 
-            cocineroFuerteThread1.start();
-            cocineroFuerteThread2.start();
+            cocineroFuerteThread1->start();
+            cocineroFuerteThread2->start();
 
         }
 
@@ -155,8 +155,8 @@ public:
                 for(int j = 0;j<cantMesasMesero;j++){
                     Mesa * mesaAux = new Mesa("Mesa #"+QString::number(j+1));
                     mesaAux->tipoPedido=1;
-                    *mesaAux->arrayComensales = arrayMesas[i];
-                    mesaAux->imagen = &arrayMesas[i][7]; //ACA VA UN ARRAY DE QLABELS PA ASIGNAR CON UNF FORVEA LO DE EL ORDEN
+                    mesaAux->arrayComensales = arrayMesas[i];
+                    mesaAux->imagen = arrayMesas[i][6]; //ACA VA UN ARRAY DE QLABELS PA ASIGNAR CON UNF FORVEA LO DE EL ORDEN
                     //insertamos en la lista total de mesas
                     mesas->insertarFinal(mesaAux);
                     mesaAux->imagen->show();
@@ -187,8 +187,8 @@ public:
         cajaThread.__init__(caja,mutexCaja, imagenCaja);
         cajaThread.start();
 
-        ensaladasThread.start();
-        pasteleroThread.start();
+        ensaladasThread->start();
+        pasteleroThread->start();
 
         generadorPersonas.__init__(manejadorComensales,mutexManejador, tiempoGen1, tiempoGen2);
         generadorPersonas.listaMesas = this->mesas;

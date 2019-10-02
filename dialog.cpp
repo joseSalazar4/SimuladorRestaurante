@@ -1,5 +1,6 @@
 #include "dialog.h"
 #include "ui_dialog.h"
+#include <QMessageBox>
 
 
 Dialog::Dialog(QWidget *parent) :QDialog(parent), ui(new Ui::Dialog)
@@ -33,35 +34,27 @@ void Dialog::on_pushButton_clicked()
     //ELIMINAR ESTO Y DESCOMENTAR LO DE ABAJO
     //ELIMINAR ESTO Y DESCOMENTAR LO DE ABAJO
 
-    ventanaPrincipal.cantMesas =  12;
-    ventanaPrincipal.genPersonas1 = 10;
-    ventanaPrincipal.genPersonas2 = 20;
-    ventanaPrincipal.cantMeseros =   12;
-    ventanaPrincipal.cantCocineros  = 3;
-    ventanaPrincipal.cantMesasPorMesero = 1;
-
-
     ventanaPrincipal.show();
 
-//    if(cantMesas.toInt()<=20 && cantMesas.toInt()>=cantMeseros.toInt() && cantMeseros.toInt()>=1 && cantMesas.toInt() >=1 && cantiCocineros.toInt()>=1 && cantiCocineros.toInt()<4){
+    if(cantMesas.toInt()<=20 && cantMesas.toInt()>=cantMeseros.toInt() && cantMeseros.toInt()>=1 && cantMesas.toInt() >=1 && cantiCocineros.toInt()>=1 && cantiCocineros.toInt()<4){
 
-//        qDebug()<<"Voy a crearla";
-//        ventanaPrincipal.show();
-//        qDebug()<<"Se creo";
+        qDebug()<<"Voy a crearla";
+        ventanaPrincipal.show();
+        qDebug()<<"Se creo";
 
-//        ventanaPrincipal.cantMesas =  cantMesas.toInt();
-//        ventanaPrincipal.genPersonas1 = tiempoGen1.toInt();
-//        ventanaPrincipal.genPersonas2 = tiempoGen1.toInt();
-//        ventanaPrincipal.cantMeseros =   cantMeseros.toInt();
-//        ventanaPrincipal.cantCocineros  = cantiCocineros.toInt();
-//        ventanaPrincipal.cantMesasPorMesero = cantMesasMesero.toInt();
-//        qDebug()<<"Pasó los parametros nice :)";
-//    }
-//    else{
-//        QMessageBox msgBox;
-//        msgBox.setText("Hubo un error en la entrada de datos.");
-//        msgBox.exec();
-//    }
+        ventanaPrincipal.cantMesas =  cantMesas.toInt();
+        ventanaPrincipal.genPersonas1 = tiempoGen1.toInt();
+        ventanaPrincipal.genPersonas2 = tiempoGen2.toInt();
+        ventanaPrincipal.cantMeseros =   cantMeseros.toInt();
+        ventanaPrincipal.cantCocineros  = cantiCocineros.toInt();
+        ventanaPrincipal.cantMesasPorMesero = cantMesasMesero.toInt();
+        qDebug()<<"Pasó los parametros nice :)";
+    }
+    else{
+        QMessageBox msgBox;
+        msgBox.setText("Hubo un error en la entrada de datos.");
+        msgBox.exec();
+    }
 
 
 }

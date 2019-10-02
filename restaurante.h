@@ -27,7 +27,19 @@ public:
     int cantMeseros, cantCocineros, cantMesas, cantMesasPorMesero,tiempoGen1,tiempoGen2,mesasSobrantes = 0;
     QMutex * mutexPasteleria , *mutexCocinaFuerte , * mutexEnsaladas, * mutexLavaplatos, * mutexCaja, * mutexManejador;
 
-    Restaurante(int cantidadCocineros,int cantidadMeseros, int cantidadMesas, int cantMesasMesero,int tiempoGen1,int tiempoGen2, QMutex * _mutexCaja, QMutex *  _mutexLavaplatos,QMutex * _mutexCocina, QMutex * _mutexEnsaladas,QMutex*  _mutexPasteleria, QMutex * _mutexManejador,QLabel ** arrayMesas, QLabel * imagenCaja,QLabel * imagenLavaplatos, QLabel * imagenCocina, QLabel * imagenEnsaladas ,QLabel * imagenPostres, QLabel * imagenGen){
+    Restaurante(int cantidadCocineros,
+                int cantidadMeseros,
+                int cantidadMesas,
+                int cantMesasMesero,
+                int tiempoGen1,
+                int tiempoGen2,
+                QMutex * _mutexCaja,
+                QMutex *  _mutexLavaplatos,
+                QMutex * _mutexCocina,
+                QMutex * _mutexEnsaladas,
+                QMutex*  _mutexPasteleria,
+                QMutex * _mutexManejador,
+                QVector<QVector<QLabel*>> arrayMesas, QLabel * imagenCaja,QLabel * imagenLavaplatos, QLabel * imagenCocina, QLabel * imagenEnsaladas ,QLabel * imagenPostres, QLabel * imagenGen){
 
         this->mutexCaja = _mutexCaja;
         this->mutexCocinaFuerte = _mutexCocina;

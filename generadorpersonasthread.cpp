@@ -57,16 +57,18 @@ void GeneradorPersonasThread::run(){
         int sleepTime = QRandomGenerator::global()->bounded(tiempoGeneracion, tiempoGeneracion1);
         int personasCreadas = QRandomGenerator::global()->bounded(1, 6);
         cantPersonasGeneradas->setText(QString::number(personasCreadas));
-        cantPersonasGeneradas->repaint();
+        //cantPersonasGeneradas->repaint();
 
         mutexManejador->lock();
         manejadorComensales->colaClientesEnEspera->encolar(generarPersonas(personasCreadas));
         Mesa * mesaAux = listaMesas->buscarDisponibilidad();
         if(mesaAux && manejadorComensales->colaClientesEnEspera->frente != nullptr){
             mesaAux->listaComensales = manejadorComensales->colaClientesEnEspera->desencolar();
+            mesaAux->ocupada=true;
             Comensal * comensalAux = mesaAux->listaComensales->primerNodo;
             for(int i = 0;i<mesaAux->listaComensales->largo;i++){
                 comensalAux->imagenPersona =  mesaAux->arrayComensales[i];
+                comensalAux->imagenPersona->show();
                 comensalAux = comensalAux->siguiente;
             }
         }

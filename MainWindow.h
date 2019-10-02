@@ -17,7 +17,7 @@ class MainWindow : public QMainWindow{
 
 public:
     CajaThread cajaThread;
-    QLabel ** arrayMesas[20];
+    QVector<QVector<QLabel*>> arrayMesas;
     Restaurante * restaurante;
     LavaplatosThread lavaplatosthread;
     CocineroThread cocineroPasteleria, cocineroEnsaladas, cocineroFuerte;

@@ -9,50 +9,31 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->setupUi(this);
     show();
 
-    QLabel * arrayMesa1[7] = {ui->c1,ui->c2,ui->c3,ui->c4,ui->c5,ui->c6, ui->m1};
-    QLabel * arrayMesa2[7] = {ui->c7,ui->c8,ui->c9,ui->c10,ui->c11,ui->c12, ui->m2};
-    QLabel * arrayMesa3[7] = {ui->c13,ui->c14,ui->c15,ui->c16,ui->c17,ui->c18, ui->m3};
-    QLabel * arrayMesa4[7] = {ui->c19,ui->c20,ui->c21,ui->c22,ui->c23,ui->c24, ui->m4};
-    QLabel * arrayMesa5[7] = {ui->c25,ui->c26,ui->c27,ui->c28,ui->c29,ui->c30, ui->m5};
-    QLabel * arrayMesa6[7] = {ui->c31,ui->c32,ui->c33,ui->c34,ui->c35,ui->c36, ui->m6};
-    QLabel * arrayMesa7[7] = {ui->c37,ui->c38,ui->c39,ui->c40,ui->c41,ui->c42, ui->m7};
-    QLabel * arrayMesa8[7] = {ui->c43,ui->c44,ui->c45,ui->c46,ui->c47,ui->c48, ui->m8};
-    QLabel * arrayMesa9[7] = {ui->c49,ui->c50,ui->c51,ui->c52,ui->c53,ui->c54, ui->m9};
-    QLabel * arrayMesa10[7] = {ui->c55,ui->c56,ui->c57,ui->c58,ui->c59,ui->c60, ui->m10};
-    QLabel * arrayMesa11[7] = {ui->c61,ui->c62,ui->c63,ui->c64,ui->c65,ui->c66, ui->m11};
-    QLabel * arrayMesa12[7] = {ui->c67,ui->c68,ui->c69,ui->c70,ui->c71,ui->c72, ui->m12};
-    QLabel * arrayMesa13[7] = {ui->c73,ui->c74,ui->c75,ui->c76,ui->c77,ui->c78, ui->m13};
-    QLabel * arrayMesa14[7] = {ui->c79,ui->c80,ui->c81,ui->c82,ui->c83,ui->c84, ui->m14};
-    QLabel * arrayMesa15[7] = {ui->c85,ui->c86,ui->c87,ui->c88,ui->c89,ui->c90, ui->m15};
-    QLabel * arrayMesa16[7] = {ui->c91,ui->c92,ui->c93,ui->c94,ui->c95,ui->c96, ui->m16};
-    QLabel * arrayMesa17[7] = {ui->c97,ui->c98,ui->c99,ui->c100,ui->c101,ui->c102, ui->m17};
-    QLabel * arrayMesa18[7] = {ui->c103,ui->c104,ui->c105,ui->c106,ui->c107,ui->c108, ui->m18};
-    QLabel * arrayMesa19[7] = {ui->c109,ui->c110,ui->c111,ui->c112,ui->c113,ui->c114, ui->m19};
-    QLabel * arrayMesa20[7] = {ui->c115,ui->c116,ui->c117,ui->c118,ui->c119,ui->c120, ui->m20};
-    QLabel ** arrayMesasTotales[20] = {arrayMesa1,arrayMesa2,arrayMesa3,arrayMesa4,arrayMesa5,arrayMesa6,arrayMesa7,arrayMesa8,arrayMesa9,arrayMesa10,arrayMesa11,arrayMesa12,arrayMesa13,arrayMesa14,arrayMesa15,arrayMesa16,arrayMesa17,arrayMesa18,arrayMesa19,arrayMesa20};
-    *arrayMesas = *arrayMesasTotales;
+    arrayMesas = {{ui->c1,ui->c2,ui->c3,ui->c4,ui->c5,ui->c6, ui->m1},
+                  {ui->c7,ui->c8,ui->c9,ui->c10,ui->c11,ui->c12, ui->m2},
+                  {ui->c13,ui->c14,ui->c15,ui->c16,ui->c17,ui->c18, ui->m3},
+                  {ui->c19,ui->c20,ui->c21,ui->c22,ui->c23,ui->c24, ui->m4},
+                  {ui->c25,ui->c26,ui->c27,ui->c28,ui->c29,ui->c30, ui->m5},
+                  {ui->c31,ui->c32,ui->c33,ui->c34,ui->c35,ui->c36, ui->m6},
+                  {ui->c37,ui->c38,ui->c39,ui->c40,ui->c41,ui->c42, ui->m7},
+                  {ui->c43,ui->c44,ui->c45,ui->c46,ui->c47,ui->c48, ui->m8},
+                  {ui->c49,ui->c50,ui->c51,ui->c52,ui->c53,ui->c54, ui->m9},
+                  {ui->c55,ui->c56,ui->c57,ui->c58,ui->c59,ui->c60, ui->m10},
+                  {ui->c61,ui->c62,ui->c63,ui->c64,ui->c65,ui->c66, ui->m11},
+                  {ui->c67,ui->c68,ui->c69,ui->c70,ui->c71,ui->c72, ui->m12},
+                  {ui->c73,ui->c74,ui->c75,ui->c76,ui->c77,ui->c78, ui->m13},
+                  {ui->c79,ui->c80,ui->c81,ui->c82,ui->c83,ui->c84, ui->m14},
+                  {ui->c85,ui->c86,ui->c87,ui->c88,ui->c89,ui->c90, ui->m15},
+                  {ui->c91,ui->c92,ui->c93,ui->c94,ui->c95,ui->c96, ui->m16},
+                  {ui->c97,ui->c98,ui->c99,ui->c100,ui->c101,ui->c102, ui->m17},
+                  {ui->c103,ui->c104,ui->c105,ui->c106,ui->c107,ui->c108, ui->m18},
+                  {ui->c109,ui->c110,ui->c111,ui->c112,ui->c113,ui->c114, ui->m19},
+                  {ui->c115,ui->c116,ui->c117,ui->c118,ui->c119,ui->c120, ui->m20}};
 
-    for(int i = 0;i<7;i++){
-        arrayMesa1[i]->hide();
-        arrayMesa2[i]->hide();
-        arrayMesa3[i]->hide();
-        arrayMesa4[i]->hide();
-        arrayMesa5[i]->hide();
-        arrayMesa6[i]->hide();
-        arrayMesa7[i]->hide();
-        arrayMesa8[i]->hide();
-        arrayMesa9[i]->hide();
-        arrayMesa10[i]->hide();
-        arrayMesa11[i]->hide();
-        arrayMesa12[i]->hide();
-        arrayMesa13[i]->hide();
-        arrayMesa14[i]->hide();
-        arrayMesa15[i]->hide();
-        arrayMesa16[i]->hide();
-        arrayMesa17[i]->hide();
-        arrayMesa18[i]->hide();
-        arrayMesa19[i]->hide();
-        arrayMesa20[i]->hide();
+    for(int i = 0;i<20;i++)
+    for(int j = 0;j<7;j++){
+        arrayMesas[i][j]->hide();
+
 
     }
 
@@ -68,7 +49,7 @@ void MainWindow::on_pushButton_clicked()
 {
 
     //Hacemos el start de todos los hilos y setteamos cada estructura
-    restaurante = new Restaurante(cantCocineros,cantMeseros, cantMesas, cantMesasPorMesero, genPersonas1,genPersonas2, &mutexCaj , &mutexLavaplatos, &mutexCocina, &mutexEnsaladas, &mutexPasteleria, &mutexManejador, *arrayMesas,ui->labelCaja, ui->labelLavaplatos, ui->labelComidaFuerte,ui->labelEnsaladas, ui->labelPasteleria,ui->labelGenerador);
+    restaurante = new Restaurante(cantCocineros,cantMeseros, cantMesas, cantMesasPorMesero, genPersonas1,genPersonas2, &mutexCaj , &mutexLavaplatos, &mutexCocina, &mutexEnsaladas, &mutexPasteleria, &mutexManejador, arrayMesas,ui->labelCaja, ui->labelLavaplatos, ui->labelComidaFuerte,ui->labelEnsaladas, ui->labelPasteleria,ui->labelGenerador);
 
     qDebug()<<"Ya pasó el constructor";
     ui->pushButton->hide();

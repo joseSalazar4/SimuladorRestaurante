@@ -26,7 +26,7 @@
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="Texto">
+   <widget class="QLabel" name="labelPasteleria">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -64,7 +64,7 @@
      <string>Iniciar Simulación</string>
     </property>
    </widget>
-   <widget class="QLabel" name="Texto_4">
+   <widget class="QLabel" name="labelEnsaladas">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -86,7 +86,7 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="Texto_5">
+   <widget class="QLabel" name="labelComidaFuerte">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -105,7 +105,7 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="Texto_8">
+   <widget class="QLabel" name="labelLavaplatos">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -124,7 +124,7 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="Texto_9">
+   <widget class="QLabel" name="labelCaja">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -3044,6 +3044,19 @@
     </property>
     <property name="scaledContents">
      <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelGenerador">
+    <property name="geometry">
+     <rect>
+      <x>34</x>
+      <y>875</y>
+      <width>91</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
     </property>
    </widget>
   </widget>

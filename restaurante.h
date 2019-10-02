@@ -27,7 +27,7 @@ public:
     int cantMeseros, cantCocineros, cantMesas, cantMesasPorMesero,tiempoGen1,tiempoGen2,mesasSobrantes = 0;
     QMutex * mutexPasteleria , *mutexCocinaFuerte , * mutexEnsaladas, * mutexLavaplatos, * mutexCaja, * mutexManejador;
 
-    Restaurante(int cantidadCocineros,int cantidadMeseros, int cantidadMesas, int cantMesasMesero,int tiempoGen1,int tiempoGen2, QMutex * _mutexCaja, QMutex *  _mutexLavaplatos,QMutex * _mutexCocina, QMutex * _mutexEnsaladas,QMutex*  _mutexPasteleria, QMutex * _mutexManejador,QLabel ** arrayMesas){
+    Restaurante(int cantidadCocineros,int cantidadMeseros, int cantidadMesas, int cantMesasMesero,int tiempoGen1,int tiempoGen2, QMutex * _mutexCaja, QMutex *  _mutexLavaplatos,QMutex * _mutexCocina, QMutex * _mutexEnsaladas,QMutex*  _mutexPasteleria, QMutex * _mutexManejador,QLabel ** arrayMesas, QLabel * imagenCaja,QLabel * imagenLavaplatos, QLabel * imagenCocina, QLabel * imagenEnsaladas ,QLabel * imagenPostres, QLabel * imagenGen){
 
         this->mutexCaja = _mutexCaja;
         this->mutexCocinaFuerte = _mutexCocina;
@@ -45,9 +45,16 @@ public:
         Cocinero * cocineroPostres = new Cocinero("postres");
         Cocinero * cocineroEnsaladas = new Cocinero("postres");
 
+
         principal = new Cocina("fuerte");
         pasteleria = new Cocina("pasteleria", cocineroPostres);
         ensaladas = new Cocina("ensaladas", cocineroEnsaladas);
+
+        CocineroThread pasteleroThread;
+        pasteleroThread.__init__(mutexPasteleria,imagenPostres,cocineroPostres,pasteleria);
+
+        CocineroThread ensaladasThread;
+        ensaladasThread.__init__(mutexEnsaladas, imagenEnsaladas, cocineroEnsaladas, ensaladas);
 
         if(cantidadCocineros == 3){
             Cocinero * cocineroFuerte3= new Cocinero("fuerte");
@@ -57,6 +64,20 @@ public:
             principal->cocinero1 = cocineroFuerte2;
             principal->cocinero1 = cocineroFuerte3;
 
+
+            CocineroThread cocineroFuerteThread;
+            cocineroFuerteThread.__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte1 ,principal);
+
+            CocineroThread cocineroFuerteThread2;
+            cocineroFuerteThread2.__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte2 ,principal);
+
+            CocineroThread cocineroFuerteThread3;
+            cocineroFuerteThread3.__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte3 ,principal);
+
+
+            cocineroFuerteThread.start();
+            cocineroFuerteThread2.start();
+            cocineroFuerteThread3.start();
         }
 
         else if (cantidadCocineros == 2){
@@ -64,12 +85,31 @@ public:
             Cocinero * cocineroFuerte2 = new Cocinero("fuerte");
             principal->cocinero1 = cocineroFuerte1;
             principal->cocinero1 = cocineroFuerte2;
+
+            CocineroThread cocineroFuerteThread1;
+            cocineroFuerteThread1.__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte1, principal);
+
+            CocineroThread cocineroFuerteThread2;
+            cocineroFuerteThread2.__init__(mutexCocinaFuerte, imagenCocina, cocineroFuerte2,principal);
+
+            cocineroFuerteThread1.start();
+            cocineroFuerteThread2.start();
+
         }
 
         else{
             Cocinero * cocineroFuerte1 = new Cocinero("fuerte");
             principal->cocinero1 = cocineroFuerte1;
+
+            CocineroThread cocineroFuerteThread;
+            cocineroFuerteThread.__init__(mutexCocinaFuerte, imagenCocina, cocineroFuerte1,principal);
+
+            cocineroFuerteThread.start();
+
         }
+
+
+
 
         cantMesas = cantidadMesas;
         cantMeseros = cantidadMeseros;
@@ -119,13 +159,18 @@ public:
         }
         qDebug()<<"init al thread de lavarplatos";
         lavaplatosThread.__init__(lavaplatos, _mutexLavaplatos);
+        lavaplatosThread.imagenLavanderia = imagenLavaplatos;
         lavaplatosThread.start();
 
-        cajaThread.__init__(caja,mutexCaja);
+        cajaThread.__init__(caja,mutexCaja, imagenCaja);
         cajaThread.start();
+
+        ensaladasThread.start();
+        pasteleroThread.start();
 
         generadorPersonas.__init__(manejadorComensales,mutexManejador, tiempoGen1, tiempoGen2);
         generadorPersonas.listaMesas = this->mesas;
+        generadorPersonas.cantPersonasGeneradas = imagenGen;
         generadorPersonas.start();
     }
 

@@ -5,11 +5,12 @@ CajaThread::CajaThread()
 
 }
 
-void CajaThread::__init__(Caja * _caja, QMutex * mutx){
+void CajaThread::__init__(Caja * _caja, QMutex * mutx, QLabel * img){
     caja = _caja;
     this->activo = true;
     this->pausa = false;
     this->mutexCaja = mutx;
+    imagenCaja = img;
     imagenCaja->setToolTip("No hay cuentas por calcular");
 }
 

@@ -4,6 +4,7 @@ void CocineroThread::run()
 {
     while (activo)
     {
+        qDebug()<<this->cocinero->tipoCocinero;
         mutex->lock();
         if(cocina->colaOrdenesNoListas->verFrente()){
             Solicitud * orden = cocina->colaOrdenesNoListas->desencolar()->primerNodo;

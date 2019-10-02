@@ -43,7 +43,7 @@ void MainWindow::on_pushButton_clicked()
     QLabel ** arrayMesas[20] = {arrayMesa1,arrayMesa2,arrayMesa3,arrayMesa4,arrayMesa5,arrayMesa6,arrayMesa7,arrayMesa8,arrayMesa9,arrayMesa10,arrayMesa11,arrayMesa12,arrayMesa13,arrayMesa14,arrayMesa15,arrayMesa16,arrayMesa17,arrayMesa18,arrayMesa19,arrayMesa20};
 
     //Hacemos el start de todos los hilos y setteamos cada estructura
-    restaurante = new Restaurante(cantCocineros,cantMeseros, cantMesas, cantMesasPorMesero, genPersonas1,genPersonas2, &mutexCaj , &mutexLavaplatos, &mutexCocina, &mutexEnsaladas, &mutexPasteleria, &mutexManejador, *arrayMesas);
+    restaurante = new Restaurante(cantCocineros,cantMeseros, cantMesas, cantMesasPorMesero, genPersonas1,genPersonas2, &mutexCaj , &mutexLavaplatos, &mutexCocina, &mutexEnsaladas, &mutexPasteleria, &mutexManejador, *arrayMesas,ui->labelCaja, ui->labelLavaplatos, ui->labelComidaFuerte,ui->labelEnsaladas, ui->labelPasteleria,ui->labelGenerador);
 
     qDebug()<<"Ya pasó el constructor";
     ui->pushButton->hide();

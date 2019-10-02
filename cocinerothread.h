@@ -4,8 +4,9 @@
 #include <QtWidgets/QLabel>
 #include"cocina.h"
 
-struct CocineroThread : public QThread{
-    QMutex * mutex;
+class CocineroThread : public QThread{
+public:
+    QMutex * mutexCocinero;
     Cocina * cocina;
     bool pausa, activo;
     Cocinero * cocinero;

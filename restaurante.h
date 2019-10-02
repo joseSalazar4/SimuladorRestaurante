@@ -60,31 +60,37 @@ public:
             Cocinero * cocineroFuerte3= new Cocinero("fuerte");
             Cocinero * cocineroFuerte2 = new Cocinero("fuerte");
             Cocinero * cocineroFuerte1 = new Cocinero("fuerte");
+
             principal->cocinero1 = cocineroFuerte1;
-            principal->cocinero1 = cocineroFuerte2;
-            principal->cocinero1 = cocineroFuerte3;
+            principal->cocinero1->tipoCocinero = "fuerte";
+            principal->cocinero2 = cocineroFuerte2;
+            principal->cocinero2->tipoCocinero = "fuerte";
+            principal->cocinero3 = cocineroFuerte3;
+            principal->cocinero3->tipoCocinero = "fuerte";
 
 
             CocineroThread cocineroFuerteThread;
             cocineroFuerteThread.__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte1 ,principal);
+            cocineroFuerteThread.start();
 
             CocineroThread cocineroFuerteThread2;
             cocineroFuerteThread2.__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte2 ,principal);
+            cocineroFuerteThread2.start();
+
 
             CocineroThread cocineroFuerteThread3;
             cocineroFuerteThread3.__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte3 ,principal);
-
-
-            cocineroFuerteThread.start();
-            cocineroFuerteThread2.start();
             cocineroFuerteThread3.start();
+
         }
 
         else if (cantidadCocineros == 2){
             Cocinero * cocineroFuerte1 = new Cocinero("fuerte");
             Cocinero * cocineroFuerte2 = new Cocinero("fuerte");
             principal->cocinero1 = cocineroFuerte1;
-            principal->cocinero1 = cocineroFuerte2;
+            principal->cocinero1->tipoCocinero = "fuerte";
+            principal->cocinero2 = cocineroFuerte2;
+            principal->cocinero2->tipoCocinero = "fuerte";
 
             CocineroThread cocineroFuerteThread1;
             cocineroFuerteThread1.__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte1, principal);
@@ -100,6 +106,7 @@ public:
         else{
             Cocinero * cocineroFuerte1 = new Cocinero("fuerte");
             principal->cocinero1 = cocineroFuerte1;
+            principal->cocinero1->tipoCocinero = "fuerte";
 
             CocineroThread cocineroFuerteThread;
             cocineroFuerteThread.__init__(mutexCocinaFuerte, imagenCocina, cocineroFuerte1,principal);
@@ -140,6 +147,8 @@ public:
                     mesaAux->imagen = &arrayMesas[i][7]; //ACA VA UN ARRAY DE QLABELS PA ASIGNAR CON UNF FORVEA LO DE EL ORDEN
                     //insertamos en la lista total de mesas
                     mesas->insertarFinal(mesaAux);
+                    mesaAux->imagen->show();
+                    mesaAux->imagen->setToolTip("Yo estoy activa y esperando clientes");
                     //insertamos en la lista que se asignará a cada mesero y que tiene las mesas que le corresponden
                     listaMesasAsignada->insertarFinal(mesaAux);
                 }
@@ -155,6 +164,7 @@ public:
                 arrayMeserosThread[i]->mesero->nombre = "Mesero #"+QString::number(i);
                 arrayMeserosThread[i]->start();
             }
+
 
         }
         qDebug()<<"init al thread de lavarplatos";

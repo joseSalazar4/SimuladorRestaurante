@@ -2,18 +2,19 @@
 
 void CocineroThread::run()
 {
-    while (activo)
-    {
-        qDebug()<<this->cocinero->tipoCocinero;
-        mutex->lock();
+    while (activo){
+
+        mutexCocinero->lock();
+
         if(cocina->colaOrdenesNoListas->verFrente()){
             Solicitud * orden = cocina->colaOrdenesNoListas->desencolar()->primerNodo;
+            mutexCocinero->unlock();
             Plato * plato = orden->plato;
             while(orden){
             tiempoSleep = static_cast <unsigned int> (plato->tiempoCocina);
             while(0<tiempoSleep){
-                tiempoRestante->setText(QString::number(tiempoSleep));
-                tiempoRestante->repaint();
+                imagenChef->setToolTip(QString::number(tiempoSleep));
+                imagenChef->repaint();
                 tiempoSleep--;
                 sleep(1);
             }
@@ -22,7 +23,10 @@ void CocineroThread::run()
             orden = orden->siguiente;
             }
         }
-        mutex->unlock();
+        else{
+        mutexCocinero->unlock();
+        }
+
         sleep(1);
 
         //Cuando se presione el botón de Inactivo
@@ -30,8 +34,11 @@ void CocineroThread::run()
     }
 }
 
-void CocineroThread:: __init__(QMutex *, QLabel *, Cocinero *, Cocina *){
-
+void CocineroThread:: __init__(QMutex * mutex1, QLabel * imagen1, Cocinero * cocinero1, Cocina * cocina1){
+    this->cocina = cocina1;
+    this->mutexCocinero = mutex1;
+    this->imagenChef = imagen1;
+    this->cocinero = cocinero1;
 }
 
 void CocineroThread::cocinar(Plato * plato){

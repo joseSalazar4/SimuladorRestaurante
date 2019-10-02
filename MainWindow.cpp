@@ -9,17 +9,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->setupUi(this);
     show();
 
-}
-
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
-
-
-void MainWindow::on_pushButton_clicked()
-{
-    //ui->c1
     QLabel * arrayMesa1[7] = {ui->c1,ui->c2,ui->c3,ui->c4,ui->c5,ui->c6, ui->m1};
     QLabel * arrayMesa2[7] = {ui->c7,ui->c8,ui->c9,ui->c10,ui->c11,ui->c12, ui->m2};
     QLabel * arrayMesa3[7] = {ui->c13,ui->c14,ui->c15,ui->c16,ui->c17,ui->c18, ui->m3};
@@ -40,7 +29,43 @@ void MainWindow::on_pushButton_clicked()
     QLabel * arrayMesa18[7] = {ui->c103,ui->c104,ui->c105,ui->c106,ui->c107,ui->c108, ui->m18};
     QLabel * arrayMesa19[7] = {ui->c109,ui->c110,ui->c111,ui->c112,ui->c113,ui->c114, ui->m19};
     QLabel * arrayMesa20[7] = {ui->c115,ui->c116,ui->c117,ui->c118,ui->c119,ui->c120, ui->m20};
-    QLabel ** arrayMesas[20] = {arrayMesa1,arrayMesa2,arrayMesa3,arrayMesa4,arrayMesa5,arrayMesa6,arrayMesa7,arrayMesa8,arrayMesa9,arrayMesa10,arrayMesa11,arrayMesa12,arrayMesa13,arrayMesa14,arrayMesa15,arrayMesa16,arrayMesa17,arrayMesa18,arrayMesa19,arrayMesa20};
+    QLabel ** arrayMesasTotales[20] = {arrayMesa1,arrayMesa2,arrayMesa3,arrayMesa4,arrayMesa5,arrayMesa6,arrayMesa7,arrayMesa8,arrayMesa9,arrayMesa10,arrayMesa11,arrayMesa12,arrayMesa13,arrayMesa14,arrayMesa15,arrayMesa16,arrayMesa17,arrayMesa18,arrayMesa19,arrayMesa20};
+    *arrayMesas = *arrayMesasTotales;
+
+    for(int i = 0;i<7;i++){
+        arrayMesa1[i]->hide();
+        arrayMesa2[i]->hide();
+        arrayMesa3[i]->hide();
+        arrayMesa4[i]->hide();
+        arrayMesa5[i]->hide();
+        arrayMesa6[i]->hide();
+        arrayMesa7[i]->hide();
+        arrayMesa8[i]->hide();
+        arrayMesa9[i]->hide();
+        arrayMesa10[i]->hide();
+        arrayMesa11[i]->hide();
+        arrayMesa12[i]->hide();
+        arrayMesa13[i]->hide();
+        arrayMesa14[i]->hide();
+        arrayMesa15[i]->hide();
+        arrayMesa16[i]->hide();
+        arrayMesa17[i]->hide();
+        arrayMesa18[i]->hide();
+        arrayMesa19[i]->hide();
+        arrayMesa20[i]->hide();
+
+    }
+
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+
+void MainWindow::on_pushButton_clicked()
+{
 
     //Hacemos el start de todos los hilos y setteamos cada estructura
     restaurante = new Restaurante(cantCocineros,cantMeseros, cantMesas, cantMesasPorMesero, genPersonas1,genPersonas2, &mutexCaj , &mutexLavaplatos, &mutexCocina, &mutexEnsaladas, &mutexPasteleria, &mutexManejador, *arrayMesas,ui->labelCaja, ui->labelLavaplatos, ui->labelComidaFuerte,ui->labelEnsaladas, ui->labelPasteleria,ui->labelGenerador);

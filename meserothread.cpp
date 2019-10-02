@@ -27,23 +27,13 @@ void MeseroThread::run(){
         mutexMesa->unlock();
 
         // Then we give that order to the corresponding place (kitchen or cashier)
-
-
+        colocarOrden();
 
         qDebug()<<mesero->nombre+" reportandose al trabajo";
         sleep(tiempoSleep);
     }
 }
 
-
-void MeseroThread::pausar(){
-    this->pausa = true;
-}
-
-void MeseroThread::continuar()
-{
-    this->pausa = false;
-}
 
 void MeseroThread::colocarOrden(){
     int tipo_orden;
@@ -52,48 +42,28 @@ void MeseroThread::colocarOrden(){
         switch (tipo_orden) {
             case 1:{
                 mutexEnsaladas->lock();
-                ListaSolicitudes * listaOrdenes =  mesero->colaPeticiones->desencolar();
-                Solicitud * tmp = listaOrdenes->primerNodo;
-                for(int i = 0; i<listaOrdenes->largo;i++){
-                    mesero->ensaladas->encolar(tmp);
-                    tmp = tmp->siguiente;
-                }
+                mesero->ensaladas->colaOrdenesNoListas->encolar(mesero->colaPeticiones->desencolar());
                 mutexEnsaladas->unlock();
                 break;
             }
 
             case 2:{
                 mutexCocina->lock();
-                ListaSolicitudes * listaOrdenes =  mesero->colaPeticiones->desencolar();
-                Solicitud * tmp = listaOrdenes->primerNodo;
-                for(int i = 0; i<listaOrdenes->largo;i++){
-                    mesero->cocina->encolar(tmp);
-                    tmp = tmp->siguiente;
-                }
+                mesero->cocina->colaOrdenesNoListas->encolar(mesero->colaPeticiones->desencolar());
                 mutexCocina->unlock();
                 break;
             }
 
             case 3:{
                 mutexPasteleria->lock();
-                ListaSolicitudes * listaOrdenes =  mesero->colaPeticiones->desencolar();
-                Solicitud * tmp = listaOrdenes->primerNodo;
-                for(int i = 0; i<listaOrdenes->largo;i++){
-                    mesero->pasteleria->encolar(tmp);
-                    tmp = tmp->siguiente;
-                }
+                mesero->pasteleria->colaOrdenesNoListas->encolar(mesero->colaPeticiones->desencolar());
                 mutexPasteleria->unlock();
                 break;
             }
 
             case 4:{
                 mutexCaja->lock();
-                ListaSolicitudes * listaOrdenes =  mesero->colaPeticiones->desencolar();
-                Solicitud * tmp = listaOrdenes->primerNodo;
-                for(int i = 0; i<listaOrdenes->largo;i++){
-                    mesero->caja->encolar(tmp);
-                    tmp = tmp->siguiente;
-                }
+
                 mutexCaja->unlock();
                 break;
             }
@@ -104,4 +74,29 @@ void MeseroThread::colocarOrden(){
             }
         }
     }
+}
+
+void MeseroThread::llevarOrdenes(){
+    //We check all the kitchens one by one
+
+    mutexEnsaladas->lock();
+    if (!mesero->ensaladas->colaOrdenesListas->vacia());
+    mutexEnsaladas->unlock();
+
+    mutexCocina->lock();
+    if(!mesero->cocina->colaOrdenesListas->vacia());
+    mutexCocina->unlock();
+
+    mutexPasteleria->lock();
+    if(!mesero->pasteleria->colaOrdenesListas->vacia());
+    mutexPasteleria->unlock();
+}
+
+void MeseroThread::pausar(){
+    this->pausa = true;
+}
+
+void MeseroThread::continuar()
+{
+    this->pausa = false;
 }

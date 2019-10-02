@@ -5,17 +5,21 @@ void CocineroThread::run()
     while (activo)
     {
         mutex->lock();
-        if(cocina->verFrente()){
-            Plato * plato  = cocina->desencolar()->plato;
+        if(cocina->colaOrdenesNoListas->verFrente()){
+            Solicitud * orden = cocina->colaOrdenesNoListas->desencolar()->primerNodo;
+            Plato * plato = orden->plato;
+            while(orden){
             tiempoSleep = static_cast <unsigned int> (plato->tiempoCocina);
             while(0<tiempoSleep){
-                tiempoSleep--;
                 tiempoRestante->setText(QString::number(tiempoSleep));
                 tiempoRestante->repaint();
+                tiempoSleep--;
                 sleep(1);
             }
             cocinar(plato);
             sleep(1);
+            orden = orden->siguiente;
+            }
         }
         mutex->unlock();
         sleep(1);
@@ -33,7 +37,10 @@ void CocineroThread::cocinar(Plato * plato){
     if(plato){
         plato->vacio=false;
         plato->limpio = false;
-        cocina->encolar(cocinero->colocarOrdenLista(plato));
+        ListaSolicitudes * listaAux = new ListaSolicitudes();
+        //Generamos una lista pa que devuelva esa papa
+        listaAux->primerNodo = cocinero->colocarOrdenLista(plato);
+        cocina->colaOrdenesListas->encolar(listaAux);
         sleep(tiempoSleep);
     }
     qDebug()<<"ËL PLATO ESTABA VACÍOOOOOOOOOOOOOOOOOOOOOO";

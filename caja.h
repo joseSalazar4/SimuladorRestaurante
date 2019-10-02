@@ -13,7 +13,7 @@ struct Caja
 
     }
 
-    int calcularCuenta();
+    void calcularCuenta();
 };
 
 #endif // CAJA_H

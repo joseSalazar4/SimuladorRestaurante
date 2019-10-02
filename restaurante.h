@@ -124,6 +124,9 @@ public:
         qDebug()<<"init al thread de lavarplatos";
         lavaplatosThread.__init__(lavaplatos, _mutexLavaplatos);
         lavaplatosThread.start();
+
+        cajaThread.__init__(caja,mutexCaja);
+        cajaThread.start();
     }
 
     void Iniciar();

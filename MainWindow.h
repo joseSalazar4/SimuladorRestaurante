@@ -19,6 +19,7 @@ public:
     CajaThread cajaThread;
     Restaurante * restaurante;
     LavaplatosThread lavaplatosthread;
+    QLabel * arrayMesa1[7],* arrayMesa2[7],* arrayMesa3[7],* arrayMesa4[7],* arrayMesa5[7];
     CocineroThread cocineroPasteleria, cocineroEnsaladas, cocineroFuerte;
     QMutex mutexPasteleria, mutexCocina, mutexEnsaladas, mutexCaj, mutexLavaplatos, mutexManejador;
     int cantMeseros, cantMesas, cantCocineros, genPersonas1, genPersonas2, cantMesasPorMesero;

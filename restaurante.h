@@ -19,11 +19,11 @@ public:
     ListaMeseros * meseros;
     Lavaplatos * lavaplatos;
     LavaplatosThread lavaplatosThread;
+    MeseroThread * arrayMeserosThread[20];
     ManejadorComensales * manejadorComensales;
     GeneradorPersonasThread generadorPersonas;
     Cocina * principal, * pasteleria, * ensaladas;
     QLabel * arrayImagenesMesas[20]=  {};
-    MeseroThread * arrayMeserosThread[20];
     int cantMeseros, cantCocineros, cantMesas, cantMesasPorMesero,tiempoGen1,tiempoGen2,mesasSobrantes = 0;
     QMutex * mutexPasteleria , *mutexCocinaFuerte , * mutexEnsaladas, * mutexLavaplatos, * mutexCaja, * mutexManejador;
 
@@ -88,12 +88,19 @@ public:
 
         if(mesasSobrantes == 0){
             for(int i = 0;i<cantidadMeseros;i++){
-                Mesero * mesero = new Mesero(cantMesasMesero);
+                Mesero * meseroAux = new Mesero(cantMesasMesero);
+
                 MeseroThread * meseroThread = new MeseroThread();
                 ListaMesas * listaMesasAsignada = new ListaMesas();
 
+                meseroAux->caja = caja;
+                meseroAux->cocina = principal;
+                meseroAux->ensaladas = ensaladas;
+                meseroAux->pasteleria = pasteleria;
+                meseroAux->lavaplatos = lavaplatos;
                 for(int j = 0;j<cantMesasMesero;j++){
                     Mesa * mesaAux = new Mesa("Mesa #"+QString::number(j+1));
+                    mesaAux->tipoPedido=1;
                     mesaAux->imagen = arrayImagenesMesas[i]; //ACA VA UN ARRAY DE QLABELS PA ASIGNAR CON UNF FORVEA LO DE EL ORDEN
                     //insertamos en la lista total de mesas
                     mesas->insertarFinal(mesaAux);
@@ -101,10 +108,10 @@ public:
                     listaMesasAsignada->insertarFinal(mesaAux);
                 }
 
-                meseroThread->__init__(mesero, listaMesasAsignada, mutexPasteleria, mutexEnsaladas, mutexCocinaFuerte, mutexLavaplatos,mutexCaja, mutexManejador);
+                meseroThread->__init__(meseroAux, listaMesasAsignada, mutexPasteleria, mutexEnsaladas, mutexCocinaFuerte, mutexLavaplatos,mutexCaja, mutexManejador);
                 qDebug()<<"init al mesero #"+QString::number(i);
                 arrayMeserosThread[i] = meseroThread;
-                meseros->insertarFinal(mesero);
+                meseros->insertarFinal(meseroAux);
             }
 
             qDebug()<<"pongo a correr los hilos de mesero";
@@ -114,11 +121,11 @@ public:
             }
 
         }
-
         qDebug()<<"init al thread de lavarplatos";
         lavaplatosThread.__init__(lavaplatos, _mutexLavaplatos);
         lavaplatosThread.start();
     }
+
     void Iniciar();
     bool asignarMesa(ListaComensales * lista);   ///ASIGNE MESAS PIENSE QUIEN LLAMA EL METODO A DONDE VEA WINDOW.CPP HKUNA MATATA
 

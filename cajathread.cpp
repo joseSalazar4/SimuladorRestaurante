@@ -5,28 +5,27 @@ CajaThread::CajaThread()
 
 }
 
-void CajaThread::__init__(QLabel* _etiqueta, Caja * _caja, QMutex * mutx){
+void CajaThread::__init__(Caja * _caja, QMutex * mutx){
     caja = _caja;
     this->activo = true;
     this->pausa = false;
     this->mutexCaja = mutx;
-    imagenCaja = _etiqueta;
     imagenCaja->setToolTip("No hay cuentas por calcular");
 }
 
 void CajaThread::run(){
     while(activo){
         mutexCaja->lock();
-        if(!caja->vacia()){
-            int mesaActual = caja->frente->numeroMesa;  //Tons si hay solicitudes que saque todas hasta que haya otra mesa
-            this->imagenCaja->setToolTip("Calculando cuenta de la mesa #"+QString::number(mesaActual));
-            while(caja->desencolar()->numeroMesa == mesaActual){
-                caja->frente->cuenta = caja->calcularCuenta();
-                //llamarMesero ^ DARLE cuenta
+        if(!caja->colaCuentasPorHacer->vacia()){
+            int mesaActual = caja->colaCuentasPorHacer->frente->primerNodo->numeroMesa;  //Tons si hay solicitudes que saque todas hasta que haya otra mesa
+            imagenCaja->setToolTip("Calculando cuenta de la mesa #"+QString::number(mesaActual));
+            while(caja->colaCuentasPorHacer->desencolar()->primerNodo->numeroMesa == mesaActual){
+                caja->calcularCuenta();
                 sleep(tiempoSleep);
             }
         }
         mutexCaja->unlock();
+        imagenCaja->setToolTip("Esperando a que una cuenta llegue");
         while(pausa) sleep(1);
     }
 }

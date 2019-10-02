@@ -16,8 +16,7 @@ void MeseroThread::__init__(Mesero* _mesero,ListaMesas * mesas, QMutex * pmutexC
 }
 
 void MeseroThread::run(){
-    int tipo_orden;
-    Mesa*mesa_revisada;
+    Mesa * mesa_revisada;
     while(activo){
 
         // We check if any table needs assistance
@@ -27,65 +26,10 @@ void MeseroThread::run(){
            mesero->pedirOrdenes(mesa_revisada);
         mutexMesa->unlock();
 
-        // Then we ...
-        // todo: entregar orden en la cocina respectiva
-        if(mesero->colaPeticiones && mesero->colaPeticiones->frente && mesero->colaPeticiones->frente->primerNodo){
-            tipo_orden = mesero->colaPeticiones->frente->primerNodo->tipo;
-            switch (tipo_orden) {
-                case 1:{
-                    mutexEnsaladas->lock();
-                    ListaSolicitudes * listaOrdenes =  mesero->colaPeticiones->desencolar();
-                    Solicitud * tmp = listaOrdenes->primerNodo;
-                    for(int i = 0; i<listaOrdenes->largo;i++){
-                        mesero->ensaladas->encolar(tmp);
-                        tmp = tmp->siguiente;
-                    }
-                    mutexEnsaladas->unlock();
-                    break;
-                }
+        // Then we give that order to the corresponding place (kitchen or cashier)
 
-                case 2:{
-                    mutexCocina->lock();
-                    ListaSolicitudes * listaOrdenes =  mesero->colaPeticiones->desencolar();
-                    Solicitud * tmp = listaOrdenes->primerNodo;
-                    for(int i = 0; i<listaOrdenes->largo;i++){
-                        mesero->cocina->encolar(tmp);
-                        tmp = tmp->siguiente;
-                    }
-                    mutexCocina->unlock();
-                    break;
-                }
 
-                case 3:{
-                    mutexPasteleria->lock();
-                    ListaSolicitudes * listaOrdenes =  mesero->colaPeticiones->desencolar();
-                    Solicitud * tmp = listaOrdenes->primerNodo;
-                    for(int i = 0; i<listaOrdenes->largo;i++){
-                        mesero->pasteleria->encolar(tmp);
-                        tmp = tmp->siguiente;
-                    }
-                    mutexPasteleria->unlock();
-                    break;
-                }
 
-                case 4:{
-                    mutexCaja->lock();
-                    ListaSolicitudes * listaOrdenes =  mesero->colaPeticiones->desencolar();
-                    Solicitud * tmp = listaOrdenes->primerNodo;
-                    for(int i = 0; i<listaOrdenes->largo;i++){
-                        mesero->caja->encolar(tmp);
-                        tmp = tmp->siguiente;
-                    }
-                    mutexCaja->unlock();
-                    break;
-                }
-
-                default:{
-                    // ...
-                    break;
-                }
-            }
-        }
         qDebug()<<mesero->nombre+" reportandose al trabajo";
         sleep(tiempoSleep);
     }
@@ -99,4 +43,65 @@ void MeseroThread::pausar(){
 void MeseroThread::continuar()
 {
     this->pausa = false;
+}
+
+void MeseroThread::colocarOrden(){
+    int tipo_orden;
+    if(mesero->colaPeticiones && mesero->colaPeticiones->frente && mesero->colaPeticiones->frente->primerNodo && mesero->colaPeticiones->frente->primerNodo->plato->vacio){
+        tipo_orden = mesero->colaPeticiones->frente->primerNodo->tipo;
+        switch (tipo_orden) {
+            case 1:{
+                mutexEnsaladas->lock();
+                ListaSolicitudes * listaOrdenes =  mesero->colaPeticiones->desencolar();
+                Solicitud * tmp = listaOrdenes->primerNodo;
+                for(int i = 0; i<listaOrdenes->largo;i++){
+                    mesero->ensaladas->encolar(tmp);
+                    tmp = tmp->siguiente;
+                }
+                mutexEnsaladas->unlock();
+                break;
+            }
+
+            case 2:{
+                mutexCocina->lock();
+                ListaSolicitudes * listaOrdenes =  mesero->colaPeticiones->desencolar();
+                Solicitud * tmp = listaOrdenes->primerNodo;
+                for(int i = 0; i<listaOrdenes->largo;i++){
+                    mesero->cocina->encolar(tmp);
+                    tmp = tmp->siguiente;
+                }
+                mutexCocina->unlock();
+                break;
+            }
+
+            case 3:{
+                mutexPasteleria->lock();
+                ListaSolicitudes * listaOrdenes =  mesero->colaPeticiones->desencolar();
+                Solicitud * tmp = listaOrdenes->primerNodo;
+                for(int i = 0; i<listaOrdenes->largo;i++){
+                    mesero->pasteleria->encolar(tmp);
+                    tmp = tmp->siguiente;
+                }
+                mutexPasteleria->unlock();
+                break;
+            }
+
+            case 4:{
+                mutexCaja->lock();
+                ListaSolicitudes * listaOrdenes =  mesero->colaPeticiones->desencolar();
+                Solicitud * tmp = listaOrdenes->primerNodo;
+                for(int i = 0; i<listaOrdenes->largo;i++){
+                    mesero->caja->encolar(tmp);
+                    tmp = tmp->siguiente;
+                }
+                mutexCaja->unlock();
+                break;
+            }
+
+            default:{
+
+                break;
+            }
+        }
+    }
 }

@@ -3,23 +3,26 @@
 
 #include"qstring.h"
 #include "cocinero.h"
+#include "cola.h"
 struct Cocina
 {
     QString tipo;
-    Solicitud * frente;
+    Cola * colaOrdenesNoListas, * colaOrdenesListas;
     Cocinero * cocinero1, * cocinero2, * cocinero3;
     //Usamos solo 1 cocinero para pasteleria y ensaladas
 
     Cocina(QString _tipo, Cocinero * c1){
         tipo = _tipo;
         cocinero1 = c1;
-        frente = nullptr;
+        colaOrdenesNoListas = new Cola();
+        colaOrdenesListas= new Cola() ;
         cocinero2 = cocinero3 = nullptr;
 
     }
     Cocina(QString _tipo){
         tipo = _tipo;
-        frente = nullptr;
+        colaOrdenesNoListas = new Cola();
+        colaOrdenesListas= new Cola() ;
     }
 
     Cocina(QString _tipo, Cocinero * c1, Cocinero * c2, Cocinero * c3){
@@ -27,14 +30,9 @@ struct Cocina
         cocinero1 = c1;
         cocinero2 = c2;
         cocinero3 = c3;
-        frente = nullptr;
-
+        colaOrdenesNoListas = new Cola();
+        colaOrdenesListas= new Cola() ;
    }
-
-   void encolar (Solicitud * dato);
-   Solicitud * desencolar ();
-   Solicitud * verFrente();
-   bool vacia();
 
 };
 

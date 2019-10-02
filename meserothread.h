@@ -25,6 +25,8 @@ public:
     void run();
     void pausar();
     void continuar();
+    void colocarOrden();
+    void llevarOrdenes();
     void __init__(Mesero*,ListaMesas *, QMutex * pasteleria, QMutex * ensaladas, QMutex * cocina, QMutex * lavaplatos, QMutex * caja, QMutex * mesa);
 };
 

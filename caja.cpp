@@ -1,60 +1,21 @@
 #include "caja.h"
+#include "qdebug.h"
 
-void Caja::encolar (Solicitud * solicitud)
-{
-if (vacia())
-         frente = new Solicitud();
-      else
-      {
-            Solicitud * actual = frente;
-            while (actual->siguiente != nullptr)
-                          actual = actual->siguiente;
+void Caja::calcularCuenta(){
+    int sumaOrdenes = 0;
+    if(!colaCuentasPorHacer->vacia()){
+        Solicitud * sol = colaCuentasPorHacer->frente->primerNodo;
+        while(sol){
+            sumaOrdenes+=sol->plato->precio;
+            sol = sol->siguiente;
+            }
 
-            actual->siguiente = solicitud;
-        }
-}
-
-int Caja::calcularCuenta(){
-    Solicitud * sol = this->frente;
-    if(sol){
-        int numero = sol->numeroMesa;
-        while(sol->numeroMesa == numero){
-
-        }
-            return sol->plato->precio;
+    ListaSolicitudes * listaAux = new ListaSolicitudes;
+    Solicitud * sol1 = new Solicitud();
+    listaAux->primerNodo = sol1;
+    sol1->cuenta =  sumaOrdenes;
+    colaCuentasHechas->encolar(listaAux);
     }
-    else{
-        return 0;
-    }
-
+    qDebug()<<"\n\nNo hay cuentas y si entro a calcular una\n\n errorrrr ver arriba";
 }
-Solicitud * Caja::desencolar()
-{
-      if (vacia())
-      {
-         return nullptr;
-      }
-      else
-      {
-          Solicitud* borrado = frente;
-          frente = frente->siguiente;
-          borrado->siguiente = nullptr;
-          return borrado;
-      }
-}
-
-bool Caja::vacia ()
-{
-     if (frente == nullptr)
-        return true;
-     else
-         return false;
-}
-
-
-Solicitud * Caja::verFrente()
-{
-      return frente;
-}
-
 

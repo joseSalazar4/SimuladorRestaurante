@@ -2,18 +2,18 @@
 #define CAJA_H
 
 #include"solicitud.h"
+#include "cola.h"
 
 struct Caja
 {
-    Solicitud * frente;
+    Cola * colaCuentasPorHacer, * colaCuentasHechas;
     Caja(){
-        frente = nullptr;
+        colaCuentasPorHacer = new Cola();
+        colaCuentasHechas = new Cola();
+
     }
-    bool vacia();
+
     int calcularCuenta();
-    Solicitud * verFrente();
-    Solicitud * desencolar ();
-    void encolar (Solicitud * dato);
 };
 
 #endif // CAJA_H

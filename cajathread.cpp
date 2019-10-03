@@ -26,7 +26,6 @@ void CajaThread::run(){
             }
         }
         mutexCaja->unlock();
-        imagenCaja->setToolTip("Esperando a que una cuenta llegue");
         while(pausa) sleep(1);
     }
 }

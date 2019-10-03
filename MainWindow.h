@@ -17,10 +17,11 @@ class MainWindow : public QMainWindow{
 
 public:
     CajaThread cajaThread;
-    QVector<QVector<QLabel*>> arrayMesas;
     Restaurante * restaurante;
     LavaplatosThread lavaplatosthread;
+    QVector<QVector<QLabel*>> arrayMesas;
     CocineroThread cocineroPasteleria, cocineroEnsaladas, cocineroFuerte;
+    QLabel * caja, * lavaplatos, * ensaladas, * cocinaFuerte, *pasteleria;
     QMutex mutexPasteleria, mutexCocina, mutexEnsaladas, mutexCaj, mutexLavaplatos, mutexManejador;
     int cantMeseros, cantMesas, cantCocineros, genPersonas1, genPersonas2, cantMesasPorMesero;
 

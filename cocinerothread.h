@@ -13,7 +13,10 @@ public:
     unsigned int tiempoSleep;
     QLabel * imagenChef, * tiempoRestante;
 
-    CocineroThread();
+    CocineroThread(){
+        activo = true;
+        tiempoSleep = 1;
+    }
 
     void run();
     void pausar();

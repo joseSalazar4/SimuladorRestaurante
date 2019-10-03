@@ -67,7 +67,7 @@ public:
         pasteleria = new Cocina("pasteleria", cocineroPostres);
         ensaladas = new Cocina("ensaladas", cocineroEnsaladas);
 
-        CocineroThread *pasteleroThread = new CocineroThread();
+        CocineroThread * pasteleroThread = new CocineroThread();
         pasteleroThread->__init__(mutexPasteleria,imagenPostres,cocineroPostres,pasteleria);
 
         CocineroThread * ensaladasThread = new CocineroThread();
@@ -86,18 +86,18 @@ public:
             principal->cocinero3->tipoCocinero = "fuerte";
 
 
-            CocineroThread cocineroFuerteThread;
-            cocineroFuerteThread.__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte1 ,principal);
-            cocineroFuerteThread.start();
+            CocineroThread *cocineroFuerteThread = new CocineroThread ();
+            cocineroFuerteThread->__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte1 ,principal);
+            cocineroFuerteThread->start();
 
-            CocineroThread cocineroFuerteThread2;
-            cocineroFuerteThread2.__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte2 ,principal);
-            cocineroFuerteThread2.start();
+            CocineroThread *cocineroFuerteThread2 = new CocineroThread ();
+            cocineroFuerteThread2->__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte2 ,principal);
+            cocineroFuerteThread2->start();
 
 
-            CocineroThread cocineroFuerteThread3;
-            cocineroFuerteThread3.__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte3 ,principal);
-            cocineroFuerteThread3.start();
+            CocineroThread *cocineroFuerteThread3 = new CocineroThread ();
+            cocineroFuerteThread3->__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte3 ,principal);
+            cocineroFuerteThread3->start();
 
         }
 
@@ -202,6 +202,7 @@ public:
                         mesaAux->imagen->setToolTip("Yo estoy activa y esperando clientes");
                         //insertamos en la lista que se asignará a cada mesero y que tiene las mesas que le corresponden
                         listaMesasAsignada->insertarFinal(mesaAux);
+                    }
                 }
                 else{
                     for(int j = 0;j<cantMesasMesero;j++){
@@ -256,11 +257,6 @@ public:
         generadorPersonas.cantPersonasGeneradas = imagenGen;
         generadorPersonas.start();
     }
-
-
-
-
-
 
 
     ListaPlatos * crearMenu(){

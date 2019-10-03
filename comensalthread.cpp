@@ -1,10 +1,5 @@
 #include "comensalthread.h"
 
-ComensalThread::ComensalThread()
-{
-
-}
-
 void ComensalThread::pausar()
 {
     this->pausa = true;

@@ -17,7 +17,7 @@ public:
     int cantMesas;
     QString nombre;
     Caja * caja;
-    Cola * colaPeticiones = nullptr;
+    Cola * colaPeticiones ;
     Lavaplatos * lavaplatos;
     Mesero * siguiente, * anterior;
     Cocina * pasteleria, * ensaladas, * cocina;
@@ -26,7 +26,7 @@ public:
     Mesero(int _cantMesas){
         activo = true;
         cantMesas = _cantMesas;
-
+        colaPeticiones  =  new Cola();
     }
 
 

@@ -8,7 +8,7 @@ struct  Plato
     bool limpio, vacio;
     QString nombre, tipo;
     Plato * siguiente, * anterior;
-    ListaIngredientes * Ingredientes; //TODO Hacer listaSimple
+    ListaIngredientes * Ingredientes;
     int ID, precio, tiempoCocina,tiempoLavado;
 
     Plato(){

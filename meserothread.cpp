@@ -10,6 +10,7 @@ void MeseroThread::__init__(Mesero* _mesero,ListaMesas * mesas, QMutex * pmutexC
     this->mutexMesa = pmutexMesa;
     this->mutexCocina = pmutexcocina;
     this->mutexLavaplatos = pmutexLava;
+    mesero->colaPeticiones = new Cola();
     this->mutexEnsaladas = pmutexensalada;
     this->mutexPasteleria = pmutexpasteleria;
     this->mesero->cantMesas = mesero->mesas->largo;
@@ -38,7 +39,7 @@ void MeseroThread::run(){
 
 void MeseroThread::colocarOrden(){
     int tipo_orden;
-    if(mesero->colaPeticiones && mesero->colaPeticiones->frente && mesero->colaPeticiones->frente->primerNodo && mesero->colaPeticiones->frente->primerNodo->plato->vacio){
+    if(mesero->colaPeticiones->vacia() && mesero->colaPeticiones->frente && mesero->colaPeticiones->frente->primerNodo && mesero->colaPeticiones->frente->primerNodo->plato->vacio){
         tipo_orden = mesero->colaPeticiones->frente->primerNodo->tipo;
         switch (tipo_orden) {
             case 1:{

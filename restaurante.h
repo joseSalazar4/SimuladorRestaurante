@@ -148,6 +148,7 @@ public:
                 MeseroThread * meseroThread = new MeseroThread();
                 ListaMesas * listaMesasAsignada = new ListaMesas();
 
+
                 meseroAux->caja = caja;
                 meseroAux->cocina = principal;
                 meseroAux->ensaladas = ensaladas;
@@ -175,6 +176,8 @@ public:
 
             qDebug()<<"pongo a correr los hilos de mesero";
             for(int i = 0;i<cantidadMeseros;i++){
+                Cola * nuevaCola = new Cola();
+                arrayMeserosThread[i]->mesero->colaPeticiones = nuevaCola;
                 arrayMeserosThread[i]->mesero->nombre = "Mesero #"+QString::number(i);
                 arrayMeserosThread[i]->start();
             }
@@ -199,10 +202,14 @@ public:
         pasteleroThread->start();
 
         generadorPersonas.__init__(manejadorComensales,mutexManejador, tiempoGen1, tiempoGen2);
+        generadorPersonas.platos = listaPlatos;
         generadorPersonas.listaMesas = this->mesas;
         generadorPersonas.cantPersonasGeneradas = imagenGen;
         generadorPersonas.start();
     }
+
+
+
 
     ListaPlatos * crearMenu(){
 

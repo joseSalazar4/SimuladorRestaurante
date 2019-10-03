@@ -17,6 +17,7 @@ public:
     unsigned int tiempoSleep;
     MeseroThread * siguiente, *anterior;
     QMutex * mutexPasteleria, * mutexCocina, * mutexEnsaladas, * mutexCaja, * mutexLavaplatos, * mutexMesa;
+
     MeseroThread(){
         siguiente = anterior = nullptr;
         tiempoSleep=5;

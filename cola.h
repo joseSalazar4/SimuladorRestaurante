@@ -10,8 +10,7 @@ struct Cola {
         int largo;
         ListaSolicitudes * frente;
 
-       Cola()
-       {
+       Cola(){
             frente = nullptr;
             largo = 0;
        }

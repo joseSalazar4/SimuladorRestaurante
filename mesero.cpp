@@ -62,8 +62,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
         colaPeticiones->encolar(listaSolicitudes);
         mesa->pedirAsistencia=false;
     }
-    mesa->numOrden->setText(QString::number(mesa->tipoPedido));
-    mesa->numOrden->repaint();
+    mesa->imagen->setToolTip(QString::number(mesa->tipoPedido));
     mesa->tipoPedido++;
 }
 

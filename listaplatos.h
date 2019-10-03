@@ -5,8 +5,8 @@
 
 struct ListaPlatos
 {
-    int largo;
-    Plato * siguiente, * anterior, * primerNodo, * ultimoNodo, *primerEntrada, * primerFuerte,* primerPostre;
+    int largo = 0;
+    Plato * primerNodo, * ultimoNodo;
     ListaPlatos(){
         primerNodo = ultimoNodo = nullptr;
     }

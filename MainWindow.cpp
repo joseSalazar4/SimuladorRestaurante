@@ -33,8 +33,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     for(int i = 0;i<20;i++)
     for(int j = 0;j<7;j++){
         arrayMesas[i][j]->hide();
-
-
     }
 
 }

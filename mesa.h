@@ -26,7 +26,6 @@ struct Mesa
     void vaciarMesa();
     bool estaOcupada();
     bool comensalesTerminaron();
-    void insertarComensales(QString);
 };
 
 #endif // MESA_H

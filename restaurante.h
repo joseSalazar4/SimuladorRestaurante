@@ -195,9 +195,11 @@ public:
 
         generadorPersonas.__init__(manejadorComensales,mutexManejador, tiempoGen1, tiempoGen2);
         generadorPersonas.listaMesas = this->mesas;
+        generadorPersonas.platos=listaPlatos;
         generadorPersonas.cantPersonasGeneradas = imagenGen;
         generadorPersonas.start();
     }
+
 
     ListaPlatos * crearMenu(){
 
@@ -208,46 +210,64 @@ public:
         Ingrediente * ingrediente = new Ingrediente();
         ListaIngredientes * listaIngredientesGenerica = new ListaIngredientes();
 
+
         listaIngredientesGenerica->insertarFinal(ingrediente); //esta es la que iría abajo donde esta en mayusc todo y gracias.
 
         //Creation of the recipes
 
 
-        menuRestaurante->insertarFinal("1","Ensalada kartoffelsalat",2500,20,20, AQUI VA LA LISTA DE INGREDIENTES );
-        menuRestaurante->insertarFinal("1","Ensalada mixta",2500,20,20);
-        menuRestaurante->insertarFinal("1","Ensalada Caprese",2500,20,20);
-        menuRestaurante->insertarFinal("1","Ensalada Waldorf",2500,20,20);
-        menuRestaurante->insertarFinal("1","Ensalada rusa",2500,20,20);
-        menuRestaurante->insertarFinal("1","Ensalada de col ",2500,20,20);
-        menuRestaurante->insertarFinal("1","Ensalada griega",2500,20,20);
-        menuRestaurante->insertarFinal("1","Ensalada alemana",2500,20,20);
-        menuRestaurante->insertarFinal("1","Ensalada libanesa",2500,20,20);
-        menuRestaurante->insertarFinal("1","Ensalada con atun",2500,20,20);
 
 
-        menuRestaurante->insertarFinal("2","Pizza de Jamón y Hongos",10,2500,20,20,);
-        menuRestaurante->insertarFinal("2","Pollo Frito",11,2500,20,20);
-        menuRestaurante->insertarFinal("2","Hamburguesa sencilla",12,2500,20,20);
-        menuRestaurante->insertarFinal("2","Hamburguesa Doble",13,2500,20,20);
-        menuRestaurante->insertarFinal("2","Hamburguesa Cuadruple",14,2500,20,20);
-        menuRestaurante->insertarFinal("2","Hamburguesa Suprema",15,2500,20,20);
-        menuRestaurante->insertarFinal("2","Hamburguesa de Infarto",16,2500,20,20);
-        menuRestaurante->insertarFinal("2","Pintico",17,2500,20,20);
-        menuRestaurante->insertarFinal("2","Calzone",18,2500,20,20);
-        menuRestaurante->insertarFinal("2","Burrito Jumbo",19,2500,20,20);
+        ListaIngredientes * lista_ing_karto = new ListaIngredientes();
+        lista_ing_karto->insertarFinal(new Ingrediente("Lechuga",3));
+        lista_ing_karto->insertarFinal(new Ingrediente("Tomate",1));
 
-        menuRestaurante->insertarFinal("3","Helado de Fresa",21,2500,20,20);
-        menuRestaurante->insertarFinal("3","Helado de Vainilla",22,2500,20,20);
-        menuRestaurante->insertarFinal("3","Tiramizú",23,2500,20,20);
-        menuRestaurante->insertarFinal("3","Tres Leches",24,2500,20,20);
-        menuRestaurante->insertarFinal("3","Cheesecake",25,2500,20,20);
-        menuRestaurante->insertarFinal("3","Arroz con Leche ",26,2500,20,20);
-        menuRestaurante->insertarFinal("3","Gelatina",27,2500,20,20);
-        menuRestaurante->insertarFinal("3","Gelatina con helados ",28,2500,20,20);
-        menuRestaurante->insertarFinal("3","Torta de chocolate",29,2500,20,20);
-        menuRestaurante->insertarFinal("3","Pastafrola",30,2500,20,20);
+        menuRestaurante->insertarFinal("1","Ensalada kartoffelsalat",1,2500,20,20, lista_ing_karto );
+//        menuRestaurante->insertarFinal("1","Ensalada mixta",2,2500,20,20);
+//        menuRestaurante->insertarFinal("1","Ensalada Caprese",3,2500,20,20);
+//        menuRestaurante->insertarFinal("1","Ensalada Waldorf",2500,20,20);
+//        menuRestaurante->insertarFinal("1","Ensalada rusa",2500,20,20);
+//        menuRestaurante->insertarFinal("1","Ensalada de col ",2500,20,20);
+//        menuRestaurante->insertarFinal("1","Ensalada griega",2500,20,20);
+//        menuRestaurante->insertarFinal("1","Ensalada alemana",2500,20,20);
+//        menuRestaurante->insertarFinal("1","Ensalada libanesa",2500,20,20);
+//        menuRestaurante->insertarFinal("1","Ensalada con atun",2500,20,20);
 
 
+        ListaIngredientes * platoFuerte = new ListaIngredientes();
+        platoFuerte->insertarFinal(new Ingrediente("Masa",3));
+        platoFuerte->insertarFinal(new Ingrediente("Pasta",3));
+        platoFuerte->insertarFinal(new Ingrediente("Jamon",2));
+        platoFuerte->insertarFinal(new Ingrediente("Hongos",2));
+        platoFuerte->insertarFinal(new Ingrediente("Queso",1));
+
+        menuRestaurante->insertarFinal("2","Pizza de Jamón y Hongos",10,2500,20,20,platoFuerte);
+//        menuRestaurante->insertarFinal("2","Pollo Frito",11,2500,20,20);
+//        menuRestaurante->insertarFinal("2","Hamburguesa sencilla",12,2500,20,20);
+//        menuRestaurante->insertarFinal("2","Hamburguesa Doble",13,2500,20,20);
+//        menuRestaurante->insertarFinal("2","Hamburguesa Cuadruple",14,2500,20,20);
+//        menuRestaurante->insertarFinal("2","Hamburguesa Suprema",15,2500,20,20);
+//        menuRestaurante->insertarFinal("2","Hamburguesa de Infarto",16,2500,20,20);
+//        menuRestaurante->insertarFinal("2","Pintico",17,2500,20,20);
+//        menuRestaurante->insertarFinal("2","Calzone",18,2500,20,20);
+//        menuRestaurante->insertarFinal("2","Burrito Jumbo",19,2500,20,20);
+
+        ListaIngredientes * postre = new ListaIngredientes ();
+        postre->insertarFinal(new Ingrediente("Helado de fresa",3));
+        postre->insertarFinal(new Ingrediente("Cono",1));
+
+        menuRestaurante->insertarFinal("3","Helado de Fresa",21,2500,20,20, postre);
+//        menuRestaurante->insertarFinal("3","Helado de Vainilla",22,2500,20,20);
+//        menuRestaurante->insertarFinal("3","Tiramizú",23,2500,20,20);
+//        menuRestaurante->insertarFinal("3","Tres Leches",24,2500,20,20);
+//        menuRestaurante->insertarFinal("3","Cheesecake",25,2500,20,20);
+//        menuRestaurante->insertarFinal("3","Arroz con Leche ",26,2500,20,20);
+//        menuRestaurante->insertarFinal("3","Gelatina",27,2500,20,20);
+//        menuRestaurante->insertarFinal("3","Gelatina con helados ",28,2500,20,20);
+//        menuRestaurante->insertarFinal("3","Torta de chocolate",29,2500,20,20);
+//        menuRestaurante->insertarFinal("3","Pastafrola",30,2500,20,20);
+
+        return menuRestaurante;
     }
 
 

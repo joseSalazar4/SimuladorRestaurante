@@ -43,7 +43,7 @@ ListaComensales * GeneradorPersonasThread::generarPersonas(int personasCreadas )
     for(int i = 0; i < personasCreadas; i++){
         QString nombre = generarNombre()+QString::number(i);
         qDebug()<<nombre;
-        Comensal * nuevo = new Comensal(nombre);
+        Comensal * nuevo = new Comensal(nombre, platos);
         lista->insertarFinal(nuevo);
     }
     qDebug()<<lista->largo;

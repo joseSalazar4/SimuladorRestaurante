@@ -20,7 +20,7 @@ struct Comensal
     Comensal *  siguiente, * anterior;
     int cuentaAPagar,probabilidadPedir, numeroMesa, tiempoComer1, tiempoComer2;
 
-    Comensal(QString _nombre){
+    Comensal(QString _nombre, ListaPlatos*listaPlatos): listaPlatos(listaPlatos){
         nombre = _nombre;
         comidaActual = "";
         siguiente = anterior = nullptr;

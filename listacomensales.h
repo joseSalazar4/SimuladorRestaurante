@@ -18,7 +18,6 @@ struct ListaComensales
     bool estaVacia();
     void borrarFinal();
     void insertarFinal(Comensal * cm);
-    void insertarFinal(QString nombre);
 };
 
 #endif // LISTACOMENSALES_H

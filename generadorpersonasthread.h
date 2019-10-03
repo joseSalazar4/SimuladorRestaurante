@@ -18,6 +18,7 @@ public:
     ManejadorComensales * manejadorComensales;
     int tiempoGeneracion1,tiempoGeneracion, cantidadGenerada;
     QString arrayNombres[10] = {"Palpatine" , "Padme" , "Kit Fisto","Anakin", "Obi-Wan", "San Holo", "Sofia", "Luis", "Fiorella", "Jose"};
+    ListaPlatos * platos;
 
     GeneradorPersonasThread();
 

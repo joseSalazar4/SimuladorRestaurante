@@ -65,8 +65,23 @@ void MeseroThread::colocarOrden(){
 
             case 4:{
                 mutexCaja->lock();
-
+                mesero->caja->colaCuentasPorHacer->encolar(mesero->colaPeticiones->desencolar());
+                if(!mesero->caja->colaCuentasHechas->vacia()) mesero->colaPeticiones->encolar(mesero->caja->colaCuentasHechas->desencolar());
                 mutexCaja->unlock();
+
+                Mesa * tmp = mesero->mesas->primerNodo;
+                bool encontrada = false;
+                while(tmp){
+                    if(tmp->ID == QString::number(mesero->colaPeticiones->verFrente()->primerNodo->numeroMesa)){
+                        encontrada = true;
+                        break;
+                    }
+                    tmp = tmp->siguiente;
+                }
+                if(encontrada){
+                    tmp->imagen->setToolTip(MEJOR HACER UN BUENO VER SI ARRIBA HAY PETICIONES DE DEVOLVER CUENTA FA;LLTA MUUCHOPARA LLENARSE)
+                }
+
                 break;
             }
 
@@ -77,6 +92,8 @@ void MeseroThread::colocarOrden(){
         }
     }
 }
+
+
 
 void MeseroThread::llevarOrdenes(){
     //We check all the kitchens one by one

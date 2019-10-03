@@ -14,8 +14,7 @@ Dialog::~Dialog()
     delete ui;
 }
 
-void Dialog::on_pushButton_clicked()
-{
+void Dialog::on_pushButton_clicked(){
     //Extraemos los datos de la ventana.
     ui->label->setToolTip("Hola");  //ASI HACEMOSLOS TOOLTIPS
     QString cantMesas =  ui->lineaCantMesas->text();
@@ -24,15 +23,12 @@ void Dialog::on_pushButton_clicked()
     QString cantMeseros = ui->lineaCantMeseros->text();
     QString tiempoGen2 = ui->lineaTiempoGen2->text();
     float cantMesasPorMeseroActivo = (cantMesas.toFloat())/(cantMeseros.toFloat());
-    QString cantMesasMesero = QString::number(static_cast<int>( cantMesasPorMeseroActivo));
+    QString cantMesasMesero = QString::number(static_cast<int>(cantMesasPorMeseroActivo));
 
     //Si hay una cantidad de mesas no divisible entre los meseros.
 
     //Escondemos la ventana y vamos pasando los datos
     hide();
-
-    //ELIMINAR ESTO Y DESCOMENTAR LO DE ABAJO
-    //ELIMINAR ESTO Y DESCOMENTAR LO DE ABAJO
 
     ventanaPrincipal.show();
 
@@ -48,6 +44,7 @@ void Dialog::on_pushButton_clicked()
         ventanaPrincipal.cantMeseros =   cantMeseros.toInt();
         ventanaPrincipal.cantCocineros  = cantiCocineros.toInt();
         ventanaPrincipal.cantMesasPorMesero = cantMesasMesero.toInt();
+
         qDebug()<<"Pasó los parametros nice :)";
     }
     else{

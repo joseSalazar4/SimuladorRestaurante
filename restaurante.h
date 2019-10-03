@@ -174,16 +174,65 @@ public:
                 meseros->insertarFinal(meseroAux);
             }
 
-            qDebug()<<"pongo a correr los hilos de mesero";
-            for(int i = 0;i<cantidadMeseros;i++){
-                Cola * nuevaCola = new Cola();
-                arrayMeserosThread[i]->mesero->colaPeticiones = nuevaCola;
-                arrayMeserosThread[i]->mesero->nombre = "Mesero #"+QString::number(i);
-                arrayMeserosThread[i]->start();
-            }
-
-
         }
+      //Este es el caso en que sean mas mesas que meseros y no sea un numero divisible entonces se deben acomodar
+        else{
+            for(int i = 0;i<cantidadMeseros;i++){
+                Mesero * meseroAux = new Mesero(cantMesasMesero);
+
+                MeseroThread * meseroThread = new MeseroThread();
+                ListaMesas * listaMesasAsignada = new ListaMesas();
+
+
+                meseroAux->caja = caja;
+                meseroAux->cocina = principal;
+                meseroAux->ensaladas = ensaladas;
+                meseroAux->pasteleria = pasteleria;
+                meseroAux->lavaplatos = lavaplatos;
+
+                if(i==cantidadMeseros--){
+                    for(int j = 0;j<cantMesasMesero;j++){
+                        Mesa * mesaAux = new Mesa("Mesa #"+QString::number(j+1));
+                        mesaAux->tipoPedido=1;
+                        mesaAux->arrayComensales = arrayMesas[i];
+                        mesaAux->imagen = arrayMesas[i][6]; //ACA VA UN ARRAY DE QLABELS PA ASIGNAR CON UNF FORVEA LO DE EL ORDEN
+                        //insertamos en la lista total de mesas
+                        mesas->insertarFinal(mesaAux);
+                        mesaAux->imagen->show();
+                        mesaAux->imagen->setToolTip("Yo estoy activa y esperando clientes");
+                        //insertamos en la lista que se asignará a cada mesero y que tiene las mesas que le corresponden
+                        listaMesasAsignada->insertarFinal(mesaAux);
+                }
+                else{
+                    for(int j = 0;j<cantMesasMesero;j++){
+                        Mesa * mesaAux = new Mesa("Mesa #"+QString::number(j+1));
+                        mesaAux->tipoPedido=1;
+                        mesaAux->arrayComensales = arrayMesas[i];
+                        mesaAux->imagen = arrayMesas[i][6]; //ACA VA UN ARRAY DE QLABELS PA ASIGNAR CON UNF FORVEA LO DE EL ORDEN
+                        //insertamos en la lista total de mesas
+                        mesas->insertarFinal(mesaAux);
+                        mesaAux->imagen->show();
+                        mesaAux->imagen->setToolTip("Yo estoy activa y esperando clientes");
+                        //insertamos en la lista que se asignará a cada mesero y que tiene las mesas que le corresponden
+                        listaMesasAsignada->insertarFinal(mesaAux);
+                    }
+                }
+
+                meseroThread->__init__(meseroAux, listaMesasAsignada, mutexPasteleria, mutexEnsaladas, mutexCocinaFuerte, mutexLavaplatos,mutexCaja, mutexManejador);
+                qDebug()<<"init al mesero #"+QString::number(i);
+                arrayMeserosThread[i] = meseroThread;
+                meseros->insertarFinal(meseroAux);
+            }
+        }
+
+        qDebug()<<"pongo a correr los hilos de mesero";
+        for(int i = 0;i<cantidadMeseros;i++){
+            Cola * nuevaCola = new Cola();
+            arrayMeserosThread[i]->mesero->colaPeticiones = nuevaCola;
+            arrayMeserosThread[i]->mesero->nombre = "Mesero #"+QString::number(i);
+            arrayMeserosThread[i]->start();
+        }
+
         qDebug()<<"init al thread de lavarplatos";
         LavaplatosThread * lavapl  = new LavaplatosThread();
         lavaplatosThread = lavapl;
@@ -207,6 +256,9 @@ public:
         generadorPersonas.cantPersonasGeneradas = imagenGen;
         generadorPersonas.start();
     }
+
+
+
 
 
 

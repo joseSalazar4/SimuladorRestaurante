@@ -1,11 +1,24 @@
 #ifndef COMENSALTHREAD_H
 #define COMENSALTHREAD_H
-
-
-class ComensalThread
+#include "qthread.h"
+#include "qmutex.h"
+#include "qlabel.h"
+#include "comensal.h"
+class ComensalThread: public QThread
 {
 public:
-    ComensalThread();
-};
+    bool pausa, activo;
+    Comensal * comensal;
+    QMutex * mutexComensal;
+    QLabel * imagenComensal;
+    unsigned int tiempoSleep;
 
+    ComensalThread(){}
+
+    //TODO: FINALIZAR La construccion de esto y meterlo en ell restaurante.h con el generador de personas y en mesas. sueno
+    void run();
+    void pausar();
+    void continuar();
+    void __init__(QMutex *, QLabel *, Comensal *);
+};
 #endif // COMENSALTHREAD_H

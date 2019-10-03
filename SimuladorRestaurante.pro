@@ -27,6 +27,7 @@ SOURCES += \
     cola.cpp \
     #componente.cpp \
     colacomensales.cpp \
+    comensalthread.cpp \
     dialog.cpp \
     generadorpersonasthread.cpp \
     lavaplatos.cpp \
@@ -53,6 +54,7 @@ HEADERS += \
     cocinerothread.h \
     comensal.h \
     #Componente.h \
+    comensalthread.h \
     ingrediente.h \
     MainWindow.h \
     #Mediador.h \

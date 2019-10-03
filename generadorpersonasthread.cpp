@@ -66,7 +66,8 @@ void GeneradorPersonasThread::run(){
             mesaAux->listaComensales = manejadorComensales->colaClientesEnEspera->desencolar();
             mesaAux->ocupada=true;
             Comensal * comensalAux = mesaAux->listaComensales->primerNodo;
-            for(int i = 0;i<mesaAux->listaComensales->largo;i++){
+
+            for(int i = 0;i<mesaAux->listaComensales->largo-1;i++){
                 comensalAux->imagenPersona =  mesaAux->arrayComensales[i];
                 comensalAux->imagenPersona->show();
                 comensalAux = comensalAux->siguiente;

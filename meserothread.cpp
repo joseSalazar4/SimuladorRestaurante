@@ -66,25 +66,9 @@ void MeseroThread::colocarOrden(){
             case 4:{
                 mutexCaja->lock();
                 mesero->caja->colaCuentasPorHacer->encolar(mesero->colaPeticiones->desencolar());
-                if(!mesero->caja->colaCuentasHechas->vacia()) mesero->colaPeticiones->encolar(mesero->caja->colaCuentasHechas->desencolar());
                 mutexCaja->unlock();
-
-                Mesa * tmp = mesero->mesas->primerNodo;
-                bool encontrada = false;
-                while(tmp){
-                    if(tmp->ID == QString::number(mesero->colaPeticiones->verFrente()->primerNodo->numeroMesa)){
-                        encontrada = true;
-                        break;
-                    }
-                    tmp = tmp->siguiente;
-                }
-                if(encontrada){
-                    tmp->imagen->setToolTip(MEJOR HACER UN BUENO VER SI ARRIBA HAY PETICIONES DE DEVOLVER CUENTA FA;LLTA MUUCHOPARA LLENARSE)
-                }
-
                 break;
             }
-
             default:{
 
                 break;
@@ -105,6 +89,7 @@ void MeseroThread::llevarOrdenes(){
         Mesa * mesaAux =  mesero->mesas->primerNodo;
         Plato * plato = mesero->ensaladas->colaOrdenesListas->frente->primerNodo->plato;
         Solicitud * solicitud = new Solicitud();
+
         //Ya no debo usar el mutex porque ya no haré nada en la cola tons lo suelto.
         mutexEnsaladas->unlock();
 
@@ -134,6 +119,7 @@ void MeseroThread::llevarOrdenes(){
         Mesa * mesaAux =  mesero->mesas->primerNodo;
         Plato * plato = mesero->cocina->colaOrdenesListas->frente->primerNodo->plato;
         Solicitud * solicitud = new Solicitud();
+
         //Ya no debo usar el mutex porque ya no haré nada en la cola tons lo suelto.
         mutexCocina->unlock();
 
@@ -163,6 +149,7 @@ void MeseroThread::llevarOrdenes(){
         Mesa * mesaAux =  mesero->mesas->primerNodo;
         Plato * plato = mesero->pasteleria->colaOrdenesListas->frente->primerNodo->plato;
         Solicitud * solicitud = new Solicitud();
+
         //Ya no debo usar el mutex porque ya no haré nada en la cola tons lo suelto.
         mutexPasteleria->unlock();
 

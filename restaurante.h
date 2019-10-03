@@ -109,10 +109,10 @@ public:
             principal->cocinero2 = cocineroFuerte2;
             principal->cocinero2->tipoCocinero = "fuerte";
 
-            CocineroThread *cocineroFuerteThread1=new CocineroThread () ;
+            CocineroThread *cocineroFuerteThread1=new CocineroThread ();
             cocineroFuerteThread1->__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte1, principal);
 
-            CocineroThread *cocineroFuerteThread2=new CocineroThread () ;
+            CocineroThread *cocineroFuerteThread2=new CocineroThread ();
             cocineroFuerteThread2->__init__(mutexCocinaFuerte, imagenCocina, cocineroFuerte2,principal);
 
             cocineroFuerteThread1->start();

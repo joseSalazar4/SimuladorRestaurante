@@ -1,25 +1,12 @@
 #include "generadorpersonasthread.h"
 #include "qdebug.h"
 
-
-int GeneradorPersonasThread::generadorNumRandom(int rango1, int rango2){
-    srand(static_cast<unsigned int>(time(nullptr)));
-    int r = (rand() % rango1) + (rango2-rango1);
-    return r;
-}
-
-int GeneradorPersonasThread::generadorNumRandom(int rango1){
-    srand(static_cast<unsigned int>(time(nullptr)));
-    int r = (rand() % rango1)+1;
-    return r;
-}
-
-
 QString GeneradorPersonasThread::generarNombre(){
     QString random;
     random = arrayNombres[rand()%10];
     return random;
 }
+
 void GeneradorPersonasThread::__init__(ManejadorComensales * maneja, QMutex * mutex, int t1, int t2){
     pausa = false;
     activo = true;
@@ -28,7 +15,6 @@ void GeneradorPersonasThread::__init__(ManejadorComensales * maneja, QMutex * mu
     this->mutexManejador = mutex;
     this->manejadorComensales = maneja;
     srand(static_cast<unsigned int>(time(nullptr)));
-
 }
 
 GeneradorPersonasThread::GeneradorPersonasThread()
@@ -57,7 +43,6 @@ void GeneradorPersonasThread::run(){
         int sleepTime = QRandomGenerator::global()->bounded(tiempoGeneracion, tiempoGeneracion1);
         int personasCreadas = QRandomGenerator::global()->bounded(1, 6);
         cantPersonasGeneradas->setText(QString::number(personasCreadas));
-        //cantPersonasGeneradas->repaint();
 
         mutexManejador->lock();
         manejadorComensales->colaClientesEnEspera->encolar(generarPersonas(personasCreadas));
@@ -66,15 +51,15 @@ void GeneradorPersonasThread::run(){
             mesaAux->listaComensales = manejadorComensales->colaClientesEnEspera->desencolar();
             mesaAux->ocupada=true;
             Comensal * comensalAux = mesaAux->listaComensales->primerNodo;
-
-            for(int i = 0;i<mesaAux->listaComensales->largo-1;i++){
+            cantidadFamiliasCola->setText(QString::number(manejadorComensales->colaClientesEnEspera->largo));
+            for(int i = 0;i<mesaAux->listaComensales->largo;i++){
                 comensalAux->imagenPersona =  mesaAux->arrayComensales[i];
                 comensalAux->imagenPersona->show();
                 comensalAux = comensalAux->siguiente;
             }
         }
+        cantidadFamiliasCola->setText(QString::number(manejadorComensales->colaClientesEnEspera->largo));
         mutexManejador->unlock();
-
         sleep(static_cast<unsigned int>(sleepTime));
         while(pausa) sleep(1);
     }

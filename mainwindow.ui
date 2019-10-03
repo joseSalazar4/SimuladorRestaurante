@@ -3094,18 +3094,51 @@
    <widget class="QLabel" name="labelGenerador">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>860</y>
+      <x>200</x>
+      <y>850</y>
       <width>51</width>
-      <height>21</height>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Noto Sans Arabic UI Th</family>
+      <pointsize>24</pointsize>
+     </font>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="labelGeneradorCola">
+    <property name="geometry">
+     <rect>
+      <x>1120</x>
+      <y>850</y>
+      <width>231</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Oswald</family>
+      <pointsize>16</pointsize>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
+   </widget>
    <zorder>FondodePantalla</zorder>
-   <zorder>splitter</zorder>
+   <zorder>labelGenerador_2</zorder>
+   <zorder>labelGenerador</zorder>
    <zorder>labelPasteleria</zorder>
    <zorder>pushButton</zorder>
    <zorder>labelEnsaladas</zorder>
@@ -3254,6 +3287,7 @@
    <zorder>c114</zorder>
    <zorder>m17</zorder>
    <zorder>m18</zorder>
+   <zorder>labelGeneradorCola</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

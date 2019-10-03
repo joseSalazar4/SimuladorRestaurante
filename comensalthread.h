@@ -13,7 +13,7 @@ public:
     QLabel * imagenComensal;
     unsigned int tiempoSleep;
 
-    ComensalThread(){}
+    ComensalThread();
 
     //TODO: FINALIZAR La construccion de esto y meterlo en ell restaurante.h con el generador de personas y en mesas. sueno
     void run();

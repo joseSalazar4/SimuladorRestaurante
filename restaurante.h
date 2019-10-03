@@ -41,7 +41,7 @@ public:
                 QMutex * _mutexManejador,
                 QVector<QVector<QLabel*>> arrayMesas,
                 QLabel * imagenCaja,
-                QLabel * imagenLavaplatos, QLabel * imagenCocina, QLabel * imagenEnsaladas ,QLabel * imagenPostres, QLabel * imagenGen){
+                QLabel * imagenLavaplatos, QLabel * imagenCocina, QLabel * imagenEnsaladas ,QLabel * imagenPostres, QLabel * imagenGen,QLabel * imagenColaGen){
 
 
         listaPlatos =  crearMenu();
@@ -255,6 +255,7 @@ public:
         generadorPersonas.platos = listaPlatos;
         generadorPersonas.listaMesas = this->mesas;
         generadorPersonas.cantPersonasGeneradas = imagenGen;
+        generadorPersonas.cantidadFamiliasCola = imagenColaGen;
         generadorPersonas.start();
     }
 

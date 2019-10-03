@@ -12,7 +12,7 @@ class GeneradorPersonasThread : public QThread
 
 public:
     ListaMesas * listaMesas;
-    QLabel * cantPersonasGeneradas;
+    QLabel * cantPersonasGeneradas, * cantidadFamiliasCola;
     bool pausa = false, activo = true;
     QMutex * mutexManejador, * mutexMesas;
     ManejadorComensales * manejadorComensales;

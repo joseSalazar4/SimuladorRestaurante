@@ -3059,6 +3059,19 @@
      <string>TextLabel</string>
     </property>
    </widget>
+   <widget class="QLabel" name="FondodePantalla">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1351</width>
+      <height>921</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -3066,7 +3079,7 @@
      <x>0</x>
      <y>0</y>
      <width>1349</width>
-     <height>25</height>
+     <height>23</height>
     </rect>
    </property>
   </widget>

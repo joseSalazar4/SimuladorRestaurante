@@ -48,7 +48,6 @@ void Mesero::pedirOrdenes(Mesa * mesa){
                     nueva->tipo = 4;
                     nueva->cliente = tmp->nombre;
                     nueva->numeroMesa = tmp->numeroMesa;
-                    tmp->cuentaAPagar+= nueva->plato->precio;
                     listaSolicitudes->insertarFinal(nueva);
                 }
                 mesa->tipoPedido = 1;
@@ -80,7 +79,7 @@ Mesa * Mesero::revisarMesas(){
     Mesa * tmp = mesas->primerNodo;
     if(tmp == nullptr) return nullptr;
     for(int i =0; i<mesas->largo;i++){
-        if (tmp->estaOcupada() && tmp->pedirAsistencia){
+        if (tmp->estaOcupada() && tmp->comensalesTerminaron()){
             return tmp;
         }
         tmp = tmp->siguiente;

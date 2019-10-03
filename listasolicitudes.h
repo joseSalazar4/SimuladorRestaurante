@@ -6,7 +6,7 @@
 struct ListaSolicitudes {
     int largo;
     Solicitud * primerNodo, *ultimoNodo;
-    ListaSolicitudes * siguienteLista, *anteriorLista;
+    ListaSolicitudes * siguienteLista= nullptr, *anteriorLista = nullptr;
     ListaSolicitudes(){
         primerNodo = ultimoNodo = nullptr;
         largo = 0;

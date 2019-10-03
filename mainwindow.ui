@@ -3046,19 +3046,6 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="labelGenerador">
-    <property name="geometry">
-     <rect>
-      <x>34</x>
-      <y>875</y>
-      <width>91</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="FondodePantalla">
     <property name="geometry">
      <rect>
@@ -3069,9 +3056,183 @@
      </rect>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string/>
     </property>
    </widget>
+   <widget class="QSplitter" name="splitter">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>830</y>
+      <width>191</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <widget class="QLabel" name="labelGenerador_2">
+     <property name="text">
+      <string>Entrada de personas: </string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelGenerador">
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+   </widget>
+   <zorder>FondodePantalla</zorder>
+   <zorder>labelPasteleria</zorder>
+   <zorder>pushButton</zorder>
+   <zorder>labelEnsaladas</zorder>
+   <zorder>labelComidaFuerte</zorder>
+   <zorder>labelLavaplatos</zorder>
+   <zorder>labelCaja</zorder>
+   <zorder>splitter_2</zorder>
+   <zorder>splitter_3</zorder>
+   <zorder>c15</zorder>
+   <zorder>m3</zorder>
+   <zorder>c18</zorder>
+   <zorder>c16</zorder>
+   <zorder>c14</zorder>
+   <zorder>c17</zorder>
+   <zorder>c13</zorder>
+   <zorder>c22</zorder>
+   <zorder>c20</zorder>
+   <zorder>m4</zorder>
+   <zorder>c19</zorder>
+   <zorder>c24</zorder>
+   <zorder>c21</zorder>
+   <zorder>c23</zorder>
+   <zorder>c12</zorder>
+   <zorder>c8</zorder>
+   <zorder>m2</zorder>
+   <zorder>c4</zorder>
+   <zorder>c7</zorder>
+   <zorder>c2</zorder>
+   <zorder>m1</zorder>
+   <zorder>c10</zorder>
+   <zorder>c1</zorder>
+   <zorder>c6</zorder>
+   <zorder>c3</zorder>
+   <zorder>c5</zorder>
+   <zorder>c9</zorder>
+   <zorder>c11</zorder>
+   <zorder>c32</zorder>
+   <zorder>m7</zorder>
+   <zorder>c37</zorder>
+   <zorder>c27</zorder>
+   <zorder>c41</zorder>
+   <zorder>m5</zorder>
+   <zorder>m8</zorder>
+   <zorder>c34</zorder>
+   <zorder>c48</zorder>
+   <zorder>c46</zorder>
+   <zorder>c39</zorder>
+   <zorder>c36</zorder>
+   <zorder>c47</zorder>
+   <zorder>c30</zorder>
+   <zorder>c31</zorder>
+   <zorder>c38</zorder>
+   <zorder>m6</zorder>
+   <zorder>c44</zorder>
+   <zorder>c43</zorder>
+   <zorder>c25</zorder>
+   <zorder>c33</zorder>
+   <zorder>c29</zorder>
+   <zorder>c40</zorder>
+   <zorder>c42</zorder>
+   <zorder>c45</zorder>
+   <zorder>c35</zorder>
+   <zorder>c28</zorder>
+   <zorder>c26</zorder>
+   <zorder>c88</zorder>
+   <zorder>c68</zorder>
+   <zorder>c86</zorder>
+   <zorder>c75</zorder>
+   <zorder>c57</zorder>
+   <zorder>c64</zorder>
+   <zorder>c49</zorder>
+   <zorder>c73</zorder>
+   <zorder>c87</zorder>
+   <zorder>c84</zorder>
+   <zorder>c69</zorder>
+   <zorder>c79</zorder>
+   <zorder>c62</zorder>
+   <zorder>m13</zorder>
+   <zorder>m12</zorder>
+   <zorder>c50</zorder>
+   <zorder>c61</zorder>
+   <zorder>m11</zorder>
+   <zorder>c67</zorder>
+   <zorder>c55</zorder>
+   <zorder>c54</zorder>
+   <zorder>c52</zorder>
+   <zorder>c63</zorder>
+   <zorder>c56</zorder>
+   <zorder>c82</zorder>
+   <zorder>c81</zorder>
+   <zorder>c59</zorder>
+   <zorder>c83</zorder>
+   <zorder>c65</zorder>
+   <zorder>c70</zorder>
+   <zorder>c58</zorder>
+   <zorder>c96</zorder>
+   <zorder>m14</zorder>
+   <zorder>c92</zorder>
+   <zorder>c60</zorder>
+   <zorder>c93</zorder>
+   <zorder>c72</zorder>
+   <zorder>c53</zorder>
+   <zorder>c89</zorder>
+   <zorder>c94</zorder>
+   <zorder>c51</zorder>
+   <zorder>c78</zorder>
+   <zorder>c74</zorder>
+   <zorder>c85</zorder>
+   <zorder>c95</zorder>
+   <zorder>c76</zorder>
+   <zorder>m16</zorder>
+   <zorder>c71</zorder>
+   <zorder>m15</zorder>
+   <zorder>c91</zorder>
+   <zorder>c66</zorder>
+   <zorder>c90</zorder>
+   <zorder>m9</zorder>
+   <zorder>c80</zorder>
+   <zorder>m10</zorder>
+   <zorder>c77</zorder>
+   <zorder>c116</zorder>
+   <zorder>c105</zorder>
+   <zorder>c112</zorder>
+   <zorder>c97</zorder>
+   <zorder>c117</zorder>
+   <zorder>c110</zorder>
+   <zorder>m20</zorder>
+   <zorder>c98</zorder>
+   <zorder>c109</zorder>
+   <zorder>m19</zorder>
+   <zorder>c115</zorder>
+   <zorder>c103</zorder>
+   <zorder>c102</zorder>
+   <zorder>c100</zorder>
+   <zorder>c111</zorder>
+   <zorder>c104</zorder>
+   <zorder>c107</zorder>
+   <zorder>c113</zorder>
+   <zorder>c118</zorder>
+   <zorder>c106</zorder>
+   <zorder>c108</zorder>
+   <zorder>c120</zorder>
+   <zorder>c101</zorder>
+   <zorder>c99</zorder>
+   <zorder>c119</zorder>
+   <zorder>c114</zorder>
+   <zorder>m17</zorder>
+   <zorder>m18</zorder>
+   <zorder>labelGenerador</zorder>
+   <zorder>labelGenerador_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

@@ -12,7 +12,7 @@ Dialog::Dialog(QWidget *parent) :QDialog(parent), ui(new Ui::Dialog)
     ui->label_4->setStyleSheet("QLabel {color : white; }");
     ui->label_5->setStyleSheet("QLabel {color : white; }");
     ui->label_6->setStyleSheet("QLabel {color : white; }");
-    ui->label_7->setStyleSheet("QLabel {color : white; }");D
+    ui->label_7->setStyleSheet("QLabel {color : white; }");
 }
 
 Dialog::~Dialog()

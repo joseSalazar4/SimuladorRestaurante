@@ -31,7 +31,7 @@
     <rect>
      <x>10</x>
      <y>330</y>
-     <width>261</width>
+     <width>271</width>
      <height>16</height>
     </rect>
    </property>
@@ -213,6 +213,110 @@
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>400</y>
+     <width>61</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tiempo que dura un mesero</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>406</y>
+     <width>61</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tiempo que dura un cocinero</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineaCocineros_2">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>450</y>
+     <width>51</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>2</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>410</y>
+     <width>61</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tiempo que dura la cajera</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>420</y>
+     <width>61</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tiempo que dura lavaplatos </string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineaCocineros_3">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>460</y>
+     <width>51</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>2</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineaCocineros_4">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>450</y>
+     <width>51</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>2</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineaCocineros_5">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>460</y>
+     <width>51</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>2</string>
+   </property>
+  </widget>
   <zorder>label_5</zorder>
   <zorder>label_2</zorder>
   <zorder>label_3</zorder>
@@ -225,6 +329,14 @@
   <zorder>label_7</zorder>
   <zorder>pushButton</zorder>
   <zorder>splitter</zorder>
+  <zorder>label_8</zorder>
+  <zorder>label_9</zorder>
+  <zorder>lineaCocineros_2</zorder>
+  <zorder>label_10</zorder>
+  <zorder>label_11</zorder>
+  <zorder>lineaCocineros_3</zorder>
+  <zorder>lineaCocineros_4</zorder>
+  <zorder>lineaCocineros_5</zorder>
  </widget>
  <tabstops>
   <tabstop>lineaCantMeseros</tabstop>

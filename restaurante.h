@@ -27,21 +27,12 @@ public:
     int cantMeseros, cantCocineros, cantMesas, cantMesasPorMesero,tiempoGen1,tiempoGen2,mesasSobrantes = 0;
     QMutex * mutexPasteleria , *mutexCocinaFuerte , * mutexEnsaladas, * mutexLavaplatos, * mutexCaja, * mutexManejador;
 
-    Restaurante(int cantidadCocineros,
-                int cantidadMeseros,
-                int cantidadMesas,
-                int cantMesasMesero,
-                int tiempoGen1,
-                int tiempoGen2,
-                QMutex * _mutexCaja,
-                QMutex *  _mutexLavaplatos,
-                QMutex * _mutexCocina,
-                QMutex * _mutexEnsaladas,
-                QMutex*  _mutexPasteleria,
-                QMutex * _mutexManejador,
-                QVector<QVector<QLabel*>> arrayMesas,
-                QLabel * imagenCaja,
-                QLabel * imagenLavaplatos, QLabel * imagenCocina, QLabel * imagenEnsaladas ,QLabel * imagenPostres, QLabel * imagenGen,QLabel * imagenColaGen){
+    Restaurante(int cantidadCocineros,int cantidadMeseros,int cantidadMesas,int cantMesasMesero, int tiempoGen1,int tiempoGen2,
+                int intervaloPostre1,int intervaloPostre2, int intervaloEnsaladas1, int intervaloEnsaladas2, int intervaloFuerte1,
+                int intervaloFuerte2, int tiempoSleepCocinero, int tiempoSleepCaja,  int tiempoSleepLavaplatos, int tiempoMesero,
+                QMutex * _mutexCaja, QMutex *  _mutexLavaplatos,QMutex * _mutexCocina,QMutex * _mutexEnsaladas, QMutex*  _mutexPasteleria,
+                QMutex * _mutexManejador,QVector<QVector<QLabel*>> arrayMesas,QLabel * imagenCaja, QLabel * imagenLavaplatos,
+                QLabel * imagenCocina, QLabel * imagenEnsaladas ,QLabel * imagenPostres, QLabel * imagenGen,QLabel * imagenColaGen){
 
 
         listaPlatos =  crearMenu();
@@ -88,15 +79,18 @@ public:
 
             CocineroThread *cocineroFuerteThread = new CocineroThread ();
             cocineroFuerteThread->__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte1 ,principal);
+            cocineroFuerteThread->tiempoSleep = static_cast<unsigned int>(tiempoSleepCocinero);
             cocineroFuerteThread->start();
 
             CocineroThread *cocineroFuerteThread2 = new CocineroThread ();
             cocineroFuerteThread2->__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte2 ,principal);
+            cocineroFuerteThread2->tiempoSleep = static_cast<unsigned int>(tiempoSleepCocinero);
             cocineroFuerteThread2->start();
 
 
             CocineroThread *cocineroFuerteThread3 = new CocineroThread ();
             cocineroFuerteThread3->__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte3 ,principal);
+            cocineroFuerteThread3->tiempoSleep = static_cast<unsigned int>(tiempoSleepCocinero);
             cocineroFuerteThread3->start();
 
         }
@@ -111,9 +105,11 @@ public:
 
             CocineroThread *cocineroFuerteThread1=new CocineroThread ();
             cocineroFuerteThread1->__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte1, principal);
+            cocineroFuerteThread1->tiempoSleep = static_cast<unsigned int>(tiempoSleepCocinero);
 
             CocineroThread *cocineroFuerteThread2=new CocineroThread ();
             cocineroFuerteThread2->__init__(mutexCocinaFuerte, imagenCocina, cocineroFuerte2,principal);
+            cocineroFuerteThread2->tiempoSleep = static_cast<unsigned int>(tiempoSleepCocinero);
 
             cocineroFuerteThread1->start();
             cocineroFuerteThread2->start();
@@ -125,10 +121,10 @@ public:
             principal->cocinero1 = cocineroFuerte1;
             principal->cocinero1->tipoCocinero = "fuerte";
 
-            CocineroThread cocineroFuerteThread;
-            cocineroFuerteThread.__init__(mutexCocinaFuerte, imagenCocina, cocineroFuerte1,principal);
-
-            cocineroFuerteThread.start();
+            CocineroThread * cocineroFuerteThread = new CocineroThread();
+            cocineroFuerteThread->__init__(mutexCocinaFuerte, imagenCocina, cocineroFuerte1,principal);
+            cocineroFuerteThread->tiempoSleep = static_cast<unsigned int>(tiempoSleepCocinero);
+            cocineroFuerteThread->start();
 
         }
 
@@ -194,6 +190,15 @@ public:
                     for(int j = 0;j<cantMesasMesero;j++){
                         Mesa * mesaAux = new Mesa("Mesa #"+QString::number(j+1));
                         mesaAux->tipoPedido=1;
+                        mesaAux->intervaloFuerte1=intervaloFuerte1;
+                        mesaAux->intervaloFuerte2=intervaloFuerte2;
+
+                        mesaAux->intervaloEnsaladas1=intervaloEnsaladas1;
+                        mesaAux->intervaloEnsaladas2=intervaloEnsaladas2;
+
+                        mesaAux->intervaloPostres1=intervaloPostre1;
+                        mesaAux->intervaloPostres2=intervaloPostre2;
+
                         mesaAux->arrayComensales = arrayMesas[i];
                         mesaAux->imagen = arrayMesas[i][6]; //ACA VA UN ARRAY DE QLABELS PA ASIGNAR CON UNF FORVEA LO DE EL ORDEN
                         //insertamos en la lista total de mesas
@@ -240,12 +245,14 @@ public:
 
         lavaplatosThread->__init__(lavaplatos, _mutexLavaplatos);
         lavaplatosThread->imagenLavanderia = imagenLavaplatos;
+        lavaplatosThread->tiempoSleep = static_cast<unsigned>(tiempoSleepLavaplatos);
         lavaplatosThread->start();
 
         CajaThread * cajaThrd = new CajaThread();
         cajaThread = cajaThrd;
 
         cajaThread->__init__(caja,mutexCaja, imagenCaja);
+        cajaThread->tiempoSleep = static_cast<unsigned>(tiempoSleepCaja);
         cajaThread->start();
 
         ensaladasThread->start();

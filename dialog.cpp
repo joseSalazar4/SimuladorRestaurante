@@ -5,7 +5,7 @@
 
 Dialog::Dialog(QWidget *parent) :QDialog(parent), ui(new Ui::Dialog)
 {
-
+    ui->setupUi(this);
     ui->label->setStyleSheet("QLabel {color : white; }");
     ui->label_2->setStyleSheet("QLabel {color : white; }");
     ui->label_3->setStyleSheet("QLabel {color : white; }");
@@ -20,7 +20,28 @@ Dialog::Dialog(QWidget *parent) :QDialog(parent), ui(new Ui::Dialog)
     ui->label_12->setStyleSheet("QLabel {color : white; }");
     ui->label_13->setStyleSheet("QLabel {color : white; }");
     ui->label_14->setStyleSheet("QLabel {color : white; }");
-    ui->setupUi(this);
+
+    ui->tiempoSleepCaja->show();
+    ui->tiempoSleepMesero->show();
+    ui->tiempoSleepCocinero->show();
+    ui->tiempoSleepLavaplatos->show();
+
+    ui->IntervaloPostres1->show();
+    ui->IntervaloPostres2->show();
+
+    ui->Intervalo1Ensalada->show();
+    ui->Intervalo2Ensalada->show();
+
+    ui->Intervalo1PlatoFuerte->show();
+    ui->Intervalo2PlatoFuerte->show();
+
+    ui->splitter->show();
+    ui->splitter_2->show();
+    ui->splitter_3->show();
+    ui->splitter_4->show();
+    ui->splitter_5->show();
+    ui->splitter_6->show();
+
 }
 
 Dialog::~Dialog()
@@ -43,7 +64,10 @@ void Dialog::on_pushButton_clicked(){
 
     //Escondemos la ventana y vamos pasando los datos
     hide();
+
+
     //TODO: METER LA VALIDACION DE QUE LOS INTERVAOS Y SLEEPS NO SEAN NEGTVS
+
     if(cantMesas.toInt()<=20 && cantMesas.toInt()>=cantMeseros.toInt() && cantMeseros.toInt()>=1 && cantMesas.toInt() >=1 && cantiCocineros.toInt()>=1 && cantiCocineros.toInt()<4){
 
         qDebug()<<"Voy a crearla";

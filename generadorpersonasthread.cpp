@@ -53,6 +53,14 @@ void GeneradorPersonasThread::run(){
             ComensalThread * comensalAux = mesaAux->listaComensales->primerNodo;
             cantidadFamiliasCola->setText(QString::number(manejadorComensales->colaClientesEnEspera->largo));
             for(int i = 0;i<mesaAux->listaComensales->largo;i++){
+                comensalAux->comensal->tiempoComer1Fuerte = mesaAux->intervaloFuerte1;
+                comensalAux->comensal->tiempoComer2Fuerte = mesaAux->intervaloFuerte2;
+
+                comensalAux->comensal->tiempoComerPostre1 = mesaAux->intervaloPostres1;
+                comensalAux->comensal->tiempoComerPostre2 = mesaAux->intervaloPostres2;
+
+                comensalAux->comensal->tiempoComerEnsalada1 = mesaAux->intervaloEnsaladas1;
+                comensalAux->comensal->tiempoComerEnsalada2 = mesaAux->intervaloEnsaladas2;
                 comensalAux->comensal->imagenPersona =  mesaAux->arrayComensales[i];
                 comensalAux->comensal->imagenPersona->show();
                 comensalAux->mutexComensal = mesaAux->arrayQmutex[i];

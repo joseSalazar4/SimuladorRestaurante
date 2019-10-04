@@ -14,6 +14,7 @@ public:
     unsigned int tiempoSleep;
     ComensalThread * siguiente, * anterior;
 
+
     ComensalThread(){
         siguiente = anterior = nullptr;
         activo = true;

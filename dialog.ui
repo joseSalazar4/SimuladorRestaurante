@@ -224,6 +224,118 @@
     <string>Intervalo Postres</string>
    </property>
   </widget>
+  <widget class="QSplitter" name="splitter_6">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>570</y>
+     <width>451</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <widget class="QLineEdit" name="tiempoSleepCocinero">
+    <property name="text">
+     <string>2</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="tiempoSleepMesero">
+    <property name="text">
+     <string>2</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="tiempoSleepCaja">
+    <property name="text">
+     <string>2</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="tiempoSleepLavaplatos">
+    <property name="text">
+     <string>2</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QSplitter" name="splitter_5">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>546</y>
+     <width>451</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <widget class="QLabel" name="label_9">
+    <property name="text">
+     <string>Tiempo Cocinero</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="text">
+     <string>Tiempo Mesero</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="text">
+     <string>Tiempo Cajero</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="text">
+     <string>Tiempo Lavaplatos</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QSplitter" name="splitter_4">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>500</y>
+     <width>131</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <widget class="QLineEdit" name="IntervaloPostres1">
+    <property name="text">
+     <string>2</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="IntervaloPostres2">
+    <property name="text">
+     <string>2</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QSplitter" name="splitter_3">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>440</y>
+     <width>141</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <widget class="QLineEdit" name="Intervalo1Ensalada">
+    <property name="text">
+     <string>2</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="Intervalo2Ensalada">
+    <property name="text">
+     <string>2</string>
+    </property>
+   </widget>
+  </widget>
   <widget class="QSplitter" name="splitter_2">
    <property name="geometry">
     <rect>
@@ -275,118 +387,6 @@
     </property>
    </widget>
   </widget>
-  <widget class="QSplitter" name="splitter_3">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>440</y>
-     <width>141</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <widget class="QLineEdit" name="Intervalo1Ensalada">
-    <property name="text">
-     <string>2</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="Intervalo2Ensalada">
-    <property name="text">
-     <string>2</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QSplitter" name="splitter_4">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>500</y>
-     <width>131</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <widget class="QLineEdit" name="IntervaloPostres1">
-    <property name="text">
-     <string>2</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="IntervaloPostres2">
-    <property name="text">
-     <string>2</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QSplitter" name="splitter_5">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>546</y>
-     <width>451</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <widget class="QLabel" name="label_9">
-    <property name="text">
-     <string>Tiempo Cocinero</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_8">
-    <property name="text">
-     <string>Tiempo Mesero</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_10">
-    <property name="text">
-     <string>Tiempo Cajero</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_11">
-    <property name="text">
-     <string>Tiempo Lavaplatos</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QSplitter" name="splitter_6">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>570</y>
-     <width>451</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <widget class="QLineEdit" name="tiempoSleepCocinero">
-    <property name="text">
-     <string>2</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="tiempoSleepMesero">
-    <property name="text">
-     <string>2</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="tiempoSleepCaja">
-    <property name="text">
-     <string>2</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="tiempoSleepLavaplatos">
-    <property name="text">
-     <string>2</string>
-    </property>
-   </widget>
-  </widget>
   <zorder>label_5</zorder>
   <zorder>label_2</zorder>
   <zorder>label_3</zorder>
@@ -416,6 +416,12 @@
   <zorder>Intervalo1PlatoFuerte</zorder>
   <zorder>Intervalo2PlatoFuerte</zorder>
   <zorder>Intervalo1Ensalada</zorder>
+  <zorder>splitter_6</zorder>
+  <zorder>splitter_5</zorder>
+  <zorder>splitter_4</zorder>
+  <zorder>splitter_3</zorder>
+  <zorder>splitter_2</zorder>
+  <zorder>splitter</zorder>
  </widget>
  <tabstops>
   <tabstop>lineaCantMeseros</tabstop>

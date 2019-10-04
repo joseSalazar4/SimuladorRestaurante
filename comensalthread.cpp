@@ -51,7 +51,7 @@ Solicitud * Comensal::pedirEntrada(int porcentajeACumplir){
     return nullptr;
 }
 
-Solicitud * Comensal::pedirPlatoFuerte( int porcentajeACumplir){
+Solicitud * Comensal::pedirPlatoFuerte(int porcentajeACumplir){
 
     int probabilidad = generadorNumRandom(porcentajeACumplir);
     if(porcentajeACumplir>probabilidad){

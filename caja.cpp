@@ -6,7 +6,7 @@ void Caja::calcularCuenta(){
     if(!colaCuentasPorHacer->vacia()){
         Solicitud * sol = colaCuentasPorHacer->frente->primerNodo;
         while(sol){
-            sumaOrdenes+=sol->plato->precio;
+            sumaOrdenes+=sol->cuenta;
             sol = sol->siguiente;
             }
 

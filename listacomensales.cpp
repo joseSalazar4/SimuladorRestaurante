@@ -1,7 +1,7 @@
 #include "listacomensales.h"
 
 
-void ListaComensales::insertarFinal(Comensal * nuevo) {
+void ListaComensales::insertarFinal(ComensalThread * nuevo) {
     if (estaVacia()) {
         primerNodo = ultimoNodo = nuevo;
         largo++;
@@ -20,9 +20,10 @@ bool ListaComensales::estaVacia(){
 }
 
 void ListaComensales::borrarFinal(){
-    Comensal * tmp = ultimoNodo;
+    ComensalThread * tmp = ultimoNodo;
     if(estaVacia() || primerNodo == ultimoNodo) primerNodo = ultimoNodo = nullptr;
     else{
+        tmp->comensal->imagenPersona->hide();
         ultimoNodo = ultimoNodo->anterior;
         tmp->anterior = nullptr;
         ultimoNodo->siguiente = nullptr;
@@ -30,7 +31,7 @@ void ListaComensales::borrarFinal(){
 }
 
 void ListaComensales::vaciar(){
-    Comensal * tmp = primerNodo;
+    ComensalThread * tmp = primerNodo;
     while(tmp){
         borrarFinal();
     }

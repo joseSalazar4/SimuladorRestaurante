@@ -2,11 +2,6 @@
 #include "QRandomGenerator"
 
 
-int generadorNumRandom(int rango1, int rango2){
-    int r = (rand() % rango1) + (rango2-rango1);
-    return r;
-}
-
 int generadorNumRandom(int rango1){
     int r = (rand() % 100);
     return r<rango1?true:false;
@@ -78,6 +73,21 @@ void Comensal::dejarMesa(){
 }
 
 Plato *  Comensal::comer(Plato * plato){
+    int tiempoComer1, tiempoComer2;
+    //Depending on the plate the time will be different
+    if(plato->tipo == 1){
+        tiempoComer1 = tiempoComerEnsalada1;
+        tiempoComer2 = tiempoComerEnsalada2;
+    }
+    else if(plato->tipo == 2){
+        tiempoComer1 = tiempoComer1Fuerte;
+        tiempoComer2 = tiempoComer2Fuerte;
+    }
+    else{
+        tiempoComer1 = tiempoComerPostre1;
+        tiempoComer2 = tiempoComerPostre2;
+    }
+
     int duracionComida = QRandomGenerator::global()->bounded(tiempoComer1, tiempoComer2);
     comensalTerminoComer = false;
     while (duracionComida>0) {
@@ -89,7 +99,4 @@ Plato *  Comensal::comer(Plato * plato){
     plato->vacio = true;
     plato->limpio = false;
     return plato;
-}
-void Comensal::llamarMesero(){
-
 }

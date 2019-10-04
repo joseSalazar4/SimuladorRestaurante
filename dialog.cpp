@@ -5,7 +5,7 @@
 
 Dialog::Dialog(QWidget *parent) :QDialog(parent), ui(new Ui::Dialog)
 {
-    ui->setupUi(this);
+
     ui->label->setStyleSheet("QLabel {color : white; }");
     ui->label_2->setStyleSheet("QLabel {color : white; }");
     ui->label_3->setStyleSheet("QLabel {color : white; }");
@@ -13,6 +13,14 @@ Dialog::Dialog(QWidget *parent) :QDialog(parent), ui(new Ui::Dialog)
     ui->label_5->setStyleSheet("QLabel {color : white; }");
     ui->label_6->setStyleSheet("QLabel {color : white; }");
     ui->label_7->setStyleSheet("QLabel {color : white; }");
+    ui->label_8->setStyleSheet("QLabel {color : white; }");
+    ui->label_9->setStyleSheet("QLabel {color : white; }");
+    ui->label_10->setStyleSheet("QLabel {color : white; }");
+    ui->label_11->setStyleSheet("QLabel {color : white; }");
+    ui->label_12->setStyleSheet("QLabel {color : white; }");
+    ui->label_13->setStyleSheet("QLabel {color : white; }");
+    ui->label_14->setStyleSheet("QLabel {color : white; }");
+    ui->setupUi(this);
 }
 
 Dialog::~Dialog()
@@ -35,9 +43,7 @@ void Dialog::on_pushButton_clicked(){
 
     //Escondemos la ventana y vamos pasando los datos
     hide();
-
-    ventanaPrincipal.show();
-
+    //TODO: METER LA VALIDACION DE QUE LOS INTERVAOS Y SLEEPS NO SEAN NEGTVS
     if(cantMesas.toInt()<=20 && cantMesas.toInt()>=cantMeseros.toInt() && cantMeseros.toInt()>=1 && cantMesas.toInt() >=1 && cantiCocineros.toInt()>=1 && cantiCocineros.toInt()<4){
 
         qDebug()<<"Voy a crearla";
@@ -50,6 +56,21 @@ void Dialog::on_pushButton_clicked(){
         ventanaPrincipal.cantMeseros =   cantMeseros.toInt();
         ventanaPrincipal.cantCocineros  = cantiCocineros.toInt();
         ventanaPrincipal.cantMesasPorMesero = cantMesasMesero.toInt();
+
+        ventanaPrincipal.intervaloPostres1 = ui->IntervaloPostres1->text().toInt();
+        ventanaPrincipal.intervaloPostres2 = ui->IntervaloPostres2->text().toInt();
+
+        ventanaPrincipal.intervaloFuerte1 = ui->Intervalo1PlatoFuerte->text().toInt();
+        ventanaPrincipal.intervaloFuerte2 = ui->Intervalo2PlatoFuerte->text().toInt();
+
+
+        ventanaPrincipal.intervaloEnsaladas1 = ui->Intervalo1Ensalada->text().toInt();
+        ventanaPrincipal.intervaloEnsaladas2 = ui->Intervalo2Ensalada->text().toInt();
+
+        ventanaPrincipal.tiempoSleepCaja = ui->tiempoSleepCaja->text().toInt();
+        ventanaPrincipal.tiempoSleepMesero = ui->tiempoSleepMesero->text().toInt();
+        ventanaPrincipal.tiempoSleepCocinero = ui->tiempoSleepCocinero->text().toInt();
+        ventanaPrincipal.tiempoSleepLavaplatos = ui->tiempoSleepLavaplatos->text().toInt();
 
         qDebug()<<"Pasó los parametros nice :)";
     }

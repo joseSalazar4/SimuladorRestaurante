@@ -18,7 +18,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     cocinero.cpp \
     cocinerothread.cpp \
-    comensal.cpp \
     MainWindow.cpp \
     caja.cpp \
     cajathread.cpp \

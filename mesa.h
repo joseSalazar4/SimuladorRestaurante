@@ -14,12 +14,17 @@ struct Mesa
     bool pedirAsistencia = true;
     QVector<QLabel*> arrayComensales;
     ListaComensales * listaComensales;
+    QMutex * arrayQmutex[6];
     Mesa * siguiente=nullptr, * anterior=nullptr;
 
     Mesa(QString _id){
         ID = _id;
         pilaPlatosSucios = new Pila();
         listaComensales = new ListaComensales();
+        for(int i=0;i<6;i++){
+            QMutex * nuevo = new QMutex() ;
+            arrayQmutex[i] = nuevo;
+        }
     }
 
     void vaciarMesa();

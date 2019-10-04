@@ -2,12 +2,12 @@
 #define LISTACOMENSALES_H
 
 
-#include "comensal.h"
+#include "comensalthread.h"
 
 struct ListaComensales
 {
     int largo, id;
-    Comensal * siguiente, * primerNodo, * ultimoNodo,* anterior;
+    ComensalThread  * primerNodo, * ultimoNodo;
     ListaComensales * siguienteLista=nullptr, * primerLista=nullptr, *listanterior=nullptr;
     ListaComensales(){
         primerNodo = ultimoNodo = nullptr;
@@ -17,7 +17,7 @@ struct ListaComensales
     void vaciar();
     bool estaVacia();
     void borrarFinal();
-    void insertarFinal(Comensal * cm);
+    void insertarFinal(ComensalThread * cm);
 };
 
 #endif // LISTACOMENSALES_H

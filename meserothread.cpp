@@ -70,7 +70,7 @@ void MeseroThread::colocarOrden(){
                 break;
             }
             default:{
-
+                qDebug()<<"Hubo una orden con tipo pedido erroneo";
                 break;
             }
         }
@@ -98,17 +98,21 @@ void MeseroThread::llevarOrdenes(){
             mesaAux = mesaAux->siguiente;
         }
 
-        Comensal * cliente = mesaAux->listaComensales->primerNodo ;
-        while(cliente){
-            if(cliente->nombre == nombreCliente){
+        ComensalThread * clienteThread = mesaAux->listaComensales->primerNodo;
+
+        while(clienteThread){
+            clienteThread->mutexComensal->lock();
+            if(clienteThread->comensal->nombre == nombreCliente){
                 this->sleep(tiempoSleep);
-                cliente->comer(plato);
+                clienteThread->comensal->plato = plato;
                 solicitud->plato = plato;
                 mesaAux->pilaPlatosSucios->push(solicitud);
                 break;
             }
-            cliente = cliente->siguiente;
+            clienteThread = clienteThread->siguiente;
         }
+        clienteThread->mutexComensal->lock();
+        return;
     }
     else mutexEnsaladas->unlock();
 
@@ -128,17 +132,20 @@ void MeseroThread::llevarOrdenes(){
             mesaAux = mesaAux->siguiente;
         }
 
-        Comensal * cliente = mesaAux->listaComensales->primerNodo ;
-        while(cliente){
-            if(cliente->nombre == nombreCliente){
+        ComensalThread * clienteThread = mesaAux->listaComensales->primerNodo ;
+        while(clienteThread){
+            clienteThread->mutexComensal->lock();
+            if(clienteThread->comensal->nombre == nombreCliente){
                 this->sleep(tiempoSleep);
-                cliente->comer(plato);
+                clienteThread->comensal->plato = (plato);
                 solicitud->plato = plato;
                 mesaAux->pilaPlatosSucios->push(solicitud);
                 break;
             }
-            cliente = cliente->siguiente;
+            clienteThread = clienteThread->siguiente;
         }
+        clienteThread->mutexComensal->lock();
+        return;
     }
     else mutexCocina->unlock();
 
@@ -157,18 +164,20 @@ void MeseroThread::llevarOrdenes(){
             if(mesaAux->ID == numMesa) break;
             mesaAux = mesaAux->siguiente;
         }
-
-        Comensal * cliente = mesaAux->listaComensales->primerNodo ;
-        while(cliente){
-            if(cliente->nombre == nombreCliente){
+        ComensalThread * clienteThread = mesaAux->listaComensales->primerNodo ;
+        while(clienteThread){
+            clienteThread->mutexComensal->lock();
+            if(clienteThread->comensal->nombre == nombreCliente){
                 this->sleep(tiempoSleep);
-                cliente->comer(plato);
+                clienteThread->comensal->plato = plato;
                 solicitud->plato = plato;
                 mesaAux->pilaPlatosSucios->push(solicitud);
                 break;
             }
-            cliente = cliente->siguiente;
+            clienteThread = clienteThread->siguiente;
         }
+        clienteThread->mutexComensal->lock();
+        return;
     }
     else mutexPasteleria->unlock();
 }

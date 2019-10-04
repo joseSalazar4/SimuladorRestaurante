@@ -29,7 +29,8 @@ ListaComensales * GeneradorPersonasThread::generarPersonas(int personasCreadas )
     for(int i = 0; i < personasCreadas; i++){
         QString nombre = generarNombre()+QString::number(i);
         qDebug()<<nombre;
-        Comensal * nuevo = new Comensal(nombre, platos);
+        ComensalThread * nuevo = new ComensalThread();
+        nuevo->comensal = new Comensal(nombre, platos);
         lista->insertarFinal(nuevo);
     }
     qDebug()<<lista->largo;
@@ -43,18 +44,18 @@ void GeneradorPersonasThread::run(){
         int sleepTime = QRandomGenerator::global()->bounded(tiempoGeneracion, tiempoGeneracion1);
         int personasCreadas = QRandomGenerator::global()->bounded(1, 6);
         cantPersonasGeneradas->setText(QString::number(personasCreadas));
-
         mutexManejador->lock();
         manejadorComensales->colaClientesEnEspera->encolar(generarPersonas(personasCreadas));
         Mesa * mesaAux = listaMesas->buscarDisponibilidad();
         if(mesaAux && manejadorComensales->colaClientesEnEspera->frente != nullptr){
             mesaAux->listaComensales = manejadorComensales->colaClientesEnEspera->desencolar();
             mesaAux->ocupada=true;
-            Comensal * comensalAux = mesaAux->listaComensales->primerNodo;
+            ComensalThread * comensalAux = mesaAux->listaComensales->primerNodo;
             cantidadFamiliasCola->setText(QString::number(manejadorComensales->colaClientesEnEspera->largo));
             for(int i = 0;i<mesaAux->listaComensales->largo;i++){
-                comensalAux->imagenPersona =  mesaAux->arrayComensales[i];
-                comensalAux->imagenPersona->show();
+                comensalAux->comensal->imagenPersona =  mesaAux->arrayComensales[i];
+                comensalAux->comensal->imagenPersona->show();
+                comensalAux->mutexComensal = mesaAux->arrayQmutex[i];
                 comensalAux = comensalAux->siguiente;
             }
         }

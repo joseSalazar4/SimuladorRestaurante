@@ -12,11 +12,10 @@ void Mesa::vaciarMesa(){
 }
 
 bool Mesa::comensalesTerminaron(){
-    Comensal * clienteAux = listaComensales->primerNodo;
+    ComensalThread * clienteAux = listaComensales->primerNodo;
     while(clienteAux){
-        if(!clienteAux->comensalTerminoComer) return false;
+        if(!clienteAux->comensal->comensalTerminoComer) return false;
         clienteAux = clienteAux->siguiente;
     }
     return true;
-
 }

@@ -5,12 +5,13 @@
  * @param mesa to check
  */
 void Mesero::pedirOrdenes(Mesa * mesa){
-    Comensal * tmp = mesa->listaComensales->primerNodo;
+    ComensalThread * comensalThreadAux = mesa->listaComensales->primerNodo;
+    Comensal * tmp =  comensalThreadAux->comensal;
     ListaSolicitudes * listaSolicitudes = new ListaSolicitudes();
     for(int i =0; (mesa->listaComensales->largo) > i; i++){
         if(tmp!=nullptr){
             int tipo_pedido=mesa->tipoPedido;
-            Solicitud * nueva;
+            Solicitud * nueva = new Solicitud();
 
             switch(tipo_pedido){
             case 1:
@@ -50,11 +51,9 @@ void Mesero::pedirOrdenes(Mesa * mesa){
                     nueva->numeroMesa = tmp->numeroMesa;
                     listaSolicitudes->insertarFinal(nueva);
                 }
-                mesa->tipoPedido = 1;
                 break;
             }
-
-            tmp = tmp->siguiente;
+            comensalThreadAux = comensalThreadAux->siguiente;
         }
     }
     if(!listaSolicitudes->estaVacia()){
@@ -67,14 +66,8 @@ void Mesero::pedirOrdenes(Mesa * mesa){
 
 void Mesero::liberarMesa(Mesa * mesa){
     mesa->vaciarMesa();
-
 }
 
-/**
- * Method that check if any table needs assistance
- * @brief Mesero::revisarMesas
- * @return the table that needs assistance
- */
 Mesa * Mesero::revisarMesas(){
     Mesa * tmp = mesas->primerNodo;
     if(tmp == nullptr) return nullptr;

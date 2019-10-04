@@ -18,7 +18,7 @@
     <rect>
      <x>10</x>
      <y>275</y>
-     <width>151</width>
+     <width>171</width>
      <height>16</height>
     </rect>
    </property>
@@ -122,7 +122,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>:/imagenes/configuration.png</pixmap>
+    <pixmap resource="MyResources.qrc">:/imagenes/configuration.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>false</bool>
@@ -194,6 +194,37 @@
     </property>
    </widget>
   </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>-30</x>
+     <y>-260</y>
+     <width>601</width>
+     <height>851</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="MyResources.qrc">:/imagenes/wallpaper.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <zorder>label_5</zorder>
+  <zorder>label_2</zorder>
+  <zorder>label_3</zorder>
+  <zorder>label_6</zorder>
+  <zorder>lineaCantMesas</zorder>
+  <zorder>lineaCantMeseros</zorder>
+  <zorder>lineaCocineros</zorder>
+  <zorder>label</zorder>
+  <zorder>label_4</zorder>
+  <zorder>label_7</zorder>
+  <zorder>pushButton</zorder>
+  <zorder>splitter</zorder>
  </widget>
  <tabstops>
   <tabstop>lineaCantMeseros</tabstop>
@@ -203,6 +234,8 @@
   <tabstop>lineaTiempoGen2</tabstop>
   <tabstop>pushButton</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="MyResources.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -34,5 +34,11 @@
         <file>wink.png</file>
         <file>wood-hi.png</file>
         <file>wallpaper.jpg</file>
+        <file>logout.png</file>
+        <file>baker.png</file>
+        <file>dishes.png</file>
+        <file>electric-grill.png</file>
+        <file>electric-grill(1).png</file>
+        <file>salad.png</file>
     </qresource>
 </RCC>

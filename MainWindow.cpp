@@ -8,6 +8,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 {
     ui->setupUi(this);
     show();
+    ui->labelGenerador->setStyleSheet("QLabel {color : white; }");
+    ui->labelGenerador_2->setStyleSheet("QLabel {color : white; }");
+    ui->labelGeneradorCola->setStyleSheet("QLabel {color : white; }");
 
     arrayMesas = {{ui->c1,ui->c2,ui->c3,ui->c4,ui->c5,ui->c6, ui->m1},
                   {ui->c7,ui->c8,ui->c9,ui->c10,ui->c11,ui->c12, ui->m2},

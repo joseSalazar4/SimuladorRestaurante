@@ -49,7 +49,7 @@ void MeseroThread::run(){
 
 void MeseroThread::colocarOrden(){
     int tipo_orden;
-    if(mesero->colaPeticiones && (!mesero->colaPeticiones->vacia()) && (!mesero->colaPeticiones->frente->estaVacia()) && (!mesero->colaPeticiones->frente->primerNodo->plato->vacio)){
+    if(mesero->colaPeticiones && (!mesero->colaPeticiones->vacia()) && (!mesero->colaPeticiones->frente->estaVacia()) && (mesero->colaPeticiones->frente->primerNodo->plato) && (!mesero->colaPeticiones->frente->primerNodo->plato->vacio)){
         tipo_orden = mesero->colaPeticiones->frente->primerNodo->tipo;
         switch (tipo_orden) {
             case 1:{

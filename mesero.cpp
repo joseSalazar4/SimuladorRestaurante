@@ -75,6 +75,7 @@ void Mesero::liberarMesa(Mesa * mesa){
 Mesa * Mesero::revisarMesas(){
     Mesa * tmp = mesas->primerNodo;
     if(tmp == nullptr) return nullptr;
+
     for(int i =0; i<mesas->largo;i++){
         if (tmp->estaOcupada() && tmp->comensalesTerminaron() && tmp->SolicitandoAsistencia){
             return tmp;

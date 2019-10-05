@@ -139,7 +139,6 @@ Plato *  ComensalThread::comer(Plato * plato){
     }
     comensal->plato = nullptr;
     comensal->comensalTerminoComer = true;
-    tipoComida++;
     plato->vacio = true;
     plato->limpio = false;
     return plato;

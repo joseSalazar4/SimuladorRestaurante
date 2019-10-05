@@ -11,7 +11,7 @@ struct CajaThread : public QThread{
     Caja * caja;
     unsigned int tiempoSleep;
     bool pausa, activo;
-    QLabel * imagenCaja;
+    QLabel * imagenCaja, *cajaInfo;
 
     CajaThread();
     void run();
@@ -19,7 +19,7 @@ struct CajaThread : public QThread{
     void continuar();
     Solicitud * entregarCuenta();
     void establecerSleep(unsigned int nuevoTemp);
-    void __init__(Caja * ca, QMutex *, QLabel*);
+    void __init__(Caja * ca, QMutex *, QLabel*,QLabel*);
 };
 
 

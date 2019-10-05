@@ -5,13 +5,14 @@ CajaThread::CajaThread()
 
 }
 
-void CajaThread::__init__(Caja * _caja, QMutex * mutx, QLabel * img){
+void CajaThread::__init__(Caja * _caja, QMutex * mutx, QLabel * img, QLabel * cajaInf){
     caja = _caja;
     this->activo = true;
     this->pausa = false;
     this->mutexCaja = mutx;
     imagenCaja = img;
-    imagenCaja->setToolTip("No hay cuentas por calcular");
+    cajaInfo = cajaInf;
+    cajaInfo->setText("No hay cuentas por calcular");
 }
 
 void CajaThread::run(){
@@ -19,14 +20,18 @@ void CajaThread::run(){
         mutexCaja->lock();
         if(!caja->colaCuentasPorHacer->vacia()){
             int mesaActual = caja->colaCuentasPorHacer->frente->primerNodo->numeroMesa;  //Tons si hay solicitudes que saque todas hasta que haya otra mesa
-            imagenCaja->setToolTip("Calculando cuenta de la mesa #"+QString::number(mesaActual));
+            cajaInfo->setText("Calculando cuenta de la mesa #"+QString::number(mesaActual));
             while(caja->colaCuentasPorHacer->desencolar()->primerNodo->numeroMesa == mesaActual){
                 caja->calcularCuenta();
                 sleep(tiempoSleep);
             }
         }
+        cajaInfo->setText("No hay cuentas");
         mutexCaja->unlock();
-        while(pausa) sleep(1);
+        while(pausa){
+            cajaInfo->setText("Tomando un descansito...");
+            sleep(1);
+        }
     }
 }
 

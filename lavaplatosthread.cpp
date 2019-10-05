@@ -8,6 +8,8 @@ LavaplatosThread::LavaplatosThread()
 void LavaplatosThread::__init__(Lavaplatos * lava , QMutex * mut){
     this->lavaplatos = lava;
     this->mutex = mut;
+    pausa = false;
+    activo = true;
 }
 
 void LavaplatosThread::run()
@@ -17,24 +19,30 @@ void LavaplatosThread::run()
         mutex->lock();
         if(lavaplatos->vacia()){
             sleep(1);
+            lavaplatosInfo->setText("No hay platos por lavar");
             mutex->unlock();
         }
         else{
+            //lavar
             lavar(lavaplatos->desencolar()->plato);
+            lavaplatosInfo->setText("Lavando...");
             mutex->unlock();
             sleep(tiempoSleep);
         }
 
         //Cuando se presione el botón de Inactivo
-        while (pausa)
+        while (pausa){
             sleep(1);
+            lavaplatosInfo->setText("Tomando un descansito...");
+
+        }
     }
 }
 
 void LavaplatosThread::lavar(Plato * plato){
     int tiempo = plato->tiempoLavado;
     while(tiempo>0){
-        tiempoRestante->setText(QString::number(tiempo));
+        lavaplatosInfo->setText(QString::number(tiempo));
         tiempo--;
         sleep(1);
     }

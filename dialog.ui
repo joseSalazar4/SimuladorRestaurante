@@ -62,7 +62,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>12</string>
+    <string>1</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineaCantMeseros">
@@ -80,7 +80,7 @@
     </font>
    </property>
    <property name="text">
-    <string>12</string>
+    <string>1</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineaCocineros">
@@ -321,7 +321,7 @@
    </property>
    <widget class="QLineEdit" name="lineaTiempoGen1">
     <property name="text">
-     <string>10</string>
+     <string>50</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineaTiempoGen2">
@@ -331,7 +331,7 @@
      </font>
     </property>
     <property name="text">
-     <string>20</string>
+     <string>55</string>
     </property>
    </widget>
   </widget>
@@ -413,7 +413,7 @@
     </font>
    </property>
    <property name="text">
-    <string>20</string>
+    <string>99</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="probPostre">
@@ -431,7 +431,7 @@
     </font>
    </property>
    <property name="text">
-    <string>10</string>
+    <string>99</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_18">

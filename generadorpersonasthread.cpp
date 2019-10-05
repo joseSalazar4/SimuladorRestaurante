@@ -30,14 +30,13 @@ ListaComensales * GeneradorPersonasThread::generarPersonas(int personasCreadas )
         QString nombre = generarNombre()+QString::number(i);
         ComensalThread * nuevo = new ComensalThread();
         nuevo->comensal = new Comensal(nombre, platos);
-        qDebug()<<"IMPRIENDO SI TODOS LOS CLIENTES RECIBEN LA LISTA PLATOS"+nuevo->comensal->listaPlatos->primerNodo->nombre;
         lista->insertarFinal(nuevo);
     }
     return lista;
 }
 
 void GeneradorPersonasThread::run(){
-
+    sleep(6);
     while(activo){
         int sleepTime = QRandomGenerator::global()->bounded(tiempoGeneracion, tiempoGeneracion1);
         int personasCreadas = QRandomGenerator::global()->bounded(1, 6);
@@ -47,6 +46,7 @@ void GeneradorPersonasThread::run(){
         Mesa * mesaAux = listaMesas->buscarDisponibilidad();
         if(mesaAux && manejadorComensales->colaClientesEnEspera->frente != nullptr){
             mesaAux->listaComensales = manejadorComensales->colaClientesEnEspera->desencolar();
+            mesaAux->imagen->setToolTip("Hay "+QString::number(mesaAux->listaComensales->largo)+" comensales");
             mesaAux->ocupada=true;
             ComensalThread * comensalAux = mesaAux->listaComensales->primerNodo;
             cantidadFamiliasCola->setText(QString::number(manejadorComensales->colaClientesEnEspera->largo));
@@ -61,6 +61,10 @@ void GeneradorPersonasThread::run(){
                 comensalAux->comensal->tiempoComerEnsalada1 = mesaAux->intervaloEnsaladas1;
                 comensalAux->comensal->tiempoComerEnsalada2 = mesaAux->intervaloEnsaladas2;
 
+                comensalAux->comensal->probabilidadPedirPostre = probPostre;
+                comensalAux->comensal->probabilidadPedirPlatoFuerte = probPlatoFuerte;
+                comensalAux->comensal->probabilidadPedirEnsalada = probEnsalada;
+
                 comensalAux->comensal->imagenPersona =  mesaAux->arrayComensales[i];
                 comensalAux->comensal->imagenPersona->show();
                 comensalAux->mutexComensal = mesaAux->arrayQmutex[i];
@@ -68,9 +72,14 @@ void GeneradorPersonasThread::run(){
             }
         }
         cantidadFamiliasCola->setText(QString::number(manejadorComensales->colaClientesEnEspera->largo));
+        if(manejadorComensales->colaClientesEnEspera->largo >4) pausa = true;
         mutexManejador->unlock();
         sleep(static_cast<unsigned int>(sleepTime));
-        while(pausa) sleep(1);
+        while(pausa) {
+            sleep(1);
+            cantPersonasGeneradas->setText("Se cerro el restaurante");
+
+        }
     }
 }
 

@@ -19,7 +19,7 @@ struct Comensal
     Plato * plato = nullptr;
     QString nombre, comidaActual;
     Comensal *  siguiente, * anterior;
-    int cuentaAPagar,probabilidadPedir, numeroMesa, tiempoComer1Fuerte, tiempoComer2Fuerte,tiempoComerEnsalada1,tiempoComerEnsalada2,tiempoComerPostre1,tiempoComerPostre2;
+    int cuentaAPagar,probabilidadPedirPostre,probabilidadPedirPlatoFuerte,probabilidadPedirEnsalada, numeroMesa, tiempoComer1Fuerte, tiempoComer2Fuerte,tiempoComerEnsalada1,tiempoComerEnsalada2,tiempoComerPostre1,tiempoComerPostre2;
 
     Comensal(QString _nombre, ListaPlatos*listaPlatos): listaPlatos(listaPlatos){
         nombre = _nombre;
@@ -27,7 +27,8 @@ struct Comensal
         siguiente = anterior = nullptr;
         listaPlatos = new ListaPlatos();
         comensalTerminoComer = true;
-        cuentaAPagar = numeroMesa = probabilidadPedir = 90;
+        cuentaAPagar = numeroMesa = 1;
+        probabilidadPedirPostre = probabilidadPedirEnsalada = probabilidadPedirPlatoFuerte = 90;
     }
 
     void dejarMesa();

@@ -10,12 +10,19 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     ui->labelGenerador->setStyleSheet("QLabel {color : white; }");
     ui->labelGenerador_2->setStyleSheet("QLabel {color : white; }");
-    ui->labelGenerador_8->setStyleSheet("QLabel {color : white; }");
-    ui->labelGenerador_7->setStyleSheet("QLabel {color : white; }");
-    ui->labelGenerador_6->setStyleSheet("QLabel {color : white; }");
-    ui->labelGenerador_5->setStyleSheet("QLabel {color : white; }");
-    ui->labelGenerador_4->setStyleSheet("QLabel {color : white; }");
+    ui->labelCajaInfo->setStyleSheet("QLabel {color : white; }");
+    ui->labelPostresInfo->setStyleSheet("QLabel {color : white; }");
+    ui->labelLavaplatosInfo->setStyleSheet("QLabel {color : white; }");
+    ui->labelEnsaladasInfo->setStyleSheet("QLabel {color : white; }");
+    ui->labelCocinaFuerteInfo->setStyleSheet("QLabel {color : white; }");
+    ui->labelCocinaFuerteInfo_3->setStyleSheet("QLabel {color : white; }");
+    ui->labelCocinaFuerteInfo_2->setStyleSheet("QLabel {color : white; }");
     ui->labelGeneradorCola->setStyleSheet("QLabel {color : white; }");
+
+
+    ui->labelCocinaFuerteInfo->hide();
+    ui->labelCocinaFuerteInfo_3->hide();
+    ui->labelCocinaFuerteInfo_2->hide();
 
     show();
 
@@ -64,7 +71,7 @@ void MainWindow::on_pushButton_clicked()
 {
 
     //Hacemos el start de todos los hilos y setteamos cada estructura
-    restaurante = new Restaurante(cantCocineros,cantMeseros, cantMesas, cantMesasPorMesero, genPersonas1,genPersonas2,intervaloPostres1, intervaloPostres2, intervaloEnsaladas1, intervaloEnsaladas2, intervaloFuerte1, intervaloFuerte2,tiempoSleepCocinero, tiempoSleepCaja,tiempoSleepLavaplatos, tiempoSleepMesero, &mutexCaj , &mutexLavaplatos, &mutexCocina, &mutexEnsaladas, &mutexPasteleria, &mutexManejador, arrayMesas, arrayMeseros,ui->labelCaja, ui->labelLavaplatos, ui->labelComidaFuerte,ui->labelEnsaladas,ui->labelPasteleria,ui->labelGenerador, ui->labelGeneradorCola);
+    restaurante = new Restaurante(probPlatoFuerte, probEnsalada, probPostre,cantCocineros,cantMeseros, cantMesas, cantMesasPorMesero, genPersonas1,genPersonas2,intervaloPostres1, intervaloPostres2, intervaloEnsaladas1, intervaloEnsaladas2, intervaloFuerte1, intervaloFuerte2,tiempoSleepCocinero, tiempoSleepCaja,tiempoSleepLavaplatos, tiempoSleepMesero, &mutexCaj , &mutexLavaplatos, &mutexCocina, &mutexEnsaladas, &mutexPasteleria, &mutexManejador, arrayMesas, arrayMeseros,ui->labelCaja, ui->labelLavaplatos, ui->labelComidaFuerte,ui->labelEnsaladas,ui->labelPasteleria,ui->labelGenerador, ui->labelGeneradorCola, ui->labelCajaInfo,ui->labelLavaplatosInfo,ui->labelEnsaladasInfo, ui->labelPostresInfo, ui->labelCocinaFuerteInfo, ui->labelCocinaFuerteInfo_2, ui->labelCocinaFuerteInfo_3);
 
     qDebug()<<"Ya pasó el constructor";
     ui->pushButton->hide();

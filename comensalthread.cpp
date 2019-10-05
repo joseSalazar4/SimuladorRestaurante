@@ -36,9 +36,8 @@ int generadorNumRandom(int rango1){
 
 Solicitud * Comensal::pedirEntrada(int porcentajeACumplir){
 
-    bool probabilidad = generadorNumRandom(porcentajeACumplir);
+    int probabilidad = generadorNumRandom(100);
     if(porcentajeACumplir>probabilidad){
-        //Elige el plato, pide comida en el menú y crea la solicitud
         Solicitud * nueva = new Solicitud(1, 1); //1 Es para ir a las entradas
         Plato * platillo = escogerPlato(1);
         nueva->plato= platillo;
@@ -46,6 +45,7 @@ Solicitud * Comensal::pedirEntrada(int porcentajeACumplir){
         imagenPersona->setToolTip(nombre+" pidio un(a): "+platillo->nombre);
         cuentaAPagar+=nueva->plato->precio;
         nueva->numeroMesa = numeroMesa;
+        nueva->cliente = nombre;
         return nueva;
     }
     return nullptr;
@@ -53,7 +53,7 @@ Solicitud * Comensal::pedirEntrada(int porcentajeACumplir){
 
 Solicitud * Comensal::pedirPlatoFuerte(int porcentajeACumplir){
 
-    int probabilidad = generadorNumRandom(porcentajeACumplir);
+    int probabilidad = generadorNumRandom(100);
     if(porcentajeACumplir>probabilidad){
         //Elige el plato, pide comida en el menú y crea la solicitud
         Solicitud * nueva = new Solicitud(1,2); //2 Es para ir a cocina de platos fuertes
@@ -63,6 +63,7 @@ Solicitud * Comensal::pedirPlatoFuerte(int porcentajeACumplir){
         imagenPersona->setToolTip(nombre+" pidio un(a): "+platillo->nombre);
         cuentaAPagar+=nueva->plato->precio;
         nueva->numeroMesa = numeroMesa;
+        nueva->cliente = nombre;
         return nueva;
 
     }
@@ -71,7 +72,7 @@ Solicitud * Comensal::pedirPlatoFuerte(int porcentajeACumplir){
 
 Solicitud * Comensal::pedirPostre(int porcentajeACumplir){
 
-    int probabilidad = generadorNumRandom(porcentajeACumplir);
+    int probabilidad = generadorNumRandom(100);
     if(porcentajeACumplir>probabilidad){
         //Elige el plato, pide comida en el menú y crea la solicitud
         Solicitud * nueva = new Solicitud(1,3);  //3 Es para ir a los postres
@@ -81,6 +82,7 @@ Solicitud * Comensal::pedirPostre(int porcentajeACumplir){
         imagenPersona->setToolTip(nombre+" pidio un(a): "+platillo->nombre);
         cuentaAPagar+=nueva->plato->precio;
         nueva->numeroMesa = numeroMesa;
+        nueva->cliente = nombre;
         return nueva;
     }
     return nullptr;

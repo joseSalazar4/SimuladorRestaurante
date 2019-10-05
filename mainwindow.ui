@@ -67,7 +67,7 @@
    <widget class="QLabel" name="labelComidaFuerte">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>30</x>
       <y>330</y>
       <width>101</width>
       <height>81</height>
@@ -2918,7 +2918,7 @@
    <widget class="QLabel" name="FondodePantalla">
     <property name="geometry">
      <rect>
-      <x>-20</x>
+      <x>0</x>
       <y>0</y>
       <width>1371</width>
       <height>961</height>
@@ -3242,24 +3242,24 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="labelGenerador_4">
+   <widget class="QLabel" name="labelCajaInfo">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>610</y>
-      <width>231</width>
+      <y>620</y>
+      <width>251</width>
       <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Oswald</family>
-      <pointsize>16</pointsize>
+      <family>DejaVu Sans</family>
+      <pointsize>13</pointsize>
       <kerning>false</kerning>
      </font>
     </property>
     <property name="text">
-     <string>Cajero</string>
+     <string/>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -3268,24 +3268,24 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="labelGenerador_5">
+   <widget class="QLabel" name="labelPostresInfo">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>460</y>
-      <width>231</width>
+      <width>251</width>
       <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Oswald</family>
-      <pointsize>16</pointsize>
+      <family>DejaVu Sans</family>
+      <pointsize>14</pointsize>
       <kerning>false</kerning>
      </font>
     </property>
     <property name="text">
-     <string>Postres</string>
+     <string/>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -3294,21 +3294,157 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="labelGenerador_6">
+   <widget class="QLabel" name="labelCocinaFuerteInfo">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>300</y>
-      <width>231</width>
+      <width>241</width>
       <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Oswald</family>
-      <pointsize>16</pointsize>
+      <family>DejaVu Sans</family>
+      <pointsize>13</pointsize>
       <kerning>false</kerning>
      </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelEnsaladasInfo">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>160</y>
+      <width>251</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>DejaVu Sans</family>
+      <pointsize>13</pointsize>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelLavaplatosInfo">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>261</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>DejaVu Sans</family>
+      <pointsize>12</pointsize>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelCocinaFuerteInfo_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>420</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>DejaVu Sans</family>
+      <pointsize>13</pointsize>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelCocinaFuerteInfo_3">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>360</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>DejaVu Sans</family>
+      <pointsize>13</pointsize>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelCocinaFuerteInfo_4">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>440</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>FreeSans</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>Platos Fuertes</string>
@@ -3320,21 +3456,91 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="labelGenerador_7">
+   <widget class="QLabel" name="labelCocinaFuerteInfo_5">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>160</y>
-      <width>231</width>
+      <x>50</x>
+      <y>740</y>
+      <width>131</width>
       <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Oswald</family>
-      <pointsize>16</pointsize>
+      <family>FreeSans</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
       <kerning>false</kerning>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>Cajero</string>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelCocinaFuerteInfo_6">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>580</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>FreeSans</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>Postres</string>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelCocinaFuerteInfo_7">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>270</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>FreeSans</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>Ensaladas</string>
@@ -3346,21 +3552,27 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="labelGenerador_8">
+   <widget class="QLabel" name="labelCocinaFuerteInfo_8">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>10</y>
-      <width>231</width>
+      <x>140</x>
+      <y>130</y>
+      <width>131</width>
       <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Oswald</family>
-      <pointsize>16</pointsize>
+      <family>FreeSans</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
       <kerning>false</kerning>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>Lavaplatos</string>
@@ -3535,11 +3747,18 @@
    <zorder>w16</zorder>
    <zorder>w14</zorder>
    <zorder>w1</zorder>
-   <zorder>labelGenerador_4</zorder>
-   <zorder>labelGenerador_5</zorder>
-   <zorder>labelGenerador_6</zorder>
-   <zorder>labelGenerador_7</zorder>
-   <zorder>labelGenerador_8</zorder>
+   <zorder>labelCajaInfo</zorder>
+   <zorder>labelPostresInfo</zorder>
+   <zorder>labelCocinaFuerteInfo</zorder>
+   <zorder>labelEnsaladasInfo</zorder>
+   <zorder>labelLavaplatosInfo</zorder>
+   <zorder>labelCocinaFuerteInfo_2</zorder>
+   <zorder>labelCocinaFuerteInfo_3</zorder>
+   <zorder>labelCocinaFuerteInfo_4</zorder>
+   <zorder>labelCocinaFuerteInfo_5</zorder>
+   <zorder>labelCocinaFuerteInfo_6</zorder>
+   <zorder>labelCocinaFuerteInfo_7</zorder>
+   <zorder>labelCocinaFuerteInfo_8</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

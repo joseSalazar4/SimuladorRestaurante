@@ -27,12 +27,13 @@ public:
     int cantMeseros, cantCocineros, cantMesas, cantMesasPorMesero,tiempoGen1,tiempoGen2,mesasSobrantes = 0;
     QMutex * mutexPasteleria , *mutexCocinaFuerte , * mutexEnsaladas, * mutexLavaplatos, * mutexCaja, * mutexManejador;
 
-    Restaurante(int cantidadCocineros,int cantidadMeseros,int cantidadMesas,int cantMesasMesero, int tiempoGen1,int tiempoGen2,
+    Restaurante(int probPlatoFuerte,int probEnsalada, int probPostre,int cantidadCocineros,int cantidadMeseros,int cantidadMesas,int cantMesasMesero, int tiempoGen1,int tiempoGen2,
                 int intervaloPostre1,int intervaloPostre2, int intervaloEnsaladas1, int intervaloEnsaladas2, int intervaloFuerte1,
                 int intervaloFuerte2, int tiempoSleepCocinero, int tiempoSleepCaja,  int tiempoSleepLavaplatos, int tiempoMesero,
                 QMutex * _mutexCaja, QMutex *  _mutexLavaplatos,QMutex * _mutexCocina,QMutex * _mutexEnsaladas, QMutex*  _mutexPasteleria,
                 QMutex * _mutexManejador,QVector<QVector<QLabel*>> arrayMesas, QVector<QLabel*> arrayMeseros, QLabel * imagenCaja, QLabel * imagenLavaplatos,
-                QLabel * imagenCocina, QLabel * imagenEnsaladas ,QLabel * imagenPostres, QLabel * imagenGen,QLabel * imagenColaGen){
+                QLabel * imagenCocina, QLabel * imagenEnsaladas ,QLabel * imagenPostres, QLabel * imagenGen,QLabel * imagenColaGen,QLabel * imagenCajaInfo,QLabel * imagenlavaplatosInfo,
+                QLabel * imagenEnsaladaInfo,QLabel * imagenPostreInfo,QLabel * imagenCocinaFuerteInfo1,QLabel * imagenCocinaFuerteInfo2,QLabel * imagenCocinaFuerteInfo3){
 
 
         listaPlatos =  crearMenu();
@@ -60,11 +61,11 @@ public:
 
         CocineroThread * pasteleroThread = new CocineroThread();
         pasteleroThread->imagenChef = imagenPostres;
-        pasteleroThread->__init__(mutexPasteleria,imagenPostres,cocineroPostres,pasteleria);
+        pasteleroThread->__init__(mutexPasteleria,imagenPostres, imagenPostreInfo,cocineroPostres,pasteleria);
 
         CocineroThread * ensaladasThread = new CocineroThread();
         ensaladasThread->imagenChef = imagenEnsaladas;
-        ensaladasThread->__init__(mutexEnsaladas, imagenEnsaladas, cocineroEnsaladas, ensaladas);
+        ensaladasThread->__init__(mutexEnsaladas, imagenEnsaladas,imagenEnsaladaInfo ,cocineroEnsaladas, ensaladas);
 
         if(cantidadCocineros == 3){
             Cocinero * cocineroFuerte3= new Cocinero("fuerte");
@@ -79,19 +80,19 @@ public:
             principal->cocinero3->tipoCocinero = "fuerte";
 
 
-            CocineroThread *cocineroFuerteThread = new CocineroThread ();
-            cocineroFuerteThread->__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte1 ,principal);
+            CocineroThread * cocineroFuerteThread = new CocineroThread ();
+            cocineroFuerteThread->__init__(mutexCocinaFuerte, imagenCocina,imagenCocinaFuerteInfo1,cocineroFuerte1 ,principal);
             cocineroFuerteThread->tiempoSleep = static_cast<unsigned int>(tiempoSleepCocinero);
             cocineroFuerteThread->start();
 
-            CocineroThread *cocineroFuerteThread2 = new CocineroThread ();
-            cocineroFuerteThread2->__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte2 ,principal);
+            CocineroThread * cocineroFuerteThread2 = new CocineroThread ();
+            cocineroFuerteThread2->__init__(mutexCocinaFuerte, imagenCocina,imagenCocinaFuerteInfo2,cocineroFuerte2 ,principal);
             cocineroFuerteThread2->tiempoSleep = static_cast<unsigned int>(tiempoSleepCocinero);
             cocineroFuerteThread2->start();
 
 
-            CocineroThread *cocineroFuerteThread3 = new CocineroThread ();
-            cocineroFuerteThread3->__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte3 ,principal);
+            CocineroThread * cocineroFuerteThread3 = new CocineroThread ();
+            cocineroFuerteThread3->__init__(mutexCocinaFuerte, imagenCocina,imagenCocinaFuerteInfo3,cocineroFuerte3 ,principal);
             cocineroFuerteThread3->tiempoSleep = static_cast<unsigned int>(tiempoSleepCocinero);
             cocineroFuerteThread3->start();
 
@@ -106,11 +107,11 @@ public:
             principal->cocinero2->tipoCocinero = "fuerte";
 
             CocineroThread *cocineroFuerteThread1=new CocineroThread ();
-            cocineroFuerteThread1->__init__(mutexCocinaFuerte, imagenCocina,cocineroFuerte1, principal);
+            cocineroFuerteThread1->__init__(mutexCocinaFuerte, imagenCocina,imagenCocinaFuerteInfo1,cocineroFuerte1, principal);
             cocineroFuerteThread1->tiempoSleep = static_cast<unsigned int>(tiempoSleepCocinero);
 
             CocineroThread *cocineroFuerteThread2=new CocineroThread ();
-            cocineroFuerteThread2->__init__(mutexCocinaFuerte, imagenCocina, cocineroFuerte2,principal);
+            cocineroFuerteThread2->__init__(mutexCocinaFuerte, imagenCocina, imagenCocinaFuerteInfo2,cocineroFuerte2,principal);
             cocineroFuerteThread2->tiempoSleep = static_cast<unsigned int>(tiempoSleepCocinero);
 
             cocineroFuerteThread1->start();
@@ -124,7 +125,7 @@ public:
             principal->cocinero1->tipoCocinero = "fuerte";
 
             CocineroThread * cocineroFuerteThread = new CocineroThread();
-            cocineroFuerteThread->__init__(mutexCocinaFuerte, imagenCocina, cocineroFuerte1,principal);
+            cocineroFuerteThread->__init__(mutexCocinaFuerte, imagenCocina,imagenCocinaFuerteInfo1, cocineroFuerte1,principal);
             cocineroFuerteThread->tiempoSleep = static_cast<unsigned int>(tiempoSleepCocinero);
             cocineroFuerteThread->start();
 
@@ -145,7 +146,6 @@ public:
 
                 MeseroThread * meseroThread = new MeseroThread();
                 ListaMesas * listaMesasAsignada = new ListaMesas();
-
 
                 meseroAux->caja = caja;
                 meseroAux->cocina = principal;
@@ -273,13 +273,15 @@ public:
 
         lavaplatosThread->__init__(lavaplatos, _mutexLavaplatos);
         lavaplatosThread->imagenLavanderia = imagenLavaplatos;
+        lavaplatosThread->lavaplatosInfo = imagenlavaplatosInfo;
+        lavaplatosThread->lavaplatosInfo->show();
         lavaplatosThread->tiempoSleep = static_cast<unsigned>(tiempoSleepLavaplatos);
         lavaplatosThread->start();
 
         CajaThread * cajaThrd = new CajaThread();
         cajaThread = cajaThrd;
 
-        cajaThread->__init__(caja,mutexCaja, imagenCaja);
+        cajaThread->__init__(caja,mutexCaja, imagenCaja, imagenCajaInfo);
         cajaThread->tiempoSleep = static_cast<unsigned>(tiempoSleepCaja);
         cajaThread->start();
 
@@ -291,6 +293,9 @@ public:
         generadorPersonas.listaMesas = this->mesas;
         generadorPersonas.cantPersonasGeneradas = imagenGen;
         generadorPersonas.cantidadFamiliasCola = imagenColaGen;
+        generadorPersonas.probPostre = probPostre;
+        generadorPersonas.probEnsalada = probEnsalada;
+        generadorPersonas.probPlatoFuerte = probPlatoFuerte;
         generadorPersonas.start();
     }
 

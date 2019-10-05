@@ -11,7 +11,7 @@ public:
     bool pausa, activo;
     Cocinero * cocinero;
     unsigned int tiempoSleep;
-    QLabel * imagenChef, * tiempoRestante;
+    QLabel * imagenChef, * infoCocina;
 
     CocineroThread(){
         activo = true;
@@ -22,7 +22,7 @@ public:
     void pausar();
     void continuar();
     void cocinar(Plato * plato);
-    void __init__(QMutex *, QLabel *, Cocinero *, Cocina *);
+    void __init__(QMutex *, QLabel *,QLabel *, Cocinero *, Cocina *);
     void establecerSleep(unsigned int nuevoTemp);
 };
 

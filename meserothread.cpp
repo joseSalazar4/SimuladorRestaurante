@@ -27,16 +27,22 @@ void MeseroThread::run(){
             etiqueta->setToolTip("Pidiendo ordenes de mesa #"+mesa_revisada->ID);
             qDebug()<<"Pidiendo ordenes de mesa #"+mesa_revisada->ID;
             mesero->pedirOrdenes(mesa_revisada);
+            if(mesero->colaPeticiones->verFrente()) qDebug()<<"Tiene un plato"+mesero->colaPeticiones->verFrente()->primerNodo->plato->nombre;
             if(mesa_revisada->tipoPedido==5) mesa_revisada->tipoPedido = 1;
         }
-        mutexMesa->unlock();
 
+        mutexMesa->unlock();
         // Then we give that order to the corresponding place (kitchen or cashier)
         etiqueta->setToolTip("Revisando si hay ordenes por colocar");
         colocarOrden();
         sleep(tiempoSleep);
         llevarOrdenes();
         sleep(tiempoSleep);
+
+        while(pausa){
+            this->etiqueta->setToolTip("Tomando un descansito...");
+            sleep(1);
+        }
     }
 }
 

@@ -50,6 +50,7 @@ Dialog::Dialog(QWidget *parent) :QDialog(parent), ui(new Ui::Dialog)
     ui->splitter_2->show();
     ui->splitter_3->show();
     ui->splitter_4->show();
+    ui->splitter_5->show();
     ui->splitter_6->show();
 
 }
@@ -69,11 +70,11 @@ void Dialog::on_pushButton_clicked(){
     QString tiempoGen2 = ui->lineaTiempoGen2->text();
     float cantMesasPorMeseroActivo = (cantMesas.toFloat())/(cantMeseros.toFloat());
     QString cantMesasMesero = QString::number(static_cast<int>(cantMesasPorMeseroActivo));
+    qDebug()<<"CantMesas por mesero"+cantMesasMesero;
     QString probPlatoFuerte = ui->probPlatoFuerte->text();
     QString probPostre = ui->probPostre->text();
     QString probEnsalada = ui->probEnsalada->text();
 
-    //Si hay una cantidad de mesas no divisible entre los meseros.
 
     //Escondemos la ventana y vamos pasando los datos
     hide();

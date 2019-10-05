@@ -6,6 +6,7 @@
  */
 void Mesero::pedirOrdenes(Mesa * mesa){
     ComensalThread * comensalThreadAux = mesa->listaComensales->primerNodo;
+    comensalThreadAux->mutexComensal->lock();
     Comensal * tmp =  comensalThreadAux->comensal;
     ListaSolicitudes * listaSolicitudes = new ListaSolicitudes();
     for(int i =0; (mesa->listaComensales->largo) > i; i++){
@@ -15,7 +16,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
 
             switch(tipo_pedido){
             case 1:
-                nueva = tmp->pedirEntrada(tmp->probabilidadPedir);
+                nueva = tmp->pedirEntrada(tmp->probabilidadPedirEnsalada);
                 if(nueva){
                     nueva->tipo = 1;
                     nueva->cliente = tmp->nombre;
@@ -25,7 +26,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
                 }
                 break;
             case 2:
-                nueva = tmp->pedirPlatoFuerte(tmp->probabilidadPedir);
+                nueva = tmp->pedirPlatoFuerte(tmp->probabilidadPedirPlatoFuerte);
                 if(nueva){
                     nueva->tipo = 2;
                     nueva->cliente = tmp->nombre;
@@ -35,7 +36,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
                 }
                 break;
             case 3:
-                nueva = tmp->pedirPostre(tmp->probabilidadPedir);
+                nueva = tmp->pedirPostre(tmp->probabilidadPedirPostre);
                 if(nueva){
                     nueva->tipo = 3;
                     nueva->cliente = tmp->nombre;
@@ -53,6 +54,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
                 }
                 break;
             }
+            comensalThreadAux->mutexComensal->unlock();
             comensalThreadAux = comensalThreadAux->siguiente;
         }
     }

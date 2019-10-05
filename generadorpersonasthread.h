@@ -16,7 +16,7 @@ public:
     bool pausa = false, activo = true;
     QMutex * mutexManejador, * mutexMesas;
     ManejadorComensales * manejadorComensales;
-    int tiempoGeneracion1,tiempoGeneracion, cantidadGenerada;
+    int tiempoGeneracion1,tiempoGeneracion, cantidadGenerada, probPlatoFuerte, probEnsalada, probPostre;
     QString arrayNombres[10] = {"Palpatine" , "Padme" , "Kit Fisto","Anakin", "Obi-Wan", "San Holo", "Sofia", "Luis", "Fiorella", "Jose"};
     ListaPlatos * platos;
 

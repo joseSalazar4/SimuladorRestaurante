@@ -2918,7 +2918,7 @@
    <widget class="QLabel" name="FondodePantalla">
     <property name="geometry">
      <rect>
-      <x>-90</x>
+      <x>0</x>
       <y>0</y>
       <width>1371</width>
       <height>961</height>
@@ -3297,10 +3297,10 @@
    <widget class="QLabel" name="labelCocinaFuerteInfo">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>330</y>
+      <x>0</x>
+      <y>320</y>
       <width>241</width>
-      <height>31</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
@@ -3324,7 +3324,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>130</y>
+      <y>150</y>
       <width>251</width>
       <height>61</height>
      </rect>
@@ -3376,7 +3376,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>460</y>
+      <y>440</y>
       <width>241</width>
       <height>31</height>
      </rect>

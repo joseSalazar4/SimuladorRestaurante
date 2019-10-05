@@ -21,7 +21,7 @@ public:
     void run();
     void pausar();
     void continuar();
-    void cocinar(Plato * plato);
+    void cocinar(Plato * plato, QString nombre , QString mesa);
     void __init__(QMutex *, QLabel *,QLabel *, Cocinero *, Cocina *);
     void establecerSleep(unsigned int nuevoTemp);
 };

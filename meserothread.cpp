@@ -128,7 +128,6 @@ void MeseroThread::llevarOrdenes(){
             if(clienteThread->comensal->nombre == nombreCliente){
                 this->sleep(tiempoSleep);
                 etiqueta->setToolTip("Cliente obtuvo su plato");
-                clienteThread->imagenComensal->setToolTip("Recibi mi plato");
                 clienteThread->comensal->plato = plato;
                 solicitud->tipo = 1;
                 solicitud->plato = plato;

@@ -17,7 +17,7 @@ void CocineroThread::run(){
                     sleep(1);
                 }
                 mutexCocinero->lock();
-                cocinar(plato);
+                cocinar(plato, orden->cliente, orden->mesaDestino);
                 mutexCocinero->unlock();
                 qDebug()<<"Ya solte el mutex de "+cocinero->tipoCocinero;
                 sleep(1);
@@ -53,13 +53,15 @@ void CocineroThread:: __init__(QMutex * mutex1, QLabel * imagen1,QLabel * infoCo
     activo = true;
 }
 
-void CocineroThread::cocinar(Plato * plato){
+void CocineroThread::cocinar(Plato * plato, QString cliente, QString mesa){
     if(plato){
         plato->vacio=false;
         plato->limpio = false;
         ListaSolicitudes * listaAux = new ListaSolicitudes();
         //Generamos una lista pa que devuelva esa papa
         listaAux->primerNodo = cocinero->colocarOrdenLista(plato);
+        listaAux->primerNodo->cliente = cliente;
+        listaAux->primerNodo->mesaDestino = mesa;
         cocina->colaOrdenesListas->encolar(listaAux);
         sleep(tiempoSleep);
     }

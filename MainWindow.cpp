@@ -7,10 +7,17 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    show();
+
     ui->labelGenerador->setStyleSheet("QLabel {color : white; }");
     ui->labelGenerador_2->setStyleSheet("QLabel {color : white; }");
+    ui->labelGenerador_8->setStyleSheet("QLabel {color : white; }");
+    ui->labelGenerador_7->setStyleSheet("QLabel {color : white; }");
+    ui->labelGenerador_6->setStyleSheet("QLabel {color : white; }");
+    ui->labelGenerador_5->setStyleSheet("QLabel {color : white; }");
+    ui->labelGenerador_4->setStyleSheet("QLabel {color : white; }");
     ui->labelGeneradorCola->setStyleSheet("QLabel {color : white; }");
+
+    show();
 
     arrayMesas = {{ui->c1,ui->c2,ui->c3,ui->c4,ui->c5,ui->c6, ui->m1},
                   {ui->c7,ui->c8,ui->c9,ui->c10,ui->c11,ui->c12, ui->m2},
@@ -37,6 +44,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     for(int j = 0;j<7;j++){
         arrayMesas[i][j]->hide();
     }
+    arrayMeseros = {ui->w1,ui->w2,ui->w3,ui->w4,ui->w5,ui->w6,ui->w7,ui->w8,ui->w9,
+                   ui->w10,ui->w11,ui->w12,ui->w13,ui->w14,ui->w15,ui->w16,ui->w17,ui->w18,
+                   ui->w19,ui->w20};
+
+    for(int i = 0;i<20;i++) arrayMeseros[i]->hide();
+
+
 
 }
 
@@ -50,7 +64,7 @@ void MainWindow::on_pushButton_clicked()
 {
 
     //Hacemos el start de todos los hilos y setteamos cada estructura
-    restaurante = new Restaurante(cantCocineros,cantMeseros, cantMesas, cantMesasPorMesero, genPersonas1,genPersonas2,intervaloPostres1, intervaloPostres2, intervaloEnsaladas1, intervaloEnsaladas2, intervaloFuerte1, intervaloFuerte2,tiempoSleepCocinero, tiempoSleepCaja,tiempoSleepLavaplatos, tiempoSleepMesero, &mutexCaj , &mutexLavaplatos, &mutexCocina, &mutexEnsaladas, &mutexPasteleria, &mutexManejador, arrayMesas, ui->labelCaja, ui->labelLavaplatos, ui->labelComidaFuerte,ui->labelEnsaladas, ui->labelPasteleria,ui->labelGenerador, ui->labelGeneradorCola);
+    restaurante = new Restaurante(cantCocineros,cantMeseros, cantMesas, cantMesasPorMesero, genPersonas1,genPersonas2,intervaloPostres1, intervaloPostres2, intervaloEnsaladas1, intervaloEnsaladas2, intervaloFuerte1, intervaloFuerte2,tiempoSleepCocinero, tiempoSleepCaja,tiempoSleepLavaplatos, tiempoSleepMesero, &mutexCaj , &mutexLavaplatos, &mutexCocina, &mutexEnsaladas, &mutexPasteleria, &mutexManejador, arrayMesas, arrayMeseros,ui->labelCaja, ui->labelLavaplatos, ui->labelComidaFuerte,ui->labelEnsaladas,ui->labelPasteleria,ui->labelGenerador, ui->labelGeneradorCola);
 
     qDebug()<<"Ya pasó el constructor";
     ui->pushButton->hide();

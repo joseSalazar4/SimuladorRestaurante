@@ -20,12 +20,14 @@ public:
     Restaurante * restaurante;
     LavaplatosThread lavaplatosthread;
     QVector<QVector<QLabel*>> arrayMesas;
+    QVector<QLabel*> arrayMeseros;
     CocineroThread cocineroPasteleria, cocineroEnsaladas, cocineroFuerte;
     QLabel * caja, * lavaplatos, * ensaladas, * cocinaFuerte, *pasteleria;
     QMutex mutexPasteleria, mutexCocina, mutexEnsaladas, mutexCaj, mutexLavaplatos, mutexManejador;
     int cantMeseros, cantMesas, cantCocineros, genPersonas1, genPersonas2, cantMesasPorMesero, intervaloPostres1,
         intervaloPostres2, intervaloEnsaladas1, intervaloEnsaladas2, intervaloFuerte1, intervaloFuerte2,
-        tiempoSleepCocinero,tiempoSleepMesero, tiempoSleepLavaplatos, tiempoSleepCaja;
+        tiempoSleepCocinero,tiempoSleepMesero, tiempoSleepLavaplatos, tiempoSleepCaja,
+        probPlatoFuerte, probEnsalada, probPostre;
 
 
     explicit MainWindow(QWidget *parent = nullptr);

@@ -43,7 +43,7 @@ Solicitud * Comensal::pedirEntrada(int porcentajeACumplir){
         Plato * platillo = escogerPlato(1);
         nueva->plato= platillo;
         nueva->tipo = 1;
-        imagenPersona->setToolTip(platillo->nombre);
+        imagenPersona->setToolTip(nombre+" pidio un(a): "+platillo->nombre);
         cuentaAPagar+=nueva->plato->precio;
         nueva->numeroMesa = numeroMesa;
         return nueva;
@@ -60,7 +60,7 @@ Solicitud * Comensal::pedirPlatoFuerte(int porcentajeACumplir){
         Plato * platillo = escogerPlato(2);
         nueva->plato= platillo;
         nueva->tipo = 2;
-        imagenPersona->setToolTip(platillo->nombre);
+        imagenPersona->setToolTip(nombre+" pidio un(a): "+platillo->nombre);
         cuentaAPagar+=nueva->plato->precio;
         nueva->numeroMesa = numeroMesa;
         return nueva;
@@ -78,7 +78,7 @@ Solicitud * Comensal::pedirPostre(int porcentajeACumplir){
         Plato * platillo = escogerPlato(3);
         nueva->plato= platillo;
         nueva->tipo = 3;
-        imagenPersona->setToolTip(platillo->nombre);
+        imagenPersona->setToolTip(nombre+" pidio un(a): "+platillo->nombre);
         cuentaAPagar+=nueva->plato->precio;
         nueva->numeroMesa = numeroMesa;
         return nueva;

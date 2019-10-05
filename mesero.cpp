@@ -58,10 +58,11 @@ void Mesero::pedirOrdenes(Mesa * mesa){
     }
     if(!listaSolicitudes->estaVacia()){
         colaPeticiones->encolar(listaSolicitudes);
-        mesa->pedirAsistencia=false;
+        mesa->SolicitandoAsistencia=false;
     }
-    mesa->imagen->setToolTip(QString::number(mesa->tipoPedido));
+    mesa->imagen->setToolTip("Se esta pidiendo el tipo de plato #"+QString::number(mesa->tipoPedido));
     mesa->tipoPedido++;
+    mesa->SolicitandoAsistencia = false;
 }
 
 void Mesero::liberarMesa(Mesa * mesa){
@@ -72,7 +73,7 @@ Mesa * Mesero::revisarMesas(){
     Mesa * tmp = mesas->primerNodo;
     if(tmp == nullptr) return nullptr;
     for(int i =0; i<mesas->largo;i++){
-        if (tmp->estaOcupada() && tmp->comensalesTerminaron()){
+        if (tmp->estaOcupada() && tmp->comensalesTerminaron() && tmp->SolicitandoAsistencia){
             return tmp;
         }
         tmp = tmp->siguiente;

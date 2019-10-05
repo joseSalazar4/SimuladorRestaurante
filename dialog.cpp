@@ -20,6 +20,17 @@ Dialog::Dialog(QWidget *parent) :QDialog(parent), ui(new Ui::Dialog)
     ui->label_12->setStyleSheet("QLabel {color : white; }");
     ui->label_13->setStyleSheet("QLabel {color : white; }");
     ui->label_14->setStyleSheet("QLabel {color : white; }");
+    ui->label_15->setStyleSheet("QLabel {color : white; }");
+    ui->label_16->setStyleSheet("QLabel {color : white; }");
+    ui->label_17->setStyleSheet("QLabel {color : white; }");
+    ui->label_18->setStyleSheet("QLabel {color : white; }");
+    ui->label_19->setStyleSheet("QLabel {color : white; }");
+    ui->label_20->setStyleSheet("QLabel {color : white; }");
+    ui->label_21->setStyleSheet("QLabel {color : white; }");
+    ui->label_22->setStyleSheet("QLabel {color : white; }");
+
+
+
 
     ui->tiempoSleepCaja->show();
     ui->tiempoSleepMesero->show();
@@ -39,7 +50,6 @@ Dialog::Dialog(QWidget *parent) :QDialog(parent), ui(new Ui::Dialog)
     ui->splitter_2->show();
     ui->splitter_3->show();
     ui->splitter_4->show();
-    ui->splitter_5->show();
     ui->splitter_6->show();
 
 }
@@ -59,6 +69,9 @@ void Dialog::on_pushButton_clicked(){
     QString tiempoGen2 = ui->lineaTiempoGen2->text();
     float cantMesasPorMeseroActivo = (cantMesas.toFloat())/(cantMeseros.toFloat());
     QString cantMesasMesero = QString::number(static_cast<int>(cantMesasPorMeseroActivo));
+    QString probPlatoFuerte = ui->probPlatoFuerte->text();
+    QString probPostre = ui->probPostre->text();
+    QString probEnsalada = ui->probEnsalada->text();
 
     //Si hay una cantidad de mesas no divisible entre los meseros.
 
@@ -95,6 +108,10 @@ void Dialog::on_pushButton_clicked(){
         ventanaPrincipal.tiempoSleepMesero = ui->tiempoSleepMesero->text().toInt();
         ventanaPrincipal.tiempoSleepCocinero = ui->tiempoSleepCocinero->text().toInt();
         ventanaPrincipal.tiempoSleepLavaplatos = ui->tiempoSleepLavaplatos->text().toInt();
+
+        ventanaPrincipal.probPlatoFuerte = ui->probPlatoFuerte->text().toInt();
+        ventanaPrincipal.probPostre = ui->probPostre->text().toInt();
+        ventanaPrincipal.probEnsalada = ui->probEnsalada->text().toInt();
 
         qDebug()<<"Pasó los parametros nice :)";
     }

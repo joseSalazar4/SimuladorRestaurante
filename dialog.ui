@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>478</width>
-    <height>719</height>
+    <width>529</width>
+    <height>730</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -101,7 +101,7 @@
     <rect>
      <x>10</x>
      <y>110</y>
-     <width>48</width>
+     <width>61</width>
      <height>16</height>
     </rect>
    </property>
@@ -112,10 +112,10 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>10</y>
-     <width>64</width>
-     <height>64</height>
+     <x>230</x>
+     <y>0</y>
+     <width>81</width>
+     <height>81</height>
     </rect>
    </property>
    <property name="text">
@@ -151,10 +151,10 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>640</y>
-     <width>161</width>
-     <height>45</height>
+     <x>360</x>
+     <y>670</y>
+     <width>151</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="font">
@@ -164,25 +164,6 @@
    </property>
    <property name="text">
     <string>Guardar</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_5">
-   <property name="geometry">
-    <rect>
-     <x>-40</x>
-     <y>-110</y>
-     <width>601</width>
-     <height>851</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="MyResources.qrc">:/imagenes/wallpaper.jpg</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="label_12">
@@ -254,39 +235,6 @@
    <widget class="QLineEdit" name="tiempoSleepLavaplatos">
     <property name="text">
      <string>2</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QSplitter" name="splitter_5">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>546</y>
-     <width>451</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <widget class="QLabel" name="label_9">
-    <property name="text">
-     <string>Tiempo Cocinero</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_8">
-    <property name="text">
-     <string>Tiempo Mesero</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_10">
-    <property name="text">
-     <string>Tiempo Cajero</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_11">
-    <property name="text">
-     <string>Tiempo Lavaplatos</string>
     </property>
    </widget>
   </widget>
@@ -387,6 +335,226 @@
     </property>
    </widget>
   </widget>
+  <widget class="QLabel" name="label_15">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>630</y>
+     <width>191</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+     <italic>true</italic>
+    </font>
+   </property>
+   <property name="text">
+    <string>Probabilidad de pedir </string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_16">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>660</y>
+     <width>81</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ensalada</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_17">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>660</y>
+     <width>181</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Postre</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="probPlatoFuerte">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>690</y>
+     <width>91</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <kerning>false</kerning>
+    </font>
+   </property>
+   <property name="text">
+    <string>85</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="probEnsalada">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>690</y>
+     <width>91</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <kerning>false</kerning>
+    </font>
+   </property>
+   <property name="text">
+    <string>20</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="probPostre">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>690</y>
+     <width>91</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <kerning>false</kerning>
+    </font>
+   </property>
+   <property name="text">
+    <string>10</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_18">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>660</y>
+     <width>81</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Plato fuerte</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>-30</x>
+     <y>-30</y>
+     <width>641</width>
+     <height>781</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="MyResources.qrc">:/imagenes/wallpaper.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>550</y>
+     <width>121</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tiempo Cocinero</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>550</y>
+     <width>91</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tiempo Mesero</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>550</y>
+     <width>86</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tiempo Cajero</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>550</y>
+     <width>121</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tiempo Lavaplatos</string>
+   </property>
+  </widget>
+  <widget class="QSplitter" name="splitter_5">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>550</y>
+     <width>461</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <widget class="QLabel" name="label_19">
+    <property name="text">
+     <string>Tiempo Cocinero</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_20">
+    <property name="text">
+     <string>Tiempo Mesero</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_22">
+    <property name="text">
+     <string>Tiempo  Caja</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_21">
+    <property name="text">
+     <string>Tiempo  LavaPlatos</string>
+    </property>
+   </widget>
+  </widget>
+  <zorder>label_9</zorder>
+  <zorder>label_8</zorder>
+  <zorder>label_10</zorder>
+  <zorder>label_11</zorder>
   <zorder>label_5</zorder>
   <zorder>label_2</zorder>
   <zorder>label_3</zorder>
@@ -398,30 +566,25 @@
   <zorder>label_4</zorder>
   <zorder>label_7</zorder>
   <zorder>pushButton</zorder>
-  <zorder>splitter</zorder>
-  <zorder>label_8</zorder>
-  <zorder>label_9</zorder>
-  <zorder>tiempoSleepCocinero</zorder>
-  <zorder>label_10</zorder>
-  <zorder>label_11</zorder>
-  <zorder>tiempoSleepMesero</zorder>
-  <zorder>tiempoSleepCaja</zorder>
-  <zorder>tiempoSleepLavaplatos</zorder>
   <zorder>label_12</zorder>
   <zorder>label_13</zorder>
   <zorder>label_14</zorder>
-  <zorder>IntervaloPostres2</zorder>
-  <zorder>IntervaloPostres1</zorder>
-  <zorder>Intervalo2Ensalada</zorder>
-  <zorder>Intervalo1PlatoFuerte</zorder>
-  <zorder>Intervalo2PlatoFuerte</zorder>
-  <zorder>Intervalo1Ensalada</zorder>
   <zorder>splitter_6</zorder>
-  <zorder>splitter_5</zorder>
   <zorder>splitter_4</zorder>
   <zorder>splitter_3</zorder>
   <zorder>splitter_2</zorder>
   <zorder>splitter</zorder>
+  <zorder>label_15</zorder>
+  <zorder>label_16</zorder>
+  <zorder>label_17</zorder>
+  <zorder>probPlatoFuerte</zorder>
+  <zorder>probEnsalada</zorder>
+  <zorder>probPostre</zorder>
+  <zorder>label_18</zorder>
+  <zorder>label_19</zorder>
+  <zorder>label_20</zorder>
+  <zorder>label_21</zorder>
+  <zorder>label_22</zorder>
  </widget>
  <tabstops>
   <tabstop>lineaCantMeseros</tabstop>

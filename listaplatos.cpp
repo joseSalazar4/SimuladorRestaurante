@@ -27,7 +27,6 @@ Plato * ListaPlatos::buscarPlatoRandomTipo(int tipo){
         //Los primeros 10 sean entradas
         int platoAleatorio = QRandomGenerator::global()->bounded(1, 10);
         for(int i = 0 ; i<platoAleatorio; i++) tmp = tmp->siguiente;
-
     }
     else if(tipo==2){
         //Luego los otros 10 sean fuertes
@@ -38,7 +37,6 @@ Plato * ListaPlatos::buscarPlatoRandomTipo(int tipo){
         //Los ultimos 10 sean postres
         int platoAleatorio = QRandomGenerator::global()->bounded(20, 30);
         for(int i = 0 ; i<platoAleatorio; i++) tmp = tmp->siguiente;
-
     }
 
     return tmp;

@@ -11,7 +11,7 @@ struct Mesa
     QLabel * imagen;
     QMutex * arrayQmutex[6];
     Pila * pilaPlatosSucios;
-    bool pedirAsistencia = true;
+    bool SolicitandoAsistencia = true;
     QVector<QLabel*> arrayComensales;
     ListaComensales * listaComensales;
     Mesa * siguiente=nullptr, * anterior=nullptr;

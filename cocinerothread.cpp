@@ -5,15 +5,15 @@ void CocineroThread::run()
     while (activo){
 
         mutexCocinero->lock();
-
         if(cocina->colaOrdenesNoListas->verFrente()){
             Solicitud * orden = cocina->colaOrdenesNoListas->desencolar()->primerNodo;
             mutexCocinero->unlock();
-            Plato * plato = orden->plato;
             while(orden){
+            Plato * plato = orden->plato;
             tiempoSleep = static_cast <unsigned int> (plato->tiempoCocina);
             while(0<tiempoSleep){
-                imagenChef->setToolTip(QString::number(tiempoSleep));
+                qDebug()<<("Cocinando... \n Tiempo Restante: "+QString::number(+tiempoSleep));
+                imagenChef->setToolTip("Cocinando... \n Tiempo Restante: "+QString::number(+tiempoSleep));
                 imagenChef->repaint();
                 tiempoSleep--;
                 sleep(1);
@@ -24,9 +24,11 @@ void CocineroThread::run()
             }
         }
         else{
+            //TODO: METER 3 IMAGENES DE CHEFS PARA LA FUERTE
+        qDebug()<<"La cocina no tiene comida por hacer";
+        imagenChef->setToolTip("Chef no esta cocinando");
         mutexCocinero->unlock();
         }
-
         sleep(1);
 
         //Cuando se presione el botón de Inactivo

@@ -13,10 +13,10 @@
 struct Mesero {
 
 public:
+    Caja * caja;
     bool activo;
     int cantMesas;
     QString nombre;
-    Caja * caja;
     Cola * colaPeticiones ;
     Lavaplatos * lavaplatos;
     Mesero * siguiente, * anterior;

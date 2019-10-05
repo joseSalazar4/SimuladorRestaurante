@@ -31,7 +31,7 @@ public:
                 int intervaloPostre1,int intervaloPostre2, int intervaloEnsaladas1, int intervaloEnsaladas2, int intervaloFuerte1,
                 int intervaloFuerte2, int tiempoSleepCocinero, int tiempoSleepCaja,  int tiempoSleepLavaplatos, int tiempoMesero,
                 QMutex * _mutexCaja, QMutex *  _mutexLavaplatos,QMutex * _mutexCocina,QMutex * _mutexEnsaladas, QMutex*  _mutexPasteleria,
-                QMutex * _mutexManejador,QVector<QVector<QLabel*>> arrayMesas,QLabel * imagenCaja, QLabel * imagenLavaplatos,
+                QMutex * _mutexManejador,QVector<QVector<QLabel*>> arrayMesas, QVector<QLabel*> arrayMeseros, QLabel * imagenCaja, QLabel * imagenLavaplatos,
                 QLabel * imagenCocina, QLabel * imagenEnsaladas ,QLabel * imagenPostres, QLabel * imagenGen,QLabel * imagenColaGen){
 
 
@@ -59,9 +59,11 @@ public:
         ensaladas = new Cocina("ensaladas", cocineroEnsaladas);
 
         CocineroThread * pasteleroThread = new CocineroThread();
+        pasteleroThread->imagenChef = imagenPostres;
         pasteleroThread->__init__(mutexPasteleria,imagenPostres,cocineroPostres,pasteleria);
 
         CocineroThread * ensaladasThread = new CocineroThread();
+        ensaladasThread->imagenChef = imagenEnsaladas;
         ensaladasThread->__init__(mutexEnsaladas, imagenEnsaladas, cocineroEnsaladas, ensaladas);
 
         if(cantidadCocineros == 3){
@@ -153,7 +155,17 @@ public:
 
                 for(int j = 0;j<cantMesasMesero;j++){
                     Mesa * mesaAux = new Mesa("Mesa #"+QString::number(j+1));
+
                     mesaAux->tipoPedido=1;
+                    mesaAux->intervaloFuerte1=intervaloFuerte1;
+                    mesaAux->intervaloFuerte2=intervaloFuerte2;
+
+                    mesaAux->intervaloEnsaladas1=intervaloEnsaladas1;
+                    mesaAux->intervaloEnsaladas2=intervaloEnsaladas2;
+
+                    mesaAux->intervaloPostres1=intervaloPostre1;
+                    mesaAux->intervaloPostres2=intervaloPostre2;
+
                     mesaAux->arrayComensales = arrayMesas[i];
                     mesaAux->imagen = arrayMesas[i][6]; //ACA VA UN ARRAY DE QLABELS PA ASIGNAR CON UNF FORVEA LO DE EL ORDEN
                     //insertamos en la lista total de mesas
@@ -165,7 +177,12 @@ public:
                 }
 
                 meseroThread->__init__(meseroAux, listaMesasAsignada, mutexPasteleria, mutexEnsaladas, mutexCocinaFuerte, mutexLavaplatos,mutexCaja, mutexManejador);
-                qDebug()<<"init al mesero #"+QString::number(i);
+
+                meseroThread->tiempoSleep = static_cast<unsigned>(tiempoMesero);
+                meseroThread->etiqueta = arrayMeseros[i];
+                meseroThread->etiqueta->show();
+                meseroThread->etiqueta->setToolTip("ACTIVANDO MESERO");
+                qDebug()<<"LO meti y le di show #"+QString::number(i);
                 arrayMeserosThread[i] = meseroThread;
                 meseros->insertarFinal(meseroAux);
             }
@@ -213,6 +230,14 @@ public:
                     for(int j = 0;j<cantMesasMesero;j++){
                         Mesa * mesaAux = new Mesa("Mesa #"+QString::number(j+1));
                         mesaAux->tipoPedido=1;
+                        mesaAux->intervaloFuerte1=intervaloFuerte1;
+                        mesaAux->intervaloFuerte2=intervaloFuerte2;
+
+                        mesaAux->intervaloEnsaladas1=intervaloEnsaladas1;
+                        mesaAux->intervaloEnsaladas2=intervaloEnsaladas2;
+
+                        mesaAux->intervaloPostres1=intervaloPostre1;
+                        mesaAux->intervaloPostres2=intervaloPostre2;
                         mesaAux->arrayComensales = arrayMesas[i];
                         mesaAux->imagen = arrayMesas[i][6]; //ACA VA UN ARRAY DE QLABELS PA ASIGNAR CON UNF FORVEA LO DE EL ORDEN
                         //insertamos en la lista total de mesas
@@ -227,6 +252,9 @@ public:
                 meseroThread->__init__(meseroAux, listaMesasAsignada, mutexPasteleria, mutexEnsaladas, mutexCocinaFuerte, mutexLavaplatos,mutexCaja, mutexManejador);
                 qDebug()<<"init al mesero #"+QString::number(i);
                 arrayMeserosThread[i] = meseroThread;
+                meseroThread->etiqueta = arrayMeseros[i];
+                meseroThread->etiqueta->show();
+                meseroThread->tiempoSleep = static_cast<unsigned>(tiempoMesero);
                 meseros->insertarFinal(meseroAux);
             }
         }
@@ -275,38 +303,38 @@ public:
         //Creation of the Ingredients
 
          Ingrediente * sal = new Ingrediente("Sal", 1);
-         Ingrediente * aceiteOliva = new Ingrediente("Aceite de Oliva", 1);
          Ingrediente * vinagre = new Ingrediente("Vinagre", 1);
          Ingrediente * culantro = new Ingrediente("Culantro", 1);
          Ingrediente * pimienta = new Ingrediente("Pimienta", 1);
+         Ingrediente * aceiteOliva = new Ingrediente("Aceite de Oliva", 1);
 
         //Ingredientes ensaladas
+        Ingrediente * col = new Ingrediente("Col", 3);
+        Ingrediente * apio = new Ingrediente("Apio", 3);
+        Ingrediente * atun = new Ingrediente("Atun", 1);
+        Ingrediente * papa = new Ingrediente("Papa", 3);
         Ingrediente * lechuga = new Ingrediente("Lechuga", 3);
         Ingrediente * tomate = new Ingrediente("Tomate", 3);
+        Ingrediente * pepino = new Ingrediente("Pepino", 4);
+        Ingrediente * aderezo = new Ingrediente("Aderezo", 1);
+        Ingrediente * aceitunas = new Ingrediente("Aceitunas", 3);
         Ingrediente * zanahoria = new Ingrediente("Zanahoria", 2);
         Ingrediente * cebolla = new Ingrediente("Cebolla", 1);
         Ingrediente * mayonesa = new Ingrediente("Mayonesa", 3);
-        Ingrediente * papa = new Ingrediente("Papa", 3);
         Ingrediente * olivas = new Ingrediente("Olivas Negras", 7);
         Ingrediente * quesoFeta = new Ingrediente("Queso Feta", 3);
+        Ingrediente * yogur = new Ingrediente("Yogur", 1);
         Ingrediente * pimientos = new Ingrediente("Pimientos", 3);
-        Ingrediente * aceitunas = new Ingrediente("Aceitunas", 3);
-        Ingrediente * pepino = new Ingrediente("Pepino", 4);
-        Ingrediente * atun = new Ingrediente("Atun", 1);
-        Ingrediente * apio = new Ingrediente("Apio", 3);
         Ingrediente * nueces = new Ingrediente("Nueces", 12);
         Ingrediente * albahaca = new Ingrediente("Albahaca", 3);
         Ingrediente * salchichas = new Ingrediente("Salchichas", 5);
         Ingrediente * pepinillos = new Ingrediente("Pepinillos", 3);
         Ingrediente * mostaza = new Ingrediente("Mostaza", 3);
         Ingrediente * maizDulce = new Ingrediente("Maíz dulce", 3);
-        Ingrediente * quesoMozarella = new Ingrediente("Queso Mozarella", 3);
-        Ingrediente * col = new Ingrediente("Col", 3);
+        Ingrediente * limon = new Ingrediente("Limón", 1);
         Ingrediente * azucar = new Ingrediente("Azúcar", 1);
         Ingrediente * crotones = new Ingrediente("Crotones", 12);
-        Ingrediente * aderezo = new Ingrediente("Aderezo", 1);
-        Ingrediente * yogur = new Ingrediente("Yogur", 1);
-        Ingrediente * limon = new Ingrediente("Limón", 1);
+        Ingrediente * quesoMozarella = new Ingrediente("Queso Mozarella", 3);
 
         //Ingredientes platos fuertes
         Ingrediente * pollo = new Ingrediente("Pollo", 1);
@@ -607,6 +635,7 @@ public:
         menuRestaurante->insertarFinal("3","Torta de chocolate",29,2500,25,15,listaTortaChocolate);
         menuRestaurante->insertarFinal("3","Pastafrola",30,2500,15,10,listaPastafrola);
 
+        if(menuRestaurante) qDebug()<<"Tod bien por aca";
         return menuRestaurante;
     }
 

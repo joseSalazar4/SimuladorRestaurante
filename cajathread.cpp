@@ -19,9 +19,9 @@ void CajaThread::run(){
     while(activo){
         mutexCaja->lock();
         if(!caja->colaCuentasPorHacer->vacia()){
-            int mesaActual = caja->colaCuentasPorHacer->frente->primerNodo->numeroMesa;  //Tons si hay solicitudes que saque todas hasta que haya otra mesa
-            cajaInfo->setText("Calculando cuenta de la mesa #"+QString::number(mesaActual));
-            while(caja->colaCuentasPorHacer->desencolar()->primerNodo->numeroMesa == mesaActual){
+            QString mesaActual = caja->colaCuentasPorHacer->frente->primerNodo->mesaDestino;  //Tons si hay solicitudes que saque todas hasta que haya otra mesa
+            cajaInfo->setText("Calculando cuenta de la mesa #"+mesaActual);
+            while(caja->colaCuentasPorHacer->desencolar()->primerNodo->mesaDestino == mesaActual){
                 caja->calcularCuenta();
                 sleep(tiempoSleep);
             }

@@ -11,14 +11,13 @@ public:
     Comensal * comensal;
     QMutex * mutexComensal;
     QLabel * imagenComensal;
-    unsigned int tiempoSleep;
     ComensalThread * siguiente, * anterior;
 
 
     ComensalThread(){
-        siguiente = anterior = nullptr;
         activo = true;
         pausa = false;
+        siguiente = anterior = nullptr;
     }
 
     //TODO: FINALIZAR La construccion de esto y meterlo en ell restaurante.h con el generador de personas y en mesas. sueno

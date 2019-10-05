@@ -18,12 +18,12 @@ public:
     CajaThread * cajaThread;
     ListaMeseros * meseros;
     Lavaplatos * lavaplatos;
+    ListaPlatos * listaPlatos;
     LavaplatosThread * lavaplatosThread;
     MeseroThread * arrayMeserosThread[20];
     ManejadorComensales * manejadorComensales;
     GeneradorPersonasThread generadorPersonas;
     Cocina * principal, * pasteleria, * ensaladas;
-    ListaPlatos * listaPlatos;
     int cantMeseros, cantCocineros, cantMesas, cantMesasPorMesero,tiempoGen1,tiempoGen2,mesasSobrantes = 0;
     QMutex * mutexPasteleria , *mutexCocinaFuerte , * mutexEnsaladas, * mutexLavaplatos, * mutexCaja, * mutexManejador;
 
@@ -52,7 +52,7 @@ public:
         manejadorComensales = new ManejadorComensales();
 
         Cocinero * cocineroPostres = new Cocinero("postres");
-        Cocinero * cocineroEnsaladas = new Cocinero("postres");
+        Cocinero * cocineroEnsaladas = new Cocinero("ensaladas");
 
 
         principal = new Cocina("fuerte");

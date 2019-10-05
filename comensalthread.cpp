@@ -1,4 +1,5 @@
 #include "comensalthread.h"
+#include "qdebug.h"
 
 
 void ComensalThread::__init__(QMutex * mutexCom, QLabel * label, Comensal * comens){
@@ -18,6 +19,7 @@ void ComensalThread::run(){
         while(pausa) sleep(1);
     }
 }
+
 void ComensalThread::pausar()
 {
     this->pausa = true;
@@ -36,15 +38,16 @@ int generadorNumRandom(int rango1){
 
 Solicitud * Comensal::pedirEntrada(int porcentajeACumplir){
 
-    int probabilidad = generadorNumRandom(100);
+    int probabilidad = QRandomGenerator::global()->bounded(10, 100);
     if(porcentajeACumplir>probabilidad){
         Solicitud * nueva = new Solicitud(1, 1); //1 Es para ir a las entradas
         Plato * platillo = escogerPlato(1);
+        platillo->vacio = false;
         nueva->plato= platillo;
         nueva->tipo = 1;
         imagenPersona->setToolTip(nombre+" pidio un(a): "+platillo->nombre);
         cuentaAPagar+=nueva->plato->precio;
-        nueva->numeroMesa = numeroMesa;
+        nueva->mesaDestino = mesaSentado;
         nueva->cliente = nombre;
         return nueva;
     }
@@ -53,16 +56,17 @@ Solicitud * Comensal::pedirEntrada(int porcentajeACumplir){
 
 Solicitud * Comensal::pedirPlatoFuerte(int porcentajeACumplir){
 
-    int probabilidad = generadorNumRandom(100);
+    int probabilidad = QRandomGenerator::global()->bounded(10, 100);
     if(porcentajeACumplir>probabilidad){
         //Elige el plato, pide comida en el menú y crea la solicitud
         Solicitud * nueva = new Solicitud(1,2); //2 Es para ir a cocina de platos fuertes
         Plato * platillo = escogerPlato(2);
+        platillo->vacio = false;
         nueva->plato= platillo;
         nueva->tipo = 2;
         imagenPersona->setToolTip(nombre+" pidio un(a): "+platillo->nombre);
         cuentaAPagar+=nueva->plato->precio;
-        nueva->numeroMesa = numeroMesa;
+        nueva->mesaDestino = mesaSentado;
         nueva->cliente = nombre;
         return nueva;
 
@@ -72,16 +76,17 @@ Solicitud * Comensal::pedirPlatoFuerte(int porcentajeACumplir){
 
 Solicitud * Comensal::pedirPostre(int porcentajeACumplir){
 
-    int probabilidad = generadorNumRandom(100);
+    int probabilidad = QRandomGenerator::global()->bounded(10, 100);
     if(porcentajeACumplir>probabilidad){
         //Elige el plato, pide comida en el menú y crea la solicitud
         Solicitud * nueva = new Solicitud(1,3);  //3 Es para ir a los postres
         Plato * platillo = escogerPlato(3);
+        platillo->vacio = false;
         nueva->plato= platillo;
         nueva->tipo = 3;
         imagenPersona->setToolTip(nombre+" pidio un(a): "+platillo->nombre);
         cuentaAPagar+=nueva->plato->precio;
-        nueva->numeroMesa = numeroMesa;
+        nueva->mesaDestino = mesaSentado;
         nueva->cliente = nombre;
         return nueva;
     }
@@ -94,7 +99,7 @@ Plato * Comensal::escogerPlato(int tipo){
 }
 Solicitud * Comensal::pedirCuenta(){
     Solicitud * nueva = new Solicitud(1,4);
-    nueva->numeroMesa = numeroMesa;
+    nueva->mesaDestino = mesaSentado;
     nueva->cuenta = cuentaAPagar;
     nueva->tipo = 4;
     return nueva;

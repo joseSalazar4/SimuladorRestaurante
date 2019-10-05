@@ -36,7 +36,7 @@ ListaComensales * GeneradorPersonasThread::generarPersonas(int personasCreadas )
 }
 
 void GeneradorPersonasThread::run(){
-    sleep(6);
+    sleep(3);
     while(activo){
         int sleepTime = QRandomGenerator::global()->bounded(tiempoGeneracion, tiempoGeneracion1);
         int personasCreadas = QRandomGenerator::global()->bounded(1, 6);
@@ -66,14 +66,16 @@ void GeneradorPersonasThread::run(){
                 comensalAux->comensal->probabilidadPedirEnsalada = probEnsalada;
 
                 comensalAux->comensal->imagenPersona =  mesaAux->arrayComensales[i];
+                comensalAux->comensal->mesaSentado = mesaAux->ID;
                 comensalAux->comensal->imagenPersona->show();
                 comensalAux->mutexComensal = mesaAux->arrayQmutex[i];
                 comensalAux = comensalAux->siguiente;
             }
+            mutexManejador->unlock();
         }
+        else mutexManejador->unlock();
         cantidadFamiliasCola->setText(QString::number(manejadorComensales->colaClientesEnEspera->largo));
         if(manejadorComensales->colaClientesEnEspera->largo >4) pausa = true;
-        mutexManejador->unlock();
         sleep(static_cast<unsigned int>(sleepTime));
         while(pausa) {
             sleep(1);

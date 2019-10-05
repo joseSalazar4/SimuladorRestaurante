@@ -20,7 +20,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
                 if(nueva){
                     nueva->tipo = 1;
                     nueva->cliente = tmp->nombre;
-                    nueva->numeroMesa = tmp->numeroMesa;
+                    nueva->mesaDestino = tmp->mesaSentado;
                     tmp->cuentaAPagar+= nueva->plato->precio;
                     listaSolicitudes->insertarFinal(nueva);
                 }
@@ -30,7 +30,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
                 if(nueva){
                     nueva->tipo = 2;
                     nueva->cliente = tmp->nombre;
-                    nueva->numeroMesa = tmp->numeroMesa;
+                    nueva->mesaDestino = tmp->mesaSentado;
                     tmp->cuentaAPagar+= nueva->plato->precio;
                     listaSolicitudes->insertarFinal(nueva);
                 }
@@ -40,7 +40,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
                 if(nueva){
                     nueva->tipo = 3;
                     nueva->cliente = tmp->nombre;
-                    nueva->numeroMesa = tmp->numeroMesa;
+                    nueva->mesaDestino = tmp->mesaSentado;
                     tmp->cuentaAPagar+= nueva->plato->precio;
                 }
                 break;
@@ -49,7 +49,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
                 if(nueva){
                     nueva->tipo = 4;
                     nueva->cliente = tmp->nombre;
-                    nueva->numeroMesa = tmp->numeroMesa;
+                    nueva->mesaDestino = tmp->mesaSentado;
                     listaSolicitudes->insertarFinal(nueva);
                 }
                 break;

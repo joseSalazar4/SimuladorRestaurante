@@ -17,7 +17,7 @@ struct Comensal
     bool comensalTerminoComer;
     ListaPlatos * listaPlatos;
     Plato * plato = nullptr;
-    QString nombre, comidaActual;
+    QString nombre, comidaActual, mesaSentado;
     Comensal *  siguiente, * anterior;
     int cuentaAPagar,probabilidadPedirPostre,probabilidadPedirPlatoFuerte,probabilidadPedirEnsalada, numeroMesa, tiempoComer1Fuerte, tiempoComer2Fuerte,tiempoComerEnsalada1,tiempoComerEnsalada2,tiempoComerPostre1,tiempoComerPostre2;
 

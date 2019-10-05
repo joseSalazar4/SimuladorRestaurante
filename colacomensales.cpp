@@ -2,7 +2,7 @@
 #include "qdebug.h"
 
 void ColaComensal::encolar (ListaComensales * dato){
-    qDebug()<<"Voy a encolar";
+    qDebug()<<"Voy a encolar unos comensales";
     largo++;
     qDebug()<<largo;
     if (vacia())

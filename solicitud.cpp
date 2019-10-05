@@ -2,7 +2,7 @@
 
 Solicitud::Solicitud(int _destino , int _accion, Plato * _plato)
 {
-    numeroMesa = 0;
+    mesaDestino = "";
     plato = _plato;
     accion = _accion;
     destino = _destino;
@@ -10,7 +10,7 @@ Solicitud::Solicitud(int _destino , int _accion, Plato * _plato)
 }
 
 Solicitud::Solicitud(){
-    numeroMesa = 0;
+    mesaDestino = "";
     plato = nullptr;
     accion = -1;
     destino = -1;

@@ -1,34 +1,39 @@
 #include "cocinerothread.h"
 
-void CocineroThread::run()
-{
+void CocineroThread::run(){
     while (activo){
 
         mutexCocinero->lock();
         if(cocina->colaOrdenesNoListas->verFrente()){
             Solicitud * orden = cocina->colaOrdenesNoListas->desencolar()->primerNodo;
             mutexCocinero->unlock();
+                            qDebug()<<"Ya solte el mutex de "+cocinero->tipoCocinero;
             while(orden){
-            Plato * plato = orden->plato;
-            tiempoSleep = static_cast <unsigned int> (plato->tiempoCocina);
-            while(0<tiempoSleep){
-                infoCocina->setText("Cocinando... \n Tiempo Restante: "+QString::number(+tiempoSleep));
-                tiempoSleep--;
+                Plato * plato = orden->plato;
+                tiempoSleep = static_cast <unsigned int> (plato->tiempoCocina);
+                while(0<tiempoSleep){
+                    infoCocina->setText("Cocinando... \n Tiempo Restante: "+QString::number(+tiempoSleep));
+                    tiempoSleep--;
+                    sleep(1);
+                }
+                mutexCocinero->lock();
+                cocinar(plato);
+                mutexCocinero->unlock();
+                qDebug()<<"Ya solte el mutex de "+cocinero->tipoCocinero;
                 sleep(1);
-            }
-            cocinar(plato);
-            sleep(1);
-            orden = orden->siguiente;
+                orden = orden->siguiente;
             }
         }
         else{
             //TODO: METER 3 IMAGENES DE CHEFS PARA LA FUERTE
+
+
         //qDebug()<<"La cocina no tiene comida por hacer";
         infoCocina->setText("Sin ordenes por cocinar");
         mutexCocinero->unlock();
+                        qDebug()<<"Ya solte el mutex de "+cocinero->tipoCocinero;
         }
         sleep(1);
-
         //Cuando se presione el botón de Inactivo
         while (pausa) {
             sleep(1);

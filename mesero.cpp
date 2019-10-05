@@ -13,7 +13,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
         if(tmp!=nullptr){
             int tipo_pedido=mesa->tipoPedido;
             Solicitud * nueva = new Solicitud();
-
+            tmp = comensalThreadAux->comensal;
             switch(tipo_pedido){
             case 1:
                 nueva = tmp->pedirEntrada(tmp->probabilidadPedirEnsalada);
@@ -56,7 +56,6 @@ void Mesero::pedirOrdenes(Mesa * mesa){
             }
             comensalThreadAux->mutexComensal->unlock();
             comensalThreadAux = comensalThreadAux->siguiente;
-            tmp = comensalThreadAux->comensal;
         }
     }
     if(!listaSolicitudes->estaVacia()){

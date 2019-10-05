@@ -257,7 +257,7 @@
    </widget>
    <widget class="QLineEdit" name="IntervaloPostres2">
     <property name="text">
-     <string>2</string>
+     <string>20</string>
     </property>
    </widget>
   </widget>
@@ -280,7 +280,7 @@
    </widget>
    <widget class="QLineEdit" name="Intervalo2Ensalada">
     <property name="text">
-     <string>2</string>
+     <string>20</string>
     </property>
    </widget>
   </widget>
@@ -303,7 +303,7 @@
    </widget>
    <widget class="QLineEdit" name="Intervalo2PlatoFuerte">
     <property name="text">
-     <string>2</string>
+     <string>20</string>
     </property>
    </widget>
   </widget>
@@ -321,7 +321,7 @@
    </property>
    <widget class="QLineEdit" name="lineaTiempoGen1">
     <property name="text">
-     <string>50</string>
+     <string>30</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineaTiempoGen2">
@@ -551,10 +551,7 @@
     </property>
    </widget>
   </widget>
-  <zorder>label_9</zorder>
-  <zorder>label_8</zorder>
-  <zorder>label_10</zorder>
-  <zorder>label_11</zorder>
+  <zorder>splitter_5</zorder>
   <zorder>label_5</zorder>
   <zorder>label_2</zorder>
   <zorder>label_3</zorder>
@@ -581,10 +578,10 @@
   <zorder>probEnsalada</zorder>
   <zorder>probPostre</zorder>
   <zorder>label_18</zorder>
-  <zorder>label_19</zorder>
-  <zorder>label_20</zorder>
-  <zorder>label_21</zorder>
-  <zorder>label_22</zorder>
+  <zorder>label_11</zorder>
+  <zorder>label_8</zorder>
+  <zorder>label_9</zorder>
+  <zorder>label_10</zorder>
  </widget>
  <tabstops>
   <tabstop>lineaCantMeseros</tabstop>

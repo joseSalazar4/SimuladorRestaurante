@@ -3036,16 +3036,18 @@
    <widget class="QLabel" name="labelGenerador">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>830</y>
-      <width>81</width>
+      <x>110</x>
+      <y>860</y>
+      <width>151</width>
       <height>51</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Noto Sans Arabic UI Th</family>
-      <pointsize>24</pointsize>
+      <family>DejaVu Serif</family>
+      <pointsize>25</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">

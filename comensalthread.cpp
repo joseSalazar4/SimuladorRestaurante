@@ -13,7 +13,7 @@ void ComensalThread::__init__(QMutex * mutexCom, QLabel * label, Comensal * come
 
 void ComensalThread::run(){
     while(activo){
-        mutexComensal->lock();
+        mutexComensal->tryLock(10);
         if(comensal->plato) comer(comensal->plato);
         mutexComensal->unlock();
         while(pausa) sleep(1);

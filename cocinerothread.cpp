@@ -7,7 +7,6 @@ void CocineroThread::run(){
         if(cocina->colaOrdenesNoListas->verFrente()){
             Solicitud * orden = cocina->colaOrdenesNoListas->desencolar()->primerNodo;
             mutexCocinero->unlock();
-                            qDebug()<<"Ya solte el mutex de "+cocinero->tipoCocinero;
             while(orden){
                 Plato * plato = orden->plato;
                 tiempoSleep = static_cast <unsigned int> (plato->tiempoCocina);
@@ -16,7 +15,7 @@ void CocineroThread::run(){
                     tiempoSleep--;
                     sleep(1);
                 }
-                mutexCocinero->lock();
+                mutexCocinero->tryLock();
                 cocinar(plato, orden->cliente, orden->mesaDestino);
                 mutexCocinero->unlock();
                 qDebug()<<"Ya solte el mutex de "+cocinero->tipoCocinero;
@@ -31,7 +30,6 @@ void CocineroThread::run(){
         //qDebug()<<"La cocina no tiene comida por hacer";
         infoCocina->setText("Sin ordenes por cocinar");
         mutexCocinero->unlock();
-                        qDebug()<<"Ya solte el mutex de "+cocinero->tipoCocinero;
         }
         sleep(1);
         //Cuando se presione el botón de Inactivo

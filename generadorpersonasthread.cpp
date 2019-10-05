@@ -30,7 +30,18 @@ ListaComensales * GeneradorPersonasThread::generarPersonas(int personasCreadas )
         QString nombre = generarNombre()+QString::number(i);
         ComensalThread * nuevo = new ComensalThread();
         nuevo->comensal = new Comensal(nombre, platos);
+        QMutex mutexComensal;
+        nuevo->mutexComensal = &mutexComensal;
+        nuevo->imagenComensal = nuevo->comensal->imagenPersona;
         lista->insertarFinal(nuevo);
+
+        ComensalThread * tmp = lista->primerNodo;
+
+        while(tmp){
+            tmp->start();
+            tmp = tmp->siguiente;
+        }
+
     }
     return lista;
 }
@@ -75,12 +86,11 @@ void GeneradorPersonasThread::run(){
         }
         else mutexManejador->unlock();
         cantidadFamiliasCola->setText(QString::number(manejadorComensales->colaClientesEnEspera->largo));
-        if(manejadorComensales->colaClientesEnEspera->largo >4) pausa = true;
         sleep(static_cast<unsigned int>(sleepTime));
-        while(pausa) {
+        while(pausa){
             sleep(1);
-            cantPersonasGeneradas->setText("Se cerro el restaurante");
-
+            //cantPersonasGeneradas->text().set;
+            cantPersonasGeneradas->setText("Closed");
         }
     }
 }

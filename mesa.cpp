@@ -22,5 +22,6 @@ bool Mesa::comensalesTerminaron(){
         clienteAux->mutexComensal->unlock();
         clienteAux = clienteAux->siguiente;
     }
+    //SolicitandoAsistencia  = true;
     return true;
 }

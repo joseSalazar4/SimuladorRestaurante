@@ -23,15 +23,13 @@ void MeseroThread::run(){
         // We check if any table needs assistance
         qDebug()<<"Intento revisar las mesas";
         mutexMesa->lock();
-        mesa_revisada=mesero->revisarMesas();
+        mesa_revisada = mesero->revisarMesas();
         if(mesa_revisada!= nullptr){
             etiqueta->setToolTip("Pidiendo ordenes de mesa #"+mesa_revisada->ID);
             qDebug()<<"Pidiendo ordenes de mesa #"+mesa_revisada->ID;
             mesero->pedirOrdenes(mesa_revisada);
-            if(mesero->colaPeticiones->verFrente()) qDebug()<<"Tiene un plato"+mesero->colaPeticiones->verFrente()->primerNodo->plato->nombre;
             if(mesa_revisada->tipoPedido==5) mesa_revisada->tipoPedido = 1;
         }
-
         mutexMesa->unlock();
         // Then we give that order to the corresponding place (kitchen or cashier)
         etiqueta->setToolTip("Revisando si hay ordenes por colocar");

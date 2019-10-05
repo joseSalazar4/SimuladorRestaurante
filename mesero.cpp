@@ -23,6 +23,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
                     nueva->mesaDestino = tmp->mesaSentado;
                     tmp->cuentaAPagar+= nueva->plato->precio;
                     listaSolicitudes->insertarFinal(nueva);
+                    qDebug() << "le meto un plato que tiene esto: "+nueva->plato->nombre;
                 }
                 break;
             case 2:

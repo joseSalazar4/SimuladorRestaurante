@@ -56,6 +56,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
             }
             comensalThreadAux->mutexComensal->unlock();
             comensalThreadAux = comensalThreadAux->siguiente;
+            tmp = comensalThreadAux->comensal;
         }
     }
     if(!listaSolicitudes->estaVacia()){

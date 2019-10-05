@@ -21,6 +21,7 @@ public:
     ListaPlatos * listaPlatos;
     LavaplatosThread * lavaplatosThread;
     MeseroThread * arrayMeserosThread[20];
+    ListaMeseros * listaMeseros;
     ManejadorComensales * manejadorComensales;
     GeneradorPersonasThread generadorPersonas;
     Cocina * principal, * pasteleria, * ensaladas;
@@ -297,6 +298,8 @@ public:
         generadorPersonas.probEnsalada = probEnsalada;
         generadorPersonas.probPlatoFuerte = probPlatoFuerte;
         generadorPersonas.start();
+
+        listaMeseros = meseros;
     }
 
 

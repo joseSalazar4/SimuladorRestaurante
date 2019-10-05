@@ -30,8 +30,8 @@ ListaComensales * GeneradorPersonasThread::generarPersonas(int personasCreadas )
         QString nombre = generarNombre()+QString::number(i);
         ComensalThread * nuevo = new ComensalThread();
         nuevo->comensal = new Comensal(nombre, platos);
-        QMutex mutexComensal;
-        nuevo->mutexComensal = &mutexComensal;
+        QMutex * mutexComensal = new QMutex();
+        nuevo->mutexComensal = mutexComensal;
         nuevo->imagenComensal = nuevo->comensal->imagenPersona;
         lista->insertarFinal(nuevo);
 
@@ -79,6 +79,7 @@ void GeneradorPersonasThread::run(){
                 comensalAux->comensal->imagenPersona =  mesaAux->arrayComensales[i];
                 comensalAux->comensal->mesaSentado = mesaAux->ID;
                 comensalAux->comensal->imagenPersona->show();
+                comensalAux->comensal->imagenPersona->setToolTip("Esperando al mesero");
                 comensalAux->mutexComensal = mesaAux->arrayQmutex[i];
                 comensalAux = comensalAux->siguiente;
             }

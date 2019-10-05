@@ -101,6 +101,7 @@ Solicitud * Comensal::pedirCuenta(){
     Solicitud * nueva = new Solicitud(1,4);
     nueva->mesaDestino = mesaSentado;
     nueva->cuenta = cuentaAPagar;
+    nueva->cliente = nombre;
     nueva->tipo = 4;
     return nueva;
 }
@@ -126,14 +127,16 @@ Plato *  ComensalThread::comer(Plato * plato){
         tiempoComer1 = comensal->tiempoComerPostre1;
         tiempoComer2 = comensal->tiempoComerPostre2;
     }
-
+    if(tiempoComer1 == tiempoComer2) tiempoComer2+=5;
     int duracionComida = QRandomGenerator::global()->bounded(tiempoComer1, tiempoComer2);
+
     comensal->comensalTerminoComer = false;
     while (duracionComida>0) {
-        this->comensal->imagenPersona->setToolTip("Faltan "+QString::number(duracionComida)+" segundos para que termine de comer");
+        this->comensal->imagenPersona->setToolTip("Faltan "+QString::number(duracionComida)+" segundos para que termine de comer el plato "+plato->nombre);
         duracionComida--;
         sleep(1);
     }
+    comensal->plato = nullptr;
     comensal->comensalTerminoComer = true;
     plato->vacio = true;
     plato->limpio = false;

@@ -140,7 +140,7 @@ void MeseroThread::llevarOrdenes(){
             clienteThread->mutexComensal->unlock();
             clienteThread = clienteThread->siguiente;
         }
-
+        mesero->ensaladas->colaOrdenesListas->desencolar();
         return;
     }
     else mutexEnsaladas->unlock();
@@ -164,7 +164,7 @@ void MeseroThread::llevarOrdenes(){
 
         ComensalThread * clienteThread = mesaAux->listaComensales->primerNodo ;
         while(clienteThread){
-            clienteThread->mutexComensal->lock();
+            clienteThread->mutexComensal->tryLock(10);
             if(clienteThread->comensal->nombre == nombreCliente){
                 this->sleep(tiempoSleep);
                 etiqueta->setToolTip("Cliente obtuvo su plato");
@@ -175,10 +175,11 @@ void MeseroThread::llevarOrdenes(){
                 mesaAux->pilaPlatosSucios->push(solicitud);
                 break;
             }
+            clienteThread->mutexComensal->unlock();
             clienteThread = clienteThread->siguiente;
         }
-        clienteThread->mutexComensal->lock();
-        return;
+        mesero->cocina->colaOrdenesListas->desencolar();
+        return;        
     }
     else mutexCocina->unlock();
 
@@ -211,9 +212,10 @@ void MeseroThread::llevarOrdenes(){
                 mesaAux->pilaPlatosSucios->push(solicitud);
                 break;
             }
+            clienteThread->mutexComensal->unlock();
             clienteThread = clienteThread->siguiente;
         }
-        clienteThread->mutexComensal->lock();
+        mesero->cocina->colaOrdenesListas->desencolar();
         return;
     }
     else mutexPasteleria->unlock();

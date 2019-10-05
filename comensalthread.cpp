@@ -115,6 +115,7 @@ void Comensal::dejarMesa(){
 Plato *  ComensalThread::comer(Plato * plato){
     int tiempoComer1, tiempoComer2;
     //Depending on the plate the time will be different
+
     if(plato->tipo == 1){
         tiempoComer1 = comensal->tiempoComerEnsalada1;
         tiempoComer2 = comensal->tiempoComerEnsalada2;
@@ -138,6 +139,7 @@ Plato *  ComensalThread::comer(Plato * plato){
     }
     comensal->plato = nullptr;
     comensal->comensalTerminoComer = true;
+    tipoComida++;
     plato->vacio = true;
     plato->limpio = false;
     return plato;

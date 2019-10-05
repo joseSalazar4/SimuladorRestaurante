@@ -14,7 +14,12 @@ void Mesa::vaciarMesa(){
 bool Mesa::comensalesTerminaron(){
     ComensalThread * clienteAux = listaComensales->primerNodo;
     while(clienteAux){
-        if(!clienteAux->comensal->comensalTerminoComer) return false;
+        clienteAux->mutexComensal->tryLock(10);
+        if(!clienteAux->comensal->comensalTerminoComer){
+            clienteAux->mutexComensal->unlock();
+            return false;
+        }
+        clienteAux->mutexComensal->unlock();
         clienteAux = clienteAux->siguiente;
     }
     return true;

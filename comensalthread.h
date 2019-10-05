@@ -8,6 +8,7 @@ class ComensalThread: public QThread
 {
 public:
     bool pausa, activo;
+    int tipoComida = 1;
     Comensal * comensal;
     QMutex * mutexComensal;
     QLabel * imagenComensal;

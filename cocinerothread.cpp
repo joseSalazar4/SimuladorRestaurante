@@ -10,7 +10,7 @@ void CocineroThread::run(){
                 Plato * plato = orden->plato;
                 tiempoSleep = static_cast <unsigned int> (plato->tiempoCocina);
                 while(0<tiempoSleep){
-                    infoCocina->setText(" Cocinando... \n Tiempo Restante: "+QString::number(+tiempoSleep));
+                    infoCocina->setText("Preparando"+plato->nombre+" \n Tiempo Restante: "+QString::number(+tiempoSleep));
                     tiempoSleep--;
                     sleep(1);
                 }
@@ -40,7 +40,8 @@ void CocineroThread::run(){
     }
 }
 
-void CocineroThread::__init__(QMutex * mutex1, QLabel * imagen1,QLabel * infoCoci , Cocinero * cocinero1, Cocina * cocina1){
+void CocineroThread::__init__(QMutex * mutex1, QLabel * imagen1,QLabel * infoCoci ,QLabel * infoGrande, Cocinero * cocinero1, Cocina * cocina1){
+    panelInfo = infoGrande;
     this->cocina = cocina1;
     this->mutexCocinero = mutex1;
     this->imagenChef = imagen1;

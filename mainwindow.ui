@@ -2905,7 +2905,7 @@
    <widget class="QLabel" name="labelGenerador">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>120</x>
       <y>860</y>
       <width>151</width>
       <height>51</height>
@@ -3687,6 +3687,12 @@
       <height>24</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+     </font>
+    </property>
     <property name="text">
      <string>Info</string>
     </property>
@@ -3699,6 +3705,12 @@
       <width>41</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+     </font>
     </property>
     <property name="text">
      <string>Info</string>
@@ -3713,6 +3725,12 @@
       <height>24</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+     </font>
+    </property>
     <property name="text">
      <string>Info</string>
     </property>
@@ -3721,10 +3739,16 @@
     <property name="geometry">
      <rect>
       <x>1270</x>
-      <y>220</y>
+      <y>200</y>
       <width>41</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+     </font>
     </property>
     <property name="text">
      <string>Info</string>
@@ -3739,6 +3763,12 @@
       <height>24</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+     </font>
+    </property>
     <property name="text">
      <string>Info</string>
     </property>
@@ -3746,11 +3776,17 @@
    <widget class="QPushButton" name="pushMesa_6">
     <property name="geometry">
      <rect>
-      <x>750</x>
+      <x>760</x>
       <y>320</y>
       <width>41</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+     </font>
     </property>
     <property name="text">
      <string>Info</string>
@@ -3765,6 +3801,12 @@
       <height>24</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+     </font>
+    </property>
     <property name="text">
      <string>Info</string>
     </property>
@@ -3777,6 +3819,12 @@
       <width>41</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+     </font>
     </property>
     <property name="text">
      <string>Info</string>
@@ -3791,6 +3839,12 @@
       <height>24</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+     </font>
+    </property>
     <property name="text">
      <string>Info</string>
     </property>
@@ -3803,6 +3857,12 @@
       <width>41</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+     </font>
     </property>
     <property name="text">
      <string>Info</string>
@@ -3817,6 +3877,12 @@
       <height>24</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+     </font>
+    </property>
     <property name="text">
      <string>Info</string>
     </property>
@@ -3829,6 +3895,12 @@
       <width>41</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+     </font>
     </property>
     <property name="text">
      <string>Info</string>
@@ -3843,6 +3915,12 @@
       <height>24</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+     </font>
+    </property>
     <property name="text">
      <string>Info</string>
     </property>
@@ -3855,6 +3933,12 @@
       <width>41</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+     </font>
     </property>
     <property name="text">
      <string>Info</string>
@@ -3869,6 +3953,12 @@
       <height>24</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+     </font>
+    </property>
     <property name="text">
      <string>Info</string>
     </property>
@@ -3881,6 +3971,12 @@
       <width>41</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+     </font>
     </property>
     <property name="text">
      <string>Info</string>
@@ -3895,6 +3991,12 @@
       <height>24</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+     </font>
+    </property>
     <property name="text">
      <string>Info</string>
     </property>
@@ -3907,6 +4009,12 @@
       <width>41</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+     </font>
     </property>
     <property name="text">
      <string>Info</string>
@@ -3921,6 +4029,12 @@
       <height>24</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+     </font>
+    </property>
     <property name="text">
      <string>Info</string>
     </property>
@@ -3933,6 +4047,12 @@
       <width>41</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+     </font>
     </property>
     <property name="text">
      <string>Info</string>
@@ -3947,6 +4067,11 @@
       <height>51</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>Iniciar Simulacion</string>
     </property>
@@ -3959,6 +4084,12 @@
       <width>201</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <italic>true</italic>
+     </font>
     </property>
     <property name="text">
      <string>Detener</string>

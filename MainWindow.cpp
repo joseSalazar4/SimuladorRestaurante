@@ -93,10 +93,28 @@ QMessageBox::information(this,"Error! ","Hay una cantidad de pasaportes diferent
 }*/
 void MainWindow::on_pushButton_2_clicked(){
     if(detenido==0){
+        restaurante->cocineroPast->pausar();
+        restaurante->cocineroEnsaldas->pausar();
+        restaurante->cocineroFuerte1->pausar();
+        restaurante->cocineroFuerte2->pausar();
+        restaurante->cocineroFuerte3->pausar();
+        restaurante->lavaplatosThread->pausar();
+        restaurante->cajaThread->pausar();
+        restaurante->generadorPersonas.pausar();
+        for(int i=0;i<arrayMeseros.length();i++)restaurante->arrayMeserosThread[i]->pausar();
         ui->pushButton_2->setText("Resumir");
         detenido=1;
     }
     else{
+        restaurante->cocineroPast->continuar();
+        restaurante->cocineroEnsaldas->continuar();
+        restaurante->cocineroFuerte1->continuar();
+        restaurante->cocineroFuerte2->continuar();
+        restaurante->cocineroFuerte3->continuar();
+        restaurante->lavaplatosThread->continuar();
+        restaurante->cajaThread->continuar();
+        restaurante->generadorPersonas.continuar();
+        for(int i=0;i<arrayMeseros.length();i++)restaurante->arrayMeserosThread[i]->continuar();
         ui->pushButton_2->setText("Detener");
         detenido=0;
     }

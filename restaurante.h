@@ -25,6 +25,7 @@ public:
     ManejadorComensales * manejadorComensales;
     GeneradorPersonasThread generadorPersonas;
     Cocina * principal, * pasteleria, * ensaladas;
+    CocineroThread * cocineroPast, *cocineroEnsaldas,*cocineroFuerte1,*cocineroFuerte2,*cocineroFuerte3;
     int cantMeseros, cantCocineros, cantMesas, cantMesasPorMesero,tiempoGen1,tiempoGen2,mesasSobrantes = 0;
     QMutex * mutexPasteleria , *mutexCocinaFuerte , * mutexEnsaladas, * mutexLavaplatos, * mutexCaja, * mutexManejador;
 

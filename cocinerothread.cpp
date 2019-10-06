@@ -39,7 +39,7 @@ void CocineroThread::run(){
     }
 }
 
-void CocineroThread:: __init__(QMutex * mutex1, QLabel * imagen1,QLabel * infoCoci , Cocinero * cocinero1, Cocina * cocina1){
+void CocineroThread::__init__(QMutex * mutex1, QLabel * imagen1,QLabel * infoCoci , Cocinero * cocinero1, Cocina * cocina1){
     this->cocina = cocina1;
     this->mutexCocinero = mutex1;
     this->imagenChef = imagen1;

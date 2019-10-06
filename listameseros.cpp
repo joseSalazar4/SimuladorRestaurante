@@ -6,11 +6,11 @@ void ListaMeseros::insertarFinal(Mesero * meserito){
         largo++;
     }
     else {
-            ultimoNodo->siguiente = meserito;
-            ultimoNodo->siguiente->anterior = ultimoNodo;
-            ultimoNodo = ultimoNodo->siguiente;
-            largo++;
-        }
+        ultimoNodo->siguiente = meserito;
+        ultimoNodo->siguiente->anterior = ultimoNodo;
+        ultimoNodo = ultimoNodo->siguiente;
+        largo++;
+    }
 }
 
 void ListaMeseros::insertarFinal(int cantMesasAsignadas) {
@@ -19,11 +19,11 @@ void ListaMeseros::insertarFinal(int cantMesasAsignadas) {
         largo++;
     }
     else {
-            ultimoNodo->siguiente = new Mesero(cantMesasAsignadas);
-            ultimoNodo->siguiente->anterior = ultimoNodo;
-            ultimoNodo = ultimoNodo->siguiente;
-            largo++;
-        }
+        ultimoNodo->siguiente = new Mesero(cantMesasAsignadas);
+        ultimoNodo->siguiente->anterior = ultimoNodo;
+        ultimoNodo = ultimoNodo->siguiente;
+        largo++;
+    }
 }
 
 bool ListaMeseros::estaVacia(){

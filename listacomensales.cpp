@@ -7,11 +7,11 @@ void ListaComensales::insertarFinal(ComensalThread * nuevo) {
         largo++;
     }
     else {
-            ultimoNodo->siguiente = nuevo;
-            ultimoNodo->siguiente->anterior = ultimoNodo;
-            ultimoNodo = ultimoNodo->siguiente;
-            largo++;
-   }
+        ultimoNodo->siguiente = nuevo;
+        ultimoNodo->siguiente->anterior = ultimoNodo;
+        ultimoNodo = ultimoNodo->siguiente;
+        largo++;
+    }
 }
 
 

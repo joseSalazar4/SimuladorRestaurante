@@ -11,9 +11,9 @@ void ListaSolicitudes::insertarFinal(Solicitud * sol) {
         largo++;
     }
     else {
-            ultimoNodo->siguiente  = sol;
-            ultimoNodo->siguiente->anterior = ultimoNodo;
-            ultimoNodo = ultimoNodo->siguiente;
-            largo++;
-        }
+        ultimoNodo->siguiente  = sol;
+        ultimoNodo->siguiente->anterior = ultimoNodo;
+        ultimoNodo = ultimoNodo->siguiente;
+        largo++;
+    }
 }

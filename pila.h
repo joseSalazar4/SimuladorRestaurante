@@ -9,7 +9,7 @@ using namespace std;
 
 
 struct Pila {
-
+       int largo = 0;
        Solicitud * tope;
 
        Pila(){

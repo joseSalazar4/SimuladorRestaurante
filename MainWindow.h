@@ -64,6 +64,8 @@ private slots:
     void on_pushMesa_19_clicked();
     void on_pushMesa_20_clicked();
 
+    void infoMesa(QPushButton * boton);
+
 
 private:
     Ui::MainWindow *ui;

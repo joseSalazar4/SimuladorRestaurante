@@ -3,45 +3,45 @@
 
 void Lavaplatos::encolar (Solicitud * solicitud)
 {
-if (vacia())
-         frente = new Solicitud();
-      else
-      {
-            Solicitud * actual = frente;
-            while (actual->siguiente != nullptr)
-                          actual = actual->siguiente;
+    if (vacia())
+        frente = new Solicitud();
+    else
+    {
+        Solicitud * actual = frente;
+        while (actual->siguiente != nullptr)
+            actual = actual->siguiente;
 
-            actual->siguiente = solicitud;
-        }
+        actual->siguiente = solicitud;
+    }
 }
 
 
 Solicitud * Lavaplatos::desencolar()
 {
-      if (vacia())
-      {
-         return nullptr;
-      }
-      else
-      {
-          Solicitud* borrado = frente;
-          frente = frente->siguiente;
-          borrado->siguiente = nullptr;
-          return borrado;
-      }
+    if (vacia())
+    {
+        return nullptr;
+    }
+    else
+    {
+        Solicitud* borrado = frente;
+        frente = frente->siguiente;
+        borrado->siguiente = nullptr;
+        return borrado;
+    }
 }
 
 bool Lavaplatos::vacia ()
 {
-     if (frente == nullptr)
+    if (frente == nullptr)
         return true;
-     else
-         return false;
+    else
+        return false;
 }
 
 
 Solicitud * Lavaplatos::verFrente()
 {
-      return frente;
+    return frente;
 }
 

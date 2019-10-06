@@ -58,12 +58,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
                   {ui->c115,ui->c116,ui->c117,ui->c118,ui->c119,ui->c120, ui->m20}};
 
     for(int i = 0;i<20;i++)
-    for(int j = 0;j<7;j++){
-        arrayMesas[i][j]->hide();
-    }
+        for(int j = 0;j<7;j++){
+            arrayMesas[i][j]->hide();
+        }
     arrayMeseros = {ui->w1,ui->w2,ui->w3,ui->w4,ui->w5,ui->w6,ui->w7,ui->w8,ui->w9,
-                   ui->w10,ui->w11,ui->w12,ui->w13,ui->w14,ui->w15,ui->w16,ui->w17,ui->w18,
-                   ui->w19,ui->w20};
+                    ui->w10,ui->w11,ui->w12,ui->w13,ui->w14,ui->w15,ui->w16,ui->w17,ui->w18,
+                    ui->w19,ui->w20};
 
     for(int i = 0;i<20;i++) arrayMeseros[i]->hide();
     for(int i = 0;i<20;i++) botonesMesas[i]->hide();
@@ -98,6 +98,38 @@ ui->QTextBrowser ->setText(datos);
 QMessageBox::information(this,"Error! ","Hay una cantidad de pasaportes diferente a la cantidad de personas que viajan");
 
 }*/
+
+void MainWindow::infoMesa(QPushButton * boton){
+    int i;
+    for(i=0;i<botonesMesas.size()-1;i++) {
+        if(botonesMesas[i] == boton) break;
+    }
+    int cont = 0;
+    Mesa * mesaAux = listaMesas->primerNodo;
+    while(mesaAux){
+        if(cont == i) break;
+        mesaAux = mesaAux->siguiente;
+    }
+    QString texto = "";
+    texto.append(mesaAux->ID+"\n");
+    Solicitud * sol = mesaAux->pilaPlatosSucios->tope;
+
+    if(!mesaAux->listaComensales->estaVacia()){
+        Comensal * cliente = mesaAux->listaComensales->primerNodo->comensal;
+        texto.append("Clientes:\n\t");
+        for (int i = 0;i<mesaAux->listaComensales->largo;i++) texto.append(cliente->nombre+"\t");
+        texto.append("Platos servidos:\n\t");
+        for (int i = 0;i<mesaAux->pilaPlatosSucios->largo;i++) texto.append(sol->plato->nombre+"\t");
+
+        QTextBrowser * informacionMesa  = new QTextBrowser();
+        informacionMesa->setText(texto);
+    }
+    else{
+        QTextBrowser * informacionMesa  = new QTextBrowser();
+        informacionMesa->setText("La mesa #"+mesaAux->ID+"No tiene clientes por el momento");
+    }
+}
+
 void MainWindow::on_pushButton_2_clicked(){
     //Si le damos click a detener
     if(detenido==0){
@@ -151,239 +183,101 @@ void MainWindow::on_pushButton_2_clicked(){
 
 void MainWindow::on_pushMesa_1_clicked()
 {
-    Mesa * mesaAux = listaMesas->primerNodo;
-
-    QTextBrowser * informacionMesa  = new QTextBrowser();
-    informacionMesa->setText("");
+    infoMesa(ui->pushMesa_1);
 
 }
 void MainWindow::on_pushMesa_2_clicked()
 {
-    int cont = 0;
-    Mesa * mesaAux = listaMesas->primerNodo;
-    while(mesaAux){
-        if(cont == 1) break;
-        mesaAux = mesaAux->siguiente;
-    }
-    QTextBrowser * informacionMesa  = new QTextBrowser();
-    informacionMesa->setText("");
-
+    infoMesa(ui->pushMesa_2);
 }
 
 void MainWindow::on_pushMesa_3_clicked()
 {
-    int cont = 0;
-    Mesa * mesaAux = listaMesas->primerNodo;
-    while(mesaAux){
-        if(cont == 2) break;
-        mesaAux = mesaAux->siguiente;
-    }
-    QTextBrowser * informacionMesa  = new QTextBrowser();
-    informacionMesa->setText("");
-
+    infoMesa(ui->pushMesa_3);
 }
 void MainWindow::on_pushMesa_4_clicked()
 {
-    int cont = 0;
-    Mesa * mesaAux = listaMesas->primerNodo;
-    while(mesaAux){
-        if(cont == 3) break;
-        mesaAux = mesaAux->siguiente;
-    }
-    QTextBrowser * informacionMesa  = new QTextBrowser();
-    informacionMesa->setText("");
+    infoMesa(ui->pushMesa_4);
 
 }
 void MainWindow::on_pushMesa_5_clicked()
 {
-    int cont = 0;
-    Mesa * mesaAux = listaMesas->primerNodo;
-    while(mesaAux){
-        if(cont == 4) break;
-        mesaAux = mesaAux->siguiente;
-    }
-    QTextBrowser * informacionMesa  = new QTextBrowser();
-    informacionMesa->setText("");
+    infoMesa(ui->pushMesa_5);
 
 }
 void MainWindow::on_pushMesa_6_clicked()
 {
-    int cont = 0;
-    Mesa * mesaAux = listaMesas->primerNodo;
-    while(mesaAux){
-        if(cont == 5) break;
-        mesaAux = mesaAux->siguiente;
-    }
-    QTextBrowser * informacionMesa  = new QTextBrowser();
-    informacionMesa->setText("");
+    infoMesa(ui->pushMesa_6);
 
 }
 void MainWindow::on_pushMesa_7_clicked()
 {
-
-    int cont = 0;
-    Mesa * mesaAux = listaMesas->primerNodo;
-    while(mesaAux){
-        if(cont == 6) break;
-        mesaAux = mesaAux->siguiente;
-    }
-    QTextBrowser * informacionMesa  = new QTextBrowser();
-    informacionMesa->setText("");
+    infoMesa(ui->pushMesa_7);
 }
 void MainWindow::on_pushMesa_8_clicked()
 {
-    int cont = 0;
-    Mesa * mesaAux = listaMesas->primerNodo;
-    while(mesaAux){
-        if(cont == 7) break;
-        mesaAux = mesaAux->siguiente;
-    }
-    QTextBrowser * informacionMesa  = new QTextBrowser();
-    informacionMesa->setText("");
+    infoMesa(ui->pushMesa_8);
 
 }
 void MainWindow::on_pushMesa_9_clicked()
 {
-    int cont = 0;
-    Mesa * mesaAux = listaMesas->primerNodo;
-    while(mesaAux){
-        if(cont == 8) break;
-        mesaAux = mesaAux->siguiente;
-    }
-    QTextBrowser * informacionMesa  = new QTextBrowser();
-    informacionMesa->setText("");
+    infoMesa(ui->pushMesa_9);
 
 }
 void MainWindow::on_pushMesa_10_clicked()
 {
-    int cont = 0;
-    Mesa * mesaAux = listaMesas->primerNodo;
-    while(mesaAux){
-        if(cont == 9) break;
-        mesaAux = mesaAux->siguiente;
-    }
-    QTextBrowser * informacionMesa  = new QTextBrowser();
-    informacionMesa->setText("");
+    infoMesa(ui->pushMesa_10);
 
 }
 void MainWindow::on_pushMesa_11_clicked()
 {
-    int cont = 0;
-    Mesa * mesaAux = listaMesas->primerNodo;
-    while(mesaAux){
-        if(cont == 10) break;
-        mesaAux = mesaAux->siguiente;
-    }
-    QTextBrowser * informacionMesa  = new QTextBrowser();
-    informacionMesa->setText("");
+    infoMesa(ui->pushMesa_11);
 
 }
 void MainWindow::on_pushMesa_12_clicked()
 {
-    int cont = 0;
-    Mesa * mesaAux = listaMesas->primerNodo;
-    while(mesaAux){
-        if(cont == 11) break;
-        mesaAux = mesaAux->siguiente;
-    }
-    QTextBrowser * informacionMesa  = new QTextBrowser();
-    informacionMesa->setText("");
+    infoMesa(ui->pushMesa_12);
 
 }
 void MainWindow::on_pushMesa_13_clicked()
 {
-    int cont = 0;
-    Mesa * mesaAux = listaMesas->primerNodo;
-    while(mesaAux){
-        if(cont == 12) break;
-        mesaAux = mesaAux->siguiente;
-    }
-    QTextBrowser * informacionMesa  = new QTextBrowser();
-    informacionMesa->setText("");
+    infoMesa(ui->pushMesa_13);
 
 }
 void MainWindow::on_pushMesa_14_clicked()
 {
-    int cont = 0;
-    Mesa * mesaAux = listaMesas->primerNodo;
-    while(mesaAux){
-        if(cont == 13) break;
-        mesaAux = mesaAux->siguiente;
-    }
-    QTextBrowser * informacionMesa  = new QTextBrowser();
-    informacionMesa->setText("");
+    infoMesa(ui->pushMesa_14);
 
 }
 void MainWindow::on_pushMesa_15_clicked()
 {
-    int cont = 0;
-    Mesa * mesaAux = listaMesas->primerNodo;
-    while(mesaAux){
-        if(cont == 14) break;
-        mesaAux = mesaAux->siguiente;
-    }
-    QTextBrowser * informacionMesa  = new QTextBrowser();
-    informacionMesa->setText("");
+    infoMesa(ui->pushMesa_15);
 
 }
 void MainWindow::on_pushMesa_16_clicked()
 {
-    int cont = 0;
-    Mesa * mesaAux = listaMesas->primerNodo;
-    while(mesaAux){
-        if(cont == 15) break;
-        mesaAux = mesaAux->siguiente;
-    }
-    QTextBrowser * informacionMesa  = new QTextBrowser();
-    informacionMesa->setText("");
+    infoMesa(ui->pushMesa_16);
 
 }
 void MainWindow::on_pushMesa_17_clicked()
 {
-    int cont = 0;
-    Mesa * mesaAux = listaMesas->primerNodo;
-    while(mesaAux){
-        if(cont == 16) break;
-        mesaAux = mesaAux->siguiente;
-    }
-    QTextBrowser * informacionMesa  = new QTextBrowser();
-    informacionMesa->setText("");
+
+    infoMesa(ui->pushMesa_17);
 
 }
 void MainWindow::on_pushMesa_18_clicked()
 {
-    int cont = 0;
-    Mesa * mesaAux = listaMesas->primerNodo;
-    while(mesaAux){
-        if(cont == 17) break;
-        mesaAux = mesaAux->siguiente;
-    }
-    QTextBrowser * informacionMesa  = new QTextBrowser();
-    informacionMesa->setText("");
+    infoMesa(ui->pushMesa_18);
 
 }
 void MainWindow::on_pushMesa_19_clicked()
 {
-    int cont = 0;
-    Mesa * mesaAux = listaMesas->primerNodo;
-    while(mesaAux){
-        if(cont == 18) break;
-        mesaAux = mesaAux->siguiente;
-    }
-    QTextBrowser * informacionMesa  = new QTextBrowser();
-    informacionMesa->setText("");
+    infoMesa(ui->pushMesa_19);
 
 }
 void MainWindow::on_pushMesa_20_clicked()
 {
-    int cont = 0;
-    Mesa * mesaAux = listaMesas->primerNodo;
-    while(mesaAux){
-        if(cont == 19) break;
-        mesaAux = mesaAux->siguiente;
-    }
-    QTextBrowser * informacionMesa  = new QTextBrowser();
-    informacionMesa->setText("");
+    infoMesa(ui->pushMesa_20);
 
 }
 

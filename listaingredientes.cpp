@@ -12,9 +12,9 @@ void ListaIngredientes::insertarFinal(Ingrediente * ingredienteNuevo) {
         largo++;
     }
     else {
-            ultimoNodo->siguiente  = ingredienteNuevo;
-            ultimoNodo->siguiente->anterior = ultimoNodo;
-            ultimoNodo = ultimoNodo->siguiente;
-            largo++;
-        }
+        ultimoNodo->siguiente  = ingredienteNuevo;
+        ultimoNodo->siguiente->anterior = ultimoNodo;
+        ultimoNodo = ultimoNodo->siguiente;
+        largo++;
+    }
 }

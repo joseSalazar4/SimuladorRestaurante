@@ -28,8 +28,8 @@ void CocineroThread::run(){
             }
         }
         else{
-        infoCocina->setText("Sin ordenes por cocinar");
-        mutexCocinero->unlock();
+            infoCocina->setText("Sin ordenes por cocinar");
+            mutexCocinero->unlock();
         }
         sleep(4);
         //Cuando se presione el botón de Inactivo

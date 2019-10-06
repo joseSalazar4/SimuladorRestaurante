@@ -8,11 +8,11 @@ void ListaPlatos::insertarFinal(QString _tipo, QString _nombre,int _ID, int _pre
         largo++;
     }
     else {
-            ultimoNodo->siguiente = new Plato( _tipo, _nombre, _ID,  _precio, _tiempoCocina,  _tiempoLavado, _Ingredientes);
-            ultimoNodo->siguiente->anterior = ultimoNodo;
-            ultimoNodo = ultimoNodo->siguiente;
-            largo++;
-        }
+        ultimoNodo->siguiente = new Plato( _tipo, _nombre, _ID,  _precio, _tiempoCocina,  _tiempoLavado, _Ingredientes);
+        ultimoNodo->siguiente->anterior = ultimoNodo;
+        ultimoNodo = ultimoNodo->siguiente;
+        largo++;
+    }
 }
 
 bool ListaPlatos::estaVacia(){

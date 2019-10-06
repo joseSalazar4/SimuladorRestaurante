@@ -8,13 +8,13 @@ void Caja::calcularCuenta(){
         while(sol){
             sumaOrdenes+=sol->cuenta;
             sol = sol->siguiente;
-            }
+        }
 
-    ListaSolicitudes * listaAux = new ListaSolicitudes;
-    Solicitud * sol1 = new Solicitud();
-    listaAux->primerNodo = sol1;
-    sol1->cuenta =  sumaOrdenes;
-    colaCuentasHechas->encolar(listaAux);
+        ListaSolicitudes * listaAux = new ListaSolicitudes;
+        Solicitud * sol1 = new Solicitud();
+        listaAux->primerNodo = sol1;
+        sol1->cuenta =  sumaOrdenes;
+        colaCuentasHechas->encolar(listaAux);
     }
     qDebug()<<"\n\nNo hay cuentas y si entro a calcular una\n\n errorrrr ver arriba";
 }

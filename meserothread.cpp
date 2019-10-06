@@ -35,7 +35,8 @@ void MeseroThread::run(){
         colocarOrden();
         sleep(1);
         llevarOrdenes();
-        sleep(1);
+
+        sleep(tiempoSleep);
 
         while(pausa){
             this->etiqueta->setToolTip("Tomando un descansito...");

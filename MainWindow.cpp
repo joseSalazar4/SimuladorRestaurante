@@ -26,6 +26,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     show();
 
+    botonesMesas = {ui->pushMesa_1,ui->pushMesa_2, ui->pushMesa_3,ui->pushMesa_4,ui->pushMesa_5,ui->pushMesa_6,
+                ui->pushMesa_7,ui->pushMesa_8,ui->pushMesa_9,ui->pushMesa_10,ui->pushMesa_11,
+                ui->pushMesa_12,ui->pushMesa_13,ui->pushMesa_14,ui->pushMesa_15,ui->pushMesa_16,
+                ui->pushMesa_17,ui->pushMesa_18,ui->pushMesa_19,ui->pushMesa_20};
+
     arrayMesas = {{ui->c1,ui->c2,ui->c3,ui->c4,ui->c5,ui->c6, ui->m1},
                   {ui->c7,ui->c8,ui->c9,ui->c10,ui->c11,ui->c12, ui->m2},
                   {ui->c13,ui->c14,ui->c15,ui->c16,ui->c17,ui->c18, ui->m3},
@@ -58,6 +63,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     for(int i = 0;i<20;i++) arrayMeseros[i]->hide();
 
 
+
 }
 
 MainWindow::~MainWindow()
@@ -72,5 +78,27 @@ void MainWindow::on_pushButton_clicked()
     //Hacemos el start de todos los hilos y setteamos cada estructura
     restaurante = new Restaurante(probPlatoFuerte, probEnsalada, probPostre,cantCocineros,cantMeseros, cantMesas, cantMesasPorMesero, genPersonas1,genPersonas2,intervaloPostres1, intervaloPostres2, intervaloEnsaladas1, intervaloEnsaladas2, intervaloFuerte1, intervaloFuerte2,tiempoSleepCocinero, tiempoSleepCaja,tiempoSleepLavaplatos, tiempoSleepMesero, &mutexCaj , &mutexLavaplatos, &mutexCocina, &mutexEnsaladas, &mutexPasteleria, &mutexManejador, arrayMesas, arrayMeseros,ui->labelCaja, ui->labelLavaplatos, ui->labelComidaFuerte,ui->labelEnsaladas,ui->labelPasteleria,ui->labelGenerador, ui->labelGeneradorCola, ui->labelCajaInfo,ui->labelLavaplatosInfo,ui->labelEnsaladasInfo, ui->labelPostresInfo, ui->labelCocinaFuerteInfo, ui->labelCocinaFuerteInfo_2, ui->labelCocinaFuerteInfo_3);
     ui->pushButton->hide();
+    ui->pushButton_2->show();
+
     show();
+}
+
+/*
+void MainWindow::push{
+con esto maybe con alguno de los dos
+ui->QTextBrowser ->setText(datos);
+
+QMessageBox::information(this,"Error! ","Hay una cantidad de pasaportes diferente a la cantidad de personas que viajan");
+
+}*/
+void MainWindow::on_pushButton_2_clicked(){
+    if(detenido==0){
+        ui->pushButton_2->setText("Resumir");
+        detenido=1;
+    }
+    else{
+        ui->pushButton_2->setText("Detener");
+        detenido=0;
+    }
+
 }

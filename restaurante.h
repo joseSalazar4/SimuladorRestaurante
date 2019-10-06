@@ -230,6 +230,7 @@ public:
                 else{
                     for(int j = 0;j<cantMesasMesero;j++){
                         Mesa * mesaAux = new Mesa("Mesa #"+QString::number(j+1));
+
                         mesaAux->tipoPedido=1;
                         mesaAux->intervaloFuerte1=intervaloFuerte1;
                         mesaAux->intervaloFuerte2=intervaloFuerte2;

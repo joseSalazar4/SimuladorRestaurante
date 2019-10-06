@@ -86,7 +86,7 @@ void GeneradorPersonasThread::run(){
             mutexManejador->unlock();
         }
         else mutexManejador->unlock();
-        cantidadFamiliasCola->setText(QString::number(manejadorComensales->colaClientesEnEspera->largo));
+        cantidadFamiliasCola->setText("En cola:"+QString::number(manejadorComensales->colaClientesEnEspera->largo)+" familias");
         sleep(static_cast<unsigned int>(sleepTime));
         while(pausa){
             sleep(1);

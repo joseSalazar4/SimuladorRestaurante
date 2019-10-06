@@ -14,7 +14,7 @@
 struct Comensal
 {
     QLabel * imagenPersona;
-    bool comensalTerminoComer;
+    bool comensalTerminoComer, llegoComida;
     ListaPlatos * listaPlatos;
     Plato * plato = nullptr;
     QString nombre, comidaActual, mesaSentado;

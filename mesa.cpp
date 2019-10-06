@@ -15,13 +15,12 @@ bool Mesa::comensalesTerminaron(){
     ComensalThread * clienteAux = listaComensales->primerNodo;
     while(clienteAux){
         clienteAux->mutexComensal->tryLock(10);
-        if(!clienteAux->comensal->comensalTerminoComer){
+        if(!clienteAux->comensal->comensalTerminoComer && clienteAux->comensal->llegoComida){
             clienteAux->mutexComensal->unlock();
             return false;
         }
         clienteAux->mutexComensal->unlock();
         clienteAux = clienteAux->siguiente;
     }
-    SolicitandoAsistencia  = true;
     return true;
 }

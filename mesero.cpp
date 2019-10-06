@@ -18,6 +18,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
             case 1:
                 nueva = tmp->pedirEntrada(tmp->probabilidadPedirEnsalada);
                 if(nueva){
+                    tmp->llegoComida = true;
                     nueva->tipo = 1;
                     nueva->cliente = tmp->nombre;
                     nueva->mesaDestino = tmp->mesaSentado;
@@ -29,6 +30,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
             case 2:
                 nueva = tmp->pedirPlatoFuerte(tmp->probabilidadPedirPlatoFuerte);
                 if(nueva){
+                    tmp->llegoComida = true;
                     nueva->tipo = 2;
                     nueva->cliente = tmp->nombre;
                     nueva->mesaDestino = tmp->mesaSentado;
@@ -39,10 +41,12 @@ void Mesero::pedirOrdenes(Mesa * mesa){
             case 3:
                 nueva = tmp->pedirPostre(tmp->probabilidadPedirPostre);
                 if(nueva){
+                    tmp->llegoComida = true;
                     nueva->tipo = 3;
                     nueva->cliente = tmp->nombre;
                     nueva->mesaDestino = tmp->mesaSentado;
                     tmp->cuentaAPagar+= nueva->plato->precio;
+                    listaSolicitudes->insertarFinal(nueva);
                 }
                 break;
             default:
@@ -55,6 +59,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
                 }
                 break;
             }
+            comensalThreadAux->comensal->comensalTerminoComer = false;
             comensalThreadAux->mutexComensal->unlock();
             comensalThreadAux = comensalThreadAux->siguiente;
         }
@@ -66,6 +71,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
     mesa->imagen->setToolTip("Se esta pidiendo el tipo de plato #"+QString::number(mesa->tipoPedido));
     mesa->tipoPedido++;
     mesa->SolicitandoAsistencia = false;
+
 }
 
 void Mesero::liberarMesa(Mesa * mesa){
@@ -75,12 +81,25 @@ void Mesero::liberarMesa(Mesa * mesa){
 Mesa * Mesero::revisarMesas(){
     Mesa * tmp = mesas->primerNodo;
     if(tmp == nullptr) return nullptr;
-
     for(int i =0; i<mesas->largo;i++){
-        if (tmp->estaOcupada() && tmp->comensalesTerminaron() && tmp->SolicitandoAsistencia){
-            return tmp;
+        if(tmp && tmp->tipoPedido==1){
+            if (tmp->estaOcupada() && tmp->comensalesTerminaron() ){ //&&tmp->SolicitandoAsistencia && (!tmp->listaComensales->primerNodo->comensal->llegoComida)){
+                return tmp;
+            }
+            tmp = tmp->siguiente;
         }
-        tmp = tmp->siguiente;
+        else if(tmp && tmp->tipoPedido==2){
+            if (tmp->estaOcupada() && tmp->comensalesTerminaron()) {//&&tmp->SolicitandoAsistencia && (!tmp->listaComensales->primerNodo->comensal->llegoComida)){
+                return tmp;
+            }
+            tmp = tmp->siguiente;
+        }
+        else{
+            if (tmp->estaOcupada() && tmp->comensalesTerminaron()){ // tmp->SolicitandoAsistencia && (!tmp->listaComensales->primerNodo->comensal->llegoComida)){
+                return tmp;
+            }
+            tmp = tmp->siguiente;
+        }
     }
     return  nullptr;
 }

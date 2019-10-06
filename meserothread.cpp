@@ -21,7 +21,6 @@ void MeseroThread::run(){
     sleep(4);
     while(activo){
         // We check if any table needs assistance
-        qDebug()<<"Intento revisar las mesas";
         mutexMesa->lock();
         mesa_revisada = mesero->revisarMesas();
         if(mesa_revisada!= nullptr){
@@ -80,10 +79,10 @@ void MeseroThread::colocarOrden(){
                 mutexPasteleria->unlock();
                 break;
             }
-
             case 4:{
                 mutexCaja->lock();
                 etiqueta->setToolTip("Colocando una orden en la caja");
+                qDebug()<<"Colocando una orden en la caja";
                 mesero->caja->colaCuentasPorHacer->encolar(mesero->colaPeticiones->desencolar());
                 mutexCaja->unlock();
                 break;

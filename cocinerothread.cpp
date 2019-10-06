@@ -2,7 +2,6 @@
 
 void CocineroThread::run(){
     while (activo){
-
         mutexCocinero->lock();
         if(cocina->colaOrdenesNoListas->verFrente()){
             Solicitud * orden = cocina->colaOrdenesNoListas->desencolar()->primerNodo;
@@ -11,7 +10,7 @@ void CocineroThread::run(){
                 Plato * plato = orden->plato;
                 tiempoSleep = static_cast <unsigned int> (plato->tiempoCocina);
                 while(0<tiempoSleep){
-                    infoCocina->setText("Cocinando... \n Tiempo Restante: "+QString::number(+tiempoSleep));
+                    infoCocina->setText(" Cocinando... \n Tiempo Restante: "+QString::number(+tiempoSleep));
                     tiempoSleep--;
                     sleep(1);
                 }

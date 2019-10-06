@@ -133,7 +133,7 @@ Plato *  ComensalThread::comer(Plato * plato){
 
     comensal->comensalTerminoComer = false;
     while (duracionComida>0) {
-        this->comensal->imagenPersona->setToolTip("Faltan "+QString::number(duracionComida)+" segundos para que termine de comer el plato "+plato->nombre);
+        comensal->imagenPersona->setToolTip("Faltan "+QString::number(duracionComida)+" segundos para que termine de comer el plato "+plato->nombre);
         duracionComida--;
         sleep(1);
     }
@@ -141,5 +141,7 @@ Plato *  ComensalThread::comer(Plato * plato){
     comensal->comensalTerminoComer = true;
     plato->vacio = true;
     plato->limpio = false;
+    comensal->imagenPersona->setToolTip("");
+    comensal->llegoComida = false;
     return plato;
 }

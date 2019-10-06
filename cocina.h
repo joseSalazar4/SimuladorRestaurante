@@ -7,6 +7,7 @@
 struct Cocina
 {
     QString tipo;
+    int atendido,enCola;
     Cola * colaOrdenesNoListas, * colaOrdenesListas;
     Cocinero * cocinero1, * cocinero2, * cocinero3;
     //Usamos solo 1 cocinero para pasteleria y ensaladas

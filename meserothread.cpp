@@ -145,6 +145,7 @@ void MeseroThread::llevarOrdenes(){
                 clienteThread->mutexComensal->unlock();
                 clienteThread = clienteThread->siguiente;
             }
+            mesero->ensaladas->atendido++;
             mesero->ensaladas->colaOrdenesListas->desencolar();
             return;
         }
@@ -191,6 +192,7 @@ void MeseroThread::llevarOrdenes(){
                 clienteThread->mutexComensal->unlock();
                 clienteThread = clienteThread->siguiente;
             }
+            mesero->cocina->atendido++;
             mesero->cocina->colaOrdenesListas->desencolar();
             return;
         }
@@ -236,7 +238,8 @@ void MeseroThread::llevarOrdenes(){
                 clienteThread->mutexComensal->unlock();
                 clienteThread = clienteThread->siguiente;
             }
-            mesero->cocina->colaOrdenesListas->desencolar();
+            mesero->pasteleria->atendido++;
+            mesero->pasteleria->colaOrdenesListas->desencolar();
             return;
         }
     }

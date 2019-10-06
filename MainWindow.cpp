@@ -107,7 +107,6 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::infoMesa(QPushButton * boton){
     int i;
-    int cont = 0;
     QString texto = "";
     Mesa * mesaAux = listaMesas->primerNodo;
 
@@ -119,13 +118,13 @@ void MainWindow::infoMesa(QPushButton * boton){
     //We look for the table that is in the same position as the button assigned to it
     while(mesaAux){
         mesaAux->mutexMesa.tryLock(10);
-        if(cont == i) break;
-        cont++;
+        if(mesaAux->ID[mesaAux->ID.size()-1] == QString::number(i+1)) break;
         mesaAux->mutexMesa.unlock();
         mesaAux = mesaAux->siguiente;
     }
     //If the table was found, just so he program doesn't surrender to the revision and keeps going
     if(mesaAux){
+        qDebug()<<mesaAux->ID+" es la mesaa y matcheo con"+QString::number(i);
         Solicitud * sol = mesaAux->pilaPlatosSucios->tope;
         texto.append(mesaAux->ID+"\n");
 

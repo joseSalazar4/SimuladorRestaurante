@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1349</width>
-    <height>964</height>
+    <height>979</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -2787,10 +2787,10 @@
    <widget class="QLabel" name="FondodePantalla">
     <property name="geometry">
      <rect>
-      <x>-30</x>
-      <y>0</y>
+      <x>-50</x>
+      <y>-40</y>
       <width>1381</width>
-      <height>981</height>
+      <height>1031</height>
      </rect>
     </property>
     <property name="text">
@@ -2858,8 +2858,8 @@
    <widget class="QLabel" name="labelGenerador_3">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>850</y>
+      <x>10</x>
+      <y>830</y>
       <width>81</width>
       <height>81</height>
      </rect>
@@ -2905,8 +2905,8 @@
    <widget class="QLabel" name="labelGenerador">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>860</y>
+      <x>110</x>
+      <y>830</y>
       <width>151</width>
       <height>51</height>
      </rect>
@@ -4250,8 +4250,8 @@
    <widget class="QPushButton" name="btonGeneradorStop">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>850</y>
+      <x>10</x>
+      <y>830</y>
       <width>101</width>
       <height>81</height>
      </rect>
@@ -4307,7 +4307,7 @@
    <widget class="QPushButton" name="botonModGenClientes">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>10</x>
       <y>920</y>
       <width>241</width>
       <height>41</height>

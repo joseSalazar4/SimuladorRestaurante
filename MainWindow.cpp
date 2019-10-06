@@ -68,7 +68,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     for(int i = 0;i<20;i++) arrayMeseros[i]->hide();
     for(int i = 0;i<20;i++) botonesMesas[i]->hide();
 
-
+    ui->botonCajeraStop->setFlat(true);
+    ui->botonFuertesStop->setFlat(true);
+    ui->botonPostresStop->setFlat(true);
+    ui->btonGeneradorStop->setFlat(true);
+    ui->botonEnsaladasStop->setFlat(true);
+    ui->botonLavaplatostop->setFlat(true);
 
 }
 
@@ -104,30 +109,32 @@ void MainWindow::infoMesa(QPushButton * boton){
     for(i=0;i<botonesMesas.size()-1;i++) {
         if(botonesMesas[i] == boton) break;
     }
+    QString texto = "";
     int cont = 0;
-    mutexManejador.tryLock(10);
     Mesa * mesaAux = listaMesas->primerNodo;
-    mutexManejador.unlock();
     mesaAux->mutexMesa.tryLock(10);
     while(mesaAux){
         if(cont == i) break;
         mesaAux = mesaAux->siguiente;
     }
-    QString texto = "";
+
+    if(mesaAux){
     texto.append(mesaAux->ID+"\n");
     Solicitud * sol = mesaAux->pilaPlatosSucios->tope;
     qDebug()<<"Entre a la ping";
-    if(!mesaAux->listaComensales->estaVacia()){
-        Comensal * cliente = mesaAux->listaComensales->primerNodo->comensal;
+    if(!mesaAux->listaComensales->estaVacia() && mesaAux->listaComensales->primerNodo->comensal){
+        //mesaAux->listaComensales->primerNodo->mutexComensal->tryLock(10);
+        ComensalThread * cliente = mesaAux->listaComensales->primerNodo;
+        //mesaAux->listaComensales->primerNodo->mutexComensal->unlock();
         texto.append("Clientes:\n--");
-        for (int i = 0;i<mesaAux->listaComensales->largo;i++){
-            texto.append(cliente->nombre+" \t");
+        for (int i = 0;i<mesaAux->listaComensales->largo-1;i++){
+            texto.append(cliente->comensal->nombre+" \t");
             cliente = cliente->siguiente;
         }
         if(mesaAux->listaComensales->largo!=1)texto.append("--\n");
         else texto.append("\n");
         texto.append("Platos servidos:\n--");
-        for (int i = 0;i<mesaAux->pilaPlatosSucios->largo;i++){
+        for (int i = 0;i<mesaAux->pilaPlatosSucios->largo-1;i++){
             texto.append(sol->plato->nombre+"\t");
         }
         if(mesaAux->pilaPlatosSucios->largo!=1)texto.append("--\n");
@@ -142,6 +149,13 @@ void MainWindow::infoMesa(QPushButton * boton){
         informacionMesa->show();
     }
     mesaAux->mutexMesa.unlock();
+    }
+    else{
+        QTextBrowser * informacionMesa  = new QTextBrowser();
+        informacionMesa->setText("Aun no se han puesto los cubiertos, espere 1s mas");
+        informacionMesa->show();
+    }
+
 
 }
 void MainWindow::on_pushMesa_1_clicked()
@@ -297,30 +311,40 @@ void MainWindow::on_pushButton_2_clicked(){
 
 void MainWindow::on_botonLavaplatostop_clicked()
 {
-    if(detenido==0){
-        detenido=1;
-        restaurante->lavaplatosThread->pausar();
+    if(restaurante->lavaplatosThread){
+        restaurante->lavaplatosThread->mutex->tryLock(10);
+        if(detenido==0){
+            detenido=1;
+            restaurante->lavaplatosThread->pausar();
+                    restaurante->lavaplatosThread->mutex->unlock();
 
+        }
+        else {
+            detenido = 0;
+            restaurante->lavaplatosThread->continuar();
+            restaurante->lavaplatosThread->mutex->unlock();
+        }
     }
-    else {
-        detenido = 0;
-        restaurante->lavaplatosThread->continuar();
-    }
-
 }
 
 
 void MainWindow::on_botonPostresStop_clicked()
 {
-    if(detenido==0){
-        detenido=1;
-        restaurante->cocineroPast->pausar();
+    if(restaurante->cocineroPast){
+        restaurante->cocineroPast->mutexCocinero->tryLock(10);
+        if(detenido==0){
+            detenido=1;
+            restaurante->cocineroPast->pausar();
+                restaurante->cocineroPast->mutexCocinero->unlock();
 
+        }
+        else {
+            detenido = 0;
+            restaurante->cocineroPast->continuar();
+                restaurante->cocineroPast->mutexCocinero->unlock();
+        }
     }
-    else {
-        detenido = 0;
-        restaurante->cocineroPast->continuar();
-    }
+
 }
 
 void MainWindow::on_botonFuertesStop_clicked()
@@ -359,32 +383,45 @@ void MainWindow::on_botonFuertesStop_clicked()
 
 void MainWindow::on_botonEnsaladasStop_clicked()
 {
+    if (restaurante->cocineroEns){
+        restaurante->cocineroEns->mutexCocinero->tryLock(10);
+        if(detenido==0){
+            detenido=1;
+            restaurante->cocineroEns->pausar();
+                restaurante->cocineroEns->mutexCocinero->unlock();
 
-    if(detenido==0){
-        detenido=1;
-        restaurante->cocineroEns->pausar();
-
+        }
+        else {
+            detenido = 0;
+            restaurante->cocineroEns->continuar();
+                restaurante->cocineroEns->mutexCocinero->unlock();
+        }
     }
-    else {
-        detenido = 0;
-        restaurante->cocineroEns->continuar();
-    }}
+
+}
 
 void MainWindow::on_botonCajeraStop_clicked()
 {
-    if(detenido==0){
-        detenido=1;
-        restaurante->cajaThread->pausar();
+    if(restaurante->cajaThread){
+        restaurante->cajaThread->mutexCaja->tryLock(10);
+        if(detenido==0){
+            detenido=1;
+            restaurante->cajaThread->pausar();
+                restaurante->cajaThread->mutexCaja->unlock();
 
+        }
+        else {
+            detenido = 0;
+            restaurante->cajaThread->continuar();
+                restaurante->cajaThread->mutexCaja->unlock();
+        }
     }
-    else {
-        detenido = 0;
-        restaurante->cajaThread->continuar();
-    }}
+
+}
 
 void MainWindow::on_btonGeneradorStop_clicked()
 {
-    if(detenido==0){
+   if(detenido==0){
         detenido=1;
         restaurante->generadorPersonas.pausar();
 
@@ -392,4 +429,5 @@ void MainWindow::on_btonGeneradorStop_clicked()
     else {
         detenido = 0;
         restaurante->generadorPersonas.continuar();
-    }}
+    }
+}

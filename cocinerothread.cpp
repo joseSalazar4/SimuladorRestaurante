@@ -10,18 +10,17 @@ void CocineroThread::run(){
                 Plato * plato = orden->plato;
                 tiempoSleep = static_cast <unsigned int> (plato->tiempoCocina);
                 mutexCocinero->tryLock(4);
-                panelInfo->setText("Se han atendido: "+QString::number(cocina->atendido)+"\nSe esta cocinando "+plato->nombre);
+                panelInfo->setText("Se han atendido: "+QString::number(cocina->atendido)+"\nSe esta cocinando:\n "+plato->nombre);
                 mutexCocinero->unlock();
                 while(0<tiempoSleep){
-                    infoCocina->setText("Preparando"+plato->nombre+" \n Tiempo Restante: "+QString::number(+tiempoSleep));
+                    infoCocina->setText("Cocinando...\n Tiempo Restante: "+QString::number(+tiempoSleep));
                     tiempoSleep--;
                     sleep(1);
                 }
                 mutexCocinero->tryLock(10);
                 cocinar(plato, orden->cliente, orden->mesaDestino,orden->responsable);
                 mutexCocinero->unlock();
-                sleep(1);
-                cocina->atendido++;
+                sleep(1); //EL SLEEPTIME CORRECTO DEBE PONERSE ANTES DE LA REVISION
                 orden = orden->siguiente;
 
                 //If the button is pressed the chef needs to just do ONE order then change that

@@ -22,6 +22,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
                     nueva->tipo = 1;
                     nueva->cliente = tmp->nombre;
                     nueva->mesaDestino = tmp->mesaSentado;
+                    nueva->responsable = nombre;
                     tmp->cuentaAPagar+= nueva->plato->precio;
                     listaSolicitudes->insertarFinal(nueva);
                     qDebug() << "le meto un plato que tiene esto: "+nueva->plato->nombre;
@@ -33,6 +34,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
                     tmp->llegoComida = true;
                     nueva->tipo = 2;
                     nueva->cliente = tmp->nombre;
+                    nueva->responsable = nombre;
                     nueva->mesaDestino = tmp->mesaSentado;
                     tmp->cuentaAPagar+= nueva->plato->precio;
                     listaSolicitudes->insertarFinal(nueva);
@@ -44,6 +46,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
                     tmp->llegoComida = true;
                     nueva->tipo = 3;
                     nueva->cliente = tmp->nombre;
+                    nueva->responsable = nombre;
                     nueva->mesaDestino = tmp->mesaSentado;
                     tmp->cuentaAPagar+= nueva->plato->precio;
                     listaSolicitudes->insertarFinal(nueva);
@@ -54,6 +57,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
                 if(nueva){
                     nueva->tipo = 4;
                     nueva->cliente = tmp->nombre;
+                    nueva->responsable = nombre;
                     nueva->mesaDestino = tmp->mesaSentado;
                     listaSolicitudes->insertarFinal(nueva);
                 }

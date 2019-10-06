@@ -102,8 +102,9 @@ void MeseroThread::llevarOrdenes(){
     //We check all the kitchens one by one
 
     mutexEnsaladas->tryLock(10);
-    if (!mesero->ensaladas->colaOrdenesListas->vacia()) {
+    if (!mesero->ensaladas->colaOrdenesListas->vacia() && mesero->ensaladas->colaOrdenesListas->frente->primerNodo->responsable == mesero->nombre) {
         etiqueta->setToolTip("Llevando una orden a una mesa");
+        QString meseroCorrespondiente = mesero->ensaladas->colaOrdenesListas->frente->primerNodo->responsable;
         QString nombreCliente = mesero->ensaladas->colaOrdenesListas->frente->primerNodo->cliente;
         QString numMesa = mesero->ensaladas->colaOrdenesListas->frente->primerNodo->mesaDestino;
         Mesa * mesaAux =  mesero->mesas->primerNodo;
@@ -114,14 +115,16 @@ void MeseroThread::llevarOrdenes(){
         mutexEnsaladas->unlock();
         //bool
         while(mesaAux){
-            if(mesaAux->ID == numMesa) break;
+            if(mesaAux->ID == numMesa && meseroCorrespondiente == mesero->nombre) break;
             mesaAux = mesaAux->siguiente;
         }
 
         ComensalThread * clienteThread = mesaAux->listaComensales->primerNodo;
-
+        qDebug()<<"Mesero  "+mesero->nombre +"es el que tiene a los clientes";
         while(clienteThread){
             clienteThread->mutexComensal->tryLock(10);
+
+            qDebug()<<"Cliente: "+clienteThread->comensal->nombre+" se compara con"+nombreCliente;
             if(clienteThread->comensal->nombre == nombreCliente){
                 this->sleep(tiempoSleep);
                 etiqueta->setToolTip("Cliente obtuvo su plato");
@@ -143,7 +146,7 @@ void MeseroThread::llevarOrdenes(){
     else mutexEnsaladas->unlock();
 
     mutexCocina->tryLock(10);
-    if(!mesero->cocina->colaOrdenesListas->vacia()){
+    if(!mesero->cocina->colaOrdenesListas->vacia() && mesero->cocina->colaOrdenesListas->frente->primerNodo->responsable == mesero->nombre){
         etiqueta->setToolTip("Llevando una orden a una mesa");
         QString nombreCliente = mesero->cocina->colaOrdenesListas->frente->primerNodo->cliente;
         QString numMesa = mesero->cocina->colaOrdenesListas->frente->primerNodo->mesaDestino;
@@ -181,7 +184,7 @@ void MeseroThread::llevarOrdenes(){
     else mutexCocina->unlock();
 
     mutexPasteleria->tryLock(10);
-    if(!mesero->pasteleria->colaOrdenesListas->vacia()){
+    if(!mesero->pasteleria->colaOrdenesListas->vacia()&& mesero->pasteleria->colaOrdenesListas->frente->primerNodo->responsable == mesero->nombre){
         etiqueta->setToolTip("Llevando una orden a una mesa");
         QString nombreCliente = mesero->pasteleria->colaOrdenesListas->frente->primerNodo->cliente;
         QString numMesa = mesero->pasteleria->colaOrdenesListas->frente->primerNodo->mesaDestino;

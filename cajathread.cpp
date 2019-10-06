@@ -39,8 +39,7 @@ void CajaThread::pausar(){
     this->pausa = true;
 }
 
-void CajaThread::continuar()
-{
+void CajaThread::continuar(){
     this->pausa = false;
 }
 

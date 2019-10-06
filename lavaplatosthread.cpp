@@ -16,7 +16,7 @@ void LavaplatosThread::run()
 {
     while (activo)
     {
-        mutex->lock();
+        mutex->tryLock(10);
         if(lavaplatos->vacia()){
             sleep(1);
             lavaplatosInfo->setText("No hay platos por lavar");

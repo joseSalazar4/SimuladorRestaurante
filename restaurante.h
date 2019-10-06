@@ -81,7 +81,7 @@ public:
             principal->cocinero3->tipoCocinero = "fuerte";
 
 
-            CocineroThread * cocineroFuerteThread = new CocineroThread ();
+            CocineroThread * cocineroFuerteThread  = new CocineroThread ();
             cocineroFuerteThread->__init__(mutexCocinaFuerte, imagenCocina,imagenCocinaFuerteInfo1,cocineroFuerte1 ,principal);
             cocineroFuerteThread->tiempoSleep = static_cast<unsigned int>(tiempoSleepCocinero);
             cocineroFuerteThread->start();

@@ -139,8 +139,9 @@
    </property>
    <property name="font">
     <font>
-     <family>Myanmar Text</family>
-     <pointsize>14</pointsize>
+     <family>Ubuntu Condensed</family>
+     <pointsize>17</pointsize>
+     <italic>true</italic>
      <kerning>false</kerning>
     </font>
    </property>

@@ -52,7 +52,7 @@ void GeneradorPersonasThread::run(){
         int sleepTime = QRandomGenerator::global()->bounded(tiempoGeneracion, tiempoGeneracion1);
         int personasCreadas = QRandomGenerator::global()->bounded(1, 6);
         cantPersonasGeneradas->setText(QString::number(personasCreadas));
-        mutexManejador->lock();
+        mutexManejador->tryLock(10);
         manejadorComensales->colaClientesEnEspera->encolar(generarPersonas(personasCreadas));
         Mesa * mesaAux = listaMesas->buscarDisponibilidad();
         if(mesaAux && manejadorComensales->colaClientesEnEspera->frente != nullptr){

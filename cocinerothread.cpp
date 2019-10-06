@@ -2,7 +2,7 @@
 
 void CocineroThread::run(){
     while (activo){
-        mutexCocinero->lock();
+        mutexCocinero->tryLock(10);
         if(cocina->colaOrdenesNoListas->verFrente()){
             Solicitud * orden = cocina->colaOrdenesNoListas->desencolar()->primerNodo;
             mutexCocinero->unlock();
@@ -14,7 +14,7 @@ void CocineroThread::run(){
                     tiempoSleep--;
                     sleep(1);
                 }
-                mutexCocinero->tryLock();
+                mutexCocinero->tryLock(10);
                 cocinar(plato, orden->cliente, orden->mesaDestino,orden->responsable);
                 mutexCocinero->unlock();
                 qDebug()<<"Ya solte el mutex de "+cocinero->tipoCocinero;

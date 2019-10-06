@@ -21,7 +21,7 @@ void MeseroThread::run(){
     sleep(4);
     while(activo){
         // We check if any table needs assistance
-        mutexMesa->lock();
+        mutexMesa->tryLock(10);
         mesa_revisada = mesero->revisarMesas();
         if(mesa_revisada!= nullptr){
             etiqueta->setToolTip("Pidiendo ordenes de mesa #"+mesa_revisada->ID);
@@ -62,8 +62,7 @@ void MeseroThread::colocarOrden(){
             }
 
             case 2:{
-                mutexCocina->lock();
-
+                mutexCocina->tryLock(10);
                 qDebug()<<"VAMOS A PONER UN PLATO FUere";
                 etiqueta->setToolTip("Colocando una orden en la cocina de platos fuertes");
                 mesero->cocina->colaOrdenesNoListas->encolar(mesero->colaPeticiones->desencolar());
@@ -72,7 +71,7 @@ void MeseroThread::colocarOrden(){
             }
 
             case 3:{
-                mutexPasteleria->lock();
+                mutexPasteleria->tryLock(10);
                 qDebug()<<"VAMOS A PONER UN postre";
                 etiqueta->setToolTip("Colocando una orden Postres");
                 mesero->pasteleria->colaOrdenesNoListas->encolar(mesero->colaPeticiones->desencolar());
@@ -80,7 +79,7 @@ void MeseroThread::colocarOrden(){
                 break;
             }
             case 4:{
-                mutexCaja->lock();
+                mutexCaja->tryLock(10);
                 etiqueta->setToolTip("Colocando una orden en la caja");
                 qDebug()<<"Colocando una orden en la caja";
                 mesero->caja->colaCuentasPorHacer->encolar(mesero->colaPeticiones->desencolar());
@@ -101,6 +100,7 @@ void MeseroThread::colocarOrden(){
 void MeseroThread::llevarOrdenes(){
     //We check all the kitchens one by one
 
+    //BUSCANDO EN ENSALADAS
     mutexEnsaladas->tryLock(10);
     if (!mesero->ensaladas->colaOrdenesListas->vacia()){
         Solicitud * sol = mesero->ensaladas->colaOrdenesListas->frente->primerNodo;
@@ -118,7 +118,7 @@ void MeseroThread::llevarOrdenes(){
             Solicitud * solicitud = new Solicitud();
             qDebug()<<"El nombre del cliente es"+nombreCliente;
             //Ya no debo usar el mutex porque ya no haré nada en la cola tons lo suelto.
-            mutexEnsaladas->unlock();
+           mutexEnsaladas->unlock();
             //bool
             while(mesaAux){
                 if(mesaAux->ID == numMesa && meseroCorrespondiente == mesero->nombre) break;
@@ -126,10 +126,8 @@ void MeseroThread::llevarOrdenes(){
             }
 
             ComensalThread * clienteThread = mesaAux->listaComensales->primerNodo;
-            qDebug()<<"Mesero  "+mesero->nombre +"es el que tiene a los clientes";
             while(clienteThread){
                 clienteThread->mutexComensal->tryLock(10);
-
                 qDebug()<<"Cliente: "+clienteThread->comensal->nombre+" se compara con"+nombreCliente;
                 if(clienteThread->comensal->nombre == nombreCliente){
                     this->sleep(tiempoSleep);
@@ -152,6 +150,7 @@ void MeseroThread::llevarOrdenes(){
     }
     else mutexEnsaladas->unlock();
 
+    //BUSCANDO EN PLATOS FUERTES
     mutexCocina->tryLock(10);
     if(!mesero->cocina->colaOrdenesListas->vacia()){
         Solicitud * sol = mesero->cocina->colaOrdenesListas->frente->primerNodo;
@@ -197,6 +196,7 @@ void MeseroThread::llevarOrdenes(){
     }
     else mutexCocina->unlock();
 
+    //BUSCANDO EN PASTELERIA
     mutexPasteleria->tryLock(10);
     if(!mesero->pasteleria->colaOrdenesListas->vacia()){
         Solicitud * sol = mesero->pasteleria->colaOrdenesListas->frente->primerNodo;
@@ -221,7 +221,7 @@ void MeseroThread::llevarOrdenes(){
             }
             ComensalThread * clienteThread = mesaAux->listaComensales->primerNodo ;
             while(clienteThread){
-                clienteThread->mutexComensal->lock();
+                clienteThread->mutexComensal->tryLock(10);
                 if(clienteThread->comensal->nombre == nombreCliente){
                     this->sleep(tiempoSleep);
                     etiqueta->setToolTip("Cliente obtuvo su plato");

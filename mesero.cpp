@@ -6,7 +6,7 @@
  */
 void Mesero::pedirOrdenes(Mesa * mesa){
     ComensalThread * comensalThreadAux = mesa->listaComensales->primerNodo;
-    comensalThreadAux->mutexComensal->lock();
+    comensalThreadAux->mutexComensal->tryLock(10);
     Comensal * tmp =  comensalThreadAux->comensal;
     ListaSolicitudes * listaSolicitudes = new ListaSolicitudes();
     for(int i =0; (mesa->listaComensales->largo) > i; i++){

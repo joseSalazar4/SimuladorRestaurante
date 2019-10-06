@@ -17,7 +17,7 @@ void CajaThread::__init__(Caja * _caja, QMutex * mutx, QLabel * img, QLabel * ca
 
 void CajaThread::run(){
     while(activo){
-        mutexCaja->lock();
+        mutexCaja->tryLock(10);
         if(!caja->colaCuentasPorHacer->vacia()){
             QString mesaActual = caja->colaCuentasPorHacer->frente->primerNodo->mesaDestino;  //Tons si hay solicitudes que saque todas hasta que haya otra mesa
             cajaInfo->setText("Calculando cuenta de la mesa #"+mesaActual);

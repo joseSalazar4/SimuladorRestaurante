@@ -40,7 +40,6 @@ void MeseroThread::run(){
 
         while(pausa){
             this->etiqueta->setToolTip("Tomando un descansito...");
-            qDebug()<<"Tomando un descansito el mesero "+mesero->nombre;
             sleep(1);
         }
     }

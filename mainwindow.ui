@@ -2787,10 +2787,10 @@
    <widget class="QLabel" name="FondodePantalla">
     <property name="geometry">
      <rect>
-      <x>-30</x>
+      <x>-10</x>
       <y>-10</y>
-      <width>1371</width>
-      <height>961</height>
+      <width>1381</width>
+      <height>981</height>
      </rect>
     </property>
     <property name="text">
@@ -3247,7 +3247,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>440</y>
+      <y>450</y>
       <width>241</width>
       <height>31</height>
      </rect>
@@ -3642,7 +3642,7 @@
    <widget class="QLabel" name="labelDatosFuerte">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>110</x>
       <y>390</y>
       <width>261</width>
       <height>141</height>
@@ -4173,7 +4173,6 @@
    <zorder>pushButton_2</zorder>
    <zorder>pushButton</zorder>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
   <include location="MyResources.qrc"/>

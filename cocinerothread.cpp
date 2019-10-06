@@ -2,8 +2,8 @@
 
 void CocineroThread::run(){
     while (activo){
-        mutexCocinero->tryLock(10);
-        if(cocina->colaOrdenesNoListas->verFrente()){
+        mutexCocinero->tryLock(4);
+        if(!cocina->colaOrdenesNoListas->vacia()){
             Solicitud * orden = cocina->colaOrdenesNoListas->desencolar()->primerNodo;
             mutexCocinero->unlock();
             while(orden){
@@ -19,6 +19,7 @@ void CocineroThread::run(){
                 mutexCocinero->unlock();
                 sleep(1);
                 orden = orden->siguiente;
+
                 //If the button is pressed the chef needs to just do ONE order then change that
                 while (pausa) {
                     sleep(1);
@@ -27,14 +28,10 @@ void CocineroThread::run(){
             }
         }
         else{
-            //TODO: METER 3 IMAGENES DE CHEFS PARA LA FUERTE
-
-
-        //qDebug()<<"La cocina no tiene comida por hacer";
         infoCocina->setText("Sin ordenes por cocinar");
         mutexCocinero->unlock();
         }
-        sleep(1);
+        sleep(4);
         //Cuando se presione el botón de Inactivo
         while (pausa) {
             sleep(1);

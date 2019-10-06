@@ -9,6 +9,9 @@ void CocineroThread::run(){
             while(orden){
                 Plato * plato = orden->plato;
                 tiempoSleep = static_cast <unsigned int> (plato->tiempoCocina);
+                mutexCocinero->tryLock(4);
+                panelInfo->setText("Se han atendido: "+QString::number(cocina->atendido)+"\nSe esta cocinando "+plato->nombre);
+                mutexCocinero->unlock();
                 while(0<tiempoSleep){
                     infoCocina->setText("Preparando"+plato->nombre+" \n Tiempo Restante: "+QString::number(+tiempoSleep));
                     tiempoSleep--;
@@ -18,6 +21,7 @@ void CocineroThread::run(){
                 cocinar(plato, orden->cliente, orden->mesaDestino,orden->responsable);
                 mutexCocinero->unlock();
                 sleep(1);
+                cocina->atendido++;
                 orden = orden->siguiente;
 
                 //If the button is pressed the chef needs to just do ONE order then change that
@@ -29,6 +33,7 @@ void CocineroThread::run(){
         }
         else{
             infoCocina->setText("Sin ordenes por cocinar");
+            panelInfo->setText("Se han atendido: "+QString::number(cocina->atendido)+"\nNo se esta cocinando");
             mutexCocinero->unlock();
         }
         sleep(4);

@@ -7,10 +7,9 @@
 struct Cocina
 {
     QString tipo;
-    int atendido,enCola;
+    int atendido = 0,enCola = 0;
     Cola * colaOrdenesNoListas, * colaOrdenesListas;
     Cocinero * cocinero1, * cocinero2, * cocinero3;
-    //Usamos solo 1 cocinero para pasteleria y ensaladas
 
     Cocina(QString _tipo, Cocinero * c1){
         tipo = _tipo;

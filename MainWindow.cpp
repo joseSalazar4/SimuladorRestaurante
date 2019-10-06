@@ -105,7 +105,10 @@ void MainWindow::infoMesa(QPushButton * boton){
         if(botonesMesas[i] == boton) break;
     }
     int cont = 0;
+    mutexManejador.tryLock(10);
     Mesa * mesaAux = listaMesas->primerNodo;
+    mutexManejador.unlock();
+    mesaAux->mutexMesa.tryLock(10);
     while(mesaAux){
         if(cont == i) break;
         mesaAux = mesaAux->siguiente;
@@ -118,15 +121,17 @@ void MainWindow::infoMesa(QPushButton * boton){
         Comensal * cliente = mesaAux->listaComensales->primerNodo->comensal;
         texto.append("Clientes:\n--");
         for (int i = 0;i<mesaAux->listaComensales->largo;i++){
-            texto.append(cliente->nombre+"\t");
+            texto.append(cliente->nombre+" \t");
             cliente = cliente->siguiente;
         }
-        texto.append("--\n");
+        if(mesaAux->listaComensales->largo!=1)texto.append("--\n");
+        else texto.append("\n");
         texto.append("Platos servidos:\n--");
         for (int i = 0;i<mesaAux->pilaPlatosSucios->largo;i++){
             texto.append(sol->plato->nombre+"\t");
         }
-        texto.append("--\n");
+        if(mesaAux->pilaPlatosSucios->largo!=1)texto.append("--\n");
+        else texto.append("\n");
         QTextBrowser * informacionMesa  = new QTextBrowser();
         informacionMesa->setText(texto);
         informacionMesa->show();
@@ -136,6 +141,7 @@ void MainWindow::infoMesa(QPushButton * boton){
         informacionMesa->setText("La "+mesaAux->ID+" No tiene clientes por el momento");
         informacionMesa->show();
     }
+    mesaAux->mutexMesa.unlock();
 
 }
 void MainWindow::on_pushMesa_1_clicked()
@@ -288,3 +294,102 @@ void MainWindow::on_pushButton_2_clicked(){
     }
 
 }
+
+void MainWindow::on_botonLavaplatostop_clicked()
+{
+    if(detenido==0){
+        detenido=1;
+        restaurante->lavaplatosThread->pausar();
+
+    }
+    else {
+        detenido = 0;
+        restaurante->lavaplatosThread->continuar();
+    }
+
+}
+
+
+void MainWindow::on_botonPostresStop_clicked()
+{
+    if(detenido==0){
+        detenido=1;
+        restaurante->cocineroPast->pausar();
+
+    }
+    else {
+        detenido = 0;
+        restaurante->cocineroPast->continuar();
+    }
+}
+
+void MainWindow::on_botonFuertesStop_clicked()
+{
+    if(detenido==0){
+        detenido=1;
+        if(restaurante->cantCocineros==3){
+            restaurante->cocineroF1->pausar();
+            restaurante->cocineroF2->pausar();
+            restaurante->cocineroF3->pausar();
+        }
+        else if(restaurante->cantCocineros==2){
+            restaurante->cocineroF1->pausar();
+            restaurante->cocineroF2->pausar();
+        }
+        else{
+            restaurante->cocineroF1->pausar();
+        }
+    }
+    else {
+        detenido = 0;
+        if(restaurante->cantCocineros==3){
+            restaurante->cocineroF1->continuar();
+            restaurante->cocineroF2->continuar();
+            restaurante->cocineroF3->continuar();
+        }
+        else if(restaurante->cantCocineros==2){
+            restaurante->cocineroF1->continuar();
+            restaurante->cocineroF2->continuar();
+        }
+        else{
+            restaurante->cocineroF1->continuar();
+        }
+    }
+}
+
+void MainWindow::on_botonEnsaladasStop_clicked()
+{
+
+    if(detenido==0){
+        detenido=1;
+        restaurante->cocineroEns->pausar();
+
+    }
+    else {
+        detenido = 0;
+        restaurante->cocineroEns->continuar();
+    }}
+
+void MainWindow::on_botonCajeraStop_clicked()
+{
+    if(detenido==0){
+        detenido=1;
+        restaurante->cajaThread->pausar();
+
+    }
+    else {
+        detenido = 0;
+        restaurante->cajaThread->continuar();
+    }}
+
+void MainWindow::on_btonGeneradorStop_clicked()
+{
+    if(detenido==0){
+        detenido=1;
+        restaurante->generadorPersonas.pausar();
+
+    }
+    else {
+        detenido = 0;
+        restaurante->generadorPersonas.continuar();
+    }}

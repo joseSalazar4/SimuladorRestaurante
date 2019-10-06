@@ -9,7 +9,7 @@ struct Mesa
     QString ID;
     short ocupada;          //1 es Ocupada 0 es disponible -1 no está disponible del todo
     QLabel * imagen;
-    QMutex * arrayQmutex[6];
+    QMutex * arrayQmutex[6], mutexMesa;
     Pila * pilaPlatosSucios;
     bool SolicitandoAsistencia = true;
     QVector<QLabel*> arrayComensales;

@@ -40,7 +40,9 @@ void CajaThread::pausar(){
 }
 
 void CajaThread::continuar(){
+    mutexCaja->tryLock(10);
     this->pausa = false;
+    mutexCaja->unlock();
 }
 
 void CajaThread::establecerSleep(unsigned int nuevoTemp){

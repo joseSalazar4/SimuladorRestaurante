@@ -98,9 +98,13 @@ void GeneradorPersonasThread::run(){
 
 
 void GeneradorPersonasThread::pausar(){
+    mutexManejador->tryLock(10);
     this->pausa = true;
+    mutexManejador->unlock();
 }
 
 void GeneradorPersonasThread::continuar(){
+    mutexManejador->tryLock(10);
     this->pausa = false;
+    mutexManejador->unlock();
 }

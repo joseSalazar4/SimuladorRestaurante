@@ -68,10 +68,15 @@ void CocineroThread::cocinar(Plato * plato, QString cliente, QString mesa, QStri
 
 void CocineroThread::pausar()
 {
+    this->mutexCocinero->tryLock(10);
     this->pausa = true;
+    mutexCocinero->unlock();
 }
 
 void CocineroThread::continuar()
 {
+    this->mutexCocinero->tryLock(10);
     this->pausa = false;
+    mutexCocinero->unlock();
+
 }

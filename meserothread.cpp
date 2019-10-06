@@ -247,7 +247,6 @@ void MeseroThread::pausar(){
     this->pausa = true;
 }
 
-void MeseroThread::continuar()
-{
+void MeseroThread::continuar(){
     this->pausa = false;
 }

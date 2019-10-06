@@ -22,12 +22,16 @@ void ComensalThread::run(){
 
 void ComensalThread::pausar()
 {
+    mutexComensal->tryLock(10);
     this->pausa = true;
+    mutexComensal->unlock();
 }
 
 void ComensalThread::continuar()
 {
+    mutexComensal->tryLock(10);
     this->pausa = false;
+    mutexComensal->unlock();
 }
 //METODOS DE SOLO LE COMENSAL ADAPTAR LOS NECESARIOS
 

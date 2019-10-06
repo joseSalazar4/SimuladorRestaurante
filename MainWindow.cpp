@@ -23,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->labelCocinaFuerteInfo->hide();
     ui->labelCocinaFuerteInfo_3->hide();
     ui->labelCocinaFuerteInfo_2->hide();
+    ui->pushButton_2->hide();
 
     show();
 
@@ -61,6 +62,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
                    ui->w19,ui->w20};
 
     for(int i = 0;i<20;i++) arrayMeseros[i]->hide();
+    for(int i = 0;i<20;i++) botonesMesas[i]->hide();
 
 
 
@@ -95,9 +97,18 @@ void MainWindow::on_pushButton_2_clicked(){
     if(detenido==0){
         restaurante->cocineroPast->pausar();
         restaurante->cocineroEnsaldas->pausar();
-        restaurante->cocineroFuerte1->pausar();
-        restaurante->cocineroFuerte2->pausar();
-        restaurante->cocineroFuerte3->pausar();
+        if(restaurante->cantCocineros==3){
+            restaurante->cocineroFuerte1->pausar();
+            restaurante->cocineroFuerte2->pausar();
+            restaurante->cocineroFuerte3->pausar();
+        }
+        else if(restaurante->cantCocineros==2){
+            restaurante->cocineroFuerte1->pausar();
+            restaurante->cocineroFuerte2->pausar();
+        }
+        else{
+            restaurante->cocineroFuerte1->pausar();
+        }
         restaurante->lavaplatosThread->pausar();
         restaurante->cajaThread->pausar();
         restaurante->generadorPersonas.pausar();

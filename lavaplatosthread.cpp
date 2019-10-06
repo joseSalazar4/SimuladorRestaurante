@@ -59,12 +59,16 @@ void LavaplatosThread::lavar(Plato * plato){
 
 void LavaplatosThread::pausar()
 {
+    mutex->tryLock(10);
     this->pausa = true;
+    mutex->unlock();
 }
 
 void LavaplatosThread::continuar()
 {
+    mutex->tryLock(10);
     this->pausa = false;
+    mutex->unlock();
 }
 
 void LavaplatosThread::establecerSleep(unsigned int nuevoTemp){

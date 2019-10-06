@@ -15,7 +15,7 @@ void CocineroThread::run(){
                     sleep(1);
                 }
                 mutexCocinero->tryLock();
-                cocinar(plato, orden->cliente, orden->mesaDestino);
+                cocinar(plato, orden->cliente, orden->mesaDestino,orden->responsable);
                 mutexCocinero->unlock();
                 qDebug()<<"Ya solte el mutex de "+cocinero->tipoCocinero;
                 sleep(1);
@@ -50,7 +50,7 @@ void CocineroThread:: __init__(QMutex * mutex1, QLabel * imagen1,QLabel * infoCo
     activo = true;
 }
 
-void CocineroThread::cocinar(Plato * plato, QString cliente, QString mesa){
+void CocineroThread::cocinar(Plato * plato, QString cliente, QString mesa, QString responsable){
     if(plato){
         plato->vacio=false;
         plato->limpio = false;
@@ -59,6 +59,7 @@ void CocineroThread::cocinar(Plato * plato, QString cliente, QString mesa){
         listaAux->primerNodo = cocinero->colocarOrdenLista(plato);
         listaAux->primerNodo->cliente = cliente;
         listaAux->primerNodo->mesaDestino = mesa;
+        listaAux->primerNodo->responsable = responsable;
         cocina->colaOrdenesListas->encolar(listaAux);
         sleep(tiempoSleep);
     }

@@ -102,121 +102,142 @@ void MeseroThread::llevarOrdenes(){
     //We check all the kitchens one by one
 
     mutexEnsaladas->tryLock(10);
-    if (!mesero->ensaladas->colaOrdenesListas->vacia() && mesero->ensaladas->colaOrdenesListas->frente->primerNodo->responsable == mesero->nombre) {
-        etiqueta->setToolTip("Llevando una orden a una mesa");
-        QString meseroCorrespondiente = mesero->ensaladas->colaOrdenesListas->frente->primerNodo->responsable;
-        QString nombreCliente = mesero->ensaladas->colaOrdenesListas->frente->primerNodo->cliente;
-        QString numMesa = mesero->ensaladas->colaOrdenesListas->frente->primerNodo->mesaDestino;
-        Mesa * mesaAux =  mesero->mesas->primerNodo;
-        Plato * plato = mesero->ensaladas->colaOrdenesListas->frente->primerNodo->plato;
-        Solicitud * solicitud = new Solicitud();
-        qDebug()<<"El nombre del cliente es"+nombreCliente;
-        //Ya no debo usar el mutex porque ya no haré nada en la cola tons lo suelto.
-        mutexEnsaladas->unlock();
-        //bool
-        while(mesaAux){
-            if(mesaAux->ID == numMesa && meseroCorrespondiente == mesero->nombre) break;
-            mesaAux = mesaAux->siguiente;
+    if (!mesero->ensaladas->colaOrdenesListas->vacia()){
+        Solicitud * sol = mesero->ensaladas->colaOrdenesListas->frente->primerNodo;
+        while(sol){
+            if(sol->responsable == mesero->nombre) break;
+                sol = sol->siguiente;
         }
-
-        ComensalThread * clienteThread = mesaAux->listaComensales->primerNodo;
-        qDebug()<<"Mesero  "+mesero->nombre +"es el que tiene a los clientes";
-        while(clienteThread){
-            clienteThread->mutexComensal->tryLock(10);
-
-            qDebug()<<"Cliente: "+clienteThread->comensal->nombre+" se compara con"+nombreCliente;
-            if(clienteThread->comensal->nombre == nombreCliente){
-                this->sleep(tiempoSleep);
-                etiqueta->setToolTip("Cliente obtuvo su plato");
-                clienteThread->comensal->imagenPersona->setToolTip("Tengo mi comida");
-                clienteThread->comensal->plato = plato;
-                solicitud->tipo = 1;
-                solicitud->plato = plato;
-                solicitud->cliente = nombreCliente;
-                solicitud->mesaDestino = mesaAux->ID;
-                mesaAux->pilaPlatosSucios->push(solicitud);
-                break;
+        if(sol){
+            etiqueta->setToolTip("Llevando una orden a una mesa");
+            QString meseroCorrespondiente = mesero->ensaladas->colaOrdenesListas->frente->primerNodo->responsable;
+            QString nombreCliente = mesero->ensaladas->colaOrdenesListas->frente->primerNodo->cliente;
+            QString numMesa = mesero->ensaladas->colaOrdenesListas->frente->primerNodo->mesaDestino;
+            Mesa * mesaAux =  mesero->mesas->primerNodo;
+            Plato * plato = mesero->ensaladas->colaOrdenesListas->frente->primerNodo->plato;
+            Solicitud * solicitud = new Solicitud();
+            qDebug()<<"El nombre del cliente es"+nombreCliente;
+            //Ya no debo usar el mutex porque ya no haré nada en la cola tons lo suelto.
+            mutexEnsaladas->unlock();
+            //bool
+            while(mesaAux){
+                if(mesaAux->ID == numMesa && meseroCorrespondiente == mesero->nombre) break;
+                mesaAux = mesaAux->siguiente;
             }
-            clienteThread->mutexComensal->unlock();
-            clienteThread = clienteThread->siguiente;
+
+            ComensalThread * clienteThread = mesaAux->listaComensales->primerNodo;
+            qDebug()<<"Mesero  "+mesero->nombre +"es el que tiene a los clientes";
+            while(clienteThread){
+                clienteThread->mutexComensal->tryLock(10);
+
+                qDebug()<<"Cliente: "+clienteThread->comensal->nombre+" se compara con"+nombreCliente;
+                if(clienteThread->comensal->nombre == nombreCliente){
+                    this->sleep(tiempoSleep);
+                    etiqueta->setToolTip("Cliente obtuvo su plato");
+                    clienteThread->comensal->imagenPersona->setToolTip("Tengo mi comida");
+                    clienteThread->comensal->plato = plato;
+                    solicitud->tipo = 1;
+                    solicitud->plato = plato;
+                    solicitud->cliente = nombreCliente;
+                    solicitud->mesaDestino = mesaAux->ID;
+                    mesaAux->pilaPlatosSucios->push(solicitud);
+                    break;
+                }
+                clienteThread->mutexComensal->unlock();
+                clienteThread = clienteThread->siguiente;
+            }
+            mesero->ensaladas->colaOrdenesListas->desencolar();
+            return;
         }
-        mesero->ensaladas->colaOrdenesListas->desencolar();
-        return;
     }
     else mutexEnsaladas->unlock();
 
     mutexCocina->tryLock(10);
     if(!mesero->cocina->colaOrdenesListas->vacia() && mesero->cocina->colaOrdenesListas->frente->primerNodo->responsable == mesero->nombre){
-        etiqueta->setToolTip("Llevando una orden a una mesa");
-        QString nombreCliente = mesero->cocina->colaOrdenesListas->frente->primerNodo->cliente;
-        QString numMesa = mesero->cocina->colaOrdenesListas->frente->primerNodo->mesaDestino;
-        Mesa * mesaAux =  mesero->mesas->primerNodo;
-        Plato * plato = mesero->cocina->colaOrdenesListas->frente->primerNodo->plato;
-        Solicitud * solicitud = new Solicitud();
-
-        //Ya no debo usar el mutex porque ya no haré nada en la cola tons lo suelto.
-        mutexCocina->unlock();
-
-        while(mesaAux){
-            if(mesaAux->ID == numMesa) break;
-            mesaAux = mesaAux->siguiente;
+        Solicitud * sol = mesero->cocina->colaOrdenesListas->frente->primerNodo;
+        while(sol){
+            if(sol->responsable == mesero->nombre) break;
+                sol = sol->siguiente;
         }
+        if(sol){
+            etiqueta->setToolTip("Llevando una orden a una mesa");
+            QString nombreCliente = mesero->cocina->colaOrdenesListas->frente->primerNodo->cliente;
+            QString numMesa = mesero->cocina->colaOrdenesListas->frente->primerNodo->mesaDestino;
+            Mesa * mesaAux =  mesero->mesas->primerNodo;
+            Plato * plato = mesero->cocina->colaOrdenesListas->frente->primerNodo->plato;
+            Solicitud * solicitud = new Solicitud();
 
-        ComensalThread * clienteThread = mesaAux->listaComensales->primerNodo ;
-        while(clienteThread){
-            clienteThread->mutexComensal->tryLock(10);
-            if(clienteThread->comensal->nombre == nombreCliente){
-                this->sleep(tiempoSleep);
-                etiqueta->setToolTip("Cliente obtuvo su plato");
-                clienteThread->comensal->plato = (plato);
-                solicitud->plato = plato;
-                solicitud->cliente = nombreCliente;
-                solicitud->mesaDestino = mesaAux->ID;
-                mesaAux->pilaPlatosSucios->push(solicitud);
-                break;
+            //Ya no debo usar el mutex porque ya no haré nada en la cola tons lo suelto.
+            mutexCocina->unlock();
+
+            while(mesaAux){
+                if(mesaAux->ID == numMesa) break;
+                mesaAux = mesaAux->siguiente;
             }
-            clienteThread->mutexComensal->unlock();
-            clienteThread = clienteThread->siguiente;
+
+            ComensalThread * clienteThread = mesaAux->listaComensales->primerNodo ;
+            while(clienteThread){
+                clienteThread->mutexComensal->tryLock(10);
+                if(clienteThread->comensal->nombre == nombreCliente){
+                    this->sleep(tiempoSleep);
+                    etiqueta->setToolTip("Cliente obtuvo su plato");
+                    clienteThread->comensal->plato = (plato);
+                    solicitud->plato = plato;
+                    solicitud->cliente = nombreCliente;
+                    solicitud->mesaDestino = mesaAux->ID;
+                    mesaAux->pilaPlatosSucios->push(solicitud);
+                    break;
+                }
+                clienteThread->mutexComensal->unlock();
+                clienteThread = clienteThread->siguiente;
+            }
+            mesero->cocina->colaOrdenesListas->desencolar();
+            return;
         }
-        mesero->cocina->colaOrdenesListas->desencolar();
-        return;        
     }
     else mutexCocina->unlock();
 
     mutexPasteleria->tryLock(10);
-    if(!mesero->pasteleria->colaOrdenesListas->vacia()&& mesero->pasteleria->colaOrdenesListas->frente->primerNodo->responsable == mesero->nombre){
-        etiqueta->setToolTip("Llevando una orden a una mesa");
-        QString nombreCliente = mesero->pasteleria->colaOrdenesListas->frente->primerNodo->cliente;
-        QString numMesa = mesero->pasteleria->colaOrdenesListas->frente->primerNodo->mesaDestino;
-        Mesa * mesaAux =  mesero->mesas->primerNodo;
-        Plato * plato = mesero->pasteleria->colaOrdenesListas->frente->primerNodo->plato;
-        Solicitud * solicitud = new Solicitud();
-
-        //Ya no debo usar el mutex porque ya no haré nada en la cola tons lo suelto.
-        mutexPasteleria->unlock();
-
-        while(mesaAux){
-            if(mesaAux->ID == numMesa) break;
-            mesaAux = mesaAux->siguiente;
+    if(!mesero->pasteleria->colaOrdenesListas->vacia() && mesero->pasteleria->colaOrdenesListas->frente->primerNodo->responsable == mesero->nombre){
+        Solicitud * sol = mesero->pasteleria->colaOrdenesListas->frente->primerNodo;
+        while(sol){
+            if(sol->responsable == mesero->nombre) break;
+                sol = sol->siguiente;
         }
-        ComensalThread * clienteThread = mesaAux->listaComensales->primerNodo ;
-        while(clienteThread){
-            clienteThread->mutexComensal->lock();
-            if(clienteThread->comensal->nombre == nombreCliente){
-                this->sleep(tiempoSleep);
-                etiqueta->setToolTip("Cliente obtuvo su plato");
-                clienteThread->comensal->plato = plato;
-                solicitud->plato = plato;
-                solicitud->cliente = nombreCliente;
-                solicitud->mesaDestino = mesaAux->ID;
-                mesaAux->pilaPlatosSucios->push(solicitud);
-                break;
+        if(sol){
+            etiqueta->setToolTip("Llevando una orden a una mesa");
+            QString nombreCliente = mesero->pasteleria->colaOrdenesListas->frente->primerNodo->cliente;
+            QString numMesa = mesero->pasteleria->colaOrdenesListas->frente->primerNodo->mesaDestino;
+            Mesa * mesaAux =  mesero->mesas->primerNodo;
+            Plato * plato = mesero->pasteleria->colaOrdenesListas->frente->primerNodo->plato;
+            Solicitud * solicitud = new Solicitud();
+
+            //Ya no debo usar el mutex porque ya no haré nada en la cola tons lo suelto.
+            mutexPasteleria->unlock();
+
+            while(mesaAux){
+                if(mesaAux->ID == numMesa) break;
+                mesaAux = mesaAux->siguiente;
             }
-            clienteThread->mutexComensal->unlock();
-            clienteThread = clienteThread->siguiente;
+            ComensalThread * clienteThread = mesaAux->listaComensales->primerNodo ;
+            while(clienteThread){
+                clienteThread->mutexComensal->lock();
+                if(clienteThread->comensal->nombre == nombreCliente){
+                    this->sleep(tiempoSleep);
+                    etiqueta->setToolTip("Cliente obtuvo su plato");
+                    clienteThread->comensal->plato = plato;
+                    solicitud->plato = plato;
+                    solicitud->cliente = nombreCliente;
+                    solicitud->mesaDestino = mesaAux->ID;
+                    mesaAux->pilaPlatosSucios->push(solicitud);
+                    break;
+                }
+                clienteThread->mutexComensal->unlock();
+                clienteThread = clienteThread->siguiente;
+            }
+            mesero->cocina->colaOrdenesListas->desencolar();
+            return;
         }
-        mesero->cocina->colaOrdenesListas->desencolar();
-        return;
     }
     else mutexPasteleria->unlock();
 }

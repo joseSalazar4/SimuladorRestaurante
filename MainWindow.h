@@ -29,7 +29,8 @@ public:
     QMutex mutexPasteleria, mutexCocina, mutexEnsaladas, mutexCaj, mutexLavaplatos, mutexManejador;
     int cantMeseros, cantMesas, cantCocineros, genPersonas1, genPersonas2, cantMesasPorMesero, intervaloPostres1,
         intervaloPostres2, intervaloEnsaladas1, intervaloEnsaladas2, intervaloFuerte1, intervaloFuerte2, detenido = 0,
-        tiempoSleepCocinero,tiempoSleepMesero, tiempoSleepLavaplatos, tiempoSleepCaja,probPlatoFuerte, probEnsalada, probPostre;
+        tiempoSleepCocinero,tiempoSleepMesero, tiempoSleepLavaplatos, tiempoSleepCaja,probPlatoFuerte, probEnsalada, probPostre,
+        postresDetenido = 0,ensaladaDetenido= 0, fuerteDetenido= 0, cajaDetenida= 0 ;
 
 
     explicit MainWindow(QWidget *parent = nullptr);
@@ -66,6 +67,18 @@ private slots:
 
     void infoMesa(QPushButton * boton);
 
+
+    void on_botonLavaplatostop_clicked();
+
+    void on_botonPostresStop_clicked();
+
+    void on_botonFuertesStop_clicked();
+
+    void on_botonEnsaladasStop_clicked();
+
+    void on_botonCajeraStop_clicked();
+
+    void on_btonGeneradorStop_clicked();
 
 private:
     Ui::MainWindow *ui;

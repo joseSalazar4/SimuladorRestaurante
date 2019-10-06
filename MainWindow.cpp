@@ -94,38 +94,49 @@ QMessageBox::information(this,"Error! ","Hay una cantidad de pasaportes diferent
 
 }*/
 void MainWindow::on_pushButton_2_clicked(){
+    //Si le damos click a detener
     if(detenido==0){
         restaurante->cocineroPast->pausar();
-        restaurante->cocineroEnsaldas->pausar();
+        restaurante->cocineroEns->pausar();
         if(restaurante->cantCocineros==3){
-            restaurante->cocineroFuerte1->pausar();
-            restaurante->cocineroFuerte2->pausar();
-            restaurante->cocineroFuerte3->pausar();
+            restaurante->cocineroF1->pausar();
+            restaurante->cocineroF2->pausar();
+            restaurante->cocineroF3->pausar();
         }
         else if(restaurante->cantCocineros==2){
-            restaurante->cocineroFuerte1->pausar();
-            restaurante->cocineroFuerte2->pausar();
+            restaurante->cocineroF1->pausar();
+            restaurante->cocineroF2->pausar();
         }
         else{
-            restaurante->cocineroFuerte1->pausar();
+            restaurante->cocineroF1->pausar();
         }
         restaurante->lavaplatosThread->pausar();
         restaurante->cajaThread->pausar();
         restaurante->generadorPersonas.pausar();
-        for(int i=0;i<arrayMeseros.length();i++)restaurante->arrayMeserosThread[i]->pausar();
+        for(int i=0;i<cantMeseros;i++)restaurante->arrayMeserosThread[i]->pausar();
         ui->pushButton_2->setText("Resumir");
         detenido=1;
     }
+    //Si le damos click a resumir
     else{
+        for(int i=0;i<cantMeseros;i++)restaurante->arrayMeserosThread[i]->continuar();
         restaurante->cocineroPast->continuar();
-        restaurante->cocineroEnsaldas->continuar();
-        restaurante->cocineroFuerte1->continuar();
-        restaurante->cocineroFuerte2->continuar();
-        restaurante->cocineroFuerte3->continuar();
+        restaurante->cocineroEns->continuar();
+        if(restaurante->cantCocineros==3){
+            restaurante->cocineroF1->continuar();
+            restaurante->cocineroF2->continuar();
+            restaurante->cocineroF3->continuar();
+        }
+        else if(restaurante->cantCocineros==2){
+            restaurante->cocineroF1->continuar();
+            restaurante->cocineroF2->continuar();
+        }
+        else{
+            restaurante->cocineroF1->continuar();
+        }
         restaurante->lavaplatosThread->continuar();
         restaurante->cajaThread->continuar();
         restaurante->generadorPersonas.continuar();
-        for(int i=0;i<arrayMeseros.length();i++)restaurante->arrayMeserosThread[i]->continuar();
         ui->pushButton_2->setText("Detener");
         detenido=0;
     }

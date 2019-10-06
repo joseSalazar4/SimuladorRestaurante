@@ -41,7 +41,6 @@ ListaComensales * GeneradorPersonasThread::generarPersonas(int personasCreadas )
             tmp->start();
             tmp = tmp->siguiente;
         }
-
     }
     return lista;
 }

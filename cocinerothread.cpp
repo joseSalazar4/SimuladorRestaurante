@@ -17,9 +17,13 @@ void CocineroThread::run(){
                 mutexCocinero->tryLock(10);
                 cocinar(plato, orden->cliente, orden->mesaDestino,orden->responsable);
                 mutexCocinero->unlock();
-                qDebug()<<"Ya solte el mutex de "+cocinero->tipoCocinero;
                 sleep(1);
                 orden = orden->siguiente;
+                //If the button is pressed the chef needs to just do ONE order then change that
+                while (pausa) {
+                    sleep(1);
+                    infoCocina->setText("Tomando un descansito...");
+                }
             }
         }
         else{

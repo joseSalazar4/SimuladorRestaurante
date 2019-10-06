@@ -141,7 +141,7 @@ Plato *  ComensalThread::comer(Plato * plato){
     comensal->comensalTerminoComer = true;
     plato->vacio = true;
     plato->limpio = false;
-    comensal->imagenPersona->setToolTip("");
+    comensal->imagenPersona->setToolTip("Termine de comer");
     comensal->llegoComida = false;
     return plato;
 }

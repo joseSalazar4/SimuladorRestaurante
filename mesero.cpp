@@ -27,6 +27,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
                     listaSolicitudes->insertarFinal(nueva);
                     qDebug() << "le meto un plato que tiene esto: "+nueva->plato->nombre;
                 }
+                else tmp->imagenPersona->setToolTip("Yo no quiero pedir Ensaladas");
                 break;
             case 2:
                 nueva = tmp->pedirPlatoFuerte(tmp->probabilidadPedirPlatoFuerte);
@@ -39,6 +40,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
                     tmp->cuentaAPagar+= nueva->plato->precio;
                     listaSolicitudes->insertarFinal(nueva);
                 }
+                else tmp->imagenPersona->setToolTip("Yo no quiero pedir plato fuerte");
                 break;
             case 3:
                 nueva = tmp->pedirPostre(tmp->probabilidadPedirPostre);
@@ -61,6 +63,7 @@ void Mesero::pedirOrdenes(Mesa * mesa){
                     nueva->mesaDestino = tmp->mesaSentado;
                     listaSolicitudes->insertarFinal(nueva);
                 }
+                else tmp->imagenPersona->setToolTip("Yo no quiero pedir postre");
                 break;
             }
             comensalThreadAux->comensal->comensalTerminoComer = false;

@@ -2787,8 +2787,8 @@
    <widget class="QLabel" name="FondodePantalla">
     <property name="geometry">
      <rect>
-      <x>-10</x>
-      <y>-10</y>
+      <x>-30</x>
+      <y>0</y>
       <width>1381</width>
       <height>981</height>
      </rect>
@@ -3717,6 +3717,9 @@
       <italic>true</italic>
      </font>
     </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
+    </property>
     <property name="text">
      <string>Info</string>
     </property>
@@ -3735,6 +3738,9 @@
       <pointsize>14</pointsize>
       <italic>true</italic>
      </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
     </property>
     <property name="text">
      <string>Info</string>
@@ -3755,6 +3761,9 @@
       <italic>true</italic>
      </font>
     </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
+    </property>
     <property name="text">
      <string>Info</string>
     </property>
@@ -3773,6 +3782,9 @@
       <pointsize>14</pointsize>
       <italic>true</italic>
      </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
     </property>
     <property name="text">
      <string>Info</string>
@@ -3793,6 +3805,9 @@
       <italic>true</italic>
      </font>
     </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
+    </property>
     <property name="text">
      <string>Info</string>
     </property>
@@ -3811,6 +3826,9 @@
       <pointsize>14</pointsize>
       <italic>true</italic>
      </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
     </property>
     <property name="text">
      <string>Info</string>
@@ -3831,6 +3849,9 @@
       <italic>true</italic>
      </font>
     </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
+    </property>
     <property name="text">
      <string>Info</string>
     </property>
@@ -3849,6 +3870,9 @@
       <pointsize>14</pointsize>
       <italic>true</italic>
      </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
     </property>
     <property name="text">
      <string>Info</string>
@@ -3869,6 +3893,9 @@
       <italic>true</italic>
      </font>
     </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
+    </property>
     <property name="text">
      <string>Info</string>
     </property>
@@ -3887,6 +3914,9 @@
       <pointsize>14</pointsize>
       <italic>true</italic>
      </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
     </property>
     <property name="text">
      <string>Info</string>
@@ -3907,6 +3937,9 @@
       <italic>true</italic>
      </font>
     </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
+    </property>
     <property name="text">
      <string>Info</string>
     </property>
@@ -3925,6 +3958,9 @@
       <pointsize>14</pointsize>
       <italic>true</italic>
      </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
     </property>
     <property name="text">
      <string>Info</string>
@@ -3945,6 +3981,9 @@
       <italic>true</italic>
      </font>
     </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
+    </property>
     <property name="text">
      <string>Info</string>
     </property>
@@ -3963,6 +4002,9 @@
       <pointsize>14</pointsize>
       <italic>true</italic>
      </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
     </property>
     <property name="text">
      <string>Info</string>
@@ -3983,6 +4025,9 @@
       <italic>true</italic>
      </font>
     </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
+    </property>
     <property name="text">
      <string>Info</string>
     </property>
@@ -4001,6 +4046,9 @@
       <pointsize>14</pointsize>
       <italic>true</italic>
      </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
     </property>
     <property name="text">
      <string>Info</string>
@@ -4021,6 +4069,9 @@
       <italic>true</italic>
      </font>
     </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
+    </property>
     <property name="text">
      <string>Info</string>
     </property>
@@ -4039,6 +4090,9 @@
       <pointsize>14</pointsize>
       <italic>true</italic>
      </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
     </property>
     <property name="text">
      <string>Info</string>
@@ -4059,6 +4113,9 @@
       <italic>true</italic>
      </font>
     </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
+    </property>
     <property name="text">
      <string>Info</string>
     </property>
@@ -4078,6 +4135,9 @@
       <italic>true</italic>
      </font>
     </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
+    </property>
     <property name="text">
      <string>Info</string>
     </property>
@@ -4086,7 +4146,7 @@
     <property name="geometry">
      <rect>
       <x>1150</x>
-      <y>850</y>
+      <y>870</y>
       <width>191</width>
       <height>51</height>
      </rect>
@@ -4103,16 +4163,19 @@
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>1140</x>
-      <y>850</y>
-      <width>201</width>
+      <x>1150</x>
+      <y>810</y>
+      <width>181</width>
       <height>51</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <family>Umpush</family>
+      <pointsize>21</pointsize>
+      <weight>50</weight>
       <italic>true</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="text">
@@ -4195,6 +4258,85 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="botonReservar">
+    <property name="geometry">
+     <rect>
+      <x>1160</x>
+      <y>890</y>
+      <width>171</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Ubuntu Condensed</family>
+      <pointsize>19</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Reservar</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="botonModAsistencia">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>920</y>
+      <width>341</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Ubuntu Condensed</family>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Modificar duracion de asistencia (meseros)</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="botonModGenClientes">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>920</y>
+      <width>241</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Ubuntu Condensed</family>
+      <pointsize>13</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Modificar tiempo entrada de clientes</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="botonCajaSwitch">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>770</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Convertir Caja a Pila</string>
     </property>
    </widget>
    <zorder>FondodePantalla</zorder>
@@ -4411,6 +4553,10 @@
    <zorder>botonEnsaladasStop</zorder>
    <zorder>botonPostresStop</zorder>
    <zorder>botonLavaplatostop</zorder>
+   <zorder>botonReservar</zorder>
+   <zorder>botonModAsistencia</zorder>
+   <zorder>botonModGenClientes</zorder>
+   <zorder>botonCajaSwitch</zorder>
   </widget>
  </widget>
  <resources>

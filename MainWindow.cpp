@@ -68,6 +68,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     for(int i = 0;i<20;i++) arrayMeseros[i]->hide();
     for(int i = 0;i<20;i++) botonesMesas[i]->hide();
 
+    ui->botonReservar->hide();
+    ui->botonCajaSwitch->hide();
+    ui->botonModAsistencia->hide();
+    ui->botonModGenClientes->hide();
     ui->botonCajeraStop->setFlat(true);
     ui->botonFuertesStop->setFlat(true);
     ui->botonPostresStop->setFlat(true);
@@ -89,66 +93,77 @@ void MainWindow::on_pushButton_clicked()
     //Hacemos el start de todos los hilos y setteamos cada estructura
     restaurante = new Restaurante(probPlatoFuerte, probEnsalada, probPostre,cantCocineros,cantMeseros, cantMesas, cantMesasPorMesero, genPersonas1,genPersonas2,intervaloPostres1, intervaloPostres2, intervaloEnsaladas1, intervaloEnsaladas2, intervaloFuerte1, intervaloFuerte2,tiempoSleepCocinero, tiempoSleepCaja,tiempoSleepLavaplatos, tiempoSleepMesero, &mutexCaj , &mutexLavaplatos, &mutexCocina, &mutexEnsaladas, &mutexPasteleria, &mutexManejador, arrayMesas, arrayMeseros,ui->labelCaja, ui->labelLavaplatos, ui->labelComidaFuerte,ui->labelEnsaladas,ui->labelPasteleria,ui->labelGenerador, ui->labelGeneradorCola, ui->labelCajaInfo,ui->labelLavaplatosInfo,ui->labelEnsaladasInfo, ui->labelPostresInfo, ui->labelCocinaFuerteInfo, ui->labelCocinaFuerteInfo_2, ui->labelCocinaFuerteInfo_3,ui->labelDatosCajera,ui->labelDatosFuerte,ui->labelDatosPostres,ui->labelDatosEnsalada, botonesMesas);
     listaMesas = restaurante->mesas;
+
     ui->pushButton->hide();
     ui->pushButton_2->show();
+
+    ui->botonReservar->show();
+    ui->botonCajaSwitch->show();
+    ui->botonModAsistencia->show();
+    ui->botonModGenClientes->show();
 
     show();
 }
 
-/*
-void MainWindow::push{
-con esto maybe con alguno de los dos
-ui->QTextBrowser ->setText(datos);
-
-QMessageBox::information(this,"Error! ","Hay una cantidad de pasaportes diferente a la cantidad de personas que viajan");
-
-}*/
-
 void MainWindow::infoMesa(QPushButton * boton){
     int i;
+    int cont = 0;
+    QString texto = "";
+    Mesa * mesaAux = listaMesas->primerNodo;
+
+    //To find the button n we look it up in the Vector
     for(i=0;i<botonesMesas.size()-1;i++) {
         if(botonesMesas[i] == boton) break;
     }
-    QString texto = "";
-    int cont = 0;
-    Mesa * mesaAux = listaMesas->primerNodo;
-    mesaAux->mutexMesa.tryLock(10);
+
+    //We look for the table that is in the same position as the button assigned to it
     while(mesaAux){
+        mesaAux->mutexMesa.tryLock(10);
         if(cont == i) break;
+        cont++;
+        mesaAux->mutexMesa.unlock();
         mesaAux = mesaAux->siguiente;
     }
-
+    //If the table was found, just so he program doesn't surrender to the revision and keeps going
     if(mesaAux){
-    texto.append(mesaAux->ID+"\n");
-    Solicitud * sol = mesaAux->pilaPlatosSucios->tope;
-    qDebug()<<"Entre a la ping";
-    if(!mesaAux->listaComensales->estaVacia() && mesaAux->listaComensales->primerNodo->comensal){
-        //mesaAux->listaComensales->primerNodo->mutexComensal->tryLock(10);
-        ComensalThread * cliente = mesaAux->listaComensales->primerNodo;
-        //mesaAux->listaComensales->primerNodo->mutexComensal->unlock();
-        texto.append("Clientes:\n--");
-        for (int i = 0;i<mesaAux->listaComensales->largo-1;i++){
-            texto.append(cliente->comensal->nombre+" \t");
-            cliente = cliente->siguiente;
+        Solicitud * sol = mesaAux->pilaPlatosSucios->tope;
+        texto.append(mesaAux->ID+"\n");
+
+        if(!mesaAux->listaComensales->estaVacia() && mesaAux->listaComensales->primerNodo->comensal){
+
+            //mesaAux->listaComensales->primerNodo->mutexComensal->tryLock(10);
+            ComensalThread * cliente = mesaAux->listaComensales->primerNodo;
+            //mesaAux->listaComensales->primerNodo->mutexComensal->unlock();
+            texto.append("Clientes:\n--");
+            //We add the names of the clients
+            for (int i = 0;i<mesaAux->listaComensales->largo;i++){
+                texto.append(cliente->comensal->nombre+" \t");
+                cliente = cliente->siguiente;
+            }
+
+            //Some styling
+            if(mesaAux->listaComensales->largo!=1)texto.append("--\n");
+            else texto.append("\n");
+
+
+            texto.append("Platos servidos:\n--");
+            for (int i = 0;i<mesaAux->pilaPlatosSucios->largo;i++){
+                texto.append(sol->plato->nombre+"\t");
+            }
+
+            if(mesaAux->pilaPlatosSucios->largo!=1)texto.append("--\n");
+            else texto.append("\n");
+
+            QTextBrowser * informacionMesa  = new QTextBrowser();
+            informacionMesa->setText(texto);
+            informacionMesa->show();
         }
-        if(mesaAux->listaComensales->largo!=1)texto.append("--\n");
-        else texto.append("\n");
-        texto.append("Platos servidos:\n--");
-        for (int i = 0;i<mesaAux->pilaPlatosSucios->largo-1;i++){
-            texto.append(sol->plato->nombre+"\t");
+        else{
+            QTextBrowser * informacionMesa  = new QTextBrowser();
+            informacionMesa->setText("La "+mesaAux->ID+" No tiene clientes por el momento");
+            informacionMesa->show();
         }
-        if(mesaAux->pilaPlatosSucios->largo!=1)texto.append("--\n");
-        else texto.append("\n");
-        QTextBrowser * informacionMesa  = new QTextBrowser();
-        informacionMesa->setText(texto);
-        informacionMesa->show();
-    }
-    else{
-        QTextBrowser * informacionMesa  = new QTextBrowser();
-        informacionMesa->setText("La "+mesaAux->ID+" No tiene clientes por el momento");
-        informacionMesa->show();
-    }
-    mesaAux->mutexMesa.unlock();
+        mesaAux->mutexMesa.unlock();
     }
     else{
         QTextBrowser * informacionMesa  = new QTextBrowser();

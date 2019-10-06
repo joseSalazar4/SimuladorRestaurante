@@ -105,7 +105,6 @@ public:
             cocineroFuerteThread3->tiempoSleep = static_cast<unsigned int>(tiempoSleepCocinero);
             cocineroF1 = cocineroFuerteThread3;
             cocineroFuerteThread3->start();
-
         }
 
         else if (cantidadCocineros == 2){

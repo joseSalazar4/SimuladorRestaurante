@@ -153,7 +153,7 @@ void MeseroThread::llevarOrdenes(){
     else mutexEnsaladas->unlock();
 
     mutexCocina->tryLock(10);
-    if(!mesero->cocina->colaOrdenesListas->vacia() && mesero->cocina->colaOrdenesListas->frente->primerNodo->responsable == mesero->nombre){
+    if(!mesero->cocina->colaOrdenesListas->vacia()){
         Solicitud * sol = mesero->cocina->colaOrdenesListas->frente->primerNodo;
         while(sol){
             if(sol->responsable == mesero->nombre) break;

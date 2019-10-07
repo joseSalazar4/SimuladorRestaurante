@@ -2789,7 +2789,7 @@
      <rect>
       <x>-50</x>
       <y>-40</y>
-      <width>1381</width>
+      <width>1421</width>
       <height>1031</height>
      </rect>
     </property>
@@ -2832,8 +2832,8 @@
    <widget class="QLabel" name="labelGeneradorCola">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>910</y>
+      <x>80</x>
+      <y>880</y>
       <width>221</width>
       <height>31</height>
      </rect>
@@ -2887,7 +2887,7 @@
     <property name="geometry">
      <rect>
       <x>343</x>
-      <y>20</y>
+      <y>10</y>
       <width>93</width>
       <height>81</height>
      </rect>
@@ -3169,7 +3169,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>310</y>
+      <y>320</y>
       <width>241</width>
       <height>61</height>
      </rect>
@@ -3194,7 +3194,7 @@
    <widget class="QLabel" name="labelEnsaladasInfo">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>150</y>
       <width>251</width>
       <height>61</height>
@@ -3298,8 +3298,8 @@
    <widget class="QLabel" name="labelCocinaFuerteInfo_4">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>360</y>
+      <x>0</x>
+      <y>370</y>
       <width>131</width>
       <height>31</height>
      </rect>
@@ -3459,7 +3459,7 @@
     <property name="geometry">
      <rect>
       <x>1230</x>
-      <y>20</y>
+      <y>10</y>
       <width>94</width>
       <height>81</height>
      </rect>
@@ -3478,7 +3478,7 @@
     <property name="geometry">
      <rect>
       <x>541</x>
-      <y>20</y>
+      <y>10</y>
       <width>95</width>
       <height>81</height>
      </rect>
@@ -3497,7 +3497,7 @@
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>20</y>
+      <y>10</y>
       <width>94</width>
       <height>81</height>
      </rect>
@@ -3516,7 +3516,7 @@
     <property name="geometry">
      <rect>
       <x>738</x>
-      <y>20</y>
+      <y>10</y>
       <width>94</width>
       <height>81</height>
      </rect>
@@ -3535,7 +3535,7 @@
     <property name="geometry">
      <rect>
       <x>443</x>
-      <y>20</y>
+      <y>10</y>
       <width>94</width>
       <height>81</height>
      </rect>
@@ -3554,7 +3554,7 @@
     <property name="geometry">
      <rect>
       <x>836</x>
-      <y>20</y>
+      <y>10</y>
       <width>95</width>
       <height>81</height>
      </rect>
@@ -3573,7 +3573,7 @@
     <property name="geometry">
      <rect>
       <x>935</x>
-      <y>20</y>
+      <y>10</y>
       <width>94</width>
       <height>81</height>
      </rect>
@@ -3592,7 +3592,7 @@
     <property name="geometry">
      <rect>
       <x>1033</x>
-      <y>20</y>
+      <y>10</y>
       <width>94</width>
       <height>81</height>
      </rect>
@@ -3611,7 +3611,7 @@
     <property name="geometry">
      <rect>
       <x>1131</x>
-      <y>20</y>
+      <y>10</y>
       <width>95</width>
       <height>81</height>
      </rect>

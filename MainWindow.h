@@ -5,6 +5,7 @@
 #include "restaurante.h"
 #include <QtWidgets/QMainWindow>
 #include "qpushbutton.h"
+#include"modificartiempo.h"
 
 
 namespace Ui {
@@ -18,12 +19,13 @@ class MainWindow : public QMainWindow{
 
 public:
     CajaThread cajaThread;
-    Restaurante * restaurante;
-    LavaplatosThread lavaplatosthread;
-    QVector<QVector<QLabel*>> arrayMesas;
-    QVector<QPushButton*> botonesMesas;
-    QVector<QLabel*> arrayMeseros;
     ListaMesas * listaMesas;
+    Restaurante * restaurante;
+    QVector<QLabel*> arrayMeseros;
+    ModificarTiempo * ventanaModificadora
+    LavaplatosThread lavaplatosthread;
+    QVector<QPushButton*> botonesMesas;
+    QVector<QVector<QLabel*>> arrayMesas;
     CocineroThread cocineroPasteleria, cocineroEnsaladas, cocineroFuerte;
     QLabel * caja, * lavaplatos, * ensaladas, * cocinaFuerte, *pasteleria;
     QMutex mutexPasteleria, mutexCocina, mutexEnsaladas, mutexCaj, mutexLavaplatos, mutexManejador;

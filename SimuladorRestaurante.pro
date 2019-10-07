@@ -43,6 +43,7 @@ SOURCES += \
     mesa.cpp \
     mesero.cpp \
     meserothread.cpp \
+    modificartiempo.cpp \
     pila.cpp \
     restaurante.cpp \
     solicitud.cpp\
@@ -58,6 +59,7 @@ HEADERS += \
     MainWindow.h \
     #Mediador.h \
     mesero.h \
+    modificartiempo.h \
     solicitud.h \
     caja.h \
     cajathread.h \
@@ -84,7 +86,8 @@ HEADERS += \
 
 FORMS += \
     dialog.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    modificartiempo.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

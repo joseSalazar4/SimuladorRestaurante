@@ -149,7 +149,7 @@ public:
 
         }
 
-        if(cantMesas%cantMeseros != 0) mesasSobrantes = cantMesas-(cantMesasMesero*(cantMeseros-1));
+        if(cantMesas%cantMeseros != 0) mesasSobrantes = cantMesas-(cantMesasMesero*(cantMeseros));
 
         if(mesasSobrantes == 0){
             for(int i = 0;i<cantidadMeseros;i++){
@@ -215,7 +215,7 @@ public:
                 meseroAux->pasteleria = pasteleria;
                 meseroAux->lavaplatos = lavaplatos;
 
-                if(i==cantidadMeseros--){
+                if(i!=cantidadMeseros-1){
                     for(int j = 0;j<cantMesasMesero;j++){
                         Mesa * mesaAux = new Mesa("Mesa #"+QString::number(i+1), i+1);
                         mesaAux->tipoPedido=1;
@@ -231,6 +231,8 @@ public:
                         mesaAux->arrayComensales = arrayMesas[i];
                         mesaAux->imagen = arrayMesas[i][6]; //ACA VA UN ARRAY DE QLABELS PA ASIGNAR CON UNF FORVEA LO DE EL ORDEN
                         //insertamos en la lista total de mesas
+                        botonesMesas[i]->show();
+
                         mesas->insertarFinal(mesaAux);
                         mesaAux->imagen->show();
                         mesaAux->imagen->setToolTip("Yo estoy activa y esperando clientes");
@@ -239,8 +241,8 @@ public:
                     }
                 }
                 else{
-                    for(int j = 0;j<cantMesasMesero;j++){
-                        Mesa * mesaAux = new Mesa("Mesa #"+QString::number(i+1), i+1);
+                    for(int j = 0;j<cantMesasMesero+mesasSobrantes;j++){
+                        Mesa * mesaAux = new Mesa("Mesa #"+QString::number(i+j+1), i+j+1);
 
                         mesaAux->tipoPedido=1;
                         mesaAux->intervaloFuerte1=intervaloFuerte1;
@@ -251,9 +253,11 @@ public:
 
                         mesaAux->intervaloPostres1=intervaloPostre1;
                         mesaAux->intervaloPostres2=intervaloPostre2;
-                        mesaAux->arrayComensales = arrayMesas[i];
-                        mesaAux->imagen = arrayMesas[i][6]; //ACA VA UN ARRAY DE QLABELS PA ASIGNAR CON UNF FORVEA LO DE EL ORDEN
+                        mesaAux->arrayComensales = arrayMesas[i+j];
+                        mesaAux->imagen = arrayMesas[i+j][6]; //ACA VA UN ARRAY DE QLABELS PA ASIGNAR CON UNF FORVEA LO DE EL ORDEN
                         //insertamos en la lista total de mesas
+                        botonesMesas[i+j]->show();
+
                         mesas->insertarFinal(mesaAux);
                         mesaAux->imagen->show();
                         mesaAux->imagen->setToolTip("Yo estoy activa y esperando clientes");

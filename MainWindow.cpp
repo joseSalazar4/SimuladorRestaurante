@@ -148,6 +148,7 @@ void MainWindow::infoMesa(QPushButton * boton){
             texto.append("Platos servidos:\n--");
             for (int i = 0;i<mesaAux->pilaPlatosSucios->largo;i++){
                 texto.append(sol->plato->nombre+"\t");
+                sol = sol->siguiente;
             }
 
             if(mesaAux->pilaPlatosSucios->largo!=1)texto.append("--\n");

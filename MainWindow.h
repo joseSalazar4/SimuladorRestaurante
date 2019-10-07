@@ -22,7 +22,7 @@ public:
     ListaMesas * listaMesas;
     Restaurante * restaurante;
     QVector<QLabel*> arrayMeseros;
-    ModificarTiempo * ventanaModificadora
+    ModificarTiempo * ventanaModificadora;
     LavaplatosThread lavaplatosthread;
     QVector<QPushButton*> botonesMesas;
     QVector<QVector<QLabel*>> arrayMesas;

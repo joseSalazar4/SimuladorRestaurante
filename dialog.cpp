@@ -101,7 +101,6 @@ void Dialog::on_pushButton_clicked(){
         ventanaPrincipal.intervaloFuerte1 = ui->Intervalo1PlatoFuerte->text().toInt();
         ventanaPrincipal.intervaloFuerte2 = ui->Intervalo2PlatoFuerte->text().toInt();
 
-
         ventanaPrincipal.intervaloEnsaladas1 = ui->Intervalo1Ensalada->text().toInt();
         ventanaPrincipal.intervaloEnsaladas2 = ui->Intervalo2Ensalada->text().toInt();
 

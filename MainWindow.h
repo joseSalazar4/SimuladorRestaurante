@@ -22,7 +22,7 @@ public:
     ListaMesas * listaMesas;
     Restaurante * restaurante;
     QVector<QLabel*> arrayMeseros;
-    ModificarTiempo * ventanaModificadora
+    ModificarTiempo ventanaModificadora;
     LavaplatosThread lavaplatosthread;
     QVector<QPushButton*> botonesMesas;
     QVector<QVector<QLabel*>> arrayMesas;
@@ -32,7 +32,7 @@ public:
     int cantMeseros, cantMesas, cantCocineros, genPersonas1, genPersonas2, cantMesasPorMesero, intervaloPostres1,
         intervaloPostres2, intervaloEnsaladas1, intervaloEnsaladas2, intervaloFuerte1, intervaloFuerte2, detenido = 0,
         tiempoSleepCocinero,tiempoSleepMesero, tiempoSleepLavaplatos, tiempoSleepCaja,probPlatoFuerte, probEnsalada, probPostre,
-        postresDetenido = 0,ensaladaDetenido= 0, fuerteDetenido= 0, cajaDetenida= 0 ;
+        postresDetenido = 0,ensaladaDetenido= 0, fuerteDetenido= 0, cajaDetenida= 0, cajaPila = 0;
 
 
     explicit MainWindow(QWidget *parent = nullptr);
@@ -81,6 +81,12 @@ private slots:
     void on_botonCajeraStop_clicked();
 
     void on_btonGeneradorStop_clicked();
+
+    void on_botonModAsistencia_clicked();
+
+    void on_botonModGenClientes_clicked();
+
+    void on_botonCajaSwitch_clicked();
 
 private:
     Ui::MainWindow *ui;

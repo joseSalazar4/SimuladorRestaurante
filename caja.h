@@ -6,11 +6,11 @@
 
 struct Caja
 {
+    bool modoCola = true;
     Cola * colaCuentasPorHacer, * colaCuentasHechas;
     Caja(){
         colaCuentasPorHacer = new Cola();
         colaCuentasHechas = new Cola();
-
     }
 
     void calcularCuenta();

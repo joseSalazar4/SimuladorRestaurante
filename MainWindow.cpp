@@ -445,3 +445,31 @@ void MainWindow::on_btonGeneradorStop_clicked()
         restaurante->generadorPersonas.continuar();
     }
 }
+
+void MainWindow::on_botonModAsistencia_clicked()
+{
+        ventanaModificadora.show();
+}
+
+void MainWindow::on_botonModGenClientes_clicked()
+{
+        ventanaModificadora.show();
+
+}
+
+void MainWindow::on_botonCajaSwitch_clicked()
+{
+    if(cajaPila==0){
+        cajaPila = 1;
+        ui->botonCajaSwitch->setText("Convertir Caja a Cola");
+        cajaThread.caja->modoCola = false;
+        //sacar en forma de cola
+    }
+
+    else{
+        cajaPila = 0;
+        //sacar en forma de pila
+        ui->botonCajaSwitch->setText("Convertir Caja a Cola");
+        cajaThread.caja->modoCola = true;
+    }
+}

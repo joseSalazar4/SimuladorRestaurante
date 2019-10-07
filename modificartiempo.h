@@ -21,6 +21,8 @@ private slots:
 
     void on_radioButton_2_clicked();
 
+    void on_radioButton_clicked();
+
 private:
     Ui::ModificarTiempo *ui;
 };

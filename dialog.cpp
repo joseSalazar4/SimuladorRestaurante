@@ -69,7 +69,7 @@ void Dialog::on_pushButton_clicked(){
     QString cantMeseros = ui->lineaCantMeseros->text();
     QString tiempoGen2 = ui->lineaTiempoGen2->text();
     float cantMesasPorMeseroActivo = (cantMesas.toFloat())/(cantMeseros.toFloat());
-    QString cantMesasMesero = QString::number(static_cast<int>(cantMesasPorMeseroActivo));
+    QString cantMesasMesero = QString::number(static_cast<int>(floor(cantMesasPorMeseroActivo)));
     qDebug()<<"CantMesas por mesero"+cantMesasMesero;
     QString probPlatoFuerte = ui->probPlatoFuerte->text();
     QString probPostre = ui->probPostre->text();

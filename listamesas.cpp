@@ -1,13 +1,13 @@
 #include "listamesas.h"
 
 
-void ListaMesas::insertarFinal(QString id) {
+void ListaMesas::insertarFinal(QString id, short number) {
     if (estaVacia()) {
-        primerNodo = ultimoNodo = new Mesa(id);
+        primerNodo = ultimoNodo = new Mesa(id, number);
         largo++;
     }
     else {
-            ultimoNodo->siguiente = new Mesa(id);
+            ultimoNodo->siguiente = new Mesa(id, number);
             ultimoNodo->siguiente->anterior = ultimoNodo;
             ultimoNodo = ultimoNodo->siguiente;
             largo++;

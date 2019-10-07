@@ -118,7 +118,7 @@ void MainWindow::infoMesa(QPushButton * boton){
     //We look for the table that is in the same position as the button assigned to it
     while(mesaAux){
         mesaAux->mutexMesa.tryLock(10);
-        if(mesaAux->ID[mesaAux->ID.size()-1] == QString::number(i+1)) break;
+        if(mesaAux->numero_mesa == i+1) break;
         mesaAux->mutexMesa.unlock();
         mesaAux = mesaAux->siguiente;
     }
@@ -148,6 +148,7 @@ void MainWindow::infoMesa(QPushButton * boton){
             texto.append("Platos servidos:\n--");
             for (int i = 0;i<mesaAux->pilaPlatosSucios->largo;i++){
                 texto.append(sol->plato->nombre+"\t");
+                sol = sol->siguiente;
             }
 
             if(mesaAux->pilaPlatosSucios->largo!=1)texto.append("--\n");

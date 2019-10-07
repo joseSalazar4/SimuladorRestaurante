@@ -33,6 +33,10 @@ void MeseroThread::run(){
         colocarOrden();
         sleep(1);
         llevarOrdenes();
+        
+        
+        //Aca debe revisar si hay cuentas y si hay platos sucios para llevar a la pila
+        //Terminan de comer el postre ahi deberian de 
 
         sleep(tiempoSleep);
 

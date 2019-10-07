@@ -44,6 +44,7 @@ public slots:
     void on_pushButton_clicked();
 
 private slots:
+    void on_modificartiempo_finished(short selection, int number);
     void on_pushButton_2_clicked();
 
     void on_pushMesa_1_clicked();

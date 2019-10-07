@@ -25,6 +25,9 @@ private slots:
 
 private:
     Ui::ModificarTiempo *ui;
+
+signals:
+    void finished(short selection, int number);
 };
 
 #endif // MODIFICARTIEMPO_H

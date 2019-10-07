@@ -24,16 +24,18 @@ void ModificarTiempo::on_pushButton_clicked()
     hide();
     if(generador == 0){
         ui->lineEdit->text().toInt();
+        emit finished(0, ui->lineEdit->text().toInt());
     }
 
     else{
         ui->lineEdit_2->text().toInt();
+        emit finished(1, ui->lineEdit_2->text().toInt());
     }
 }
 
 void ModificarTiempo::on_radioButton_2_clicked()
 {
-    generador = 0;
+    generador = 1;
 
     //Modificamos para deshabilitar
     ui->lineEdit->setReadOnly(true);
@@ -49,7 +51,7 @@ void ModificarTiempo::on_radioButton_2_clicked()
 
 void ModificarTiempo::on_radioButton_clicked()
 {
-    generador = 1;
+    generador = 0;
     //Modificamos para deshabilitar la entrada
     ui->lineEdit_2->setReadOnly(true);
     QPalette *palette = new QPalette();
@@ -59,6 +61,6 @@ void ModificarTiempo::on_radioButton_clicked()
     //Modificamos y habilitamos la entrada al generador
     ui->lineEdit->setReadOnly(false);
     palette->setColor(QPalette::Base,Qt::darkGray);
-    ui->lineEdit_2->setPalette(*palette);
+    ui->lineEdit->setPalette(*palette);
 
 }

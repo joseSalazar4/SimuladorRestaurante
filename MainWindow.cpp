@@ -7,6 +7,8 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
+    connect(&ventanaModificadora, SIGNAL(finished(short, int)), this, SLOT(on_modificartiempo_finished(short, int)));
+
     ui->setupUi(this);
 
     ui->labelGenerador->setStyleSheet("QLabel {color : white; }");
@@ -473,4 +475,8 @@ void MainWindow::on_botonCajaSwitch_clicked()
         ui->botonCajaSwitch->setText("Convertir Caja a Cola");
         cajaThread.caja->modoCola = true;
     }
+}
+
+void MainWindow::on_modificartiempo_finished(short selection, int number){
+    qDebug()<<selection<<" "<<number;
 }
